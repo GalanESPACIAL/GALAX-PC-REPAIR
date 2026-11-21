@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="mpl-active">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,6 +8,9 @@
 <meta property="og:title" content="GALAX PC REPAIR — Asistente Airi">
 <meta property="og:description" content="Tienda de informática, reparaciones y asistente virtual Airi con productos y precios reales.">
 <meta property="og:type" content="website">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></noscript>
 <style>/* =====================================================
    TechVentas Pro - Design System
    Fluid, professional, animated
@@ -896,6 +899,96 @@ body.store-body {
     *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
   }
 </style>
+<style>
+/* =========================================================
+   FUSIÓN MI PC LISTA · GALAX PC REPAIR
+   Estética roja/blanca manteniendo Airi y accesibilidad
+   ========================================================= */
+html.mpl-active, html.mpl-active body{
+  background:#f5f6f8; color:#17202a;
+}
+html.mpl-active .store-main{max-width:1240px;margin:0 auto;padding:18px 20px 70px;min-height:auto}
+.mpl-topbar{background:#f7f7f7;border-bottom:1px solid #e5e7eb;color:#5b6472;font-size:.72rem;
+  padding:6px 20px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.mpl-topbar span{white-space:nowrap}
+.mpl-header{background:#fff;border-bottom:1px solid #e5e7eb}
+.mpl-header-inner{max-width:1240px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;gap:22px}
+.mpl-logo{font-weight:900;font-size:1.5rem;letter-spacing:-.04em;color:#111;text-decoration:none;white-space:nowrap}
+.mpl-logo b{color:#e30613}
+.mpl-search{flex:1;display:flex;max-width:620px;margin:0 auto;border:1px solid #d8dce3;border-radius:4px;overflow:hidden;height:44px}
+.mpl-search select{border:0;border-right:1px solid #e5e7eb;background:#fff;color:#374151;padding:0 30px 0 12px;font-size:.8rem}
+.mpl-search input{flex:1;border:0;outline:0;padding:0 12px;font-size:.85rem;color:#111;min-width:0}
+.mpl-search button{background:#e30613;color:#fff;border:0;padding:0 24px;font-weight:800;font-size:.82rem;cursor:pointer;letter-spacing:.03em}
+.mpl-account{display:flex;align-items:center;gap:7px;color:#374151;font-size:.82rem;text-decoration:none;white-space:nowrap}
+.mpl-nav-wrap{position:relative;background:#e30613}
+.mpl-nav{max-width:1240px;margin:0 auto;padding:0 20px;height:46px;display:flex;align-items:center;gap:4px;overflow-x:auto}
+.mpl-nav a{color:#fff;text-decoration:none;font-size:.76rem;font-weight:700;padding:10px 9px;white-space:nowrap;border-radius:4px}
+.mpl-nav a:hover,.mpl-nav a:focus-visible{background:rgba(0,0,0,.18)}
+.mpl-gaming-badge{position:absolute;left:20px;top:-14px;background:#0b0b0b;color:#fff;font-size:.6rem;font-weight:800;
+  letter-spacing:.08em;padding:3px 9px;border-radius:3px}
+.mpl-breadcrumb{background:#fff;border-bottom:1px solid #e5e7eb;padding:16px 20px;text-align:center;color:#6b7280;font-size:.78rem}
+.mpl-breadcrumb strong{color:#e30613}
+.mpl-title{margin:26px 0 18px;font-size:1.1rem;color:#374151}
+.mpl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.mpl-card{background:#fff;border:1px solid #e5e7eb;border-radius:6px;overflow:hidden;display:flex;flex-direction:column}
+.mpl-card:hover{border-color:#e30613;box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.mpl-media{height:210px;display:grid;place-items:center;background:#fff;border-bottom:1px solid #f1f2f4;overflow:hidden}
+.mpl-media img,.mpl-media svg{width:100%;height:100%;object-fit:contain}
+.mpl-card-body{padding:14px 14px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.mpl-tag{color:#8a94a6;font-size:.63rem;letter-spacing:.06em;text-transform:uppercase}
+.mpl-name{font-size:.86rem;line-height:1.35;color:#17202a;font-weight:600;min-height:2.5em}
+.mpl-price{color:#e30613;font-weight:800;font-size:1.12rem;margin-top:auto}
+.mpl-card .btn{margin-top:8px;background:#e30613;color:#fff;border:0;border-radius:4px;padding:9px 12px;
+  font-weight:700;font-size:.76rem;cursor:pointer}
+.mpl-card .btn:hover{background:#b90510}
+.mpl-benefits{background:#e30613;color:#fff;margin-top:48px;padding:28px 20px}
+.mpl-benefits-inner{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:18px;text-align:center}
+.mpl-benefit{background:rgba(255,255,255,.08);border-radius:6px;padding:18px 12px}
+.mpl-benefit i{font-size:1.7rem;display:block;margin-bottom:8px}
+.mpl-benefit strong{display:block;font-size:.83rem}
+.mpl-benefit small{display:block;opacity:.85;font-size:.68rem;margin-top:4px}
+.mpl-social{background:#c40510;color:#fff;padding:26px 20px}
+.mpl-social-inner{max-width:1000px;margin:0 auto;display:flex;align-items:center;gap:20px;flex-wrap:wrap;justify-content:space-between}
+.mpl-social h2{font-size:.95rem;font-weight:800}
+.mpl-social p{font-size:.68rem;opacity:.85}
+.mpl-social-icons{display:flex;gap:8px}
+.mpl-social-icons a{width:30px;height:30px;border-radius:50%;background:#fff;color:#e30613;display:grid;place-items:center;text-decoration:none}
+.mpl-news{display:flex;gap:0;border-radius:999px;overflow:hidden;max-width:420px;flex:1}
+.mpl-news input{flex:1;min-width:0;border:0;padding:8px 14px;font-size:.76rem;color:#17202a}
+.mpl-news button{background:#e30613;color:#fff;border:0;padding:8px 16px;font-size:.74rem;font-weight:800;cursor:pointer}
+.mpl-recs{background:#fff;color:#e30613;border-radius:999px;padding:6px 12px;font-size:.68rem;font-weight:700}
+.mpl-footer{background:#9e0410;color:#fff;padding:30px 20px 14px}
+.mpl-footer-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1.4fr;gap:30px}
+.mpl-footer h2{font-size:.75rem;letter-spacing:.1em;margin-bottom:12px;color:#fff}
+.mpl-footer a,.mpl-footer p{color:rgba(255,255,255,.85);font-size:.74rem;text-decoration:none;line-height:1.9}
+.mpl-footer-cols{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.mpl-footer-bottom{border-top:1px solid rgba(255,255,255,.2);margin-top:24px;padding-top:12px;text-align:center;font-size:.68rem;opacity:.85}
+.mpl-whatsapp{position:fixed;left:18px;bottom:22px;z-index:80;width:52px;height:52px;border-radius:50%;
+  background:#25d366;color:#fff;display:grid;place-items:center;font-size:1.5rem;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.mpl-top{position:fixed;right:18px;bottom:22px;z-index:80;width:40px;height:40px;border-radius:50%;
+  background:#e30613;color:#fff;border:0;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.2)}
+.mpl-video{max-width:1000px;margin:36px auto;background:#fff;border:1px solid #e5e7eb;display:grid;grid-template-columns:.8fr 1.2fr;overflow:hidden;border-radius:6px}
+.mpl-video-text{padding:36px 30px;text-align:center;display:grid;place-items:center}
+.mpl-video-text h2{font-weight:900;font-size:1.2rem;color:#111}
+.mpl-video-text p{font-size:.74rem;color:#6b7280;margin-top:8px}
+.mpl-play{width:46px;height:46px;border-radius:50%;background:#e30613;color:#fff;display:grid;place-items:center;margin:16px auto 0}
+.mpl-video-art{min-height:240px;background:linear-gradient(135deg,#2b2b2b,#4b1d22);display:grid;place-items:center;color:#fff}
+html.performance .mpl-card,html.performance .mpl-benefit{box-shadow:none !important}
+html.mpl-active .site-footer{display:none}
+html.mpl-active .hero .pv-card{background:rgba(255,255,255,.10);color:#fff;border-color:rgba(255,255,255,.25)}
+html.mpl-active .hero .muted{color:#e5e7eb}
+html.mpl-active .hero .pv-chip{color:#fff;border-color:rgba(255,255,255,.35)}
+html.mpl-active .hero .btn-outline{color:#fff;border-color:rgba(255,255,255,.65)}
+html.mpl-active .hero .btn-primary{background:#e30613;box-shadow:none}
+html.mpl-active .section-head h2{color:#17202a}
+@media(max-width:760px){
+  .mpl-header-inner{flex-wrap:wrap}.mpl-search{order:3;flex-basis:100%;max-width:none}.mpl-account{margin-left:auto}
+  .mpl-nav{display:none;height:auto;flex-direction:column;padding:8px 20px}.mpl-nav.open{display:flex}
+  .mpl-video{grid-template-columns:1fr}.mpl-video-art{min-height:180px}
+  .mpl-footer-inner{grid-template-columns:1fr}
+}
+</style>
+
 <script type="importmap">
 {"imports":{
   "three":"https://unpkg.com/three@0.160.0/build/three.module.js",
@@ -911,42 +1004,60 @@ body.store-body {
   <button type="button" id="previewBadgeClose" aria-label="Cerrar aviso de demostración">×</button>
 </div>
 
-<header class="site-header">
-  <div class="site-header-inner">
-    <a class="brand-mark" href="#inicio" aria-label="GALAX PC REPAIR — ir al inicio">
-      <span class="brand-glyph" aria-hidden="true"><i class="fa-solid fa-microchip"></i></span>
-      <span class="brand-name">GALAX <span class="gradient-text">PC REPAIR</span></span>
-    </a>
+<div class="mpl-topbar">
+  <span>Lunes a Sábado 9am a 6pm - Domingo 10am a 4pm</span>
+  <span>Pasaje, Acisco Villarán 331 Sótano 1</span>
+  <span>Métodos de pago</span>
+  <span>983 558 113</span>
+</div>
+<header class="mpl-header">
+  <div class="mpl-header-inner">
+    <a class="mpl-logo" href="#inicio" aria-label="Mi PC Lista by GALAX PC REPAIR — ir al inicio">mi<b>PC</b>Lista <small style="font-size:.45rem;color:#e30613;letter-spacing:0">by GALAX</small></a>
+    <form class="mpl-search" id="mplSearchForm" role="search">
+      <select id="mplCategorySelect" aria-label="Filtrar por categoría">
+        <option value="Todos">Todas</option>
+        <option value="PC Gamer">PC Gamer</option>
+        <option value="Laptops">Laptops</option>
+        <option value="Componentes">Componentes</option>
+        <option value="Accesorios">Accesorios</option>
+      </select>
+      <input type="search" id="mplSearchInput" placeholder="Busca en nuestro catálogo" aria-label="Buscar en el catálogo">
+      <button type="submit">BUSCAR</button>
+    </form>
+    <a class="mpl-account" href="#reparar"><i class="fa-regular fa-user" aria-hidden="true"></i> Mi cuenta <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></a>
+    <button class="icon-btn" type="button" id="themeBtn" aria-label="Activar modo claro" title="Modo claro">
+      <i class="fa-solid fa-sun" aria-hidden="true"></i>
+    </button>
+    <button class="icon-btn" type="button" id="perfBtn" aria-label="Activar modo rendimiento" title="Modo rendimiento">
+      <i class="fa-solid fa-bolt" aria-hidden="true"></i>
+    </button>
     <button class="icon-btn mobile-menu-btn" type="button" id="menuBtn"
             aria-label="Abrir menú" aria-expanded="false" aria-controls="storeNav">
       <i class="fa-solid fa-bars" aria-hidden="true"></i>
     </button>
-    <nav class="site-nav" id="storeNav" aria-label="Navegación principal">
-      <a href="#inicio">Inicio</a>
-      <a href="#catalogo">Catálogo</a>
-      <a href="#servicios">Servicios</a>
-      <a href="#reparar">Reparar mi equipo</a>
-    </nav>
-    <div class="header-controls">
-      <button class="icon-btn" type="button" id="themeBtn" aria-label="Activar modo claro" title="Modo claro">
-        <i class="fa-solid fa-sun" aria-hidden="true"></i>
-      </button>
-      <button class="icon-btn" type="button" id="perfBtn" aria-label="Activar modo rendimiento" title="Modo rendimiento">
-        <i class="fa-solid fa-bolt" aria-hidden="true"></i>
-      </button>
-      <button class="icon-btn" type="button" id="searchBtn" aria-label="Buscar productos">
-        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-      </button>
-      <button class="icon-btn" type="button" id="cartBtn" aria-label="Abrir carrito, 0 productos">
-        <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
-        <span class="badge" id="cartCount">0</span>
-      </button>
-      <a href="#reparar" class="btn btn-outline btn-sm">
-        <i class="fa-solid fa-right-to-bracket" aria-hidden="true"></i> Ingresar
-      </a>
-    </div>
+    <button class="icon-btn" type="button" id="cartBtn" aria-label="Abrir carrito, 0 productos">
+      <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+      <span class="badge" id="cartCount">0</span>
+    </button>
   </div>
 </header>
+<div class="mpl-nav-wrap">
+  <span class="mpl-gaming-badge" aria-hidden="true">GAMING</span>
+  <nav class="mpl-nav" id="storeNav" aria-label="Navegación de categorías">
+    <a href="#inicio">Inicio</a>
+    <a href="#catalogo" data-cat="PC Gamer">PC Gamer</a>
+    <a href="#catalogo" data-cat="Laptops">Computadoras</a>
+    <a href="#catalogo" data-cat="Componentes">Punto De Venta</a>
+    <a href="#catalogo" data-cat="Componentes">Todo En Uno</a>
+    <a href="#catalogo" data-cat="Laptops">Laptops</a>
+    <a href="#catalogo" data-cat="Accesorios">Tablets</a>
+    <a href="#catalogo" data-cat="Componentes">Monitores</a>
+    <a href="#catalogo" data-cat="Componentes">Impresoras</a>
+    <a href="#catalogo" data-cat="Componentes">Proyectores</a>
+    <a href="#catalogo" data-cat="Accesorios">Accesorios</a>
+  </nav>
+</div>
+<div class="mpl-breadcrumb">Inicio / PC Gamer / <strong>PC GAMA MEDIA</strong></div>
 
 <main id="main-content" class="store-main">
   <section class="hero" id="inicio" aria-labelledby="hero-title">
@@ -981,6 +1092,10 @@ body.store-body {
       <button class="category-tile active" type="button" data-category="Todos">
         <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
         <span><strong>Todos</strong><small>Ver todo el catálogo</small></span>
+      </button>
+      <button class="category-tile" type="button" data-category="PC Gamer">
+        <i class="fa-solid fa-gamepad" aria-hidden="true"></i>
+        <span><strong>PC Gamer</strong><small>11 productos</small></span>
       </button>
       <button class="category-tile" type="button" data-category="Componentes">
         <i class="fa-solid fa-microchip" aria-hidden="true"></i>
@@ -1103,6 +1218,72 @@ body.store-body {
   </div>
   <div class="footer-bottom">© 2026 GALAX PC REPAIR · Precios y stock en tiempo real</div>
 </footer>
+
+<section class="mpl-benefits" aria-label="Beneficios de Mi PC Lista">
+  <div class="mpl-benefits-inner">
+    <div class="mpl-benefit"><i class="fa-solid fa-truck" aria-hidden="true"></i><strong>Envíos todo el Perú</strong><small>Delivery a Lima y envíos a provincia</small></div>
+    <div class="mpl-benefit"><i class="fa-solid fa-headset" aria-hidden="true"></i><strong>Soporte Técnico</strong><small>Atención al cliente</small></div>
+    <div class="mpl-benefit"><i class="fa-solid fa-credit-card" aria-hidden="true"></i><strong>100% Pago Seguro</strong><small>Aceptamos todas tus tarjetas</small></div>
+    <div class="mpl-benefit"><i class="fa-solid fa-store" aria-hidden="true"></i><strong>Retiro en tienda</strong><small>Recojo en tienda oficial</small></div>
+  </div>
+</section>
+
+<section class="mpl-social" aria-label="Comunidad y boletín">
+  <div class="mpl-social-inner">
+    <div>
+      <h2>Únete a la comunidad</h2>
+      <p>Síguenos en nuestras redes sociales y novedades.</p>
+      <div class="mpl-social-icons">
+        <a href="#inicio" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+        <a href="#inicio" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+        <a href="#inicio" aria-label="YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+        <a href="#inicio" aria-label="TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
+      </div>
+    </div>
+    <form class="mpl-news" id="newsForm" onsubmit="return false">
+      <label class="sr-only" for="newsEmail">Tu dirección de correo electrónico</label>
+      <input id="newsEmail" type="email" placeholder="Su dirección de correo electrónico" required>
+      <button type="submit">Suscribirse</button>
+    </form>
+    <span class="mpl-recs">1,824 de recomendaciones</span>
+  </div>
+</section>
+
+<section class="mpl-video" aria-labelledby="video-title">
+  <div class="mpl-video-text">
+    <div>
+      <h2 id="video-title">¡Gerardo Zamora!<br>Visita Mi PC Lista</h2>
+      <p>Gerardo Zamora nos visita en nuestro local principal</p>
+      <a class="mpl-play" href="#inicio" aria-label="Ver video de la visita"><i class="fa-solid fa-play" aria-hidden="true"></i></a>
+    </div>
+  </div>
+  <div class="mpl-video-art" role="img" aria-label="Vista del local de Mi PC Lista con estanterías y atención al cliente">
+    <i class="fa-solid fa-store fa-4x" aria-hidden="true"></i>
+  </div>
+</section>
+
+<footer class="mpl-footer">
+  <div class="mpl-footer-inner">
+    <div>
+      <h2>VÍSTANOS</h2>
+      <p><i class="fa-solid fa-lock" aria-hidden="true"></i> Mi PC Lista - Pasaje Acisco Villarán 331 Sótano 1, Lima 15001</p>
+    </div>
+    <div class="mpl-footer-cols">
+      <div>
+        <h2>CATEGORÍAS</h2>
+        <p><a href="#catalogo">PC Gamer</a><br><a href="#catalogo">Componentes</a><br><a href="#catalogo">Punto de venta</a><br><a href="#catalogo">PC todo en uno</a><br><a href="#catalogo">Accesorios</a></p>
+      </div>
+      <div>
+        <h2>ATENCIÓN</h2>
+        <p><a href="#catalogo">Laptops</a><br><a href="#catalogo">Monitores</a><br><a href="#catalogo">Partes</a><br><a href="#catalogo">Impresoras</a><br><a href="#catalogo">Proyectores</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="mpl-footer-bottom">Política de Privacidad · Términos de Garantía · Política de Devoluciones · Términos y Condiciones · Métodos de pago<br>© 2026 MaPCLista. Todos los derechos reservados. · GALAX PC REPAIR</div>
+</footer>
+
+<a class="mpl-whatsapp" href="https://wa.me/51983558113" aria-label="Contactar por WhatsApp al 983 558 113"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
+<button class="mpl-top" type="button" id="backToTop" aria-label="Volver arriba"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
 
 <div class="drawer-backdrop" id="cartBackdrop" hidden></div>
 <aside class="drawer" id="cartDrawer" aria-label="Carrito de compras" aria-hidden="true">
@@ -1277,6 +1458,17 @@ body.store-body {
   const money = n => 'S/ ' + Number(n).toFixed(2);
 
   const PRODUCTS = [
+    { id:'PCG-001', name:'PC Gamer Haku Red Intel Core i7 4th', cat:'PC Gamer', price:2099, stock:9, fan:'#e11d48', char:'#f43f5e' },
+    { id:'PCG-002', name:'PC Gamer Haku Yellow Intel Core i7 4th', cat:'PC Gamer', price:2299, stock:7, fan:'#f59e0b', char:'#fbbf24' },
+    { id:'PCG-003', name:'PC Gamer Ryu RGB Ryzen AMD Ryzen 7 5700G', cat:'PC Gamer', price:2799, stock:6, fan:'#22d3ee', char:'#38bdf8' },
+    { id:'PCG-004', name:'PC Gamer Draco Blue Plus Core i5 12400F 12th', cat:'PC Gamer', price:4099, stock:5, fan:'#3b82f6', char:'#60a5fa' },
+    { id:'PCG-005', name:'PC Gamer Draco Red Plus Intel Core i5 12400F 12th', cat:'PC Gamer', price:4699, stock:4, fan:'#ef4444', char:'#f87171' },
+    { id:'PCG-006', name:'PC Gamer Draco White Plus Core i7 12700F 12th', cat:'PC Gamer', price:4999, stock:3, fan:'#a5b4fc', char:'#e0e7ff' },
+    { id:'PCG-007', name:'PC Gamer Draco White RGB Core i7 12700F 12th', cat:'PC Gamer', price:6999, stock:2, fan:'#8b5cf6', char:'#c4b5fd' },
+    { id:'PCG-008', name:'PC Gamer Hero Green Core i9 12900KF 12th', cat:'PC Gamer', price:8999, stock:2, fan:'#22c55e', char:'#4ade80' },
+    { id:'PCG-009', name:'PC Gamer Draco Pink Plus Intel Core Ultra 7 265KF', cat:'PC Gamer', price:9999, stock:1, fan:'#ec4899', char:'#f9a8d4' },
+    { id:'PCG-010', name:'PC Gamer Intel', cat:'PC Gamer', price:2699, stock:8, fan:'#0ea5e9', char:'#7dd3fc' },
+    { id:'PCG-011', name:'PC Amd Ryzen', cat:'PC Gamer', price:2399, stock:10, fan:'#f97316', char:'#fdba74' },
     { id:'LAP-001', name:'Laptop HP Pavilion 15',   cat:'Laptops',      price:2899, stock:12, img:'../assets/img/productos/LAP-001.png' },
     { id:'LAP-002', name:'Laptop Lenovo IdeaPad 3', cat:'Laptops',      price:2399, stock:8,  img:'../assets/img/productos/LAP-002.png' },
     { id:'LAP-003', name:'Laptop Asus VivoBook 15', cat:'Laptops',      price:3499, stock:5,  img:'../assets/img/productos/LAP-003.svg' },
@@ -1344,6 +1536,11 @@ body.store-body {
     setTimeout(() => $('#searchInput')?.focus(), 120);
   });
   $('#previewBadgeClose')?.addEventListener('click', () => { $('#previewBadge')?.remove(); });
+  $('#backToTop')?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: state.perf ? 'auto' : 'smooth' }));
+  $('#newsForm')?.addEventListener('submit', e => {
+    e.preventDefault(); toast('¡Gracias por suscribirte a nuestro boletín!');
+    const ne = $('#newsEmail'); if (ne) ne.value = '';
+  });
 
   /* ---------- Catálogo ---------- */
   const grid = $('#productsGrid'), empty = $('#emptyState');
@@ -1354,23 +1551,39 @@ body.store-body {
       (!q || (p.name + ' ' + p.id).toLowerCase().includes(q))
     );
   }
+  function gamingSrc(p) {
+    if (p.img) return p.img;
+    const fan = p.fan || '#e30613', ch = p.char || '#f43f5e';
+    const svg = `<svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Equipo gamer ${p.name}">
+      <rect width="400" height="280" fill="#ffffff"/>
+      <rect x="26" y="42" width="96" height="170" rx="6" fill="#171922" stroke="#2d3140" stroke-width="3"/>
+      <circle cx="58" cy="82" r="15" fill="none" stroke="${fan}" stroke-width="7"/>
+      <circle cx="58" cy="132" r="15" fill="none" stroke="${fan}" stroke-width="7"/>
+      <circle cx="58" cy="182" r="15" fill="none" stroke="${fan}" stroke-width="7"/>
+      <rect x="140" y="46" width="150" height="106" rx="4" fill="#0d1020" stroke="#374151" stroke-width="3"/>
+      <path d="M190 130c0-26 12-40 26-40s26 14 26 40z" fill="${ch}"/>
+      <circle cx="216" cy="78" r="13" fill="${ch}"/>
+      <rect x="130" y="188" width="170" height="30" rx="4" fill="#1b1f2a" stroke="#374151" stroke-width="2"/>
+      <g fill="${fan}"><rect x="138" y="195" width="12" height="5"/><rect x="154" y="195" width="12" height="5"/><rect x="170" y="195" width="12" height="5"/><rect x="186" y="195" width="12" height="5"/><rect x="202" y="195" width="12" height="5"/><rect x="218" y="195" width="12" height="5"/><rect x="234" y="195" width="12" height="5"/><rect x="250" y="195" width="12" height="5"/></g>
+      <ellipse cx="318" cy="200" rx="13" ry="18" fill="#1b1f2a" stroke="${fan}" stroke-width="2"/>
+    </svg>`;
+    return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+  }
+  function gamingSVG(p) {
+    return `<img src="${gamingSrc(p)}" alt="${p.name}" width="400" height="300" loading="lazy" decoding="async">`;
+  }
   function renderProducts() {
     if (!grid) return;
     const items = visibleProducts();
     grid.innerHTML = items.map(p => `
-      <article class="product-card">
-        <div class="product-media">
-          <img src="${p.img}" alt="${p.name}" width="400" height="300" loading="lazy" decoding="async">
-        </div>
-        <div class="product-body">
-          <span class="product-code">${p.id}</span>
-          <h3 class="product-title">${p.name}</h3>
-          <p class="product-meta">${p.cat}</p>
-          <p class="stock-line ${p.stock > 5 ? 'stock-ok' : 'stock-low'}">${p.stock} disponibles</p>
-          <div class="product-price"><span class="now">${money(p.price)}</span></div>
-          <div class="product-actions">
-            <button class="btn btn-primary" type="button" data-add="${p.id}" aria-label="Agregar ${p.name} al carrito">Agregar</button>
-          </div>
+      <article class="mpl-card">
+        <div class="mpl-media">${gamingSVG(p)}</div>
+        <div class="mpl-card-body">
+          <span class="mpl-tag">PC GAMA MEDIA</span>
+          <h3 class="mpl-name">${p.name}</h3>
+          <p class="mpl-tag">${p.id} · ${p.stock} disponibles</p>
+          <div class="mpl-price">${money(p.price)}</div>
+          <button class="btn" type="button" data-add="${p.id}" aria-label="Agregar ${p.name} al carrito">AGREGAR AL CARRITO</button>
         </div>
       </article>`).join('');
     if (empty) empty.hidden = items.length > 0;
@@ -1378,12 +1591,25 @@ body.store-body {
     if (rc) rc.textContent = `Mostrando ${items.length} producto${items.length === 1 ? '' : 's'}` + (state.category !== 'Todos' ? ` en ${state.category}` : '');
     $$('[data-add]', grid).forEach(b => b.addEventListener('click', () => addToCart(b.dataset.add)));
   }
-  $$('.category-tile').forEach(btn => btn.addEventListener('click', () => {
-    state.category = btn.dataset.category;
-    $$('.category-tile').forEach(b => b.classList.toggle('active', b === btn));
+  function setCategory(cat) {
+    state.category = cat;
+    $$('.category-tile').forEach(b => b.classList.toggle('active', b.dataset.category === cat));
+    const sel = $('#mplCategorySelect'); if (sel) sel.value = cat;
     renderProducts();
-  }));
-  $('#searchInput')?.addEventListener('input', e => { state.query = e.target.value; renderProducts(); });
+  }
+  $$('.category-tile').forEach(btn => btn.addEventListener('click', () => setCategory(btn.dataset.category)));
+  $$('.mpl-nav [data-cat]').forEach(a => a.addEventListener('click', () => setCategory(a.dataset.cat)));
+  $('#mplCategorySelect')?.addEventListener('change', e => setCategory(e.target.value));
+  function setQuery(q) {
+    state.query = q;
+    const a = $('#searchInput'), b = $('#mplSearchInput');
+    if (a && a.value !== q) a.value = q;
+    if (b && b.value !== q) b.value = q;
+    renderProducts();
+  }
+  $('#searchInput')?.addEventListener('input', e => setQuery(e.target.value));
+  $('#mplSearchInput')?.addEventListener('input', e => setQuery(e.target.value));
+  $('#mplSearchForm')?.addEventListener('submit', e => { e.preventDefault(); $('#catalogo')?.scrollIntoView(); });
   renderProducts();
 
   /* ---------- Carrito ---------- */
@@ -1418,7 +1644,7 @@ body.store-body {
     const rows = state.cart.map(c => {
       const p = PRODUCTS.find(x => x.id === c.id);
       return `<div class="cart-item">
-        <div class="cart-thumb"><img src="${p.img}" alt="" width="56" height="52" loading="lazy"></div>
+        <div class="cart-thumb"><img src="${gamingSrc(p)}" alt="" width="56" height="52" loading="lazy"></div>
         <div><strong>${p.name}</strong><div class="mini-qty">
           <button type="button" data-dec="${p.id}" aria-label="Quitar una unidad de ${p.name}">−</button>
           <span>${c.qty}</span>
@@ -1514,6 +1740,8 @@ body.store-body {
   }
   function airiReply(text) {
     const q = text.toLowerCase();
+    if (/gamer|gaming|pc gamer/.test(q))
+      return 'Tenemos 11 PCs gamer desde S/ 2,099.00: Haku Red i7 (S/ 2,099), Haku Yellow i7 (S/ 2,299), Ryu RGB Ryzen 7 5700G (S/ 2,799) y Draco Blue Plus i5 12400F (S/ 4,099). Resultados reales del catálogo de GALAX PC REPAIR aqui tienes.';
     if (/laptop|notebook|portátil/.test(q))
       return 'Tenemos 3 laptops con stock real: HP Pavilion 15 S/ 2,899.00 (12), Lenovo IdeaPad 3 S/ 2,399.00 (8) y Asus VivoBook 15 S/ 3,499.00 (5). Resultados reales del catálogo de GALAX PC REPAIR aqui tienes.';
     if (/accesorio|mouse|ratón/.test(q))
