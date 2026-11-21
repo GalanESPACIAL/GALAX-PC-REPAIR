@@ -1,0 +1,14 @@
+# Pesos del modelo local (16 GB) y entorno virtual: no se suben a GitHub
+/gemma-4-E4B-it/
+/ai_service/.venv/
+
+# Python
+**/__pycache__/
+*.py[cod]
+
+# Archivos locales / temporales
+.env
+*.log
+Thumbs.db
+.DS_Store
+/tmp/

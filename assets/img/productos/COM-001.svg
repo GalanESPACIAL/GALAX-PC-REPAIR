@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" role="img" aria-label="Memoria RAM 16GB DDR4">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8b5cf6"/><stop offset="1" stop-color="#ec4899"/>
+    </linearGradient>
+    <linearGradient id="scr" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1e293b"/><stop offset="1" stop-color="#0f172a"/>
+    </linearGradient>
+    <filter id="sh" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#020617" flood-opacity=".45"/>
+    </filter>
+  </defs>
+  <rect width="800" height="800" fill="url(#bg)"/>
+  <circle cx="120" cy="120" r="220" fill="#ffffff" opacity=".07"/>
+  <circle cx="700" cy="690" r="260" fill="#ffffff" opacity=".06"/>
+  <circle cx="660" cy="120" r="90" fill="#ffffff" opacity=".05"/>
+  <g filter="url(#sh)"><rect x="170" y="300" width="460" height="180" rx="12" fill="#ec4899" opacity=".85"/><rect x="190" y="342" width="42" height="70" rx="4" fill="#1e293b"/><rect x="190" y="342" width="42" height="70" rx="4" fill="#ec4899" opacity=".28"/><rect x="246" y="342" width="42" height="70" rx="4" fill="#1e293b"/><rect x="246" y="342" width="42" height="70" rx="4" fill="#ec4899" opacity=".28"/><rect x="302" y="342" width="42" height="70" rx="4" fill="#1e293b"/><rect x="302" y="342" width="42" height="70" rx="4" fill="#ec4899" opacity=".28"/><rect x="358" y="342" width="42" height="70" rx="4" fill="#1e293b"/><rect x="358" y="342" width="42" height="70" rx="4" fill="#ec4899" opacity=".28"/><rect x="414" y="342" width="42" height="70" rx="4" fill="#1e293b"/><rect x="414" y="342" width="42" height="70" rx="4" fill="#ec4899" opacity=".28"/><rect x="470" y="342" width="42" height="70" rx="4" fill="#1e293b"/><rect x="470" y="342" width="42" height="70" rx="4" fill="#ec4899" opacity=".28"/><rect x="526" y="342" width="42" height="70" rx="4" fill="#1e293b"/><rect x="526" y="342" width="42" height="70" rx="4" fill="#ec4899" opacity=".28"/><rect x="582" y="342" width="42" height="70" rx="4" fill="#1e293b"/><rect x="582" y="342" width="42" height="70" rx="4" fill="#ec4899" opacity=".28"/><path d="M180 480h440v22H180z" fill="#cbd5e1"/><path d="M210 480h14v22h-14zm40 0h14v22h-14zm40 0h14v22h-14zm40 0h14v22h-14zm40 0h14v22h-14zm40 0h14v22h-14zm40 0h14v22h-14zm40 0h14v22h-14zm40 0h14v22h-14z" fill="#64748b"/></g>
+  <text x="52" y="82" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#ffffff" opacity=".9">COM-001</text>
+  <text x="52" y="742" font-family="Arial, sans-serif" font-size="22" font-weight="600" fill="#ffffff" opacity=".75">GALAX PC REPAIR</text>
+</svg>

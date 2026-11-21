@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" preserveAspectRatio="xMidYMax slice">
+<defs>
+<linearGradient id="desk" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#1b1630"/><stop offset="1" stop-color="#0a0816"/></linearGradient>
+<linearGradient id="kb" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#2a2440"/><stop offset="1" stop-color="#141024"/></linearGradient>
+<linearGradient id="tower" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#3a1d4d"/><stop offset="1" stop-color="#1a0f2b"/></linearGradient>
+<filter id="g"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<!-- superficie del escritorio -->
+<path d="M0 58L400 48V240H0Z" fill="url(#desk)" stroke="#2b2445" stroke-width="2"/>
+<path d="M0 62L400 52" stroke="#22d3ee" stroke-opacity=".8" stroke-width="2" filter="url(#g)"/>
+<path d="M0 78L400 68" stroke="#a855f7" stroke-opacity=".45" stroke-width="1.5"/>
+<!-- torre del pc -->
+<rect x="296" y="72" width="60" height="118" rx="5" fill="url(#tower)" stroke="#a855f7" stroke-opacity=".7" stroke-width="2"/>
+<rect x="304" y="82" width="44" height="98" rx="3" fill="none" stroke="#ec4899" stroke-opacity=".65" stroke-width="2" filter="url(#g)"/>
+<path d="M310 96h32M310 108h32M310 120h24" stroke="#22d3ee" stroke-opacity=".6" stroke-width="2"/>
+<circle cx="326" cy="170" r="7" fill="none" stroke="#ec4899" stroke-width="2" filter="url(#g)"/>
+<!-- monitor -->
+<rect x="230" y="38" width="18" height="116" rx="3" fill="#0d0a1c" stroke="#22d3ee" stroke-opacity=".8" stroke-width="2" filter="url(#g)"/>
+<path d="M239 154v22M224 178h30" stroke="#64748b" stroke-width="5" stroke-linecap="round"/>
+<!-- teclado -->
+<path d="M104 150l118-8 22 46-132 10z" fill="url(#kb)" stroke="#22d3ee" stroke-opacity=".5" stroke-width="2"/>
+<g stroke="#67e8f9" stroke-opacity=".5" stroke-width="1">
+<path d="M112 156l110-7M116 166l112-8M120 176l114-8M124 186l116-8"/>
+<path d="M128 152l6 42M144 151l6 42M160 150l6 42M176 149l6 42M192 148l6 42M208 147l6 42"/>
+</g>
+<!-- mouse -->
+<ellipse cx="252" cy="196" rx="20" ry="13" fill="#151126" stroke="#a855f7" stroke-opacity=".7" stroke-width="2"/>
+<path d="M252 185v18" stroke="#22d3ee" stroke-opacity=".6" stroke-width="1.5"/>
+<!-- cables -->
+<path d="M262 196c18 6 22 14 18 24M247 208c-12 8-16 16-12 24M239 178c-26 10-46 18-72 20" fill="none" stroke="#334155" stroke-width="2"/>
+<!-- luces neón del borde -->
+<path d="M0 226l180-10M220 214l180-10" stroke="#22d3ee" stroke-opacity=".7" stroke-width="2" filter="url(#g)"/>
+</svg>
