@@ -1016,6 +1016,7 @@ html.mpl-active .section-head h2{color:#17202a}
     <form class="mpl-search" id="mplSearchForm" role="search">
       <select id="mplCategorySelect" aria-label="Filtrar por categoría">
         <option value="Todos">Todas</option>
+        <option value="PCs y Laptops">PCs y Laptops</option>
         <option value="PC Gamer">PC Gamer</option>
         <option value="Laptops">Laptops</option>
         <option value="Componentes">Componentes</option>
@@ -1046,7 +1047,7 @@ html.mpl-active .section-head h2{color:#17202a}
   <nav class="mpl-nav" id="storeNav" aria-label="Navegación de categorías">
     <a href="#inicio">Inicio</a>
     <a href="#catalogo" data-cat="PC Gamer">PC Gamer</a>
-    <a href="#catalogo" data-cat="Laptops">Computadoras</a>
+    <a href="#catalogo" data-cat="PCs y Laptops">Computadoras</a>
     <a href="#catalogo" data-cat="Componentes">Punto De Venta</a>
     <a href="#catalogo" data-cat="Componentes">Todo En Uno</a>
     <a href="#catalogo" data-cat="Laptops">Laptops</a>
@@ -1092,6 +1093,10 @@ html.mpl-active .section-head h2{color:#17202a}
       <button class="category-tile active" type="button" data-category="Todos">
         <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
         <span><strong>Todos</strong><small>Ver todo el catálogo</small></span>
+      </button>
+      <button class="category-tile" type="button" data-category="PCs y Laptops">
+        <i class="fa-solid fa-computer" aria-hidden="true"></i>
+        <span><strong>PCs y Laptops</strong><small>200 productos</small></span>
       </button>
       <button class="category-tile" type="button" data-category="PC Gamer">
         <i class="fa-solid fa-gamepad" aria-hidden="true"></i>
@@ -1446,6 +1451,7 @@ html.mpl-active .section-head h2{color:#17202a}
   });
 })();
 </script>
+<script src="inventario_categoria1.js"></script>
 <script>
 /* =========================================================
    GALAX PC REPAIR — App interactiva (demo estática)
@@ -1474,7 +1480,11 @@ html.mpl-active .section-head h2{color:#17202a}
     { id:'LAP-003', name:'Laptop Asus VivoBook 15', cat:'Laptops',      price:3499, stock:5,  img:'../assets/img/productos/LAP-003.svg' },
     { id:'COM-001', name:'SSD NVMe 1TB',            cat:'Componentes', price:489,  stock:18, img:'../assets/img/productos/COM-001.svg' },
     { id:'COM-002', name:'Memoria RAM 16GB DDR4',   cat:'Componentes', price:329,  stock:14, img:'../assets/img/productos/COM-002.svg' },
-    { id:'ACC-001', name:'Mouse Gamer Logitech G502',cat:'Accesorios',  price:279,  stock:20, img:'../assets/img/productos/ACC-001.svg' }
+    { id:'ACC-001', name:'Mouse Gamer Logitech G502',cat:'Accesorios',  price:279,  stock:20, img:'../assets/img/productos/ACC-001.svg' },
+    ...(window.INVENTARIO_CAT1 || []).map(p => ({
+      id: p.sku, name: p.brand + ' ' + p.name, cat: 'PCs y Laptops',
+      price: p.price, stock: 8, fan: '#e30613', char: '#f43f5e'
+    }))
   ];
   const SERVICES = [
     'Reparación de PC y laptops', 'Microsoldadura de placas',
