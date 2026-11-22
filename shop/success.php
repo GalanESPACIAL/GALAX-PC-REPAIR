@@ -48,7 +48,8 @@ require_once __DIR__ . '/../includes/store_header.php';
   <aside class="card" style="padding:22px;">
     <h3 style="font-size:1.05rem;"><i class="fa-solid fa-file-image"></i> Comprobante</h3>
     <p style="color:var(--gx-muted);font-size:.85rem;margin:10px 0 16px;">Descargue o abra su comprobante en formato PNG.</p>
-    <a class="btn btn-glow" style="width:100%;justify-content:center;" href="<?= BASE_URL ?>/shop/receipt.php?pedido=<?= (int)$order['id'] ?>" target="_blank" rel="noopener"><i class="fa-solid fa-download"></i> Ver comprobante PNG</a>
+    <a class="btn btn-glow" style="width:100%;justify-content:center;" href="<?= BASE_URL ?>/shop/receipt.php?pedido=<?= (int)$order['id'] ?>&download=1"><i class="fa-solid fa-download"></i> Descargar boleta PNG</a>
+    <a class="btn btn-outline" style="width:100%;justify-content:center;margin-top:9px;" href="<?= BASE_URL ?>/shop/receipt.php?pedido=<?= (int)$order['id'] ?>" target="_blank" rel="noopener"><i class="fa-solid fa-eye"></i> Ver comprobante PNG</a>
     <a class="btn btn-outline" style="width:100%;justify-content:center;margin-top:9px;" href="<?= BASE_URL ?>/shop/portal.php"><i class="fa-solid fa-user"></i> Ir a mi cuenta</a>
     <a class="chip" style="margin-top:16px;" href="<?= BASE_URL ?>/shop/catalog.php"><i class="fa-solid fa-store"></i> Seguir comprando</a>
   </aside>

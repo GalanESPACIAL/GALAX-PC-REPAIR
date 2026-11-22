@@ -32,8 +32,10 @@ if ($png === null) {
     http_response_code(404);
     die('Pedido no encontrado.');
 }
+$download = !empty($_GET['download']);
+$fileName = 'boleta-' . preg_replace('/[^A-Z0-9-]/i', '', (string)$order['codigo']) . '.png';
 header('Content-Type: image/png');
-header('Content-Disposition: inline; filename="comprobante-' . preg_replace('/[^A-Z0-9-]/i', '', (string)$order['codigo']) . '.png"');
+header('Content-Disposition: ' . ($download ? 'attachment' : 'inline') . '; filename="' . $fileName . '"');
 header('Cache-Control: private, max-age=3600');
 header('X-Content-Type-Options: nosniff');
 echo $png;

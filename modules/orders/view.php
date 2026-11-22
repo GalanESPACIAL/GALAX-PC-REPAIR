@@ -165,14 +165,20 @@ echo '<link rel="stylesheet" href="' . h(BASE_URL . '/assets/css/theme.css') . '
           <div style="display:flex;gap:8px;flex-wrap:wrap;">
             <button class="btn btn-primary" type="submit"><i class="fa-solid fa-check"></i> Guardar estado</button>
             <a class="btn btn-success" target="_blank" rel="noopener" href="<?= h(BASE_URL . '/shop/receipt.php?pedido=' . $id) ?>">
-              <i class="fa-solid fa-image"></i> Generar comprobante PNG
+              <i class="fa-solid fa-image"></i> Ver comprobante PNG
+            </a>
+            <a class="btn btn-success" href="<?= h(BASE_URL . '/shop/receipt.php?pedido=' . $id . '&download=1') ?>">
+              <i class="fa-solid fa-download"></i> Descargar PNG
             </a>
           </div>
         </form>
       <?php else: ?>
         <p style="color:var(--muted);margin-top:10px;">Este pedido está <?= h($pedido['estado']) ?>; no hay transiciones pendientes.</p>
         <a class="btn btn-success" target="_blank" rel="noopener" href="<?= h(BASE_URL . '/shop/receipt.php?pedido=' . $id) ?>">
-          <i class="fa-solid fa-image"></i> Generar comprobante PNG
+          <i class="fa-solid fa-image"></i> Ver comprobante PNG
+        </a>
+        <a class="btn btn-success" href="<?= h(BASE_URL . '/shop/receipt.php?pedido=' . $id . '&download=1') ?>">
+          <i class="fa-solid fa-download"></i> Descargar PNG
         </a>
       <?php endif; ?>
     </div>

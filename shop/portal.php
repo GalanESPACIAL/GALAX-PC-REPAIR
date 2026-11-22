@@ -142,7 +142,8 @@ require_once __DIR__ . '/../includes/store_header.php';
               <td><?= h(money($o['total'])) ?></td>
               <td>
                 <a class="btn btn-sm btn-outline" href="<?= BASE_URL ?>/shop/success.php?pedido=<?= (int)$o['id'] ?>"><i class="fa-solid fa-eye"></i> Detalle</a>
-                <a class="btn btn-sm btn-outline" href="<?= BASE_URL ?>/shop/receipt.php?pedido=<?= (int)$o['id'] ?>" target="_blank" rel="noopener"><i class="fa-solid fa-file-image"></i> PNG</a>
+                <a class="btn btn-sm btn-outline" href="<?= BASE_URL ?>/shop/receipt.php?pedido=<?= (int)$o['id'] ?>" target="_blank" rel="noopener"><i class="fa-solid fa-eye"></i> PNG</a>
+                <a class="btn btn-sm btn-outline" href="<?= BASE_URL ?>/shop/receipt.php?pedido=<?= (int)$o['id'] ?>&download=1"><i class="fa-solid fa-download"></i> Descargar</a>
               </td>
             </tr>
             <?php endforeach; ?>
