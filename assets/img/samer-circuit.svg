@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" preserveAspectRatio="xMidYMid slice">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#070b1c"/><stop offset=".5" stop-color="#0a1230"/><stop offset="1" stop-color="#050915"/></linearGradient>
+<filter id="glow"><feGaussianBlur stdDeviation="2.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<rect width="600" height="800" fill="url(#bg)"/>
+<g fill="none" stroke="#22d3ee" stroke-width="1.6" opacity=".75" filter="url(#glow)">
+<path d="M0 60h120l30 30h110M0 120h80l40 40h160l30-30h90M600 80H480l-40 40H300l-30-30H180"/>
+<path d="M0 220h140l40-40h120M600 200H470l-50 50H320l-40 40H180M0 320h90l50 50h140l40-40h180"/>
+<path d="M600 340H500l-60 60H350l-50-50H160M0 430h120l60 60h140l40-40h200M600 460H480l-40 40H330l-60 60H0"/>
+<path d="M0 560h150l50-50h120l50 50h230M600 590H460l-70 70H300M0 680h110l60-60h130l60 60h240M600 700H520l-60-60H390"/>
+</g>
+<g fill="none" stroke="#f0abfc" stroke-width="1.4" opacity=".55" filter="url(#glow)">
+<path d="M0 160h100l40 40h180M600 260H520l-50-50H360M0 500h80l50 50h200M600 640H500l-60 60H360"/>
+</g>
+<g fill="#22d3ee" opacity=".9">
+<circle cx="120" cy="60" r="4"/><circle cx="260" cy="90" r="4"/><circle cx="80" cy="120" r="4"/><circle cx="280" cy="160" r="4"/>
+<circle cx="180" cy="320" r="4"/><circle cx="490" cy="340" r="4"/><circle cx="120" cy="430" r="4"/><circle cx="460" cy="430" r="4"/>
+<circle cx="200" cy="560" r="4"/><circle cx="480" cy="560" r="4"/><circle cx="110" cy="680" r="4"/><circle cx="520" cy="700" r="4"/>
+</g>
+<g opacity=".35" stroke="#67e8f9" fill="none">
+<rect x="300" y="40" width="120" height="70" rx="6"/><path d="M310 95l20-22 18 12 22-30 18 18 20-26"/>
+<rect x="360" y="200" width="110" height="60" rx="6"/><path d="M372 245l16-18 14 10 18-24 16 16 16-20"/>
+<rect x="80" y="380" width="130" height="60" rx="6"/><path d="M92 425l18-20 16 12 20-26 18 18 20-22"/>
+</g>
+</svg>
