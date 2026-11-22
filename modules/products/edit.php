@@ -1,5 +1,6 @@
 <?php
-require_once __DIR__ . '/../../includes/functions.php';
+require_once __DIR__ . '/../../includes/repository.php';
+require_once __DIR__ . '/../../includes/uploads.php';
 requirePermission('productos');
 $pageTitle = 'Editar Producto';
 $id = (int)($_GET['id'] ?? 0);
@@ -23,15 +24,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stock_minimo = (int)(($_POST['stock_minimo'] ?? 5));
     $estado = (string)($_POST['estado'] ?? 'activo');
     $publicado = isset($_POST['publicado']) ? 1 : 0;
-    $imagen = (string)($_POST['imagen'] ?? '');
-    if ($imagen !== '' && !preg_match('#^https?://[^\s]+$#i', $imagen)) $imagen = '';
+    $destacado = isset($_POST['destacado']) ? 1 : 0;
+    $es_nuevo = isset($_POST['es_nuevo']) ? 1 : 0;
+    $precio_oferta = (trim((string)($_POST['precio_oferta'] ?? '')) !== '') ? (float)$_POST['precio_oferta'] : null;
+    $imagen = (string)($prod['imagen'] ?? '');
+    $urlPost = (string)($_POST['imagen'] ?? '');
+    if ($urlPost !== '' && preg_match('#^https?://[^\s]+$#i', $urlPost)) $imagen = $urlPost;
+    if (!empty($_FILES['imagen_archivo'])) {
+        try {
+            $subida = upload_supabase_image($_FILES['imagen_archivo'], 'productos');
+            if ($subida !== null) $imagen = $subida;
+        } catch (Throwable $e) {
+            $errors[] = 'No se pudo subir la imagen: ' . mb_substr($e->getMessage(), 0, 120);
+        }
+    }
     if (!in_array($estado, ['activo','inactivo'], true)) $estado = 'activo';
     if ($codigo===''||$nombre===''||$categoria_id===0) $errors[]='Campos obligatorios';
     if ($precio_venta < $precio_compra) $errors[]='El precio de venta no puede ser menor al de compra';
     if ($stock < 0 || $stock_minimo < 0) $errors[]='El stock no puede ser negativo';
     if (empty($errors)) {
-        $stmt = db()->prepare("UPDATE productos SET codigo=?,nombre=?,descripcion=?,categoria_id=?,marca=?,modelo=?,precio_compra=?,precio_venta=?,stock=?,stock_minimo=?,estado=?,publicado=?,imagen=? WHERE id=?");
-        $stmt->execute([$codigo,$nombre,$descripcion,$categoria_id,$marca,$modelo,$precio_compra,$precio_venta,$stock,$stock_minimo,$estado,$publicado,$imagen ?: null,$id]);
+        $stmt = db()->prepare("UPDATE productos SET codigo=?,nombre=?,descripcion=?,categoria_id=?,marca=?,modelo=?,precio_compra=?,precio_venta=?,precio_oferta=?,destacado=?,es_nuevo=?,stock=?,stock_minimo=?,estado=?,publicado=?,imagen=? WHERE id=?");
+        $stmt->execute([$codigo,$nombre,$descripcion,$categoria_id,$marca,$modelo,$precio_compra,$precio_venta,$precio_oferta,$destacado,$es_nuevo,$stock,$stock_minimo,$estado,$publicado,$imagen ?: null,$id]);
         audit_log('update_product', 'productos', $id);
         flash('success','Producto actualizado');
         redirect(BASE_URL . '/modules/products/index.php');
@@ -45,7 +58,7 @@ require_once __DIR__ . '/../../includes/header.php';
     <a href="<?= BASE_URL ?>/modules/products/index.php" class="btn btn-ghost btn-sm"><i class="fa-solid fa-arrow-left"></i> Volver</a>
   </div>
   <?php if ($errors): ?><div class="alert alert-danger"><?= h(implode(', ',$errors)) ?></div><?php endif; ?>
-  <form method="POST">
+  <form method="POST" enctype="multipart/form-data">
     <?= csrf_field() ?>
     <div class="grid grid-2">
       <div class="form-group"><label class="form-label">Código *</label><input name="codigo" class="form-control" required value="<?= h($_POST['codigo'] ?? $prod['codigo']) ?>"></div>
@@ -72,7 +85,18 @@ require_once __DIR__ . '/../../includes/header.php';
       <div class="form-group"><label class="form-label">Precio Venta</label><input type="number" step="0.01" name="precio_venta" class="form-control" value="<?= h($_POST['precio_venta'] ?? $prod['precio_venta']) ?>"></div>
       <div class="form-group"><label class="form-label">Stock Mínimo</label><input type="number" name="stock_minimo" class="form-control" value="<?= h($_POST['stock_minimo'] ?? $prod['stock_minimo']) ?>"></div>
     </div>
-    <div class="form-group"><label class="form-label">URL de imagen</label><input type="url" name="imagen" class="form-control" value="<?= h($_POST['imagen'] ?? $prod['imagen'] ?? '') ?>"></div>
+    <div class="grid grid-2">
+      <div class="form-group"><label class="form-label">Precio oferta (opcional)</label><input type="number" step="0.01" name="precio_oferta" class="form-control" value="<?= h($_POST['precio_oferta'] ?? $prod['precio_oferta'] ?? '') ?>"></div>
+      <div class="form-group" style="display:flex;align-items:center;gap:16px;padding-top:24px;">
+        <label style="color:var(--muted);"><input type="checkbox" name="destacado" value="1" <?= !empty($_POST['destacado']) || !empty($prod['destacado']) ? 'checked' : '' ?>> Destacado</label>
+        <label style="color:var(--muted);"><input type="checkbox" name="es_nuevo" value="1" <?= !empty($_POST['es_nuevo']) || !empty($prod['es_nuevo']) ? 'checked' : '' ?>> Novedad</label>
+      </div>
+    </div>
+    <?php if (!empty($prod['imagen'])): ?>
+      <div class="form-group"><label class="form-label">Imagen actual</label><br><img src="<?= h(product_image_url($prod['imagen'])) ?>" alt="Producto" style="max-height:120px;border-radius:10px;"></div>
+    <?php endif; ?>
+    <div class="form-group"><label class="form-label">Cambiar fotografía (Supabase Storage)</label><input type="file" name="imagen_archivo" accept="image/png,image/jpeg,image/webp" class="form-control"></div>
+    <div class="form-group"><label class="form-label">O URL de imagen externa</label><input type="url" name="imagen" class="form-control" value="<?= h($urlPost ?? '') ?>" placeholder="https://..."></div>
     <div class="grid grid-2">
       <div class="form-group">
         <label class="form-label">Estado</label>

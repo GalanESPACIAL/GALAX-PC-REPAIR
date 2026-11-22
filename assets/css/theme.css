@@ -507,3 +507,60 @@ body .gradient-text {
   background:none !important;
 }
 
+
+/* ---------- Banner promocional ---------- */
+.promo-banner {
+  margin-top: 26px; min-height: 280px; border-radius: 22px; border: 1px solid var(--gx-border);
+  background-size: cover; background-position: center; display: flex; align-items: center;
+  padding: 40px 48px; box-shadow: var(--gx-shadow); position: relative; overflow: hidden;
+}
+.promo-banner-content { position: relative; z-index: 1; max-width: 620px; }
+.promo-banner h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 800; margin: 10px 0; line-height: 1.15; }
+.promo-banner p { color: #dbeafe; line-height: 1.65; margin-bottom: 20px; }
+.offer-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+
+/* ---------- Comunidad de WhatsApp ---------- */
+.whatsapp-cta {
+  display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 24px;
+  padding: 32px 36px; border-radius: 22px;
+  background: linear-gradient(120deg, rgba(16,185,129,.16), rgba(34,211,238,.10) 55%, rgba(79,70,229,.16));
+  border: 1px solid rgba(16,185,129,.35); box-shadow: var(--gx-shadow);
+}
+.whatsapp-icon {
+  width: 64px; height: 64px; display: grid; place-items: center; border-radius: 18px;
+  background: linear-gradient(135deg, #10b981, #25d366); color: #052e1a; font-size: 1.9rem;
+  box-shadow: 0 10px 28px rgba(16,185,129,.35);
+}
+.whatsapp-cta h2 { font-size: 1.5rem; font-weight: 800; margin: 6px 0; }
+.whatsapp-cta p { color: var(--gx-muted); max-width: 720px; line-height: 1.6; font-size: .92rem; }
+.btn-whatsapp {
+  display: inline-flex; align-items: center; gap: 10px; text-decoration: none; white-space: nowrap;
+  background: linear-gradient(135deg, #128c7e, #25d366); color: #fff; font-weight: 800;
+  padding: 14px 22px; border-radius: 999px; font-size: .86rem; letter-spacing: .02em;
+  box-shadow: 0 12px 30px rgba(37,211,102,.28); transition: transform .2s, box-shadow .2s;
+}
+.btn-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 16px 36px rgba(37,211,102,.4); }
+
+/* ---------- Sobre el proyecto ---------- */
+.project-section { border-top: 1px solid var(--gx-border); padding-top: 40px; }
+.project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+.project-card {
+  background: var(--gx-surface); border: 1px solid var(--gx-border); border-radius: var(--gx-radius-sm);
+  padding: 20px 22px; transition: border-color .25s, transform .25s, background .25s;
+}
+.project-card:hover { border-color: rgba(124,58,237,.5); transform: translateY(-3px); background: var(--gx-surface-strong); }
+.project-card h3 { font-size: 1rem; font-weight: 800; margin-bottom: 9px; display: flex; align-items: center; gap: 9px; }
+.project-card h3 i { color: var(--gx-cyan); }
+.project-card p { color: var(--gx-muted); font-size: .88rem; line-height: 1.7; }
+.project-author {
+  margin-top: 22px; padding: 18px 22px; border-radius: 14px;
+  background: linear-gradient(100deg, rgba(79,70,229,.2), rgba(34,211,238,.12));
+  border: 1px solid var(--gx-border); display: flex; align-items: center; gap: 12px; font-size: .95rem;
+}
+.project-author i { color: var(--gx-cyan); font-size: 1.2rem; }
+
+@media (max-width: 900px) {
+  .whatsapp-cta { grid-template-columns: 1fr; text-align: left; gap: 18px; padding: 26px; }
+  .btn-whatsapp { justify-content: center; white-space: normal; }
+  .promo-banner { padding: 28px; min-height: 240px; }
+}

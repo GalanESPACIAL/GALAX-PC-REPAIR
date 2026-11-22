@@ -28,12 +28,12 @@ if ($_SERVER['REQUEST_METHOD']==='POST') {
     $password = (string)($_POST['password'] ?? '');
     $avatar = (string)($_POST['avatar'] ?? '');
     if (!in_array($avatar, array_merge(avatar_candidates(), ['', 'neutro']), true)) $avatar = '';
-    if ($id === 0 && mb_strlen($password) < 8) {
-        flash('error', 'La contraseña inicial debe tener al menos 8 caracteres.');
+    if ($id === 0 && mb_strlen($password) < 16) {
+        flash('error', 'La contraseña inicial debe tener al menos 16 caracteres.');
         redirect(BASE_URL.'/modules/users/index.php');
     }
-    if ($id > 0 && $password !== '' && mb_strlen($password) < 8) {
-        flash('error', 'La nueva contraseña debe tener al menos 8 caracteres.');
+    if ($id > 0 && $password !== '' && mb_strlen($password) < 16) {
+        flash('error', 'La nueva contraseña debe tener al menos 16 caracteres.');
         redirect(BASE_URL.'/modules/users/index.php');
     }
     if (!valid_email($email)) {
@@ -41,19 +41,34 @@ if ($_SERVER['REQUEST_METHOD']==='POST') {
         redirect(BASE_URL.'/modules/users/index.php');
     }
     if ($nombre!=='' && $apellido!=='' && $email!=='') {
-        if ($id > 0) {
-            if ($password !== '') {
-                $hash = password_hash($password, PASSWORD_DEFAULT);
-                db()->prepare("UPDATE usuarios SET nombre=?,apellido=?,email=?,telefono=?,rol_id=?,estado=?,password=? WHERE id=?")->execute([$nombre,$apellido,$email,$telefono,$rol_id,$estado,$hash,$id]);
-            } else {
+        $email = mb_strtolower($email);
+        $supabaseUid = null;
+        try {
+            if ($id > 0) {
+                $s = db()->prepare('SELECT supabase_uid FROM usuarios WHERE id=? LIMIT 1');
+                $s->execute([$id]);
+                $row = $s->fetch();
+                $supabaseUid = $row ? (string)($row['supabase_uid'] ?? '') : '';
+                if (supabase_is_configured() && $supabaseUid !== '' && $password !== '') {
+                    supabase_admin_update_user($supabaseUid, ['password' => $password]);
+                }
                 db()->prepare("UPDATE usuarios SET nombre=?,apellido=?,email=?,telefono=?,rol_id=?,estado=? WHERE id=?")->execute([$nombre,$apellido,$email,$telefono,$rol_id,$estado,$id]);
+                flash('success','Usuario actualizado');
+            } else {
+                $hash = password_hash(random_token(24), PASSWORD_DEFAULT);
+                if (supabase_is_configured()) {
+                    $authUser = supabase_admin_create_user($email, $password, [
+                        'nombre' => $nombre, 'apellido' => $apellido,
+                    ]);
+                    $supabaseUid = (string)($authUser['id'] ?? '');
+                }
+                db()->prepare("INSERT INTO usuarios (nombre,apellido,email,password,telefono,avatar,rol_id,estado,supabase_uid) VALUES (?,?,?,?,?,?,?,?,?)")
+                   ->execute([$nombre,$apellido,$email,$hash,$telefono,$avatar ?: null,$rol_id,$estado,$supabaseUid ?: null]);
+                audit_log('create_user', 'usuarios', db()->lastInsertId());
+                flash('success','Usuario creado' . ($supabaseUid !== '' ? ' en Supabase Auth' : ''));
             }
-            flash('success','Usuario actualizado');
-        } else {
-            $hash = password_hash($password, PASSWORD_DEFAULT);
-            db()->prepare("INSERT INTO usuarios (nombre,apellido,email,password,telefono,avatar,rol_id,estado) VALUES (?,?,?,?,?,?,?,?)")->execute([$nombre,$apellido,mb_strtolower($email),$hash,$telefono,$avatar ?: null,$rol_id,$estado]);
-            audit_log('create_user', 'usuarios', db()->lastInsertId());
-            flash('success','Usuario creado');
+        } catch (Throwable $e) {
+            flash('error', 'No se pudo completar la operación: ' . mb_substr($e->getMessage(), 0, 160));
         }
         redirect(SITE_URL.'/modules/users/index.php');
     }

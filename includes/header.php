@@ -60,6 +60,7 @@ $currentPage = basename($_SERVER['PHP_SELF'] ?? '');
       <a href="<?= BASE_URL ?>/modules/roles/index.php" class="nav-item"><i class="fa-solid fa-key"></i><span>Roles y permisos</span></a>
       <?php endif; ?>
       <?php if (hasPermission('configuracion')): ?>
+      <a href="<?= BASE_URL ?>/modules/page_editor/index.php" class="nav-item"><i class="fa-solid fa-pen-ruler"></i><span>Editor de página web</span></a>
       <a href="<?= BASE_URL ?>/modules/settings/index.php" class="nav-item"><i class="fa-solid fa-gear"></i><span>Configuración</span></a>
       <?php endif; ?>
     </nav>

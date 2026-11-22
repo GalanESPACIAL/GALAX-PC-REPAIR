@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../../includes/functions.php';
+require_once __DIR__ . '/../../includes/uploads.php';
 requirePermission('productos');
 $pageTitle = 'Nuevo Producto';
 $errors = [];
@@ -18,8 +19,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stock = (int)($_POST['stock'] ?? 0);
     $stock_minimo = (int)($_POST['stock_minimo'] ?? 5);
     $publicado = isset($_POST['publicado']) ? 1 : 0;
+    $destacado = isset($_POST['destacado']) ? 1 : 0;
+    $es_nuevo = isset($_POST['es_nuevo']) ? 1 : 0;
+    $precio_oferta = (trim((string)($_POST['precio_oferta'] ?? '')) !== '') ? (float)$_POST['precio_oferta'] : null;
     $imagen = (string)($_POST['imagen'] ?? '');
     if ($imagen !== '' && !preg_match('#^https?://[^\s]+$#i', $imagen)) $imagen = '';
+    if (!empty($_FILES['imagen_archivo'])) {
+        try {
+            $subida = upload_supabase_image($_FILES['imagen_archivo'], 'productos');
+            if ($subida !== null) $imagen = $subida;
+        } catch (Throwable $e) {
+            $errors[] = 'No se pudo subir la imagen: ' . mb_substr($e->getMessage(), 0, 120);
+        }
+    }
 
     if ($codigo===''||$nombre===''||$categoria_id===0) $errors[]='Código, nombre y categoría son obligatorios';
     if ($precio_venta < $precio_compra) $errors[]='El precio de venta no puede ser menor al de compra';
@@ -29,8 +41,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($s->fetch()) $errors[]='El codigo ya existe';
 
     if (empty($errors)) {
-        $stmt = db()->prepare("INSERT INTO productos (codigo,nombre,descripcion,categoria_id,marca,modelo,precio_compra,precio_venta,stock,stock_minimo,publicado,imagen) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
-        $stmt->execute([$codigo,$nombre,$descripcion,$categoria_id,$marca,$modelo,$precio_compra,$precio_venta,$stock,$stock_minimo,$publicado,$imagen ?: null]);
+        $stmt = db()->prepare("INSERT INTO productos (codigo,nombre,descripcion,categoria_id,marca,modelo,precio_compra,precio_venta,precio_oferta,destacado,es_nuevo,stock,stock_minimo,publicado,imagen) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        $stmt->execute([$codigo,$nombre,$descripcion,$categoria_id,$marca,$modelo,$precio_compra,$precio_venta,$precio_oferta,$destacado,$es_nuevo,$stock,$stock_minimo,$publicado,$imagen ?: null]);
         audit_log('create_product', 'productos', db()->lastInsertId());
         flash('success','Producto creado correctamente');
         redirect(SITE_URL . '/modules/products/index.php');
@@ -46,7 +58,7 @@ require_once __DIR__ . '/../../includes/header.php';
   <?php if ($errors): ?>
     <div class="alert alert-danger"><i class="fa-solid fa-circle-xmark"></i> <?= h(implode(', ', $errors)) ?></div>
   <?php endif; ?>
-  <form method="POST">
+  <form method="POST" enctype="multipart/form-data">
     <?= csrf_field() ?>
     <div class="grid grid-2">
       <div class="form-group"><label class="form-label">Codigo *</label><input name="codigo" class="form-control" required value="<?= h($_POST['codigo']??'') ?>"></div>
@@ -74,7 +86,15 @@ require_once __DIR__ . '/../../includes/header.php';
       <div class="form-group"><label class="form-label">Precio Venta</label><input type="number" step="0.01" name="precio_venta" class="form-control" value="<?= h($_POST['precio_venta']??0) ?>"></div>
       <div class="form-group"><label class="form-label">Stock Minimo</label><input type="number" name="stock_minimo" class="form-control" value="<?= h($_POST['stock_minimo']??5) ?>"></div>
     </div>
-    <div class="form-group"><label class="form-label">URL de imagen (opcional)</label><input name="imagen" class="form-control" type="url" placeholder="https://..."></div>
+    <div class="grid grid-2">
+      <div class="form-group"><label class="form-label">Precio oferta (opcional)</label><input type="number" step="0.01" name="precio_oferta" class="form-control" placeholder="0.00"></div>
+      <div class="form-group" style="display:flex;align-items:center;gap:16px;padding-top:24px;">
+        <label style="color:var(--muted);"><input type="checkbox" name="destacado" value="1"> Destacado</label>
+        <label style="color:var(--muted);"><input type="checkbox" name="es_nuevo" value="1"> Novedad</label>
+      </div>
+    </div>
+    <div class="form-group"><label class="form-label">Fotografía del producto (se sube a Supabase Storage)</label><input name="imagen_archivo" class="form-control" type="file" accept="image/png,image/jpeg,image/webp"></div>
+    <div class="form-group"><label class="form-label">O URL de imagen externa (opcional)</label><input name="imagen" class="form-control" type="url" placeholder="https://..."></div>
     <div class="form-group">
       <label style="display:flex;align-items:center;gap:8px;color:var(--text);">
         <input type="checkbox" name="publicado" value="1" checked> Publicar en la tienda online

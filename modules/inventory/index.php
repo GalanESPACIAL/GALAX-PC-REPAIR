@@ -338,13 +338,13 @@ $stmt = db()->prepare(
        LEFT JOIN usuarios u ON u.id = m.usuario_id
        ' . $sqlWhere . '
       ORDER BY m.creado_en DESC, m.id DESC
-      LIMIT ?, ?'
+      LIMIT ? OFFSET ?'
 );
 foreach ($params as $i => $valor) {
     $stmt->bindValue($i + 1, $valor, is_int($valor) ? PDO::PARAM_INT : PDO::PARAM_STR);
 }
-$stmt->bindValue(count($params) + 1, $pagina['offset'], PDO::PARAM_INT);
-$stmt->bindValue(count($params) + 2, $pagina['perPage'], PDO::PARAM_INT);
+$stmt->bindValue(count($params) + 1, $pagina['perPage'], PDO::PARAM_INT);
+$stmt->bindValue(count($params) + 2, $pagina['offset'], PDO::PARAM_INT);
 $stmt->execute();
 $movimientos = $stmt->fetchAll();
 

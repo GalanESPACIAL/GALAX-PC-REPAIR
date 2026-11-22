@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
             if ($meta['type'] === 'email' && $value !== '' && !valid_email($value)) throw new RuntimeException('Correo inválido.');
             if ($meta['type'] === 'url' && $value !== '' && !filter_var($value, FILTER_VALIDATE_URL)) throw new RuntimeException('URL inválida en ' . $key . '.');
-            $stmt = $db->prepare('INSERT INTO configuracion (clave,valor,descripcion) VALUES (?,?,?) ON DUPLICATE KEY UPDATE valor=VALUES(valor)');
+            $stmt = $db->prepare('INSERT INTO configuracion (clave,valor,descripcion) VALUES (?,?,?) ON CONFLICT (clave) DO UPDATE SET valor=EXCLUDED.valor');
             $stmt->execute([$key, $value, $meta['label']]);
         }
         $db->commit();

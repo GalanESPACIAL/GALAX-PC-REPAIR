@@ -83,8 +83,8 @@ $gxExport = static function (string $nombre, array $headers, array $rows) use ($
 
 $diasRango = (int)round((strtotime($hasta . ' 00:00:00') - strtotime($desde . ' 00:00:00')) / 86400);
 $porMes = $diasRango > 45;
-$bucketVenta = $porMes ? "DATE_FORMAT(v.created_at,'%Y-%m')" : "DATE(v.created_at)";
-$bucketPedido = $porMes ? "DATE_FORMAT(pe.creado_en,'%Y-%m')" : "DATE(pe.creado_en)";
+$bucketVenta = $porMes ? "TO_CHAR(v.created_at,'YYYY-MM')" : "DATE(v.created_at)";
+$bucketPedido = $porMes ? "TO_CHAR(pe.creado_en,'YYYY-MM')" : "DATE(pe.creado_en)";
 
 $gxBuckets = static function (string $desde, string $hasta, bool $porMes): array {
     $buckets = [];

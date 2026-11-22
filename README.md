@@ -7,7 +7,13 @@
 
 > La demostración en vivo es una vista estática. La tienda completa (PHP +
 > base de datos, carrito, login y panel administrativo) requiere alojamiento
-> con PHP y MySQL/MariaDB; consulta la sección *Instalación*.
+> con PHP y una base de datos; consulta la sección *Instalación*.
+
+**Estado de migración:** el proyecto se está migrando de MySQL/MariaDB local a
+**Supabase** (PostgreSQL + Auth + Storage). Los scripts PostgreSQL están en
+`database/supabase/` y `database/migrations/005_supabase_page_editor.sql`.
+Copia `.env.example` como `.env` y completa las credenciales de tu proyecto
+Supabase. La clave `service_role` solo se usa en el servidor.
 
 Plataforma web de comercio electrónico y servicios informáticos: venta de
 computadoras, laptops, componentes, periféricos y accesorios; ensamblaje;

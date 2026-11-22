@@ -109,13 +109,13 @@ $stmt = db()->prepare(
        FROM pedidos p
        ' . $sqlWhere . '
       ORDER BY p.creado_en DESC, p.id DESC
-      LIMIT ?, ?'
+      LIMIT ? OFFSET ?'
 );
 foreach ($params as $i => $valor) {
     $stmt->bindValue($i + 1, $valor);
 }
-$stmt->bindValue(count($params) + 1, $pagina['offset'], PDO::PARAM_INT);
-$stmt->bindValue(count($params) + 2, $pagina['perPage'], PDO::PARAM_INT);
+$stmt->bindValue(count($params) + 1, $pagina['perPage'], PDO::PARAM_INT);
+$stmt->bindValue(count($params) + 2, $pagina['offset'], PDO::PARAM_INT);
 $stmt->execute();
 $pedidos = $stmt->fetchAll();
 

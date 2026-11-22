@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD']==='POST') {
             $id = (int)$db->lastInsertId();
         }
         $db->prepare('DELETE FROM rol_permiso WHERE rol_id=?')->execute([$id]);
-        $ins = $db->prepare('INSERT IGNORE INTO rol_permiso (rol_id, permiso_id) SELECT ?, id FROM permisos WHERE codigo IN (' . implode(',', array_fill(0, max(1, count($permisosPost)), '?')) . ')');
+        $ins = $db->prepare('INSERT INTO rol_permiso (rol_id, permiso_id) SELECT ?, id FROM permisos WHERE codigo IN (' . implode(',', array_fill(0, max(1, count($permisosPost)), '?')) . ') ON CONFLICT DO NOTHING');
         $ins->execute(array_merge([$id], $permisosPost ?: ['']));
         audit_log('save_role', 'roles', $id);
         flash('success','Rol y permisos actualizados. Los cambios se reflejan al iniciar una nueva sesión.');

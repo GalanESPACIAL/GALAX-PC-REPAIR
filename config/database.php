@@ -17,10 +17,19 @@ if (!function_exists('env')) {
     }
 }
 
-define('DB_HOST', env('GALAX_DB_HOST', 'localhost'));
-define('DB_NAME', env('GALAX_DB_NAME', 'ventas_informatica'));
-define('DB_USER', env('GALAX_DB_USER', 'root'));
-define('DB_PASS', env('GALAX_DB_PASS', ''));
+require_once __DIR__ . '/supabase.php';
+
+// Supabase (PostgreSQL) es el destino preferente. Si no hay host configurado
+// se mantiene el modo MySQL local para desarrollo/migración gradual.
+$gxSupabaseCfg = supabase_config();
+$gxUseSupabase = $gxSupabaseCfg['db_host'] !== '';
+
+define('DB_DRIVER', $gxUseSupabase ? 'pgsql' : 'mysql');
+define('DB_HOST', $gxUseSupabase ? $gxSupabaseCfg['db_host'] : env('GALAX_DB_HOST', 'localhost'));
+define('DB_PORT', $gxUseSupabase ? $gxSupabaseCfg['db_port'] : '3306');
+define('DB_NAME', $gxUseSupabase ? $gxSupabaseCfg['db_name'] : env('GALAX_DB_NAME', 'ventas_informatica'));
+define('DB_USER', $gxUseSupabase ? $gxSupabaseCfg['db_user'] : env('GALAX_DB_USER', 'root'));
+define('DB_PASS', $gxUseSupabase ? $gxSupabaseCfg['db_pass'] : env('GALAX_DB_PASS', ''));
 define('DB_CHARSET', 'utf8mb4');
 
 define('SITE_NAME', env('GALAX_SITE_NAME', 'GALAX PC REPAIR'));
@@ -45,15 +54,25 @@ class Database
 
     private function __construct()
     {
-        $dsn = 'mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=' . DB_CHARSET;
-        try {
-            $this->pdo = new PDO($dsn, DB_USER, DB_PASS, [
+        if (DB_DRIVER === 'pgsql') {
+            $dsn = 'pgsql:host=' . DB_HOST . ';port=' . DB_PORT . ';dbname=' . DB_NAME . ';sslmode=require';
+            $options = [
+                PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                PDO::ATTR_EMULATE_PREPARES   => false,
+            ];
+        } else {
+            $dsn = 'mysql:host=' . DB_HOST . ';port=' . DB_PORT . ';dbname=' . DB_NAME . ';charset=' . DB_CHARSET;
+            $options = [
                 PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
                 PDO::ATTR_EMULATE_PREPARES   => false,
                 PDO::ATTR_STRINGIFY_FETCHES  => false,
-            ]);
-            $this->pdo->exec("SET time_zone = '+00:00'");
+            ];
+        }
+        try {
+            $this->pdo = new PDO($dsn, DB_USER, DB_PASS, $options);
+            $this->pdo->exec(DB_DRIVER === 'pgsql' ? "SET TIME ZONE 'UTC'" : "SET time_zone = '+00:00'");
         } catch (PDOException $e) {
             error_log('[GALAX][DB] ' . $e->getMessage());
             http_response_code(500);

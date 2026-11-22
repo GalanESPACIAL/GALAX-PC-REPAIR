@@ -324,11 +324,92 @@ function is_login_locked(string $email): bool
     return ($state['until'] ?? 0) > time();
 }
 
+/**
+ * Busca (o crea) el usuario local vinculado a un uid de Supabase Auth.
+ * El usuario local conserva rol/permisos usados por todos los módulos.
+ */
+function supabase_local_user(array $authUser, string $accessToken = ''): ?int
+{
+    $uid = (string)($authUser['id'] ?? '');
+    if ($uid === '') {
+        return null;
+    }
+    $db = db();
+    $stmt = $db->prepare('SELECT id FROM usuarios WHERE supabase_uid = ? LIMIT 1');
+    $stmt->execute([$uid]);
+    $found = $stmt->fetch();
+    if ($found !== false) {
+        return (int)$found['id'];
+    }
+    $email = mb_strtolower(trim((string)($authUser['email'] ?? '')));
+    $meta = is_array($authUser['user_metadata'] ?? null) ? $authUser['user_metadata'] : [];
+    $nombre = trim((string)($meta['nombre'] ?? $meta['nombre_completo'] ?? explode('@', $email)[0]));
+    $apellido = trim((string)($meta['apellido'] ?? ''));
+    if ($nombre === '') {
+        $nombre = 'Cliente';
+    }
+    try {
+        $db->beginTransaction();
+        $stmt = $db->prepare(
+            'INSERT INTO usuarios (nombre, apellido, email, password, telefono, avatar, rol_id, estado, supabase_uid)
+             VALUES (?,?,?,?,?,?,4,\'activo\',?)'
+        );
+        $stmt->execute([
+            mb_substr($nombre, 0, 100),
+            mb_substr($apellido, 0, 100),
+            $email,
+            password_hash(random_token(24), PASSWORD_DEFAULT),
+            '',
+            'neutro',
+            $uid,
+        ]);
+        $localId = (int)$db->lastInsertId();
+        $stmt = $db->prepare('INSERT INTO clientes (nombre, apellido, email, telefono, usuario_id) VALUES (?,?,?,?,?)');
+        $stmt->execute([mb_substr($nombre, 0, 100), mb_substr($apellido, 0, 100), $email, '', $localId]);
+        $db->commit();
+        return $localId;
+    } catch (Throwable $e) {
+        if ($db->inTransaction()) {
+            $db->rollBack();
+        }
+        // Si otra petición creó el usuario entre tanto, lo reutilizamos.
+        $stmt = $db->prepare('SELECT id FROM usuarios WHERE supabase_uid = ? LIMIT 1');
+        $stmt->execute([$uid]);
+        $found = $stmt->fetch();
+        return $found === false ? null : (int)$found['id'];
+    }
+}
+
 function login(string $email, string $password): bool
 {
     $email = mb_strtolower(trim($email));
     if (is_login_locked($email)) {
         return false;
+    }
+    if (supabase_is_configured()) {
+        try {
+            $auth = supabase_sign_in($email, $password);
+            $authUser = is_array($auth['user'] ?? null) ? $auth['user'] : [];
+            $localId = supabase_local_user($authUser, (string)($auth['access_token'] ?? ''));
+            if ($localId === null) {
+                throw new RuntimeException('No se pudo vincular el perfil local.');
+            }
+            session_regenerate_id(true);
+            $_SESSION['user_id']             = $localId;
+            $_SESSION['user_email']          = $email;
+            $_SESSION['supabase_uid']        = (string)($authUser['id'] ?? '');
+            $_SESSION['supabase_access']     = (string)($auth['access_token'] ?? '');
+            $_SESSION['supabase_refresh']    = (string)($auth['refresh_token'] ?? '');
+            unset($_SESSION['csrf_token'], $_SESSION['_ai_messages'], $_SESSION['_cart_undo']);
+            csrf_token();
+            login_attempts($email, false);
+            audit_log('login_supabase', 'usuarios', $localId, 'Inicio de sesión con Supabase Auth');
+            return true;
+        } catch (Throwable $e) {
+            login_attempts($email, true);
+            audit_log('login_failed', 'usuarios', null, 'Error Supabase para ' . $email . ': ' . mb_substr($e->getMessage(), 0, 160));
+            return false;
+        }
     }
     $stmt = db()->prepare('SELECT * FROM usuarios WHERE email = ? AND estado = \'activo\' LIMIT 1');
     $stmt->execute([$email]);
@@ -358,6 +439,9 @@ function logout(): void
 {
     if (isLoggedIn()) {
         audit_log('logout', 'usuarios', $_SESSION['user_id']);
+    }
+    if (function_exists('supabase_sign_out')) {
+        supabase_sign_out($_SESSION['supabase_access'] ?? null);
     }
     $_SESSION = [];
     if (ini_get('session.use_cookies')) {

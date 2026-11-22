@@ -21,6 +21,16 @@ function product_image_url(?string $stored): string
     if ($stored === '') {
         return $placeholder;
     }
+    if (str_starts_with($stored, 'supabase:')) {
+        $path = substr($stored, 9);
+        if (preg_match('#^[A-Za-z0-9._/-]+$#', $path) && !str_contains($path, '..')) {
+            return supabase_storage_url(supabase_config()['storage_bucket'], $path);
+        }
+        return $placeholder;
+    }
+    if (preg_match('#^https?://[^\s]+$#i', $stored)) {
+        return h($stored);
+    }
     if (str_starts_with($stored, 'upload:')) {
         $name = substr($stored, 7);
         return preg_match('/^[A-Za-z0-9._-]+$/', $name)
@@ -352,7 +362,7 @@ function cart_add(int $productId, int $qty): array
     cart_push_history('agregar');
     db()->prepare(
         'INSERT INTO carrito_items (carrito_id, producto_id, cantidad) VALUES (?,?,?)
-         ON DUPLICATE KEY UPDATE cantidad = VALUES(cantidad)'
+         ON CONFLICT (carrito_id, producto_id) DO UPDATE SET cantidad = EXCLUDED.cantidad'
     )->execute([cart_id(), $productId, min(99, $desired)]);
     return ['ok' => true, 'error' => null];
 }
@@ -521,7 +531,7 @@ function place_order(array $data): array
              VALUES (?,\'venta\',?,?,?,?,?,?)'
         );
         $warrantyStmt = $db->prepare(
-            'INSERT INTO garantias (pedido_id, detalle_id, descripcion, valido_hasta) VALUES (?,?,?,DATE_ADD(CURDATE(), INTERVAL 12 MONTH))'
+            'INSERT INTO garantias (pedido_id, detalle_id, descripcion, valido_hasta) VALUES (?,?,?,(CURRENT_DATE + INTERVAL \'12 months\'))'
         );
         foreach ($items as $item) {
             $qty = (int)$item['cantidad'];
@@ -640,7 +650,7 @@ function ai_store_message(string $role, string $message, array $products = []): 
         $products ? json_encode($products, JSON_UNESCAPED_UNICODE) : null,
     ]);
     $days = max(1, min(365, (int)config_value('chat_historial_dias', 30)));
-    $db->prepare('DELETE FROM ai_mensajes WHERE creado_en < DATE_SUB(NOW(), INTERVAL ? DAY)')
+    $db->prepare('DELETE FROM ai_mensajes WHERE creado_en < (NOW() - (?::text || \' days\')::interval)')
        ->execute([$days]);
     $db->prepare('UPDATE ai_conversaciones SET actualizado_en=NOW() WHERE id=?')->execute([$conversationId]);
 }

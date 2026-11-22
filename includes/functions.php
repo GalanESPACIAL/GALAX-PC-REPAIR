@@ -93,8 +93,8 @@ function getStats(): array
     $stats = [
         'productos'      => (int)$q("SELECT COUNT(*) FROM productos WHERE estado='activo'"),
         'clientes'       => (int)$q('SELECT COUNT(*) FROM clientes'),
-        'ventas_mes'     => $q("SELECT COALESCE(SUM(total),0) FROM ventas WHERE MONTH(created_at)=MONTH(NOW()) AND YEAR(created_at)=YEAR(NOW())"),
-        'ventas_hoy'     => $q("SELECT COALESCE(SUM(total),0) FROM ventas WHERE DATE(created_at)=CURDATE()"),
+        'ventas_mes'     => $q("SELECT COALESCE(SUM(total),0) FROM ventas WHERE EXTRACT(MONTH FROM created_at)=EXTRACT(MONTH FROM NOW()) AND EXTRACT(YEAR FROM created_at)=EXTRACT(YEAR FROM NOW())"),
+        'ventas_hoy'     => $q("SELECT COALESCE(SUM(total),0) FROM ventas WHERE DATE(created_at)=CURRENT_DATE"),
         'ventas_total'   => $q("SELECT COALESCE(SUM(total),0) FROM ventas WHERE estado IN ('pagado','entregado')"),
         'pedidos'        => (int)$q('SELECT COUNT(*) FROM pedidos'),
         'pedidos_pendientes' => (int)$q("SELECT COUNT(*) FROM pedidos WHERE estado IN ('pendiente','confirmado','preparando')"),

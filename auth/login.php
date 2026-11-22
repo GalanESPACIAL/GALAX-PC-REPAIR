@@ -50,6 +50,7 @@ require_once __DIR__ . '/../includes/header.php';
   </form>
   <div style="text-align:center;margin-top:18px;color:var(--muted);font-size:.85rem;">
     ¿No tiene cuenta? <a href="<?= BASE_URL ?>/auth/register.php" style="color:var(--accent);">Regístrese aquí</a>
+    · <a href="<?= BASE_URL ?>/auth/recover.php" style="color:var(--accent);">Olvidé mi contraseña</a>
   </div>
   <div style="text-align:center;margin-top:12px;">
     <a class="chip" href="<?= BASE_URL ?>/shop/index.php"><i class="fa-solid fa-store"></i> Volver a la tienda</a>
