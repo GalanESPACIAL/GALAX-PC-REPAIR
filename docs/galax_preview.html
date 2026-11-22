@@ -1289,6 +1289,47 @@ html.mpl-active .sanara-messages::-webkit-scrollbar-thumb{background:#334155;bor
 }
 </style>
 
+<style>
+/* =========================================================
+   TEXTO BLANCO EN TODA LA PÁGINA
+   ========================================================= */
+html.mpl-active *, html.mpl-active *::before, html.mpl-active *::after{color:#fff !important}
+html.mpl-active input::placeholder,html.mpl-active textarea::placeholder{color:#fff !important;opacity:.8 !important}
+html.mpl-active .gradient-text{-webkit-text-fill-color:#fff !important;color:#fff !important;background:none !important}
+html.mpl-active a,html.mpl-active a:hover,html.mpl-active a:visited{color:#fff !important}
+html.mpl-active strong,html.mpl-active b,html.mpl-active h1,html.mpl-active h2,html.mpl-active h3,
+html.mpl-active h4,html.mpl-active p,html.mpl-active small,html.mpl-active span,html.mpl-active li{color:#fff !important}
+
+/* Fondos que eran claros: se oscurecen para mantener contraste */
+html.mpl-active .gx-promo{background:linear-gradient(90deg,#1e3a8a,#0e7490,#1e3a8a) !important}
+html.mpl-active .gx-promo-main{background:linear-gradient(135deg,#4c1d95,#0e7490) !important}
+html.mpl-active .mpl-gaming-badge{background:linear-gradient(90deg,#0e7490,#155e75) !important}
+html.mpl-active .mpl-search button,
+html.mpl-active .mpl-card .btn,
+html.mpl-active .mpl-news button,
+html.mpl-active .neon-banner button,
+html.mpl-active .gx-card .btn{background:linear-gradient(90deg,#0e7490,#155e75) !important}
+html.mpl-active .pv-send,
+html.mpl-active .sanara-messages .chat-msg.user .bubble{background:linear-gradient(135deg,#0e7490,#155e75) !important}
+html.mpl-active .mpl-top{background:linear-gradient(135deg,#0e7490,#155e75) !important}
+html.mpl-active .chat-launcher{background:linear-gradient(135deg,#3730a3,#0e7490) !important}
+html.mpl-active .gx-badge{background:linear-gradient(90deg,#9f1239,#b45309) !important}
+html.mpl-active .mpl-recs{background:rgba(8,47,73,.9) !important}
+html.mpl-active .msg-audio,html.mpl-active .quick-replies button{background:rgba(8,47,73,.75) !important}
+
+/* El modo claro se desactiva: con texto blanco solo funciona el tema oscuro */
+html.mpl-active #themeBtn{display:none !important}
+html.mpl-active[data-theme="light"] body{background:#050b1a !important}
+html.mpl-active[data-theme="light"] .mpl-header,
+html.mpl-active[data-theme="light"] .sanara-chat,
+html.mpl-active[data-theme="light"] .chat-panel.sanara-panel,
+html.mpl-active[data-theme="light"] .sanara-input-box,
+html.mpl-active[data-theme="light"] .mpl-card,
+html.mpl-active[data-theme="light"] .drawer{background:#050f21 !important}
+html.mpl-active[data-theme="light"] .hero .pv-card{background:rgba(8,30,60,.8) !important}
+html.mpl-active[data-theme="light"] .mpl-news input{background:#050f21 !important;color:#fff !important}
+</style>
+
 <script type="importmap">
 {"imports":{
   "three":"https://unpkg.com/three@0.160.0/build/three.module.js",
