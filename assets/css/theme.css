@@ -494,3 +494,16 @@ body.store-body {
   .chat-launcher { right:14px; bottom:14px; }
   .brand-name small { display:none; }
 }
+
+/* =========================================================
+   TEXTO BLANCO EN TODO EL SITIO (GALAX PC REPAIR)
+   ========================================================= */
+body, body *, body *::before, body *::after { color:#fff !important; }
+body input::placeholder, body textarea::placeholder { color:#fff !important; opacity:.8 !important; }
+body a, body a:hover, body a:visited, body a:focus { color:#fff !important; }
+body .gradient-text {
+  -webkit-text-fill-color:#fff !important;
+  color:#fff !important;
+  background:none !important;
+}
+
