@@ -1,6 +1,9 @@
-# Pesos del modelo local (16 GB) y entorno virtual: no se suben a GitHub
+# Pesos del modelo local (16 GB) y entornos virtuales: no se suben a GitHub
 /gemma-4-E4B-it/
 /ai_service/.venv/
+/ai_service/venv2/
+/PC/
+/REPAIR/
 
 # Python
 **/__pycache__/

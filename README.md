@@ -1,5 +1,14 @@
 # GALAX PC REPAIR
 
+**Enlaces públicos**
+
+- Repositorio del proyecto: https://github.com/GalanESPACIAL/GALAX-PC-REPAIR
+- Demostración en vivo (GitHub Pages): https://galanespacial.github.io/GALAX-PC-REPAIR/
+
+> La demostración en vivo es una vista estática. La tienda completa (PHP +
+> base de datos, carrito, login y panel administrativo) requiere alojamiento
+> con PHP y MySQL/MariaDB; consulta la sección *Instalación*.
+
 Plataforma web de comercio electrónico y servicios informáticos: venta de
 computadoras, laptops, componentes, periféricos y accesorios; ensamblaje;
 mantenimiento y reparación técnica; diagnóstico; posventa; y asistente de
