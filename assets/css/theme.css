@@ -287,14 +287,14 @@ body.store-body {
 .chat-panel.sanara-panel {
   --sx:#4f46e5; --sy:#22d3ee;
   --sx-soft:rgba(79,70,229,.35); --sy-soft:rgba(34,211,238,.22);
-  width:min(880px,calc(100vw - 40px)); height:min(620px,calc(100vh - 120px));
-  flex-direction:row;
+  width:min(440px,calc(100vw - 28px)); height:min(560px,calc(100vh - 116px));
+  right:18px; bottom:86px; flex-direction:row;
   background:linear-gradient(135deg,#0a0f1f 0%,#101833 100%);
   border:1px solid rgba(125,211,252,.32);
   box-shadow:0 30px 90px rgba(0,0,0,.75),0 0 60px rgba(79,70,229,.28);
 }
 .sanara-stage {
-  position:relative; flex:0 0 42%; overflow:hidden;
+  position:relative; flex:0 0 32%; overflow:hidden;
   background:radial-gradient(circle at 45% 35%,var(--sx-soft),transparent 60%),
              radial-gradient(circle at 70% 80%,var(--sy-soft),transparent 55%),#0a1022;
 }
@@ -393,8 +393,12 @@ body.store-body {
   font-size:.85rem; cursor:pointer; display:inline-flex; align-items:center; justify-content:center;
 }
 @media(max-width:700px) {
-  .chat-panel.sanara-panel { width:calc(100vw - 20px); height:calc(100vh - 110px); right:10px; bottom:86px; }
-  .sanara-stage { flex-basis:34%; }
+  .chat-panel.sanara-panel { width:calc(100vw - 24px); height:min(520px,calc(100vh - 116px)); right:12px; bottom:80px; }
+  .sanara-stage { flex-basis:30%; }
+}
+@media(max-width:480px) {
+  .sanara-stage { display:none; }
+  .chat-panel.sanara-panel { height:min(460px,calc(100vh - 120px)); }
 }
 .chat-head strong { display:block; font-size:.92rem; }
 .chat-head small { color:#a5b4fc; font-size:.72rem; }
