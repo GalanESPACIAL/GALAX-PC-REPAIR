@@ -1524,11 +1524,6 @@ html.mpl-active .sanara-messages .chat-msg.assistant .bubble { padding:12px 14px
 <body>
 <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
 
-<div class="preview-badge" id="previewBadge" role="note">
-  VISTA DEMO · HTML estático
-  <button type="button" id="previewBadgeClose" aria-label="Cerrar aviso de demostración">×</button>
-</div>
-
 <div class="mpl-topbar">
   <span>Lunes a Sábado 9am a 6pm - Domingo 10am a 4pm</span>
   <span>Pasaje, Acisco Villarán 331 Sótano 1</span>
@@ -2117,7 +2112,6 @@ html.mpl-active .sanara-messages .chat-msg.assistant .bubble { padding:12px 14px
     $('#catalogo')?.scrollIntoView({ behavior: state.perf ? 'auto' : 'smooth' });
     setTimeout(() => $('#searchInput')?.focus(), 120);
   });
-  $('#previewBadgeClose')?.addEventListener('click', () => { $('#previewBadge')?.remove(); });
   $('#backToTop')?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: state.perf ? 'auto' : 'smooth' }));
   $('#newsForm')?.addEventListener('submit', e => {
     e.preventDefault(); toast('¡Gracias por suscribirte a nuestro boletín!');
