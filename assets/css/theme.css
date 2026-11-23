@@ -730,6 +730,8 @@ body.store-body {
   background-attachment:fixed !important;
 }
 
+/* Hero más compacto y centrado */
+.hero { max-width:680px !important; margin-left:auto !important; margin-right:auto !important; }
 /* Unificación visual: degradado GALAX en botones, tarjetas y secciones */
 :root {
   --gx-grad-btn: linear-gradient(135deg,#4f46e5,#7c3aed 55%,#22d3ee);
