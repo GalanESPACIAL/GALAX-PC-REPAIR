@@ -1502,6 +1502,9 @@ html.mpl-active .sanara-messages .chat-msg.assistant .bubble { min-height:0 !imp
   .mpl-news { width:100% !important; flex-basis:100% !important; }
   .mpl-news input { min-width:44px !important; }
 }
+/* Selector de categoría sin campo ni botón de búsqueda */
+.mpl-search { width:150px !important; flex:0 0 150px !important; max-width:150px !important; margin:0 8px 0 0 !important; padding:0 !important; border-radius:10px !important; }
+.mpl-search select { width:100% !important; max-width:none !important; border:0 !important; border-radius:10px !important; background:transparent !important; padding:0 12px !important; font-size:.85rem !important; }
 /* ---------- Restauración del avatar y burbuja compacta ---------- */
 .sanara-room, .sanara-stage-glow { z-index:0 !important; }
 .sanara-desk { z-index:4 !important; }
@@ -1542,8 +1545,6 @@ html.mpl-active .sanara-messages .chat-msg.assistant .bubble { padding:12px 14px
         <option value="Componentes">Componentes</option>
         <option value="Accesorios">Accesorios</option>
       </select>
-      <input type="search" id="mplSearchInput" placeholder="Busca en nuestro catálogo" aria-label="Buscar en el catálogo">
-      <button type="submit">BUSCAR</button>
     </form>
     <a class="btn btn-outline btn-sm" href="#reparar" style="border-color:#3b82f6;color:#bfdbfe;background:rgba(59,130,246,.18)">Iniciar Sesión</a>
     <a class="btn btn-outline btn-sm" href="#servicios" style="border-color:rgba(34,211,238,.5);color:#a5f3fc">Modo Administrador <i class="fa-solid fa-gear" aria-hidden="true"></i></a>
