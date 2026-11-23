@@ -15,7 +15,7 @@ $storeUser = currentUser();
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="description" content="<?= h($company['nombre']) ?> — Venta de componentes y equipos, reparación técnica y asistencia con IA.">
 <title><?= h($pageTitle ?? 'Inicio') ?> — <?= h($company['nombre']) ?></title>
 <link rel="preconnect" href="https://fonts.googleapis.com">

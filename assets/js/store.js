@@ -20,9 +20,19 @@
   const menuBtn = document.getElementById('storeMenuBtn');
   const nav = document.getElementById('storeNav');
   if (menuBtn && nav) {
+    const closeNav = () => {
+      nav.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    };
     menuBtn.addEventListener('click', () => {
       const open = nav.classList.toggle('open');
       menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    document.addEventListener('click', (e) => {
+      if (nav.classList.contains('open') && !nav.contains(e.target) && !menuBtn.contains(e.target)) closeNav();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeNav();
     });
   }
 

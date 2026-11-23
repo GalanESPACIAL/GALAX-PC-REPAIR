@@ -5,6 +5,10 @@
 /PC/
 /REPAIR/
 
+# Node / Playwright (temporal)
+/node_modules/
+/package-lock.json
+
 # Python
 **/__pycache__/
 *.py[cod]

@@ -1,12 +1,12 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es" class="mpl-active">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GALAX PC REPAIR — Tienda, reparaciones y asistente Airi</title>
-<meta name="description" content="GALAX PC REPAIR: componentes y laptops con stock real, servicios de reparación técnica y el asistente virtual Airi.">
-<meta property="og:title" content="GALAX PC REPAIR — Asistente Airi">
-<meta property="og:description" content="Tienda de informática, reparaciones y asistente virtual Airi con productos y precios reales.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GALAX PC REPAIR â€” Tienda, reparaciones y asistente Airi</title>
+<meta name="description" content="GALAX PC REPAIR: componentes y laptops con stock real, servicios de reparaciÃ³n tÃ©cnica y el asistente virtual Airi.">
+<meta property="og:title" content="GALAX PC REPAIR â€” Asistente Airi">
+<meta property="og:description" content="Tienda de informÃ¡tica, reparaciones y asistente virtual Airi con productos y precios reales.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" media="print" onload="this.media='all'">
@@ -39,7 +39,8 @@
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { height: 100%; }
+img, video, svg, canvas { max-width: 100%; }
+html, body { height: 100%; -webkit-text-size-adjust: 100%; }
 body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   background: radial-gradient(1200px 600px at 10% -10%, rgba(99,102,241,0.25), transparent 60%),
@@ -327,9 +328,9 @@ tbody tr:last-child td { border-bottom: none; }
 }
 
 /* =====================================================================
-   GALAX PC REPAIR — Design system unificado
-   Azul oscuro · Morado tecnológico · Celeste · Blanco
-   Se carga DESPUÉS de style.css para conservar el panel heredado.
+   GALAX PC REPAIR â€” Design system unificado
+   Azul oscuro Â· Morado tecnolÃ³gico Â· Celeste Â· Blanco
+   Se carga DESPUÃ‰S de style.css para conservar el panel heredado.
    ===================================================================== */
 :root {
   --gx-navy: #080d1f;
@@ -346,7 +347,7 @@ tbody tr:last-child td { border-bottom: none; }
   --gx-radius: 16px;
   --gx-radius-sm: 11px;
   --gx-shadow: 0 18px 48px rgba(2,6,23,.42);
-  --gx-max: 1240px;
+  --gx-max: 1000px;
 
   --primary: #6366f1;
   --primary-2: #8b5cf6;
@@ -390,8 +391,9 @@ body.store-body {
   border-bottom:1px solid var(--gx-border);
 }
 .site-header-inner {
-  max-width:var(--gx-max); margin:0 auto; padding:12px 20px;
-  display:flex; align-items:center; gap:18px;
+  max-width:var(--gx-max); margin:0 auto;
+  padding:12px max(clamp(14px,4vw,32px),env(safe-area-inset-left)) max(12px,env(safe-area-inset-bottom));
+  display:flex; align-items:center; gap:clamp(8px,1.6vw,18px);
 }
 .site-nav { display:flex; align-items:center; gap:4px; margin-left:16px; }
 .site-nav a {
@@ -415,7 +417,7 @@ body.store-body {
 .mobile-menu-btn { display:none; }
 
 /* ---------- Layout ---------- */
-.store-main { max-width:var(--gx-max); margin:0 auto; padding:28px 20px 80px; min-height:70vh; }
+.store-main { max-width:var(--gx-max); margin:0 auto; padding:clamp(20px,4vw,36px) clamp(14px,4vw,32px) 80px; min-height:70vh; }
 .section { margin-top:46px; }
 .section-head { display:flex; align-items:flex-end; justify-content:space-between; gap:16px; margin-bottom:18px; flex-wrap:wrap; }
 .section-head h2 { font-size:1.5rem; font-weight:800; letter-spacing:-.02em; }
@@ -602,7 +604,7 @@ body.store-body {
 .chat-launcher .dot.offline { background:#f87171; }
 .chat-panel {
   position:fixed; right:22px; bottom:92px; z-index:91; width:min(390px,calc(100vw - 28px));
-  height:min(600px,calc(100vh - 120px)); display:none; flex-direction:column;
+  height:min(600px,calc(100dvh - 120px)); display:none; flex-direction:column;
   border:1px solid var(--gx-border); border-radius:20px; overflow:hidden; background:#0b1228;
   box-shadow:0 26px 70px rgba(0,0,0,.6);
 }
@@ -667,7 +669,7 @@ body.store-body {
 
 /* ---------- Footer ---------- */
 .site-footer { border-top:1px solid var(--gx-border); background:rgba(4,8,20,.7); margin-top:60px; }
-.site-footer-inner { max-width:var(--gx-max); margin:0 auto; padding:36px 20px; display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:30px; }
+.site-footer-inner { max-width:var(--gx-max); margin:0 auto; padding:36px clamp(14px,4vw,32px); display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:clamp(18px,3vw,30px); }
 .site-footer h4 { font-size:.8rem; text-transform:uppercase; letter-spacing:.14em; color:#a5b4fc; margin-bottom:14px; }
 .site-footer p, .site-footer a { color:var(--gx-muted); font-size:.84rem; line-height:1.9; text-decoration:none; }
 .site-footer a:hover { color:var(--gx-cyan); }
@@ -725,12 +727,12 @@ body.store-body {
   .pv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}
   .pv-chip{display:inline-flex;align-items:center;gap:8px;padding:9px 13px;border-radius:10px;
     background:rgba(255,255,255,.05);border:1px solid var(--gx-border);font-size:.85rem}
-  /* Panel Airi — cuerpo a la izquierda, conversación a la derecha */
+  /* Panel Airi â€” cuerpo a la izquierda, conversaciÃ³n a la derecha */
   .chat-panel.sanara-panel{
     --sx:#4f46e5; --sy:#22d3ee;
     --sx-soft:rgba(79,70,229,.35); --sy-soft:rgba(34,211,238,.22);
     flex-direction:row;
-    right:18px; bottom:86px; width:min(440px,calc(100vw - 28px)); height:min(560px,calc(100vh - 116px));
+    right:18px; bottom:86px; width:min(440px,calc(100vw - 28px)); height:min(560px,calc(100dvh - 116px));
     background:linear-gradient(135deg,#0a0f1f 0%,#101833 100%);
     border:1px solid rgba(125,211,252,.32); border-radius:22px; overflow:hidden;
     box-shadow:0 30px 90px rgba(0,0,0,.75),0 0 60px rgba(79,70,229,.28);
@@ -796,12 +798,12 @@ body.store-body {
     background:linear-gradient(135deg,var(--sx),var(--sy));color:#fff;font-size:.85rem;cursor:pointer;
     display:inline-flex;align-items:center;justify-content:center}
   @media(max-width:700px){
-    .chat-panel.sanara-panel{width:min(440px,calc(100vw - 40px));height:min(520px,calc(100vh - 116px));right:12px;bottom:80px}
+    .chat-panel.sanara-panel{width:min(440px,calc(100vw - 40px));height:min(520px,calc(100dvh - 116px));right:12px;bottom:80px}
     .sanara-stage{flex-basis:30%}
   }
   @media(max-width:480px){
     .sanara-stage{display:none}
-    .chat-panel.sanara-panel{height:min(460px,calc(100vh - 120px))}
+    .chat-panel.sanara-panel{height:min(460px,calc(100dvh - 120px))}
   }
 
   /* ---------- Accesibilidad ---------- */
@@ -812,7 +814,7 @@ body.store-body {
   [aria-hidden="true"]{pointer-events:none}
   .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
-  /* ---------- Modo claro (contraste ≥ 4.5:1) ---------- */
+  /* ---------- Modo claro (contraste â‰¥ 4.5:1) ---------- */
   html[data-theme="light"]{
     --gx-navy:#f4f7fc; --gx-navy-2:#e8eef8; --gx-text:#0b1220; --gx-muted:#3f4b63;
     --gx-surface:rgba(15,23,42,.05); --gx-surface-strong:rgba(15,23,42,.09);
@@ -880,7 +882,7 @@ body.store-body {
   .mini-qty button{width:26px;height:26px;border-radius:8px;border:1px solid var(--gx-border);
     background:var(--gx-surface);color:var(--gx-text);cursor:pointer}
 
-  /* ---------- Servicios y reparación ---------- */
+  /* ---------- Servicios y reparaciÃ³n ---------- */
   .service-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
   .ticket-box{margin-top:14px;padding:14px;border:1px dashed var(--gx-cyan);border-radius:12px;
     background:rgba(34,211,238,.08);display:none}
@@ -890,7 +892,7 @@ body.store-body {
   #searchInput{width:100%;padding:11px 14px;border-radius:999px;border:1px solid var(--gx-border);
     background:var(--gx-surface);color:var(--gx-text);font-size:.9rem}
 
-  /* ---------- Airi: estado y respuestas rápidas ---------- */
+  /* ---------- Airi: estado y respuestas rÃ¡pidas ---------- */
   .chat-panel.sanara-panel{display:none}
   .chat-panel.sanara-panel.open{display:flex}
   .chat-status .pv-live.typing{background:#f59e0b;box-shadow:0 0 10px #f59e0b}
@@ -902,11 +904,43 @@ body.store-body {
   @media(prefers-reduced-motion:reduce){
     *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
   }
+  @media (hover:none) and (pointer:coarse){
+    button,a,input,select,textarea{min-height:44px}
+    button{min-width:44px}
+    a{display:inline-flex;align-items:center}
+    .icon-btn,.mobile-menu-btn,.preview-badge button,.chat-close{width:44px;height:44px;min-width:44px;min-height:44px}
+    .search-box select,.search-box input,.search-box button,#searchInput{min-height:44px;font-size:16px}
+    .skip-link{height:44px;line-height:44px}
+    .site-nav a,.header-icon,.chip,.btn,.btn-outline,.category-tile,.chat-launcher,
+    .pv-tool,.pv-plus,.pv-mic,.pv-send{min-height:44px;min-width:44px}
+    form .form-control,.sanara-form input{min-height:44px;font-size:16px}
+  }
+  .search-box{max-width:100%}
+  .search-box select,.search-box input{min-width:0}
+  html.mpl-active .mpl-search{height:44px}
+  .mpl-social-icons a{width:44px;height:44px;min-width:44px}
+  .mpl-news input{min-width:44px}
+  .site-footer a{min-width:44px}
+  @media(max-width:760px){
+    .mpl-search{min-width:0;width:100%;flex-basis:100%}
+    .mpl-search select{max-width:110px;padding:0 8px}
+    .mpl-search button{padding:0 12px}
+    .mpl-social-icons{gap:6px;flex-wrap:wrap}
+  }
+  @supports (padding: env(safe-area-inset-left)){
+    .site-header-inner{padding-left:max(clamp(14px,4vw,32px),env(safe-area-inset-left));padding-right:max(clamp(14px,4vw,32px),env(safe-area-inset-right))}
+    .store-main{padding-left:max(clamp(14px,4vw,32px),env(safe-area-inset-left));padding-right:max(clamp(14px,4vw,32px),env(safe-area-inset-right))}
+    .chat-launcher{right:max(14px,env(safe-area-inset-right));bottom:max(14px,env(safe-area-inset-bottom))}
+    .chat-panel,.chat-panel.sanara-panel{right:max(12px,env(safe-area-inset-right));bottom:max(80px,calc(env(safe-area-inset-bottom) + 76px))}
+  }
+  @media(max-width:560px){
+    .store-main table{display:block;width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;white-space:nowrap}
+  }
 </style>
 <style>
 /* =========================================================
-   FUSIÓN MI PC LISTA · GALAX PC REPAIR
-   Estética roja/blanca manteniendo Airi y accesibilidad
+   FUSIÃ“N MI PC LISTA Â· GALAX PC REPAIR
+   EstÃ©tica roja/blanca manteniendo Airi y accesibilidad
    ========================================================= */
 html.mpl-active, html.mpl-active body{
   background:#f5f6f8; color:#17202a;
@@ -996,7 +1030,7 @@ html.mpl-active .section-head h2{color:#17202a}
 
 <style>
 /* =========================================================
-   GALAX PC REPAIR — Azul neón / cian fosforecente
+   GALAX PC REPAIR â€” Azul neÃ³n / cian fosforecente
    Override de la capa anterior, conservando funcionalidad
    ========================================================= */
 html.mpl-active, html.mpl-active body{
@@ -1095,7 +1129,7 @@ html.mpl-active .badge{background:#22d3ee;color:#04121c}
 html.mpl-active .mpl-top{background:linear-gradient(135deg,#0891b2,#22d3ee);color:#04121c}
 html.mpl-active .mpl-whatsapp{box-shadow:0 0 20px rgba(37,211,102,.5)}
 
-/* ---------- Chat Airi: acabado neón ---------- */
+/* ---------- Chat Airi: acabado neÃ³n ---------- */
 html.mpl-active .chat-panel.sanara-panel{
   background:linear-gradient(135deg,#050f24 0%,#071a33 100%);
   border:1px solid rgba(34,211,238,.55);
@@ -1168,7 +1202,7 @@ html.mpl-active .neon-shot small{color:#7dd3fc}
 
 <style>
 /* =========================================================
-   GALAX PC REPAIR — CAPA FINAL (mezcla de los 3 diseños)
+   GALAX PC REPAIR â€” CAPA FINAL (mezcla de los 3 diseÃ±os)
    ========================================================= */
 html.mpl-active .gx-promo{
   background:linear-gradient(90deg,#4f46e5,#22d3ee,#4f46e5);color:#04121c;text-align:center;
@@ -1230,11 +1264,11 @@ html.mpl-active .gx-wolf-sm{width:46px;height:46px;filter:drop-shadow(0 0 12px r
 
 <style>
 /* =========================================================
-   AIRI — Réplica del diseño de referencia
+   AIRI â€” RÃ©plica del diseÃ±o de referencia
    ========================================================= */
 html.mpl-active .chat-panel.sanara-panel{
   width:min(440px,calc(100vw - 40px));
-  height:min(560px,calc(100vh - 116px));
+  height:min(560px,calc(100dvh - 116px));
   border-radius:18px;
   border:1px solid #22d3ee;
   box-shadow:0 0 0 1px rgba(34,211,238,.25),0 0 70px rgba(34,211,238,.35),0 30px 90px rgba(0,0,0,.8);
@@ -1288,7 +1322,7 @@ html.mpl-active .sanara-form .pv-send,html.mpl-active .sanara-form .pv-mic{displ
 html.mpl-active .sanara-messages::-webkit-scrollbar{width:8px}
 html.mpl-active .sanara-messages::-webkit-scrollbar-thumb{background:#334155;border-radius:99px}
 @media(max-width:820px){
-  html.mpl-active .chat-panel.sanara-panel{width:min(440px,calc(100vw - 40px));height:min(520px,calc(100vh - 116px))}
+  html.mpl-active .chat-panel.sanara-panel{width:min(440px,calc(100vw - 40px));height:min(520px,calc(100dvh - 116px))}
   html.mpl-active .chat-panel.sanara-panel .sanara-stage{flex-basis:30%}
   html.mpl-active .sanara-messages .chat-msg.assistant .bubble{min-height:220px;padding:16px 18px;font-size:.9rem}
 }
@@ -1296,7 +1330,7 @@ html.mpl-active .sanara-messages::-webkit-scrollbar-thumb{background:#334155;bor
 
 <style>
 /* =========================================================
-   TEXTO BLANCO EN TODA LA PÁGINA
+   TEXTO BLANCO EN TODA LA PÃGINA
    ========================================================= */
 html.mpl-active *, html.mpl-active *::before, html.mpl-active *::after{color:#fff !important}
 html.mpl-active input::placeholder,html.mpl-active textarea::placeholder{color:#fff !important;opacity:.8 !important}
@@ -1335,36 +1369,159 @@ html.mpl-active[data-theme="light"] .hero .pv-card{background:rgba(8,30,60,.8) !
 html.mpl-active[data-theme="light"] .mpl-news input{background:#050f21 !important;color:#fff !important}
 </style>
 
+<style>
+/* ---------- Ajustes finales de accesibilidad tÃ¡ctil (Ãºltima prioridad) ---------- */
+.mpl-news input{min-width:44px !important}
+.mpl-social-icons a{width:44px !important;height:44px !important;min-width:44px !important}
+.site-footer a{min-width:44px !important}
+html.mpl-active .mpl-search{height:44px !important}
+@media (hover:none) and (pointer:coarse){
+  button,a,input,select,textarea{min-height:44px}
+  button,a{min-width:44px}
+  a{display:inline-flex;align-items:center;padding:0 6px}
+  .icon-btn,.mobile-menu-btn,.preview-badge button,.chat-close{width:44px !important;height:44px !important}
+}
+@media(max-width:760px){
+  .mpl-search{min-width:0 !important;width:100% !important;flex-basis:100% !important}
+  .mpl-search select{max-width:110px;padding:0 8px}
+  .mpl-search button{padding:0 12px}
+}
+</style>
+
 <script type="importmap">
 {"imports":{
   "three":"https://unpkg.com/three@0.160.0/build/three.module.js",
   "three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"
 }}
 </script>
+<style>
+
+/* =====================================================================
+   AIRI â€” Layout final del widget (mÃ¡xima prioridad)
+   ===================================================================== */
+.chat-panel.sanara-panel,
+html.mpl-active .chat-panel.sanara-panel {
+  position:fixed !important;
+  bottom:90px !important;
+  right:20px !important;
+  z-index:95 !important;
+  max-height:calc(100dvh - 140px) !important;
+  width:min(720px,92vw) !important;
+  height:min(560px,calc(100dvh - 140px)) !important;
+  grid-template-columns:260px 1fr !important;
+  grid-template-rows:1fr !important;
+  overflow:hidden !important;
+}
+.chat-panel.sanara-panel.open,
+html.mpl-active .chat-panel.sanara-panel.open { display:grid !important; }
+.sanara-stage,
+html.mpl-active .chat-panel.sanara-panel .sanara-stage {
+  position:relative !important;
+  width:100% !important;
+  height:100% !important;
+  min-width:0 !important;
+  min-height:0 !important;
+  overflow:hidden !important;
+  display:flex !important;
+  align-items:flex-end !important;
+  justify-content:center !important;
+}
+.sanara-stage-canvas,
+.sanara-stage-canvas canvas,
+.sanara-stage-canvas img,
+.sanara-stage-canvas video {
+  width:100% !important;
+  height:100% !important;
+  object-fit:contain !important;
+  display:block !important;
+}
+.sanara-chat,
+html.mpl-active .sanara-chat {
+  width:100% !important;
+  min-width:0 !important;
+  height:100% !important;
+  display:flex !important;
+  flex-direction:column !important;
+  overflow:hidden !important;
+}
+.sanara-head, .chat-head.sanara-head {
+  width:100% !important;
+  flex-shrink:0 !important;
+  box-sizing:border-box !important;
+}
+.sanara-messages {
+  flex:1 !important;
+  overflow-y:auto !important;
+  overflow-x:hidden !important;
+  padding:16px !important;
+}
+html.mpl-active .sanara-messages .chat-msg.assistant .bubble { min-height:0 !important; }
+.sanara-welcome .bubble { min-height:0 !important; }
+.quick-replies {
+  display:flex !important;
+  flex-wrap:wrap !important;
+  gap:8px !important;
+  max-width:100% !important;
+  box-sizing:border-box !important;
+}
+.sanara-form {
+  width:100% !important;
+  box-sizing:border-box !important;
+  flex-shrink:0 !important;
+}
+.sanara-input-box {
+  display:flex !important;
+  align-items:center !important;
+  gap:8px !important;
+  width:100% !important;
+  max-width:100% !important;
+  box-sizing:border-box !important;
+}
+.sanara-form input { flex:1 !important; min-width:0 !important; }
+
+@media (max-width:767px) {
+  .chat-panel.sanara-panel,
+  html.mpl-active .chat-panel.sanara-panel {
+    width:calc(100vw - 24px) !important;
+    right:12px !important;
+    bottom:86px !important;
+    height:min(560px,calc(100dvh - 140px)) !important;
+    grid-template-columns:1fr !important;
+    grid-template-rows:180px 1fr !important;
+  }
+  .sanara-stage,
+  html.mpl-active .chat-panel.sanara-panel .sanara-stage {
+    display:flex !important;
+    height:180px !important;
+  }
+  .sanara-chat { height:100% !important; }
+}
+
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
 
 <div class="preview-badge" id="previewBadge" role="note">
-  VISTA DEMO · HTML estático
-  <button type="button" id="previewBadgeClose" aria-label="Cerrar aviso de demostración">×</button>
+  VISTA DEMO Â· HTML estÃ¡tico
+  <button type="button" id="previewBadgeClose" aria-label="Cerrar aviso de demostraciÃ³n">Ã—</button>
 </div>
 
-<div class="gx-promo">ENVÍO GRATIS EN COMPRAS MAYORES A S/ 500 &nbsp;·&nbsp; 30% DE DESCUENTO EN CYBERSPACE &nbsp;·&nbsp; SOPORTE 24/7</div>
+<div class="gx-promo">ENVÃO GRATIS EN COMPRAS MAYORES A S/ 500 &nbsp;Â·&nbsp; 30% DE DESCUENTO EN CYBERSPACE &nbsp;Â·&nbsp; SOPORTE 24/7</div>
 <div class="mpl-topbar">
-  <span>Lunes a Sábado 9am a 6pm - Domingo 10am a 4pm</span>
-  <span>Pasaje, Acisco Villarán 331 Sótano 1</span>
-  <span>Métodos de pago</span>
+  <span>Lunes a SÃ¡bado 9am a 6pm - Domingo 10am a 4pm</span>
+  <span>Pasaje, Acisco VillarÃ¡n 331 SÃ³tano 1</span>
+  <span>MÃ©todos de pago</span>
   <span>983 558 113</span>
 </div>
 <header class="mpl-header">
   <div class="mpl-header-inner">
-    <a class="mpl-logo" href="#inicio" aria-label="GALAX PC REPAIR — ir al inicio" style="display:flex;align-items:center;gap:10px">
+    <a class="mpl-logo" href="#inicio" aria-label="GALAX PC REPAIR â€” ir al inicio" style="display:flex;align-items:center;gap:10px">
       <img class="gx-wolf-sm" src="../assets/img/galax-wolf.svg" alt="" width="46" height="46" aria-hidden="true">
-      <span>GALAX <b>PC REPAIR</b><small style="display:block;font-size:.4rem;color:#7dd3fc;letter-spacing:1px">TECNOLOGÍA QUE SÍ FUNCIONA</small></span>
+      <span>GALAX <b>PC REPAIR</b><small style="display:block;font-size:.4rem;color:#7dd3fc;letter-spacing:1px">TECNOLOGÃA QUE SÃ FUNCIONA</small></span>
     </a>
     <form class="mpl-search" id="mplSearchForm" role="search">
-      <select id="mplCategorySelect" aria-label="Filtrar por categoría">
+      <select id="mplCategorySelect" aria-label="Filtrar por categorÃ­a">
         <option value="Todos">Todas</option>
         <option value="PCs y Laptops">PCs y Laptops</option>
         <option value="PC Gamer">PC Gamer</option>
@@ -1372,10 +1529,10 @@ html.mpl-active[data-theme="light"] .mpl-news input{background:#050f21 !importan
         <option value="Componentes">Componentes</option>
         <option value="Accesorios">Accesorios</option>
       </select>
-      <input type="search" id="mplSearchInput" placeholder="Busca en nuestro catálogo" aria-label="Buscar en el catálogo">
+      <input type="search" id="mplSearchInput" placeholder="Busca en nuestro catÃ¡logo" aria-label="Buscar en el catÃ¡logo">
       <button type="submit">BUSCAR</button>
     </form>
-    <a class="btn btn-outline btn-sm" href="#reparar" style="border-color:#3b82f6;color:#bfdbfe;background:rgba(59,130,246,.18)">Iniciar Sesión</a>
+    <a class="btn btn-outline btn-sm" href="#reparar" style="border-color:#3b82f6;color:#bfdbfe;background:rgba(59,130,246,.18)">Iniciar SesiÃ³n</a>
     <a class="btn btn-outline btn-sm" href="#servicios" style="border-color:rgba(34,211,238,.5);color:#a5f3fc">Modo Administrador <i class="fa-solid fa-gear" aria-hidden="true"></i></a>
     <button class="icon-btn" type="button" id="themeBtn" aria-label="Activar modo claro" title="Modo claro">
       <i class="fa-solid fa-sun" aria-hidden="true"></i>
@@ -1384,7 +1541,7 @@ html.mpl-active[data-theme="light"] .mpl-news input{background:#050f21 !importan
       <i class="fa-solid fa-bolt" aria-hidden="true"></i>
     </button>
     <button class="icon-btn mobile-menu-btn" type="button" id="menuBtn"
-            aria-label="Abrir menú" aria-expanded="false" aria-controls="storeNav">
+            aria-label="Abrir menÃº" aria-expanded="false" aria-controls="storeNav">
       <i class="fa-solid fa-bars" aria-hidden="true"></i>
     </button>
     <button class="icon-btn" type="button" id="cartBtn" aria-label="Abrir carrito, 0 productos">
@@ -1395,13 +1552,13 @@ html.mpl-active[data-theme="light"] .mpl-news input{background:#050f21 !importan
 </header>
 <div class="mpl-nav-wrap">
   <span class="mpl-gaming-badge" aria-hidden="true">GAMING</span>
-  <nav class="mpl-nav" id="storeNav" aria-label="Navegación de categorías">
+  <nav class="mpl-nav" id="storeNav" aria-label="NavegaciÃ³n de categorÃ­as">
     <a href="#inicio">Inicio</a>
     <a href="#catalogo" data-cat="PC Gamer">PC Gamer</a>
     <a href="#catalogo" data-cat="PCs y Laptops">Laptops</a>
     <a href="#catalogo" data-cat="Componentes">Componentes</a>
     <a href="#catalogo" data-cat="Componentes">Monitores</a>
-    <a href="#reparar">Reparación</a>
+    <a href="#reparar">ReparaciÃ³n</a>
     <a href="#servicios">Soporte</a>
   </nav>
 </div>
@@ -1411,16 +1568,16 @@ html.mpl-active[data-theme="light"] .mpl-news input{background:#050f21 !importan
   <section class="hero" id="inicio" aria-labelledby="hero-title">
     <div class="hero-grid">
       <div>
-        <span class="eyebrow">VENTA · REPARACIÓN · ASISTENCIA</span>
-        <h1 id="hero-title">Tecnología que <span class="gradient-text">sí funciona</span></h1>
-        <p>Componentes y equipos con stock real, reparación técnica especializada y un asistente que te orienta con datos de nuestro catálogo. Todo en un solo lugar.</p>
+        <span class="eyebrow">VENTA Â· REPARACIÃ“N Â· ASISTENCIA</span>
+        <h1 id="hero-title">TecnologÃ­a que <span class="gradient-text">sÃ­ funciona</span></h1>
+        <p>Componentes y equipos con stock real, reparaciÃ³n tÃ©cnica especializada y un asistente que te orienta con datos de nuestro catÃ¡logo. Todo en un solo lugar.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#catalogo">Ver catálogo</a>
+          <a class="btn btn-primary" href="#catalogo">Ver catÃ¡logo</a>
           <a class="btn btn-outline" href="#reparar">Reparar mi equipo</a>
         </div>
       </div>
       <div class="pv-card" style="display:grid;place-items:center;padding:8px">
-        <svg viewBox="0 0 420 300" role="img" aria-label="Torre gamer y laptop con iluminación cian neón" style="width:100%;height:auto;filter:drop-shadow(0 0 18px rgba(34,211,238,.55))">
+        <svg viewBox="0 0 420 300" role="img" aria-label="Torre gamer y laptop con iluminaciÃ³n cian neÃ³n" style="width:100%;height:auto;filter:drop-shadow(0 0 18px rgba(34,211,238,.55))">
           <g fill="none" stroke="#22d3ee" stroke-width="2" opacity=".8">
             <path d="M40 20h340v260H40z"/><path d="M60 40h300v220H60z" opacity=".4"/>
             <path d="M30 60h360M30 240h360M80 20v260M340 20v260" opacity=".25"/>
@@ -1441,56 +1598,56 @@ html.mpl-active[data-theme="light"] .mpl-news input{background:#050f21 !importan
 
   <section class="neon-banner" aria-label="Airi, asistente de IA">
     <div>
-      <h2>Conoce a Airi — Tu asistente de IA en GALAX PC REPAIR</h2>
-      <p>Pregúntale por productos, precios, stock y reparaciones con voz femenina.</p>
+      <h2>Conoce a Airi â€” Tu asistente de IA en GALAX PC REPAIR</h2>
+      <p>PregÃºntale por productos, precios, stock y reparaciones con voz femenina.</p>
     </div>
     <button type="button" id="bannerChatBtn">Iniciar Chat</button>
   </section>
 
   <section class="section" id="categorias" aria-labelledby="cat-title">
     <div class="section-head">
-      <h2 id="cat-title">Compra por categoría</h2>
-      <p>Selecciona una categoría para filtrar el catálogo.</p>
+      <h2 id="cat-title">Compra por categorÃ­a</h2>
+      <p>Selecciona una categorÃ­a para filtrar el catÃ¡logo.</p>
     </div>
     <div class="pv-grid">
       <button class="category-tile active" type="button" data-category="Todos">
         <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
-        <span><strong>Nastra 23k PC Gaming PC</strong><small>200 productos · Ver Más</small></span>
+        <span><strong>Nastra 23k PC Gaming PC</strong><small>200 productos Â· Ver MÃ¡s</small></span>
       </button>
       <button class="category-tile" type="button" data-category="PCs y Laptops">
         <i class="fa-solid fa-computer" aria-hidden="true"></i>
-        <span><strong>PCs y Laptops</strong><small>200 equipos · Ver Más</small></span>
+        <span><strong>PCs y Laptops</strong><small>200 equipos Â· Ver MÃ¡s</small></span>
       </button>
       <button class="category-tile" type="button" data-category="Componentes">
         <i class="fa-solid fa-microchip" aria-hidden="true"></i>
-        <span><strong>Componentes</strong><small>2 productos · Ver Más</small></span>
+        <span><strong>Componentes</strong><small>2 productos Â· Ver MÃ¡s</small></span>
       </button>
       <button class="category-tile" type="button" data-category="PC Gamer">
         <i class="fa-solid fa-gamepad" aria-hidden="true"></i>
-        <span><strong>Monitores Reparación</strong><small>Soporte técnico · Ver Más</small></span>
+        <span><strong>Monitores ReparaciÃ³n</strong><small>Soporte tÃ©cnico Â· Ver MÃ¡s</small></span>
       </button>
     </div>
   </section>
 
   <section class="gx-sec" id="cyber" aria-labelledby="cyber-title">
     <div class="gx-sec-head">
-      <div><h2 id="cyber-title">Componentes <b>Cyber</b></h2><p>Lo más buscado por nuestra comunidad gamer</p></div>
+      <div><h2 id="cyber-title">Componentes <b>Cyber</b></h2><p>Lo mÃ¡s buscado por nuestra comunidad gamer</p></div>
     </div>
     <div class="gx-grid" id="gxFeatured"></div>
   </section>
 
   <section class="gx-promo-wrap" aria-label="Promociones Cyberspace">
     <div class="gx-promo-main">
-      <span>CYBERSPACE</span><strong>30%<br>DE DESCUENTO</strong><small>En laptops y componentes seleccionados · Solo por tiempo limitado</small>
+      <span>CYBERSPACE</span><strong>30%<br>DE DESCUENTO</strong><small>En laptops y componentes seleccionados Â· Solo por tiempo limitado</small>
     </div>
     <div class="gx-promo-card">
       <img src="../assets/img/productos/LAP-001.png" alt="Laptop HP Pavilion 15" width="300" height="200" loading="lazy">
-      <h3>Laptop HP Pavilion 15 — Core i5 / 8GB / 512GB</h3>
+      <h3>Laptop HP Pavilion 15 â€” Core i5 / 8GB / 512GB</h3>
       <div class="gx-prices"><span class="gx-old">S/ 3,899.00</span><span class="gx-new">S/ 2,899.00</span></div>
     </div>
     <div class="gx-promo-card">
       <img src="../assets/img/productos/MON-001.svg" alt="Monitor Gamer 24" width="300" height="200" loading="lazy">
-      <h3>Monitor Gamer 24" — 165Hz / 1ms / IPS</h3>
+      <h3>Monitor Gamer 24" â€” 165Hz / 1ms / IPS</h3>
       <div class="gx-prices"><span class="gx-old">S/ 899.00</span><span class="gx-new">S/ 649.00</span></div>
     </div>
   </section>
@@ -1498,66 +1655,66 @@ html.mpl-active[data-theme="light"] .mpl-news input{background:#050f21 !importan
   <section class="section" id="catalogo" aria-labelledby="catalog-title">
     <div class="section-head">
       <div>
-        <h2 id="catalog-title">Catálogo de productos</h2>
+        <h2 id="catalog-title">CatÃ¡logo de productos</h2>
         <p id="resultCount" aria-live="polite">Mostrando todos los productos</p>
       </div>
     </div>
     <div class="catalog-toolbar">
-      <input type="search" id="searchInput" placeholder="Buscar productos por nombre…"
-             aria-label="Buscar productos en el catálogo" autocomplete="off">
+      <input type="search" id="searchInput" placeholder="Buscar productos por nombreâ€¦"
+             aria-label="Buscar productos en el catÃ¡logo" autocomplete="off">
     </div>
     <div class="products-grid" id="productsGrid"></div>
     <div class="empty-state" id="emptyState" hidden>
       <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-      <p>No encontramos productos con esos términos.</p>
+      <p>No encontramos productos con esos tÃ©rminos.</p>
     </div>
   </section>
 
   <section class="section" id="servicios" aria-labelledby="services-title">
     <div class="section-head">
-      <h2 id="services-title">Servicios técnicos</h2>
-      <p>Diagnóstico y reparación con presupuesto previo.</p>
+      <h2 id="services-title">Servicios tÃ©cnicos</h2>
+      <p>DiagnÃ³stico y reparaciÃ³n con presupuesto previo.</p>
     </div>
     <div class="service-grid">
       <article class="feature">
         <div class="ico" aria-hidden="true"><i class="fa-solid fa-laptop-code"></i></div>
-        <h3>Reparación de PC y laptops</h3>
-        <p>Diagnóstico de hardware, arranque, pantalla y componentes.</p>
+        <h3>ReparaciÃ³n de PC y laptops</h3>
+        <p>DiagnÃ³stico de hardware, arranque, pantalla y componentes.</p>
       </article>
       <article class="feature">
         <div class="ico" aria-hidden="true"><i class="fa-solid fa-microchip"></i></div>
         <h3>Microsoldadura de placas</h3>
-        <p>Revisión electrónica y reparación de conectores y placas.</p>
+        <p>RevisiÃ³n electrÃ³nica y reparaciÃ³n de conectores y placas.</p>
       </article>
       <article class="feature">
         <div class="ico" aria-hidden="true"><i class="fa-solid fa-windows"></i></div>
-        <h3>Formateo e instalación</h3>
-        <p>Instalación y configuración del sistema operativo y programas.</p>
+        <h3>Formateo e instalaciÃ³n</h3>
+        <p>InstalaciÃ³n y configuraciÃ³n del sistema operativo y programas.</p>
       </article>
       <article class="feature">
         <div class="ico" aria-hidden="true"><i class="fa-solid fa-fan"></i></div>
         <h3>Mantenimiento preventivo</h3>
-        <p>Limpieza interna, cuidado térmico y puesta a punto.</p>
+        <p>Limpieza interna, cuidado tÃ©rmico y puesta a punto.</p>
       </article>
       <article class="feature">
         <div class="ico" aria-hidden="true"><i class="fa-solid fa-network-wired"></i></div>
-        <h3>Instalación de redes</h3>
-        <p>Configuración de redes cableadas e inalámbricas.</p>
+        <h3>InstalaciÃ³n de redes</h3>
+        <p>ConfiguraciÃ³n de redes cableadas e inalÃ¡mbricas.</p>
       </article>
       <article class="feature">
         <div class="ico" aria-hidden="true"><i class="fa-solid fa-chart-simple"></i></div>
-        <h3>Diagnóstico electrónico</h3>
-        <p>Evaluación técnica para identificar el origen de la falla.</p>
+        <h3>DiagnÃ³stico electrÃ³nico</h3>
+        <p>EvaluaciÃ³n tÃ©cnica para identificar el origen de la falla.</p>
       </article>
       <article class="feature">
         <div class="ico" aria-hidden="true"><i class="fa-solid fa-database"></i></div>
-        <h3>Respaldo y recuperación</h3>
-        <p>Copia de seguridad y recuperación de información.</p>
+        <h3>Respaldo y recuperaciÃ³n</h3>
+        <p>Copia de seguridad y recuperaciÃ³n de informaciÃ³n.</p>
       </article>
       <article class="feature">
         <div class="ico" aria-hidden="true"><i class="fa-solid fa-shield-halved"></i></div>
-        <h3>Actualización y seguridad</h3>
-        <p>Drivers, antivirus y optimización del sistema.</p>
+        <h3>ActualizaciÃ³n y seguridad</h3>
+        <p>Drivers, antivirus y optimizaciÃ³n del sistema.</p>
       </article>
     </div>
   </section>
@@ -1565,7 +1722,7 @@ html.mpl-active[data-theme="light"] .mpl-news input{background:#050f21 !importan
   <section class="section" id="reparar" aria-labelledby="repair-title">
     <div class="section-head">
       <h2 id="repair-title">Reparar mi equipo</h2>
-      <p>Completa el formulario y genera tu ticket de atención.</p>
+      <p>Completa el formulario y genera tu ticket de atenciÃ³n.</p>
     </div>
     <form class="store-form" id="repairForm" novalidate>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px">
@@ -1575,8 +1732,8 @@ html.mpl-active[data-theme="light"] .mpl-news input{background:#050f21 !importan
           <span class="inline-error" id="errName" aria-live="polite"></span>
         </div>
         <div>
-          <label class="sr-only" for="repairEmail">Correo o teléfono</label>
-          <input class="form-control" id="repairEmail" name="contacto" placeholder="Correo o teléfono" required>
+          <label class="sr-only" for="repairEmail">Correo o telÃ©fono</label>
+          <input class="form-control" id="repairEmail" name="contacto" placeholder="Correo o telÃ©fono" required>
           <span class="inline-error" id="errEmail" aria-live="polite"></span>
         </div>
       </div>
@@ -1586,8 +1743,8 @@ html.mpl-active[data-theme="light"] .mpl-news input{background:#050f21 !importan
         <span class="inline-error" id="errDevice" aria-live="polite"></span>
       </div>
       <div style="margin-top:14px">
-        <label class="sr-only" for="repairIssue">Descripción de la falla</label>
-        <textarea class="form-control" id="repairIssue" name="falla" placeholder="Cuéntanos qué le pasa a tu equipo" required></textarea>
+        <label class="sr-only" for="repairIssue">DescripciÃ³n de la falla</label>
+        <textarea class="form-control" id="repairIssue" name="falla" placeholder="CuÃ©ntanos quÃ© le pasa a tu equipo" required></textarea>
         <span class="inline-error" id="errIssue" aria-live="polite"></span>
       </div>
       <div style="margin-top:16px">
@@ -1595,10 +1752,10 @@ html.mpl-active[data-theme="light"] .mpl-news input{background:#050f21 !importan
       </div>
     </form>
     <div class="ticket-box" id="ticketBox" role="status" aria-live="polite">
-      <p>Tu ticket de atención:</p>
+      <p>Tu ticket de atenciÃ³n:</p>
       <div class="ticket-code" id="ticketCode"></div>
       <button class="btn btn-outline btn-sm" type="button" id="copyTicket">
-        <i class="fa-regular fa-copy" aria-hidden="true"></i> Copiar código
+        <i class="fa-regular fa-copy" aria-hidden="true"></i> Copiar cÃ³digo
       </button>
     </div>
   </section>
@@ -1608,34 +1765,34 @@ html.mpl-active[data-theme="light"] .mpl-news input{background:#050f21 !importan
   <div class="site-footer-inner">
     <div>
       <h2 class="section-head" style="font-size:.95rem;font-weight:800">GALAX PC REPAIR</h2>
-      <p>Tecnología que funciona. Servicio en el que confía.</p>
+      <p>TecnologÃ­a que funciona. Servicio en el que confÃ­a.</p>
     </div>
     <div>
       <h2 style="font-size:.8rem;letter-spacing:.14em">Comprar</h2>
-      <p><a href="#catalogo">Catálogo</a><br><a href="#categorias">Categorías</a></p>
+      <p><a href="#catalogo">CatÃ¡logo</a><br><a href="#categorias">CategorÃ­as</a></p>
     </div>
     <div>
-      <h2 style="font-size:.8rem;letter-spacing:.14em">Atención</h2>
+      <h2 style="font-size:.8rem;letter-spacing:.14em">AtenciÃ³n</h2>
       <p><a href="#servicios">Servicios</a><br><a href="#reparar">Reparar mi equipo</a></p>
     </div>
   </div>
-  <div class="footer-bottom">© 2026 GALAX PC REPAIR · Precios y stock en tiempo real</div>
+  <div class="footer-bottom">Â© 2026 GALAX PC REPAIR Â· Precios y stock en tiempo real</div>
 </footer>
 
 <section class="mpl-benefits" aria-label="Beneficios de GALAX PC REPAIR">
   <div class="mpl-benefits-inner">
-    <div class="mpl-benefit"><i class="fa-solid fa-truck" aria-hidden="true"></i><strong>Envíos todo el Perú</strong><small>Delivery a Lima y envíos a provincia</small></div>
-    <div class="mpl-benefit"><i class="fa-solid fa-headset" aria-hidden="true"></i><strong>Soporte Técnico</strong><small>Atención al cliente</small></div>
+    <div class="mpl-benefit"><i class="fa-solid fa-truck" aria-hidden="true"></i><strong>EnvÃ­os todo el PerÃº</strong><small>Delivery a Lima y envÃ­os a provincia</small></div>
+    <div class="mpl-benefit"><i class="fa-solid fa-headset" aria-hidden="true"></i><strong>Soporte TÃ©cnico</strong><small>AtenciÃ³n al cliente</small></div>
     <div class="mpl-benefit"><i class="fa-solid fa-credit-card" aria-hidden="true"></i><strong>100% Pago Seguro</strong><small>Aceptamos todas tus tarjetas</small></div>
     <div class="mpl-benefit"><i class="fa-solid fa-store" aria-hidden="true"></i><strong>Retiro en tienda</strong><small>Recojo en tienda oficial</small></div>
   </div>
 </section>
 
-<section class="mpl-social" aria-label="Comunidad y boletín">
+<section class="mpl-social" aria-label="Comunidad y boletÃ­n">
   <div class="mpl-social-inner">
     <div>
       <h2>Recibe novedades y ofertas</h2>
-      <p>Síguenos en nuestras redes sociales y entérate primero de las promociones.</p>
+      <p>SÃ­guenos en nuestras redes sociales y entÃ©rate primero de las promociones.</p>
       <div class="mpl-social-icons">
         <a href="#inicio" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
         <a href="#inicio" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
@@ -1644,8 +1801,8 @@ html.mpl-active[data-theme="light"] .mpl-news input{background:#050f21 !importan
       </div>
     </div>
     <form class="mpl-news" id="newsForm" onsubmit="return false">
-      <label class="sr-only" for="newsEmail">Tu dirección de correo electrónico</label>
-      <input id="newsEmail" type="email" placeholder="Su dirección de correo electrónico" required>
+      <label class="sr-only" for="newsEmail">Tu direcciÃ³n de correo electrÃ³nico</label>
+      <input id="newsEmail" type="email" placeholder="Su direcciÃ³n de correo electrÃ³nico" required>
       <button type="submit">Suscribirse</button>
     </form>
     <span class="mpl-recs">1,824 de recomendaciones</span>
@@ -1655,7 +1812,7 @@ html.mpl-active[data-theme="light"] .mpl-news input{background:#050f21 !importan
 <section class="mpl-video" aria-labelledby="video-title">
   <div class="mpl-video-text">
     <div>
-      <h2 id="video-title">¡Gerardo Zamora!<br>Visita GALAX PC REPAIR</h2>
+      <h2 id="video-title">Â¡Gerardo Zamora!<br>Visita GALAX PC REPAIR</h2>
       <p>Gerardo Zamora nos visita en nuestro local principal</p>
       <a class="mpl-play" href="#inicio" aria-label="Ver video de la visita"><i class="fa-solid fa-play" aria-hidden="true"></i></a>
     </div>
@@ -1669,24 +1826,24 @@ html.mpl-active[data-theme="light"] .mpl-news input{background:#050f21 !importan
   <div class="mpl-footer-inner">
     <div class="gx-footer-brand" style="grid-column:1/-1">
       <img src="../assets/img/galax-wolf.svg" alt="Logo GALAX PC REPAIR" width="92" height="92">
-      <div><h2>GALAX PC REPAIR</h2><p>Tecnología que sí funciona · Venta, reparación y asistencia en un solo lugar.</p></div>
+      <div><h2>GALAX PC REPAIR</h2><p>TecnologÃ­a que sÃ­ funciona Â· Venta, reparaciÃ³n y asistencia en un solo lugar.</p></div>
     </div>
     <div>
-      <h2>VÍSTANOS</h2>
-      <p><i class="fa-solid fa-lock" aria-hidden="true"></i> GALAX PC REPAIR - Pasaje Acisco Villarán 331 Sótano 1, Lima 15001</p>
+      <h2>VÃSTANOS</h2>
+      <p><i class="fa-solid fa-lock" aria-hidden="true"></i> GALAX PC REPAIR - Pasaje Acisco VillarÃ¡n 331 SÃ³tano 1, Lima 15001</p>
     </div>
     <div class="mpl-footer-cols">
       <div>
-        <h2>CATEGORÍAS</h2>
+        <h2>CATEGORÃAS</h2>
         <p><a href="#catalogo">PC Gamer</a><br><a href="#catalogo">Componentes</a><br><a href="#catalogo">Punto de venta</a><br><a href="#catalogo">PC todo en uno</a><br><a href="#catalogo">Accesorios</a></p>
       </div>
       <div>
-        <h2>ATENCIÓN</h2>
+        <h2>ATENCIÃ“N</h2>
         <p><a href="#catalogo">Laptops</a><br><a href="#catalogo">Monitores</a><br><a href="#catalogo">Partes</a><br><a href="#catalogo">Impresoras</a><br><a href="#catalogo">Proyectores</a></p>
       </div>
     </div>
   </div>
-  <div class="mpl-footer-bottom">Política de Privacidad · Términos de Garantía · Política de Devoluciones · Términos y Condiciones · Métodos de pago<br>© 2026 GALAX PC REPAIR. Todos los derechos reservados. · Soporte 24/7</div>
+  <div class="mpl-footer-bottom">PolÃ­tica de Privacidad Â· TÃ©rminos de GarantÃ­a Â· PolÃ­tica de Devoluciones Â· TÃ©rminos y Condiciones Â· MÃ©todos de pago<br>Â© 2026 GALAX PC REPAIR. Todos los derechos reservados. Â· Soporte 24/7</div>
 </footer>
 
 <a class="mpl-whatsapp" href="https://wa.me/51983558113" aria-label="Contactar por WhatsApp al 983 558 113"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
@@ -1725,23 +1882,23 @@ html.mpl-active[data-theme="light"] .mpl-news input{background:#050f21 !importan
     <div class="chat-head sanara-head">
       <div>
         <strong>Airi</strong>
-        <small class="chat-status"><span class="pv-live" id="chatLive" aria-hidden="true"></span><span id="chatStatusText">Airi - En línea</span></small>
+        <small class="chat-status"><span class="pv-live" id="chatLive" aria-hidden="true"></span><span id="chatStatusText">Airi - En lÃ­nea</span></small>
       </div>
       <button class="chat-close" type="button" id="chatClose" aria-label="Cerrar chat"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
     </div>
     <div class="chat-messages sanara-messages" id="chatMessages" role="log" aria-live="polite" aria-relevant="additions">
       <div class="chat-msg assistant">
         <div class="bubble sanara-welcome">
-          <div class="welcome-title">¡Hola!</div>
+          <div class="welcome-title">Â¡Hola!</div>
           <p>Soy <strong>Airi</strong>, tu chatbot asistente oficial de <strong>GALAX PC REPAIR</strong>.</p>
         </div>
       </div>
     </div>
-    <div class="quick-replies" id="quickReplies" aria-label="Respuestas rápidas">
-      <button type="button" data-q="¿Qué PCs gamer tienen?">PC Gamer</button>
-      <button type="button" data-q="¿Qué laptops tienen?">Laptops</button>
-      <button type="button" data-q="¿Cuánto cuesta la reparación?">Reparación</button>
-      <button type="button" data-q="¿Qué servicios ofrecen?">Soporte</button>
+    <div class="quick-replies" id="quickReplies" aria-label="Respuestas rÃ¡pidas">
+      <button type="button" data-q="Â¿QuÃ© PCs gamer tienen?">PC Gamer</button>
+      <button type="button" data-q="Â¿QuÃ© laptops tienen?">Laptops</button>
+      <button type="button" data-q="Â¿CuÃ¡nto cuesta la reparaciÃ³n?">ReparaciÃ³n</button>
+      <button type="button" data-q="Â¿QuÃ© servicios ofrecen?">Soporte</button>
     </div>
     <form class="chat-form sanara-form" id="chatForm" novalidate>
       <div class="sanara-input-box">
@@ -1750,7 +1907,7 @@ html.mpl-active[data-theme="light"] .mpl-news input{background:#050f21 !importan
         <button class="pv-tool pv-voice" type="button" id="sanaraVoice" title="Consejos de voz" aria-label="Cambiar voz de Airi"><i class="fa-solid fa-lightbulb" aria-hidden="true"></i></button>
         <input type="text" id="chatInput" placeholder="Haz una pregunta..." aria-label="Escribe tu pregunta para Airi" autocomplete="off" required>
         <button class="pv-send" type="submit" aria-label="Enviar mensaje"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
-        <button class="pv-mic" type="button" aria-label="Micrófono"><i class="fa-solid fa-microphone" aria-hidden="true"></i></button>
+        <button class="pv-mic" type="button" aria-label="MicrÃ³fono"><i class="fa-solid fa-microphone" aria-hidden="true"></i></button>
       </div>
     </form>
   </div>
@@ -1774,8 +1931,8 @@ html.mpl-active[data-theme="light"] .mpl-news input{background:#050f21 !importan
     localStorage.setItem('sanaraPalette', String(i));
     applyPalette();
   });
-  const FEMALE_VOICES = ['helena','laura','sabina','elvira','ximena','dalia','camila','valentina','salome','salomé','monica','mónica','paulina','lucia','lucía','sofia','sofía','isabela','renata','marisol','jimena','elena','carla','paula','alba','triana','abril','miranda','natalia','andrea','tania','vera','irene','noelia','candela','estela','gloria','lola','manuela','martina','nuria','paloma','rocio','rocío','susana','victoria'];
-  const MALE_VOICES = ['pablo','raul','raúl','jorge','diego','carlos','juan','miguel','alvaro','álvaro','dario','darío','enrique','gonzalo','javier','luis','pedro','antonio','jose','josé','manuel','francisco','david','daniel','sergio','adrian','adrián','fernando','ricardo','roberto','eduardo','alejandro','andres','andrés','arturo','bruno','cesar','césar','elias','elías','emilio','felix','félix','hugo','ivan','iván','jesus','jesús','joaquin','joaquín','julio','mario','martin','martín','mateo','nicolas','nicolás','oscar','óscar','ramon','ramón','ruben','rubén','salvador','tomas','tomás','vicente','victor','víctor','arnau','nil','oriol','pau','teo','marc','alex','alberto','alfonso','alonso','benito','borja','cristian','gabriel','gerardo','guillermo','ignacio','jaime','leonardo','lorenzo','marcos','mohamed','omar','rafael','rodrigo','samuel','santiago','saul','saúl','simon','simón','ulises','valentin','valentín','xavier'];
+  const FEMALE_VOICES = ['helena','laura','sabina','elvira','ximena','dalia','camila','valentina','salome','salomÃ©','monica','mÃ³nica','paulina','lucia','lucÃ­a','sofia','sofÃ­a','isabela','renata','marisol','jimena','elena','carla','paula','alba','triana','abril','miranda','natalia','andrea','tania','vera','irene','noelia','candela','estela','gloria','lola','manuela','martina','nuria','paloma','rocio','rocÃ­o','susana','victoria'];
+  const MALE_VOICES = ['pablo','raul','raÃºl','jorge','diego','carlos','juan','miguel','alvaro','Ã¡lvaro','dario','darÃ­o','enrique','gonzalo','javier','luis','pedro','antonio','jose','josÃ©','manuel','francisco','david','daniel','sergio','adrian','adriÃ¡n','fernando','ricardo','roberto','eduardo','alejandro','andres','andrÃ©s','arturo','bruno','cesar','cÃ©sar','elias','elÃ­as','emilio','felix','fÃ©lix','hugo','ivan','ivÃ¡n','jesus','jesÃºs','joaquin','joaquÃ­n','julio','mario','martin','martÃ­n','mateo','nicolas','nicolÃ¡s','oscar','Ã³scar','ramon','ramÃ³n','ruben','rubÃ©n','salvador','tomas','tomÃ¡s','vicente','victor','vÃ­ctor','arnau','nil','oriol','pau','teo','marc','alex','alberto','alfonso','alonso','benito','borja','cristian','gabriel','gerardo','guillermo','ignacio','jaime','leonardo','lorenzo','marcos','mohamed','omar','rafael','rodrigo','samuel','santiago','saul','saÃºl','simon','simÃ³n','ulises','valentin','valentÃ­n','xavier'];
   function voiceScore(v){
     const n=(v.name||'').toLowerCase(), l=(v.lang||'').toLowerCase();
     if(!l.startsWith('es')) return -Infinity;
@@ -1785,7 +1942,7 @@ html.mpl-active[data-theme="light"] .mpl-news input{background:#050f21 !importan
     if(/natural|neural|online/.test(n)) s+=22;
     if(!v.localService) s+=12;
     if(l==='es-es') s+=8; else if(l==='es-mx') s+=7; else if(l==='es-us') s+=5;
-    const idx = ['laura','helena','elvira','ximena','dalia','camila','valentina','sabina','salome','salomé','elena','lucia','lucía','sofia','sofía'].findIndex(h=>n.includes(h));
+    const idx = ['laura','helena','elvira','ximena','dalia','camila','valentina','sabina','salome','salomÃ©','elena','lucia','lucÃ­a','sofia','sofÃ­a'].findIndex(h=>n.includes(h));
     if(idx>=0) s+=25-idx*0.5;
     if(n.includes('laura')) s+=4;
     if(n.includes('elvira')) s+=6;
@@ -1799,7 +1956,7 @@ html.mpl-active[data-theme="light"] .mpl-news input{background:#050f21 !importan
     const vs = femaleVoices();
     let saved=null; try{saved=localStorage.getItem('sanaraVoiceURI')}catch(e){}
     assistantVoice = vs.find(v=>v.voiceURI===saved) || vs[0] || null;
-    const b=document.getElementById('sanaraVoice'); if(b&&assistantVoice) b.title='Voz: '+assistantVoice.name+' — clic para cambiar';
+    const b=document.getElementById('sanaraVoice'); if(b&&assistantVoice) b.title='Voz: '+assistantVoice.name+' â€” clic para cambiar';
   };
   refreshVoice();
   if ('speechSynthesis' in window) speechSynthesis.addEventListener?.('voiceschanged', refreshVoice);
@@ -1809,15 +1966,15 @@ html.mpl-active[data-theme="light"] .mpl-news input{background:#050f21 !importan
     const next = vs[(i+1)%vs.length];
     assistantVoice = next;
     try{localStorage.setItem('sanaraVoiceURI',next.voiceURI)}catch(e){}
-    const b=document.getElementById('sanaraVoice'); b.title='Voz: '+next.name+' — clic para cambiar'; b.classList.add('active');
-    speakAssistant('Hola, soy Airi. ¿En qué puedo ayudarte?');
+    const b=document.getElementById('sanaraVoice'); b.title='Voz: '+next.name+' â€” clic para cambiar'; b.classList.add('active');
+    speakAssistant('Hola, soy Airi. Â¿En quÃ© puedo ayudarte?');
   });
   let speechSeq = 0;
   function speakAssistant(text) {
     if (!('speechSynthesis' in window) || !text) return;
     const seq = ++speechSeq;
     speechSynthesis.cancel();
-    const u = new SpeechSynthesisUtterance(String(text).replace(/[•*#]/g,' ').replace(/\s+/g,' ').trim().slice(0,600));
+    const u = new SpeechSynthesisUtterance(String(text).replace(/[â€¢*#]/g,' ').replace(/\s+/g,' ').trim().slice(0,600));
     u.lang='es-ES'; u.rate=0.93; u.pitch=0.99; u.volume=1;
     const voice = assistantVoice || femaleVoices()[0];
     if (voice) { u.voice = voice; u.lang = voice.lang || 'es-ES'; }
@@ -1848,8 +2005,8 @@ html.mpl-active[data-theme="light"] .mpl-news input{background:#050f21 !importan
 <script src="inventario_categoria1.js"></script>
 <script>
 /* =========================================================
-   GALAX PC REPAIR — App interactiva (demo estática)
-   Catálogo, carrito, servicios, reparación, accesibilidad y Airi
+   GALAX PC REPAIR â€” App interactiva (demo estÃ¡tica)
+   CatÃ¡logo, carrito, servicios, reparaciÃ³n, accesibilidad y Airi
    ========================================================= */
 (function () {
   'use strict';
@@ -1881,8 +2038,8 @@ html.mpl-active[data-theme="light"] .mpl-news input{background:#050f21 !importan
     }))
   ];
   const SERVICES = [
-    'Reparación de PC y laptops', 'Microsoldadura de placas',
-    'Formateo e instalación', 'Mantenimiento preventivo'
+    'ReparaciÃ³n de PC y laptops', 'Microsoldadura de placas',
+    'Formateo e instalaciÃ³n', 'Mantenimiento preventivo'
   ];
 
   const state = {
@@ -1926,7 +2083,7 @@ html.mpl-active[data-theme="light"] .mpl-news input{background:#050f21 !importan
     clearTimeout(toastTimer); toastTimer = setTimeout(() => el.classList.remove('show'), 3000);
   }
 
-  /* ---------- Navegación y menú móvil ---------- */
+  /* ---------- NavegaciÃ³n y menÃº mÃ³vil ---------- */
   const nav = $('#storeNav'), menuBtn = $('#menuBtn');
   function closeMenu() { nav?.classList.remove('open'); menuBtn?.setAttribute('aria-expanded','false'); }
   menuBtn?.addEventListener('click', () => {
@@ -1942,11 +2099,11 @@ html.mpl-active[data-theme="light"] .mpl-news input{background:#050f21 !importan
   $('#previewBadgeClose')?.addEventListener('click', () => { $('#previewBadge')?.remove(); });
   $('#backToTop')?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: state.perf ? 'auto' : 'smooth' }));
   $('#newsForm')?.addEventListener('submit', e => {
-    e.preventDefault(); toast('¡Gracias por suscribirte a nuestro boletín!');
+    e.preventDefault(); toast('Â¡Gracias por suscribirte a nuestro boletÃ­n!');
     const ne = $('#newsEmail'); if (ne) ne.value = '';
   });
 
-  /* ---------- Catálogo ---------- */
+  /* ---------- CatÃ¡logo ---------- */
   const grid = $('#productsGrid'), empty = $('#emptyState');
   function visibleProducts() {
     const q = state.query.trim().toLowerCase();
@@ -1986,7 +2143,7 @@ html.mpl-active[data-theme="light"] .mpl-news input{background:#050f21 !importan
         <div class="mpl-card-body">
           <span class="mpl-tag">PC GAMA MEDIA</span>
           <h3 class="mpl-name">${p.name}</h3>
-          <p class="mpl-tag">${p.id} · ${p.stock} disponibles</p>
+          <p class="mpl-tag">${p.id} Â· ${p.stock} disponibles</p>
           <div class="mpl-price">${money(p.price)}</div>
           <button class="btn" type="button" data-add="${p.id}" aria-label="Agregar ${p.name} al carrito">AGREGAR AL CARRITO</button>
         </div>
@@ -2024,9 +2181,9 @@ html.mpl-active[data-theme="light"] .mpl-news input{background:#050f21 !importan
         <span class="gx-badge">-${20 + i * 2}%</span>
         <div class="gx-card-media">${gamingSVG(p)}</div>
         <div class="gx-card-body">
-          <small>${p.id} · ${p.cat}</small>
+          <small>${p.id} Â· ${p.cat}</small>
           <h3>${p.name}</h3>
-          <span class="gx-stars" aria-label="5 de 5 estrellas">★★★★★</span>
+          <span class="gx-stars" aria-label="5 de 5 estrellas">â˜…â˜…â˜…â˜…â˜…</span>
           <div class="gx-prices"><span class="gx-old">${money(p.price * 1.25)}</span><span class="gx-new">${money(p.price)}</span></div>
           <button class="btn" type="button" data-add="${p.id}" aria-label="Agregar ${p.name} al carrito">Agregar al carrito</button>
         </div>
@@ -2070,14 +2227,14 @@ html.mpl-active[data-theme="light"] .mpl-news input{background:#050f21 !importan
       return `<div class="cart-item">
         <div class="cart-thumb"><img src="${gamingSrc(p)}" alt="" width="56" height="52" loading="lazy"></div>
         <div><strong>${p.name}</strong><div class="mini-qty">
-          <button type="button" data-dec="${p.id}" aria-label="Quitar una unidad de ${p.name}">−</button>
+          <button type="button" data-dec="${p.id}" aria-label="Quitar una unidad de ${p.name}">âˆ’</button>
           <span>${c.qty}</span>
           <button type="button" data-inc="${p.id}" aria-label="Agregar una unidad de ${p.name}">+</button>
         </div></div>
         <strong>${money(p.price * c.qty)}</strong>
       </div>`;
     }).join('');
-    box.innerHTML = rows || '<p class="empty-state">Tu carrito está vacío.</p>';
+    box.innerHTML = rows || '<p class="empty-state">Tu carrito estÃ¡ vacÃ­o.</p>';
     const total = state.cart.reduce((s,c) => s + PRODUCTS.find(p=>p.id===c.id).price*c.qty, 0);
     const sub = $('#cartSubtotal'); if (sub) sub.textContent = money(total);
     const count = state.cart.reduce((s,c)=>s+c.qty,0);
@@ -2090,15 +2247,15 @@ html.mpl-active[data-theme="light"] .mpl-news input{background:#050f21 !importan
   $('#confirmOrder')?.addEventListener('click', () => {
     if (!state.cart.length) { toast('Agrega productos antes de confirmar'); return; }
     state.cart = []; renderCart(); closeCart();
-    toast('Pedido confirmado. ¡Gracias por comprar en GALAX PC REPAIR!');
+    toast('Pedido confirmado. Â¡Gracias por comprar en GALAX PC REPAIR!');
   });
 
-  /* ---------- Formulario de reparación ---------- */
+  /* ---------- Formulario de reparaciÃ³n ---------- */
   $('#repairForm')?.addEventListener('submit', e => {
     e.preventDefault();
     const fields = [
       ['#repairName','#errName','Ingresa tu nombre'],
-      ['#repairEmail','#errEmail','Ingresa un correo o teléfono'],
+      ['#repairEmail','#errEmail','Ingresa un correo o telÃ©fono'],
       ['#repairDevice','#errDevice','Indica tu equipo'],
       ['#repairIssue','#errIssue','Describe la falla']
     ];
@@ -2119,9 +2276,9 @@ html.mpl-active[data-theme="light"] .mpl-news input{background:#050f21 !importan
     const code = $('#ticketCode')?.textContent || '';
     try {
       await navigator.clipboard.writeText(code);
-      toast('Código copiado al portapapeles');
+      toast('CÃ³digo copiado al portapapeles');
     } catch (_) {
-      toast('No se pudo copiar. Código: ' + code);
+      toast('No se pudo copiar. CÃ³digo: ' + code);
     }
   });
 
@@ -2141,7 +2298,7 @@ html.mpl-active[data-theme="light"] .mpl-news input{background:#050f21 !importan
   function openChat() {
     chatPanel?.classList.add('open');
     launcher?.setAttribute('aria-expanded','true');
-    if (statusText) statusText.textContent = 'Airi - En línea';
+    if (statusText) statusText.textContent = 'Airi - En lÃ­nea';
     start3D();
     setTimeout(() => chatInput?.focus(), 60);
   }
@@ -2160,24 +2317,24 @@ html.mpl-active[data-theme="light"] .mpl-news input{background:#050f21 !importan
   });
 
   function setTyping(on) {
-    if (statusText) statusText.textContent = on ? 'Airi - Escribiendo…' : 'Airi - En línea';
+    if (statusText) statusText.textContent = on ? 'Airi - Escribiendoâ€¦' : 'Airi - En lÃ­nea';
     if (liveDot) liveDot.classList.toggle('typing', on);
   }
   function airiReply(text) {
     const q = text.toLowerCase();
     if (/gamer|gaming|pc gamer/.test(q))
-      return 'Tenemos 11 PCs gamer desde S/ 2,099.00: Haku Red i7 (S/ 2,099), Haku Yellow i7 (S/ 2,299), Ryu RGB Ryzen 7 5700G (S/ 2,799) y Draco Blue Plus i5 12400F (S/ 4,099). Resultados reales del catálogo de GALAX PC REPAIR aqui tienes.';
-    if (/laptop|notebook|portátil/.test(q))
-      return 'Tenemos 3 laptops con stock real: HP Pavilion 15 S/ 2,899.00 (12), Lenovo IdeaPad 3 S/ 2,399.00 (8) y Asus VivoBook 15 S/ 3,499.00 (5). Resultados reales del catálogo de GALAX PC REPAIR aqui tienes.';
-    if (/accesorio|mouse|ratón/.test(q))
-      return 'En accesorios tenemos Mouse Gamer Logitech G502 a S/ 279.00 con 20 disponibles. Resultados reales del catálogo de GALAX PC REPAIR aqui tienes.';
+      return 'Tenemos 11 PCs gamer desde S/ 2,099.00: Haku Red i7 (S/ 2,099), Haku Yellow i7 (S/ 2,299), Ryu RGB Ryzen 7 5700G (S/ 2,799) y Draco Blue Plus i5 12400F (S/ 4,099). Resultados reales del catÃ¡logo de GALAX PC REPAIR aqui tienes.';
+    if (/laptop|notebook|portÃ¡til/.test(q))
+      return 'Tenemos 3 laptops con stock real: HP Pavilion 15 S/ 2,899.00 (12), Lenovo IdeaPad 3 S/ 2,399.00 (8) y Asus VivoBook 15 S/ 3,499.00 (5). Resultados reales del catÃ¡logo de GALAX PC REPAIR aqui tienes.';
+    if (/accesorio|mouse|ratÃ³n/.test(q))
+      return 'En accesorios tenemos Mouse Gamer Logitech G502 a S/ 279.00 con 20 disponibles. Resultados reales del catÃ¡logo de GALAX PC REPAIR aqui tienes.';
     if (/componente|ssd|ram|memoria/.test(q))
-      return 'Componentes disponibles: SSD NVMe 1TB S/ 489.00 (18) y Memoria RAM 16GB DDR4 S/ 329.00 (14). Resultados reales del catálogo de GALAX PC REPAIR aqui tienes.';
-    if (/servicio|reparación|reparacion|diagnóstico|diagnostico/.test(q))
-      return 'Nuestros servicios son: ' + SERVICES.join(', ') + '. El diagnóstico electrónico parte de S/ 99.00.';
-    if (/precio|cuánto|cuanto|stock|disponible/.test(q))
-      return 'Consulta laptops, accesorios o componentes y te digo precio y stock exactos desde nuestro catálogo.';
-    return 'Puedo ayudarte con laptops, componentes, accesorios, servicios y reparaciones. Pregúntame, por ejemplo, ¿qué laptops tienen?';
+      return 'Componentes disponibles: SSD NVMe 1TB S/ 489.00 (18) y Memoria RAM 16GB DDR4 S/ 329.00 (14). Resultados reales del catÃ¡logo de GALAX PC REPAIR aqui tienes.';
+    if (/servicio|reparaciÃ³n|reparacion|diagnÃ³stico|diagnostico/.test(q))
+      return 'Nuestros servicios son: ' + SERVICES.join(', ') + '. El diagnÃ³stico electrÃ³nico parte de S/ 99.00.';
+    if (/precio|cuÃ¡nto|cuanto|stock|disponible/.test(q))
+      return 'Consulta laptops, accesorios o componentes y te digo precio y stock exactos desde nuestro catÃ¡logo.';
+    return 'Puedo ayudarte con laptops, componentes, accesorios, servicios y reparaciones. PregÃºntame, por ejemplo, Â¿quÃ© laptops tienen?';
   }
   function sendMessage(text) {
     text = (text || '').trim(); if (!text) return;
@@ -2263,7 +2420,7 @@ function init() {
     // Airi quieto, encuadrado completo dentro del panel.
     pivot.position.y = -0.12;
     scene.add(pivot);
-    // La textura del GLB venía como emisiva (color base negro): pasarla a PBR.
+    // La textura del GLB venÃ­a como emisiva (color base negro): pasarla a PBR.
     const maxAniso = renderer.capabilities.getMaxAnisotropy();
     gltf.scene.traverse(o => {
       if (!o.isMesh) return;
@@ -2287,15 +2444,15 @@ function init() {
         m.needsUpdate = true;
       });
     });
-    statusEl.textContent = 'Airi - En línea';
+    statusEl.textContent = 'Airi - En lÃ­nea';
     fallback.style.display = 'none';
 
     window.sanaraSpeak(2600);
     running = true;
 
-    // Los vértices skinneados se renderizan en el espacio de geometría (la
-    // rotación del nodo root se cancela con la inverse-bind), así que se usa
-    // el boundingBox crudo de la geometría, no Box3.setFromObject.
+    // Los vÃ©rtices skinneados se renderizan en el espacio de geometrÃ­a (la
+    // rotaciÃ³n del nodo root se cancela con la inverse-bind), asÃ­ que se usa
+    // el boundingBox crudo de la geometrÃ­a, no Box3.setFromObject.
     const box = new THREE.Box3();
     gltf.scene.traverse(o => {
       if (o.isMesh && o.geometry) {
@@ -2371,3 +2528,4 @@ window.addEventListener('airi:perf', (e) => {
 </script>
 </body>
 </html>
+

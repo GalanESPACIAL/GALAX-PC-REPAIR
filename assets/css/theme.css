@@ -31,7 +31,10 @@
   --shadow: var(--gx-shadow);
 }
 
-html { scroll-behavior: smooth; }
+/* ---------- Base responsiva global ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+img, video, svg, canvas { max-width: 100%; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body.store-body {
   background:
     radial-gradient(1000px 520px at 12% -8%, rgba(79,70,229,.24), transparent 62%),
@@ -62,8 +65,9 @@ body.store-body {
   border-bottom:1px solid var(--gx-border);
 }
 .site-header-inner {
-  max-width:var(--gx-max); margin:0 auto; padding:12px 20px;
-  display:flex; align-items:center; gap:18px;
+  max-width:var(--gx-max); margin:0 auto;
+  padding:12px max(clamp(14px,4vw,32px),env(safe-area-inset-left)) max(12px,env(safe-area-inset-bottom));
+  display:flex; align-items:center; gap:clamp(8px,1.6vw,18px);
 }
 .site-nav { display:flex; align-items:center; gap:4px; margin-left:16px; }
 .site-nav a {
@@ -87,7 +91,11 @@ body.store-body {
 .mobile-menu-btn { display:none; }
 
 /* ---------- Layout ---------- */
-.store-main { max-width:var(--gx-max); margin:0 auto; padding:28px 20px 80px; min-height:70vh; }
+.store-main {
+  max-width:var(--gx-max); margin:0 auto;
+  padding:clamp(20px,4vw,36px) clamp(14px,4vw,32px) 80px;
+  min-height:70vh;
+}
 .section { margin-top:46px; }
 .section-head { display:flex; align-items:flex-end; justify-content:space-between; gap:16px; margin-bottom:18px; flex-wrap:wrap; }
 .section-head h2 { font-size:1.5rem; font-weight:800; letter-spacing:-.02em; }
@@ -274,7 +282,7 @@ body.store-body {
 .chat-launcher .dot.offline { background:#f87171; }
 .chat-panel {
   position:fixed; right:22px; bottom:92px; z-index:91; width:min(390px,calc(100vw - 28px));
-  height:min(600px,calc(100vh - 120px)); display:none; flex-direction:column;
+  height:min(600px,calc(100dvh - 120px)); display:none; flex-direction:column;
   border:1px solid var(--gx-border); border-radius:20px; overflow:hidden; background:#0b1228;
   box-shadow:0 26px 70px rgba(0,0,0,.6);
 }
@@ -287,7 +295,7 @@ body.store-body {
 .chat-panel.sanara-panel {
   --sx:#4f46e5; --sy:#22d3ee;
   --sx-soft:rgba(79,70,229,.35); --sy-soft:rgba(34,211,238,.22);
-  width:min(440px,calc(100vw - 28px)); height:min(560px,calc(100vh - 116px));
+  width:min(440px,calc(100vw - 28px)); height:min(560px,calc(100dvh - 116px));
   right:18px; bottom:86px; flex-direction:row;
   background:linear-gradient(135deg,#0a0f1f 0%,#101833 100%);
   border:1px solid rgba(125,211,252,.32);
@@ -393,12 +401,12 @@ body.store-body {
   font-size:.85rem; cursor:pointer; display:inline-flex; align-items:center; justify-content:center;
 }
 @media(max-width:700px) {
-  .chat-panel.sanara-panel { width:min(440px,calc(100vw - 40px)); height:min(520px,calc(100vh - 116px)); right:12px; bottom:80px; }
+  .chat-panel.sanara-panel { width:min(440px,calc(100vw - 40px)); height:min(520px,calc(100dvh - 116px)); right:12px; bottom:80px; }
   .sanara-stage { flex-basis:30%; }
 }
 @media(max-width:480px) {
   .sanara-stage { display:none; }
-  .chat-panel.sanara-panel { height:min(460px,calc(100vh - 120px)); }
+  .chat-panel.sanara-panel { height:min(460px,calc(100dvh - 120px)); }
 }
 .chat-head strong { display:block; font-size:.92rem; }
 .chat-head small { color:#a5b4fc; font-size:.72rem; }
@@ -449,7 +457,11 @@ body.store-body {
 
 /* ---------- Footer ---------- */
 .site-footer { border-top:1px solid var(--gx-border); background:rgba(4,8,20,.7); margin-top:60px; }
-.site-footer-inner { max-width:var(--gx-max); margin:0 auto; padding:36px 20px; display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:30px; }
+.site-footer-inner {
+  max-width:var(--gx-max); margin:0 auto;
+  padding:36px clamp(14px,4vw,32px);
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:clamp(18px,3vw,30px);
+}
 .site-footer h4 { font-size:.8rem; text-transform:uppercase; letter-spacing:.14em; color:#a5b4fc; margin-bottom:14px; }
 .site-footer p, .site-footer a { color:var(--gx-muted); font-size:.84rem; line-height:1.9; text-decoration:none; }
 .site-footer a:hover { color:var(--gx-cyan); }
@@ -568,3 +580,129 @@ body .gradient-text {
   .btn-whatsapp { justify-content: center; white-space: normal; }
   .promo-banner { padding: 28px; min-height: 240px; }
 }
+
+/* ---------- Accesibilidad táctil y safe areas ---------- */
+@media (hover:none) and (pointer:coarse) {
+  button, a, input, select, textarea { min-height:44px; }
+  button, a { min-width:44px; }
+  a { display:inline-flex; align-items:center; }
+  .header-icon, .mobile-menu-btn, .chat-close { width:44px; height:44px; }
+  .site-nav a { display:inline-flex; align-items:center; justify-content:center; }
+  form .form-control, .sanara-form input { min-height:44px; font-size:16px; }
+}
+.search-box { max-width:100%; }
+.search-box input, .search-box select { min-width:0; }
+/* Respetar zonas seguras en dispositivos con notch / barra inferior */
+@supports (padding: env(safe-area-inset-left)) {
+  .site-header-inner { padding-left:max(clamp(14px,4vw,32px),env(safe-area-inset-left)); padding-right:max(clamp(14px,4vw,32px),env(safe-area-inset-right)); }
+  .store-main { padding-left:max(clamp(14px,4vw,32px),env(safe-area-inset-left)); padding-right:max(clamp(14px,4vw,32px),env(safe-area-inset-right)); }
+  .chat-launcher { right:max(14px,env(safe-area-inset-right)); bottom:max(14px,env(safe-area-inset-bottom)); }
+  .chat-panel, .chat-panel.sanara-panel { right:max(12px,env(safe-area-inset-right)); bottom:max(80px,calc(env(safe-area-inset-bottom) + 76px)); }
+}
+/* Tablas densas: scroll horizontal en pantallas pequeñas */
+@media (max-width:560px) {
+  .store-main table { display:block; width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; white-space:nowrap; }
+  .store-main th, .store-main td { white-space:nowrap; }
+}
+
+/* =====================================================================
+   AIRI â€” Layout final del widget (mÃ¡xima prioridad)
+   ===================================================================== */
+.chat-panel.sanara-panel,
+html.mpl-active .chat-panel.sanara-panel {
+  position:fixed !important;
+  bottom:90px !important;
+  right:20px !important;
+  z-index:95 !important;
+  max-height:calc(100dvh - 140px) !important;
+  width:min(720px,92vw) !important;
+  height:min(560px,calc(100dvh - 140px)) !important;
+  grid-template-columns:260px 1fr !important;
+  grid-template-rows:1fr !important;
+  overflow:hidden !important;
+}
+.chat-panel.sanara-panel.open,
+html.mpl-active .chat-panel.sanara-panel.open { display:grid !important; }
+.sanara-stage,
+html.mpl-active .chat-panel.sanara-panel .sanara-stage {
+  position:relative !important;
+  width:100% !important;
+  height:100% !important;
+  min-width:0 !important;
+  min-height:0 !important;
+  overflow:hidden !important;
+  display:flex !important;
+  align-items:flex-end !important;
+  justify-content:center !important;
+}
+.sanara-stage-canvas,
+.sanara-stage-canvas canvas,
+.sanara-stage-canvas img,
+.sanara-stage-canvas video {
+  width:100% !important;
+  height:100% !important;
+  object-fit:contain !important;
+  display:block !important;
+}
+.sanara-chat,
+html.mpl-active .sanara-chat {
+  width:100% !important;
+  min-width:0 !important;
+  height:100% !important;
+  display:flex !important;
+  flex-direction:column !important;
+  overflow:hidden !important;
+}
+.sanara-head, .chat-head.sanara-head {
+  width:100% !important;
+  flex-shrink:0 !important;
+  box-sizing:border-box !important;
+}
+.sanara-messages {
+  flex:1 !important;
+  overflow-y:auto !important;
+  overflow-x:hidden !important;
+  padding:16px !important;
+}
+html.mpl-active .sanara-messages .chat-msg.assistant .bubble { min-height:0 !important; }
+.sanara-welcome .bubble { min-height:0 !important; }
+.quick-replies {
+  display:flex !important;
+  flex-wrap:wrap !important;
+  gap:8px !important;
+  max-width:100% !important;
+  box-sizing:border-box !important;
+}
+.sanara-form {
+  width:100% !important;
+  box-sizing:border-box !important;
+  flex-shrink:0 !important;
+}
+.sanara-input-box {
+  display:flex !important;
+  align-items:center !important;
+  gap:8px !important;
+  width:100% !important;
+  max-width:100% !important;
+  box-sizing:border-box !important;
+}
+.sanara-form input { flex:1 !important; min-width:0 !important; }
+
+@media (max-width:767px) {
+  .chat-panel.sanara-panel,
+  html.mpl-active .chat-panel.sanara-panel {
+    width:calc(100vw - 24px) !important;
+    right:12px !important;
+    bottom:86px !important;
+    height:min(560px,calc(100dvh - 140px)) !important;
+    grid-template-columns:1fr !important;
+    grid-template-rows:180px 1fr !important;
+  }
+  .sanara-stage,
+  html.mpl-active .chat-panel.sanara-panel .sanara-stage {
+    display:flex !important;
+    height:180px !important;
+  }
+  .sanara-chat { height:100% !important; }
+}
+
