@@ -729,3 +729,34 @@ body.store-body {
     linear-gradient(90deg,#080d1f 0%,#101033 16%,#3b1d8f 36%,#7c3aed 55%,#2563eb 73%,#06b6d4 90%,#22d3ee 100%) !important;
   background-attachment:fixed !important;
 }
+
+/* Unificación visual: degradado GALAX en botones, tarjetas y secciones */
+:root {
+  --gx-grad-btn: linear-gradient(135deg,#4f46e5,#7c3aed 55%,#22d3ee);
+  --gx-grad-surface: linear-gradient(135deg,rgba(79,70,229,.18),rgba(34,211,238,.09)),rgba(8,13,31,.78);
+}
+.btn-glow, .btn-primary, .btn-success, .btn-info, .btn-warning,
+.btn-whatsapp, .pv-send, .quick-replies button {
+  background:var(--gx-grad-btn) !important;
+  color:#fff !important;
+  border:1px solid rgba(165,180,252,.55) !important;
+  box-shadow:0 8px 22px rgba(79,70,229,.35) !important;
+}
+.btn-outline, .btn-ghost, .chip {
+  border-color:rgba(34,211,238,.5) !important;
+  color:#e0f2fe !important;
+}
+.chip:hover, .category-tile:hover {
+  border-color:#22d3ee !important;
+  background:linear-gradient(135deg,rgba(79,70,229,.32),rgba(34,211,238,.2)) !important;
+}
+.card, .product-card, .feature, .project-card, .filter-panel, .whatsapp-cta {
+  background:var(--gx-grad-surface) !important;
+  border:1px solid rgba(124,58,237,.35) !important;
+}
+.site-header, .site-footer {
+  background:linear-gradient(90deg,rgba(8,13,31,.92),rgba(59,29,143,.6),rgba(6,182,212,.38)) !important;
+}
+.product-media, .detail-gallery {
+  background:linear-gradient(135deg,rgba(79,70,229,.24),rgba(8,13,31,.5)) !important;
+}
