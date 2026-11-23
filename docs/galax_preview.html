@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>GALAX PC REPAIR â€” Tienda, reparaciones y asistente Airi</title>
+<title>GALAX PC REPAIR — Tienda, reparaciones y asistente Airi</title>
 <meta name="description" content="GALAX PC REPAIR: componentes y laptops con stock real, servicios de reparación técnica y el asistente virtual Airi.">
-<meta property="og:title" content="GALAX PC REPAIR â€” Asistente Airi">
+<meta property="og:title" content="GALAX PC REPAIR — Asistente Airi">
 <meta property="og:description" content="Tienda de informática, reparaciones y asistente virtual Airi con productos y precios reales.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
@@ -328,7 +328,7 @@ tbody tr:last-child td { border-bottom: none; }
 }
 
 /* =====================================================================
-   GALAX PC REPAIR â€” Design system unificado
+   GALAX PC REPAIR — Design system unificado
    Azul oscuro · Morado tecnológico · Celeste · Blanco
    Se carga DESPUÃ‰S de style.css para conservar el panel heredado.
    ===================================================================== */
@@ -727,7 +727,7 @@ body.store-body {
   .pv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}
   .pv-chip{display:inline-flex;align-items:center;gap:8px;padding:9px 13px;border-radius:10px;
     background:rgba(255,255,255,.05);border:1px solid var(--gx-border);font-size:.85rem}
-  /* Panel Airi â€” cuerpo a la izquierda, conversación a la derecha */
+  /* Panel Airi — cuerpo a la izquierda, conversación a la derecha */
   .chat-panel.sanara-panel{
     --sx:#4f46e5; --sy:#22d3ee;
     --sx-soft:rgba(79,70,229,.35); --sy-soft:rgba(34,211,238,.22);
@@ -1030,7 +1030,7 @@ html.mpl-active .section-head h2{color:#17202a}
 
 <style>
 /* =========================================================
-   GALAX PC REPAIR â€” Azul neón / cian fosforecente
+   GALAX PC REPAIR — Azul neón / cian fosforecente
    Override de la capa anterior, conservando funcionalidad
    ========================================================= */
 html.mpl-active, html.mpl-active body{
@@ -1202,7 +1202,7 @@ html.mpl-active .neon-shot small{color:#7dd3fc}
 
 <style>
 /* =========================================================
-   GALAX PC REPAIR â€” CAPA FINAL (mezcla de los 3 diseños)
+   GALAX PC REPAIR — CAPA FINAL (mezcla de los 3 diseños)
    ========================================================= */
 html.mpl-active .gx-promo{
   background:linear-gradient(90deg,#4f46e5,#22d3ee,#4f46e5);color:#04121c;text-align:center;
@@ -1264,7 +1264,7 @@ html.mpl-active .gx-wolf-sm{width:46px;height:46px;filter:drop-shadow(0 0 12px r
 
 <style>
 /* =========================================================
-   AIRI â€” Réplica del diseño de referencia
+   AIRI — Réplica del diseño de referencia
    ========================================================= */
 html.mpl-active .chat-panel.sanara-panel{
   width:min(440px,calc(100vw - 40px));
@@ -1397,7 +1397,7 @@ html.mpl-active .mpl-search{height:44px !important}
 <style>
 
 /* =====================================================================
-   AIRI â€” Layout final del widget (máxima prioridad)
+   AIRI — Layout final del widget (máxima prioridad)
    ===================================================================== */
 .chat-panel.sanara-panel,
 html.mpl-active .chat-panel.sanara-panel {
@@ -1510,6 +1510,34 @@ body {
     linear-gradient(90deg,#080d1f 0%,#101033 16%,#3b1d8f 36%,#7c3aed 55%,#2563eb 73%,#06b6d4 90%,#22d3ee 100%) !important;
   background-attachment:fixed !important;
 }
+/* Buscador y anuncios: diseño solicitado */
+.gx-search-wrap { position:relative; width:100%; max-width:520px; margin:0 auto; }
+#searchInput {
+  width:100%; background:#161a1f !important; border:1px solid rgba(34,211,238,.28) !important;
+  border-radius:18px !important; padding:16px 54px 16px 20px !important;
+  color:#e8f4ff !important; font-size:1.05rem !important; min-height:56px;
+  box-shadow:0 10px 26px rgba(0,0,0,.4) !important;
+}
+#searchInput::placeholder { color:#9aa8c7 !important; }
+.gx-search-wrap i {
+  position:absolute; right:20px; top:50%; transform:translateY(-50%);
+  color:#22c55e !important; font-size:1.2rem; pointer-events:none;
+}
+html.mpl-active .gx-promo-main {
+  background:url('anuncio/anuncio_movible%2001.jpeg') center/cover no-repeat !important;
+  min-height:240px; border-radius:24px !important;
+  border:1px solid rgba(34,211,238,.5) !important;
+  box-shadow:0 14px 36px rgba(0,0,0,.45) !important;
+}
+html.mpl-active .gx-promo-main > span,
+html.mpl-active .gx-promo-main > strong,
+html.mpl-active .gx-promo-main > small { display:none !important; }
+html.mpl-active .gx-promo-card {
+  border-radius:24px !important; overflow:hidden !important;
+  background:linear-gradient(135deg,rgba(79,70,229,.18),rgba(34,211,238,.09)),rgba(8,13,31,.78) !important;
+  border:1px solid rgba(124,58,237,.35) !important;
+}
+html.mpl-active .gx-promo-card img { border-radius:16px; background:#0b1228; }
 /* Hero más compacto y centrado */
 .hero, html.mpl-active .hero { max-width:680px !important; margin-left:auto !important; margin-right:auto !important; }
 /* Unificación visual: degradado GALAX en botones, tarjetas y secciones */
@@ -1579,7 +1607,7 @@ html.mpl-active .sanara-messages .chat-msg.assistant .bubble { padding:12px 14px
 </div>
 <header class="mpl-header">
   <div class="mpl-header-inner">
-    <a class="mpl-logo" href="#inicio" aria-label="GALAX PC REPAIR â€” ir al inicio" style="display:flex;align-items:center;gap:10px">
+    <a class="mpl-logo" href="#inicio" aria-label="GALAX PC REPAIR — ir al inicio" style="display:flex;align-items:center;gap:10px">
       <img class="gx-wolf-sm" src="../assets/img/galax-wolf.svg" alt="" width="46" height="46" aria-hidden="true">
       <span>GALAX <b>PC REPAIR</b><small style="display:block;font-size:.4rem;color:#7dd3fc;letter-spacing:1px">TECNOLOGÍA QUE SÍ FUNCIONA</small></span>
     </a>
@@ -1594,12 +1622,8 @@ html.mpl-active .sanara-messages .chat-msg.assistant .bubble { padding:12px 14px
       </select>
     </form>
     <a class="btn btn-outline btn-sm" href="#reparar" style="border-color:#3b82f6;color:#bfdbfe;background:rgba(59,130,246,.18)">Iniciar Sesión</a>
-    <a class="btn btn-outline btn-sm" href="#servicios" style="border-color:rgba(34,211,238,.5);color:#a5f3fc">Modo Administrador <i class="fa-solid fa-gear" aria-hidden="true"></i></a>
     <button class="icon-btn" type="button" id="themeBtn" aria-label="Activar modo claro" title="Modo claro">
       <i class="fa-solid fa-sun" aria-hidden="true"></i>
-    </button>
-    <button class="icon-btn" type="button" id="perfBtn" aria-label="Activar modo rendimiento" title="Modo rendimiento">
-      <i class="fa-solid fa-bolt" aria-hidden="true"></i>
     </button>
     <button class="icon-btn mobile-menu-btn" type="button" id="menuBtn"
             aria-label="Abrir menú" aria-expanded="false" aria-controls="storeNav">
@@ -1659,7 +1683,7 @@ html.mpl-active .sanara-messages .chat-msg.assistant .bubble { padding:12px 14px
 
   <section class="neon-banner" aria-label="Airi, asistente de IA">
     <div>
-      <h2>Conoce a Airi â€” Tu asistente de IA en GALAX PC REPAIR</h2>
+      <h2>Conoce a Airi — Tu asistente de IA en GALAX PC REPAIR</h2>
       <p>Pregúntale por productos, precios, stock y reparaciones con voz femenina.</p>
     </div>
     <button type="button" id="bannerChatBtn">Iniciar Chat</button>
@@ -1698,17 +1722,17 @@ html.mpl-active .sanara-messages .chat-msg.assistant .bubble { padding:12px 14px
   </section>
 
   <section class="gx-promo-wrap" aria-label="Promociones Cyberspace">
-    <div class="gx-promo-main">
+    <div class="gx-promo-main" role="img" aria-label="Ofertas especiales en componentes de alto rendimiento">
       <span>CYBERSPACE</span><strong>30%<br>DE DESCUENTO</strong><small>En laptops y componentes seleccionados · Solo por tiempo limitado</small>
     </div>
     <div class="gx-promo-card">
       <img src="../assets/img/productos/LAP-001.png" alt="Laptop HP Pavilion 15" width="300" height="200" loading="lazy">
-      <h3>Laptop HP Pavilion 15 â€” Core i5 / 8GB / 512GB</h3>
+      <h3>Laptop HP Pavilion 15 — Core i5 / 8GB / 512GB</h3>
       <div class="gx-prices"><span class="gx-old">S/ 3,899.00</span><span class="gx-new">S/ 2,899.00</span></div>
     </div>
     <div class="gx-promo-card">
       <img src="../assets/img/productos/MON-001.svg" alt="Monitor Gamer 24" width="300" height="200" loading="lazy">
-      <h3>Monitor Gamer 24" â€” 165Hz / 1ms / IPS</h3>
+      <h3>Monitor Gamer 24" — 165Hz / 1ms / IPS</h3>
       <div class="gx-prices"><span class="gx-old">S/ 899.00</span><span class="gx-new">S/ 649.00</span></div>
     </div>
   </section>
@@ -1721,8 +1745,11 @@ html.mpl-active .sanara-messages .chat-msg.assistant .bubble { padding:12px 14px
       </div>
     </div>
     <div class="catalog-toolbar">
-      <input type="search" id="searchInput" placeholder="Buscar productos por nombreâ€¦"
-             aria-label="Buscar productos en el catálogo" autocomplete="off">
+      <div class="gx-search-wrap">
+        <input type="search" id="searchInput" placeholder="Buscar productos..."
+               aria-label="Buscar productos en el catálogo" autocomplete="off">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+      </div>
     </div>
     <div class="products-grid" id="productsGrid"></div>
     <div class="empty-state" id="emptyState" hidden>
@@ -2018,7 +2045,7 @@ html.mpl-active .sanara-messages .chat-msg.assistant .bubble { padding:12px 14px
     const vs = femaleVoices();
     let saved=null; try{saved=localStorage.getItem('sanaraVoiceURI')}catch(e){}
     assistantVoice = vs.find(v=>v.voiceURI===saved) || vs[0] || null;
-    const b=document.getElementById('sanaraVoice'); if(b&&assistantVoice) b.title='Voz: '+assistantVoice.name+' â€” clic para cambiar';
+    const b=document.getElementById('sanaraVoice'); if(b&&assistantVoice) b.title='Voz: '+assistantVoice.name+' — clic para cambiar';
   };
   refreshVoice();
   if ('speechSynthesis' in window) speechSynthesis.addEventListener?.('voiceschanged', refreshVoice);
@@ -2028,7 +2055,7 @@ html.mpl-active .sanara-messages .chat-msg.assistant .bubble { padding:12px 14px
     const next = vs[(i+1)%vs.length];
     assistantVoice = next;
     try{localStorage.setItem('sanaraVoiceURI',next.voiceURI)}catch(e){}
-    const b=document.getElementById('sanaraVoice'); b.title='Voz: '+next.name+' â€” clic para cambiar'; b.classList.add('active');
+    const b=document.getElementById('sanaraVoice'); b.title='Voz: '+next.name+' — clic para cambiar'; b.classList.add('active');
     speakAssistant('Hola, soy Airi. ¿En qué puedo ayudarte?');
   });
   let speechSeq = 0;
@@ -2036,7 +2063,7 @@ html.mpl-active .sanara-messages .chat-msg.assistant .bubble { padding:12px 14px
     if (!('speechSynthesis' in window) || !text) return;
     const seq = ++speechSeq;
     speechSynthesis.cancel();
-    const u = new SpeechSynthesisUtterance(String(text).replace(/[â€¢*#]/g,' ').replace(/\s+/g,' ').trim().slice(0,600));
+    const u = new SpeechSynthesisUtterance(String(text).replace(/[•*#]/g,' ').replace(/\s+/g,' ').trim().slice(0,600));
     u.lang='es-ES'; u.rate=0.93; u.pitch=0.99; u.volume=1;
     const voice = assistantVoice || femaleVoices()[0];
     if (voice) { u.voice = voice; u.lang = voice.lang || 'es-ES'; }
@@ -2067,7 +2094,7 @@ html.mpl-active .sanara-messages .chat-msg.assistant .bubble { padding:12px 14px
 <script src="inventario_categoria1.js"></script>
 <script>
 /* =========================================================
-   GALAX PC REPAIR â€” App interactiva (demo estática)
+   GALAX PC REPAIR — App interactiva (demo estática)
    Catálogo, carrito, servicios, reparación, accesibilidad y Airi
    ========================================================= */
 (function () {
@@ -2390,7 +2417,7 @@ html.mpl-active .sanara-messages .chat-msg.assistant .bubble { padding:12px 14px
   });
 
   function setTyping(on) {
-    if (statusText) statusText.textContent = on ? 'Airi - Escribiendoâ€¦' : 'Airi - En línea';
+    if (statusText) statusText.textContent = on ? 'Airi - Escribiendo…' : 'Airi - En línea';
     if (liveDot) liveDot.classList.toggle('typing', on);
   }
   function airiReply(text) {
