@@ -725,7 +725,7 @@ html.mpl-active .sanara-messages .chat-msg.assistant .bubble { min-height:0 !imp
 /* Color base de la pagina: degradado morado -> cian de GALAX */
 body.store-body {
   background:
-    linear-gradient(135deg,rgba(8,13,31,.58),rgba(8,13,31,.72)),
-    linear-gradient(135deg,#4f46e5 0%,#7c3aed 48%,#22d3ee 100%) !important;
+    radial-gradient(120% 100% at 50% 50%,rgba(8,13,31,0),rgba(8,13,31,.28)),
+    linear-gradient(90deg,#080d1f 0%,#101033 16%,#3b1d8f 36%,#7c3aed 55%,#2563eb 73%,#06b6d4 90%,#22d3ee 100%) !important;
   background-attachment:fixed !important;
 }
