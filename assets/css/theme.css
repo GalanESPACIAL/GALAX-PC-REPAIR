@@ -721,3 +721,11 @@ html.mpl-active .sanara-messages .chat-msg.assistant .bubble { min-height:0 !imp
 .sanara-welcome .welcome-title { margin-bottom:6px !important; }
 .sanara-welcome p { margin:4px 0 !important; }
 
+
+/* Color base de la pagina: degradado morado -> cian de GALAX */
+body.store-body {
+  background:
+    linear-gradient(135deg,rgba(8,13,31,.58),rgba(8,13,31,.72)),
+    linear-gradient(135deg,#4f46e5 0%,#7c3aed 48%,#22d3ee 100%) !important;
+  background-attachment:fixed !important;
+}
