@@ -35,6 +35,18 @@ const VIEWPORTS = [
         input: rect('.sanara-form input'),
         nav: rect('.mpl-header, .site-header'),
         chatCol: rect('.sanara-chat'),
+        avatar: (() => {
+          const fb = document.querySelector('.sanara-fallback');
+          const cv = document.querySelector('.sanara-stage-canvas canvas');
+          const meta = el => {
+            if (!el) return null;
+            const b = el.getBoundingClientRect(), cs = getComputedStyle(el);
+            return { w: Math.round(b.width), h: Math.round(b.height), opacity: parseFloat(cs.opacity), display: cs.display, z: cs.zIndex, natural: el.naturalWidth || 0 };
+          };
+          return { fallback: meta(fb), canvas: meta(cv) };
+        })(),
+        badChars: (document.body.innerText.match(/[\u00c2\u00c3]/g) || []).length,
+        welcomeH: (() => { const e = document.querySelector('.sanara-welcome'); return e ? Math.round(e.getBoundingClientRect().height) : null; })(),
         panelScroll: panel ? { sw: panel.scrollWidth, cw: panel.clientWidth } : null,
         chatScroll: (() => { const e = document.querySelector('.sanara-chat'); return e ? { sw: e.scrollWidth, cw: e.clientWidth } : null; })(),
         open: panel ? panel.classList.contains('open') : false,
@@ -60,6 +72,13 @@ const VIEWPORTS = [
       if (r.canvas.l < r.stage.l - 2 || r.canvas.r > r.stage.r + 2) issues.push('avatar cortado horizontalmente');
       if (r.canvas.b > r.stage.b + 2 || r.canvas.t < r.stage.t - 2) issues.push('avatar cortado verticalmente');
     } else issues.push('no se encontró canvas/imagen del avatar');
+    const av = r.avatar || {};
+    const visibleAvatar =
+      (av.fallback && av.fallback.w > 100 && av.fallback.h > 100 && av.fallback.opacity > 0 && av.fallback.display !== 'none' && av.fallback.natural > 0) ||
+      (av.canvas && av.canvas.w > 100 && av.canvas.h > 100 && av.canvas.opacity > 0 && av.canvas.display !== 'none');
+    if (!visibleAvatar) issues.push('avatar no visible: ' + JSON.stringify(av));
+    if (r.badChars > 0) issues.push('mojibake en innerText: ' + r.badChars + ' caracteres');
+    if (r.welcomeH !== null && r.welcomeH > 320) issues.push('burbuja de bienvenida demasiado alta: ' + r.welcomeH);
     issues.push(...errors.slice(0, 5).map(e => 'consola: ' + e));
     const ok = issues.length === 0;
     if (!ok) failed++;

@@ -348,6 +348,8 @@
       const open = panel.classList.toggle('open');
       launcher.setAttribute('aria-expanded', open ? 'true' : 'false');
       if (open) {
+        // El avatar 3D se inicializó oculto: forzar resize con el panel visible.
+        requestAnimationFrame(() => requestAnimationFrame(() => window.dispatchEvent(new Event('resize'))));
         checkHealth(); input?.focus();
         if (!greeted) {
           greeted = true;

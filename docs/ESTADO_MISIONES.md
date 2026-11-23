@@ -63,6 +63,7 @@
 - Suite Playwright: `tests/responsive.spec.js` (8 viewports) → **8/8 PASS**.
 - Verificación específica de Airi: `tests/airi.spec.js` (1440×900, 768×1024, 375×812) → **3/3 PASS**.
 - Correcciones: viewport con `viewport-fit=cover`, `box-sizing` global, `max-width:100%` en medios, paddings fluidos `clamp()`, `100dvh`, targets táctiles ≥44px, safe areas, tablas con scroll, cierre del menú móvil con Escape/click fuera, y layout final de Airi en grid (260px + 1fr en desktop; 180px + 1fr en móvil).
+- Corrección adicional: avatar de Airi restaurado (fallback visível hasta que el GLB renderiza, z-index y resize en `requestAnimationFrame` al abrir), mojibake eliminado y archivos guardados en UTF-8 sin BOM, burbuja de bienvenida compacta.
 - Comando: `node tests/responsive.spec.js` y `node tests/airi.spec.js` (requiere `npm install --no-save playwright@1.65.1` y servidor en `:8099`).
 
 ## Próximas tareas

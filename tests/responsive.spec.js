@@ -67,7 +67,7 @@ const VIEWPORTS = [
           const r = el.getBoundingClientRect();
           const cs = getComputedStyle(el);
           if (cs.position !== 'fixed' && (r.right > vw + 2 || r.left < -2)) {
-            out.outside.push({ tag: el.tagName, cls: (el.className || '').toString().slice(0, 60), left: Math.round(r.left), right: Math.round(r.right) });
+            out.outside.push({ tag: el.tagName, cls: (el.className || '').toString().slice(0, 60), parent: (el.parentElement?.className || '').toString().slice(0, 40), left: Math.round(r.left), right: Math.round(r.right) });
           }
         }
 
