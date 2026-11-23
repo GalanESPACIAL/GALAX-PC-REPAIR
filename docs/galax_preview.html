@@ -1510,6 +1510,15 @@ body {
     linear-gradient(90deg,#080d1f 0%,#101033 16%,#3b1d8f 36%,#7c3aed 55%,#2563eb 73%,#06b6d4 90%,#22d3ee 100%) !important;
   background-attachment:fixed !important;
 }
+/* Selector y carrito en la barra superior */
+.mpl-topbar { align-items:center; padding:8px 20px; }
+.mpl-topbar .mpl-search { order:1; width:150px; max-width:150px; margin:0; }
+.mpl-topbar .mpl-search select {
+  width:100%; height:40px; border-radius:12px; padding:0 12px;
+  background:#161a1f; color:#e8f4ff; border:1px solid rgba(34,211,238,.35);
+}
+.mpl-topbar #cartBtn { order:2; width:40px; height:40px; }
+.mpl-topbar > span { order:3; margin-left:auto; }
 /* Buscador y anuncios: diseño solicitado */
 .gx-search-wrap { position:relative; width:100%; max-width:520px; margin:0 auto; }
 #searchInput {
@@ -1608,6 +1617,20 @@ html.mpl-active .sanara-messages .chat-msg.assistant .bubble { padding:12px 14px
 <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
 
 <div class="mpl-topbar">
+  <form class="mpl-search" id="mplSearchForm" role="search">
+    <select id="mplCategorySelect" aria-label="Filtrar por categoría">
+      <option value="Todos">Todas</option>
+      <option value="PCs y Laptops">PCs y Laptops</option>
+      <option value="PC Gamer">PC Gamer</option>
+      <option value="Laptops">Laptops</option>
+      <option value="Componentes">Componentes</option>
+      <option value="Accesorios">Accesorios</option>
+    </select>
+  </form>
+  <button class="icon-btn" type="button" id="cartBtn" aria-label="Abrir carrito, 0 productos">
+    <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+    <span class="badge" id="cartCount">0</span>
+  </button>
   <span>Lunes a Sábado 9am a 6pm - Domingo 10am a 4pm</span>
 </div>
 <header class="mpl-header">
@@ -1616,23 +1639,9 @@ html.mpl-active .sanara-messages .chat-msg.assistant .bubble { padding:12px 14px
       <img class="gx-wolf-sm" src="../assets/img/galax-wolf.svg" alt="" width="46" height="46" aria-hidden="true">
       <span>GALAX <b>PC REPAIR</b><small style="display:block;font-size:.4rem;color:#7dd3fc;letter-spacing:1px">TECNOLOGÍA QUE SÍ FUNCIONA</small></span>
     </a>
-    <form class="mpl-search" id="mplSearchForm" role="search">
-      <select id="mplCategorySelect" aria-label="Filtrar por categoría">
-        <option value="Todos">Todas</option>
-        <option value="PCs y Laptops">PCs y Laptops</option>
-        <option value="PC Gamer">PC Gamer</option>
-        <option value="Laptops">Laptops</option>
-        <option value="Componentes">Componentes</option>
-        <option value="Accesorios">Accesorios</option>
-      </select>
-    </form>
     <a class="btn btn-outline btn-sm" href="#reparar" style="border-color:#3b82f6;color:#bfdbfe;background:rgba(59,130,246,.18)">Iniciar Sesión</a>
     <button class="icon-btn" type="button" id="themeBtn" aria-label="Activar modo claro" title="Modo claro">
       <i class="fa-solid fa-sun" aria-hidden="true"></i>
-    </button>
-    <button class="icon-btn" type="button" id="cartBtn" aria-label="Abrir carrito, 0 productos">
-      <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
-      <span class="badge" id="cartCount">0</span>
     </button>
   </div>
 </header>
