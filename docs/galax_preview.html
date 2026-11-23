@@ -1505,6 +1505,15 @@ html.mpl-active .sanara-messages .chat-msg.assistant .bubble { min-height:0 !imp
 /* Selector de categoría sin campo ni botón de búsqueda */
 .mpl-search { width:150px !important; flex:0 0 150px !important; max-width:150px !important; margin:0 8px 0 0 !important; padding:0 !important; border-radius:10px !important; }
 .mpl-search select { width:100% !important; max-width:none !important; border:0 !important; border-radius:10px !important; background:transparent !important; padding:0 12px !important; font-size:.85rem !important; }
+/* Reproductor del video promocional */
+.mpl-play { border:0; cursor:pointer; padding:0; }
+.mpl-video-art { position:relative; }
+.mpl-video-art video {
+  display:none; position:absolute; inset:0; width:100%; height:100%;
+  object-fit:contain; background:#050b1a; border-radius:6px;
+}
+.mpl-video-art.playing img { display:none; }
+.mpl-video-art.playing video { display:block; }
 /* ---------- Restauración del avatar y burbuja compacta ---------- */
 .sanara-room, .sanara-stage-glow { z-index:0 !important; }
 .sanara-desk { z-index:4 !important; }
@@ -1828,11 +1837,12 @@ html.mpl-active .sanara-messages .chat-msg.assistant .bubble { padding:12px 14px
     <div>
       <h2 id="video-title">Pedro Arribasplata<br>Visita GALAX PC REPAIR</h2>
       <p>Pedro Arribasplata nos visita en nuestro local principal</p>
-      <a class="mpl-play" href="#inicio" aria-label="Ver video de la visita"><i class="fa-solid fa-play" aria-hidden="true"></i></a>
+      <button type="button" class="mpl-play" id="promoPlayBtn" aria-label="Reproducir video de la visita"><i class="fa-solid fa-play" aria-hidden="true"></i></button>
     </div>
   </div>
-  <div class="mpl-video-art" role="img" aria-label="Anuncio de GALAX PC REPAIR">
-    <img src="anuncio/image_e539bf5a.jpg" alt="Anuncio de GALAX PC REPAIR" width="1024" height="1024" loading="lazy" decoding="async">
+  <div class="mpl-video-art" id="promoVideoArt">
+    <img id="promoPoster" src="anuncio/image_e539bf5a.jpg" alt="Anuncio de GALAX PC REPAIR" width="1024" height="1024" loading="lazy" decoding="async">
+    <video id="promoVideo" src="video%20de%20anuncio/video%20d_anuncio-01.mp4" poster="anuncio/image_e539bf5a.jpg" preload="none" playsinline controls aria-label="Video de la visita de Pedro Arribasplata"></video>
   </div>
 </section>
 
@@ -2175,6 +2185,14 @@ html.mpl-active .sanara-messages .chat-msg.assistant .bubble { padding:12px 14px
   $$('.category-tile').forEach(btn => btn.addEventListener('click', () => setCategory(btn.dataset.category)));
   $$('.mpl-nav [data-cat]').forEach(a => a.addEventListener('click', () => setCategory(a.dataset.cat)));
   $('#mplCategorySelect')?.addEventListener('change', e => setCategory(e.target.value));
+  $('#promoPlayBtn')?.addEventListener('click', () => {
+    const art = $('#promoVideoArt'), video = $('#promoVideo');
+    if (!art || !video) return;
+    art.classList.add('playing');
+    video.controls = true;
+    const promise = video.play();
+    if (promise && typeof promise.catch === 'function') promise.catch(() => { video.controls = true; });
+  });
   function setQuery(q) {
     state.query = q;
     const a = $('#searchInput'), b = $('#mplSearchInput');
