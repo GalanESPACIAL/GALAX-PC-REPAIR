@@ -125,12 +125,11 @@ button,input,select{font:inherit}
 .chat-panel.open{display:grid!important}
 .sanara-stage{position:relative;height:100%;min-width:0;overflow:hidden;background:radial-gradient(circle at 50% 40%,rgba(124,58,237,.45),transparent 65%),#070b1e}
 .sanara-room{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55;z-index:0}
-.sanara-fallback{display:block!important;position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:contain;opacity:.35}
-.sanara-canvas{display:block!important}
-.sanara-canvas canvas{width:100%!important;height:100%!important;display:block}
+.sanara-fallback{display:none!important}
+.sanara-canvas{display:none!important}
 .sanara-desk{display:none!important}
-.sanara-portrait{display:none!important}
-.sanara-stage::before{content:'';position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(7,11,30,.15),rgba(7,11,30,.35));pointer-events:none}
+.sanara-portrait{display:block!important;object-position:100% 22%;transform:scale(1.45);transform-origin:82% 35%}
+.sanara-stage::before{content:'';position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,rgba(7,11,30,.96),rgba(7,11,30,.6) 26%,transparent 52%);pointer-events:none}
 .sanara-stage::after{content:'';position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);width:190px;height:190px;border-radius:50%;border:2px solid rgba(124,58,237,.85);box-shadow:0 0 26px rgba(124,58,237,.6),inset 0 0 22px rgba(34,211,238,.35);z-index:3;pointer-events:none}
 .chat-col{display:flex;flex-direction:column;min-width:0;height:100%}
 .chat-col header{padding:16px 20px;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(120deg,rgba(30,58,138,.95),rgba(8,145,178,.55));border-bottom:1px solid var(--border);flex-shrink:0}
