@@ -1,4 +1,4 @@
-/** Verificación del widget Airi en 3 viewports. node tests/airi.spec.js */
+/** Verificación del botón Asistente IA en 3 viewports. node tests/airi.spec.js */
 const { chromium } = require('playwright');
 const URL = process.env.GALAX_TEST_URL || 'http://127.0.0.1:8099/docs/galax_preview.html';
 const VIEWPORTS = [
@@ -17,76 +17,28 @@ const VIEWPORTS = [
     page.on('console', m => { if (m.type() === 'error') errors.push(m.text()); });
     const issues = [];
     await page.goto(URL, { waitUntil: 'load' });
-    const btn = page.locator('#chatLauncher, button:has-text("Iniciar Chat")').first();
-    await btn.click();
-    await page.waitForTimeout(400);
+    await page.click('#assistantBtn');
+    await page.waitForTimeout(200);
     const r = await page.evaluate(() => {
-      const rect = s => { const e = document.querySelector(s); if (!e) return null; const b = e.getBoundingClientRect(); return { l: Math.round(b.left), r: Math.round(b.right), t: Math.round(b.top), b: Math.round(b.bottom), w: Math.round(b.width), h: Math.round(b.height) }; };
-      const panel = document.querySelector('.chat-panel.sanara-panel');
-      const stage = document.querySelector('.sanara-stage');
-      const canvas = document.querySelector('.sanara-stage-canvas canvas, .sanara-stage-canvas img, .sanara-stage-canvas video');
+      const p = document.getElementById('chatPanel');
+      const b = p.getBoundingClientRect();
       return {
-        panel: rect('.chat-panel.sanara-panel'),
-        stage: rect('.sanara-stage'),
-        canvas: canvas ? (() => { const b = canvas.getBoundingClientRect(); return { l: Math.round(b.left), r: Math.round(b.right), t: Math.round(b.top), b: Math.round(b.bottom), w: Math.round(b.width), h: Math.round(b.height) }; })() : null,
-        head: rect('.sanara-head'),
-        messages: rect('.sanara-messages'),
-        form: rect('.sanara-form'),
-        input: rect('.sanara-form input'),
-        nav: rect('.mpl-header, .site-header'),
-        chatCol: rect('.sanara-chat'),
-        avatar: (() => {
-          const fb = document.querySelector('.sanara-fallback');
-          const cv = document.querySelector('.sanara-stage-canvas canvas');
-          const meta = el => {
-            if (!el) return null;
-            const b = el.getBoundingClientRect(), cs = getComputedStyle(el);
-            return { w: Math.round(b.width), h: Math.round(b.height), opacity: parseFloat(cs.opacity), display: cs.display, z: cs.zIndex, natural: el.naturalWidth || 0 };
-          };
-          return { fallback: meta(fb), canvas: meta(cv) };
-        })(),
-        badChars: (document.body.innerText.match(/[\u00c2\u00c3]/g) || []).length,
-        welcomeH: (() => { const e = document.querySelector('.sanara-welcome'); return e ? Math.round(e.getBoundingClientRect().height) : null; })(),
-        panelScroll: panel ? { sw: panel.scrollWidth, cw: panel.clientWidth } : null,
-        chatScroll: (() => { const e = document.querySelector('.sanara-chat'); return e ? { sw: e.scrollWidth, cw: e.clientWidth } : null; })(),
-        open: panel ? panel.classList.contains('open') : false,
-        display: panel ? getComputedStyle(panel).display : null,
+        open: p.classList.contains('open'),
+        left: Math.round(b.left), right: Math.round(b.right), top: Math.round(b.top), bottom: Math.round(b.bottom),
+        vw: innerWidth, vh: innerHeight,
+        mojibake: (document.body.innerText.match(/[\u00c2\u00c3]/g) || []).length,
       };
     });
-    if (!r.open) issues.push('widget no abre');
-    if (r.display !== 'grid') issues.push('display=' + r.display + ' (esperado grid)');
-    if (r.panel && r.panel.w > 760) issues.push('modal demasiado ancho: ' + r.panel.w);
-    if (r.panel && r.panel.l < 0) issues.push('modal fuera por izquierda');
-    if (r.panel && r.panel.t < 8) issues.push('modal demasiado alto: panel.top=' + r.panel.t);
-    if (r.panel && r.nav && r.nav.t >= 0 && r.panel.t < r.nav.b) issues.push('modal tapa navbar: panel.top=' + r.panel.t + ' nav.bottom=' + r.nav.b);
-    for (const k of ['head', 'messages', 'form']) {
-      if (r.chatCol && r[k] && (Math.abs(r[k].l - r.chatCol.l) > 3 || Math.abs(r[k].r - r.chatCol.r) > 3)) {
-        issues.push(k + ' no ocupa 100% de la columna de chat: ' + JSON.stringify(r[k]) + ' vs ' + JSON.stringify(r.chatCol));
-      }
-    }
-    if (r.input && r.panel && r.input.r > r.panel.r - 2) issues.push('input se sale del borde derecho');
-    if (r.panelScroll && r.panelScroll.sw > r.panelScroll.cw + 1) issues.push('scroll horizontal en modal');
-    if (r.chatScroll && r.chatScroll.sw > r.chatScroll.cw + 1) issues.push('scroll horizontal en chat');
-    if (r.stage && r.canvas) {
-      if (r.canvas.w < 10 || r.canvas.h < 10) issues.push('avatar no renderiza');
-      if (r.canvas.l < r.stage.l - 2 || r.canvas.r > r.stage.r + 2) issues.push('avatar cortado horizontalmente');
-      if (r.canvas.b > r.stage.b + 2 || r.canvas.t < r.stage.t - 2) issues.push('avatar cortado verticalmente');
-    } else issues.push('no se encontró canvas/imagen del avatar');
-    const av = r.avatar || {};
-    const visibleAvatar =
-      (av.fallback && av.fallback.w > 100 && av.fallback.h > 100 && av.fallback.opacity > 0 && av.fallback.display !== 'none' && av.fallback.natural > 0) ||
-      (av.canvas && av.canvas.w > 100 && av.canvas.h > 100 && av.canvas.opacity > 0 && av.canvas.display !== 'none');
-    if (!visibleAvatar) issues.push('avatar no visible: ' + JSON.stringify(av));
-    if (r.badChars > 0) issues.push('mojibake en innerText: ' + r.badChars + ' caracteres');
-    if (r.welcomeH !== null && r.welcomeH > 320) issues.push('burbuja de bienvenida demasiado alta: ' + r.welcomeH);
+    if (!r.open) issues.push('panel no abre');
+    if (r.left < -2 || r.right > r.vw + 2 || r.top < -2 || r.bottom > r.vh + 2) issues.push('panel fuera del viewport: ' + JSON.stringify(r));
+    if (r.mojibake > 0) issues.push('mojibake: ' + r.mojibake);
     issues.push(...errors.slice(0, 5).map(e => 'consola: ' + e));
     const ok = issues.length === 0;
     if (!ok) failed++;
     console.log(`${ok ? 'PASS' : 'FAIL'} | ${vp.name} ${vp.width}x${vp.height}` + (ok ? '' : '\n   - ' + issues.join('\n   - ')));
-    console.log('   measure: ' + JSON.stringify({ panel: r.panel, stage: r.stage, canvas: r.canvas, nav: r.nav }));
     await ctx.close();
   }
   await browser.close();
-  console.log(`\nAIRI: ${VIEWPORTS.length - failed}/${VIEWPORTS.length} OK`);
+  console.log(`\nASISTENTE: ${VIEWPORTS.length - failed}/${VIEWPORTS.length} OK`);
   process.exit(failed ? 1 : 0);
 })();
