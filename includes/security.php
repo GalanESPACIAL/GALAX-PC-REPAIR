@@ -27,10 +27,19 @@ function security_headers(): void
     if (headers_sent()) {
         return;
     }
+    $proto = $_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '';
+    $https = (isset($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) !== 'off')
+        || str_starts_with(strtolower($proto), 'https');
+    $host = (string)($_SERVER['HTTP_HOST'] ?? 'localhost');
+    // Permite varios orígenes si está configurado en la tabla de configuración.
+    $extra = '';
+    try { $extra = trim((string)config_value('csp_extra_sources', '')); } catch (Throwable $e) { $extra = ''; }
+    if ($extra !== '') { $extra = ' ' . str_replace(["\r", "\n", "\0", "'", "\x0b", "\t"], ' ', $extra); }
     header('X-Content-Type-Options: nosniff');
+    header('X-Download-Options: noopen');
     header('X-Frame-Options: SAMEORIGIN');
     header('Referrer-Policy: strict-origin-when-cross-origin');
-    header("Content-Security-Policy: default-src 'self' https:; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; img-src 'self' data: blob: https:; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self' https: blob:; frame-ancestors 'self'");
+    header("Content-Security-Policy: default-src 'self' https:; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: blob: https:; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self' https: blob:; frame-ancestors 'self'; object-src 'none'$extra");
     header('Permissions-Policy: geolocation=(), microphone=(), camera=()');
 }
 security_headers();

@@ -283,7 +283,7 @@ body.store-body {
 .chat-panel {
   position:fixed; right:22px; bottom:92px; z-index:91; width:min(390px,calc(100vw - 28px));
   height:min(600px,calc(100dvh - 120px)); display:none; flex-direction:column;
-  border:1px solid var(--gx-border); border-radius:20px; overflow:hidden; background:#0b1228;
+  border:1px solid var(--gx-border); border-radius:20px; overflow:hidden; background:#05375e;
   box-shadow:0 26px 70px rgba(0,0,0,.6);
 }
 .chat-panel.open { display:flex; animation:scaleIn .22s ease; }
@@ -295,9 +295,9 @@ body.store-body {
 .chat-panel.sanara-panel {
   --sx:#4f46e5; --sy:#22d3ee;
   --sx-soft:rgba(79,70,229,.35); --sy-soft:rgba(34,211,238,.22);
-  width:min(440px,calc(100vw - 28px)); height:min(560px,calc(100dvh - 116px));
-  right:18px; bottom:86px; flex-direction:row;
-  background:linear-gradient(135deg,#0a0f1f 0%,#101833 100%);
+  width:min(440px,calc(100vw - 28px)); height:min(600px,calc(100dvh - 95px));
+  right:18px; bottom:80px; flex-direction:row;
+  background:linear-gradient(135deg,#063e6d 0%,#05375e 100%);
   border:1px solid rgba(125,211,252,.32);
   box-shadow:0 30px 90px rgba(0,0,0,.75),0 0 60px rgba(79,70,229,.28);
 }
@@ -335,7 +335,8 @@ body.store-body {
   position:absolute; left:18px; bottom:16px; font-size:10px; letter-spacing:3px;
   color:#7dd3fc; opacity:.8;
 }
-.sanara-chat { flex:1; min-width:0; display:flex; flex-direction:column; background:linear-gradient(180deg,rgba(13,20,42,.94),rgba(9,14,30,.98)); }
+.sanara-chat { flex:1; min-width:0; display:flex; flex-direction:column; background:linear-gradient(180deg,rgba(13,20,42,.94),rgba(9,14,30,.98)); padding-bottom:4px; }
+.sanara-form { padding-bottom:12px; }
 .sanara-head { padding:18px 22px; background:linear-gradient(120deg,var(--sx-soft),var(--sy-soft)); }
 .sanara-head strong { font-size:1.02rem; letter-spacing:.3px; }
 .sanara-head .chat-status { margin-top:3px; color:#a5b4fc; font-size:.76rem; }

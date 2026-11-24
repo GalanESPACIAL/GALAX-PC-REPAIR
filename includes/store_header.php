@@ -18,6 +18,13 @@ $storeUser = currentUser();
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="description" content="<?= h($company['nombre']) ?> — Venta de componentes y equipos, reparación técnica y asistencia con IA.">
 <title><?= h($pageTitle ?? 'Inicio') ?> — <?= h($company['nombre']) ?></title>
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="<?= BASE_URL ?>/shop/index.php">
+<meta property="og:title" content="<?= h($pageTitle ?? 'Inicio') ?> — <?= h($company['nombre']) ?>">
+<meta property="og:description" content="<?= h($company['descripcion'] ?? 'Venta de computadoras, laptops y componentes. Reparación técnica especializada.') ?>">
+<meta property="og:type" content="website">
+<meta property="og:url" content="<?= BASE_URL . '/shop/index.php' ?>">
+<meta property="og:image" content="<?= h(product_image_url('assets/img/logo.jpeg')) ?>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">

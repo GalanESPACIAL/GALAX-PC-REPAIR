@@ -90,6 +90,28 @@ require_once __DIR__ . '/../includes/header.php';
   </div>
 </div>
 
+<?php
+$clientes = db()->query("SELECT id, nombre, apellido, email, telefono, created_at FROM clientes ORDER BY id DESC LIMIT 6")->fetchAll();
+?>
+<div class="card" style="margin-top:18px;">
+  <div class="card-header">
+    <div class="card-title"><i class="fa-solid fa-user-group"></i> Últimos clientes</div>
+    <a href="<?= BASE_URL ?>/modules/customers/index.php" class="btn btn-ghost btn-sm">Ver todos</a>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Nombre</th><th>Email</th><th>Teléfono</th><th>Registrado</th></tr></thead>
+      <tbody>
+      <?php if (empty($clientes)): ?>
+        <tr><td colspan="4" style="text-align:center;color:var(--muted);">Sin clientes registrados</td></tr>
+      <?php else: foreach ($clientes as $c): ?>
+        <tr><td><?= h(trim((string)($c['nombre'] ?? '') . ' ' . ($c['apellido'] ?? ''))) ?></td><td><?= h($c['email']) ?></td><td><?= h($c['telefono']) ?></td><td><?= fecha($c['created_at']) ?></td></tr>
+      <?php endforeach; endif; ?>
+      </tbody>
+    </table>
+  </div>
+</div>
+
 <div class="card" style="margin-top:18px;">
   <div class="card-header">
     <div class="card-title"><i class="fa-solid fa-ticket"></i> Tickets recientes de soporte</div>

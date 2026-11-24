@@ -9,10 +9,19 @@ $currentPage = basename($_SERVER['PHP_SELF'] ?? '');
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title><?= h($pageTitle ?? SITE_NAME) ?> — <?= h(company_info()['nombre']) ?></title>
+<link rel="canonical" href="<?= BASE_URL ?>/dashboard/index.php">
+<meta name="description" content="Panel de administración de GALAX PC REPAIR: gestión de productos, categorías, clientes, inventario, ventas, reparaciones y soporte.">
+<meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<meta name="description" content="Panel de administración de GALAX PC REPAIR: gestión de productos, categorías, clientes, inventario, ventas, reparaciones y soporte.">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Panel de administración — GALAX PC REPAIR">
+<meta property="og:description" content="Dashboard de tienda para GALAX PC REPAIR: productos, clientes, ventas y soporte.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="<?= BASE_URL ?>/dashboard/index.php">
 <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/style.css">
 <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/theme.css">
 </head>
