@@ -74,7 +74,39 @@ if ($_SERVER['REQUEST_METHOD']==='POST') {
     }
 }
 
-$usuarios = db()->query("SELECT u.*, r.nombre as rol_nombre FROM usuarios u JOIN roles r ON u.rol_id=r.id ORDER BY u.id DESC")->fetchAll();
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'delete') {
+    require_csrf();
+    $id = (int)($_POST['id'] ?? 0);
+    $self = (int)($_SESSION['user_id'] ?? 0);
+    $refs = [
+        ['ai_conversaciones', 'usuario_id'], ['carritos', 'usuario_id'], ['clientes', 'usuario_id'],
+        ['compras_proveedor', 'usuario_id'], ['inventario_movimientos', 'usuario_id'],
+        ['notificaciones', 'usuario_id'], ['pedidos', 'usuario_id'], ['reparaciones', 'tecnico_id'],
+    ];
+    if ($id !== $self) {
+        $blocked = [];
+        foreach ($refs as [$table, $col]) {
+            $st = db()->prepare("SELECT COUNT(*) AS c FROM `$table` WHERE `$col` = ?");
+            $st->execute([$id]);
+            if ((int)$st->fetch()['c'] > 0) $blocked[] = $table;
+        }
+        if ($blocked) {
+            flash('error', 'No se puede quitar: hay registros asociados en ' . implode(', ', $blocked) . '.');
+        } else {
+            db()->prepare('DELETE FROM usuarios WHERE id=?')->execute([$id]);
+            audit_log('delete_user', 'usuarios', $id);
+            flash('success', 'Usuario quitado.');
+        }
+    } else {
+        flash('error', 'No puede quitar su propia cuenta.');
+    }
+    redirect(SITE_URL.'/modules/users/index.php');
+}
+
+$estadoFilter = trim((string)($_GET['estado'] ?? ''));
+$usuarios = $estadoFilter !== ''
+  ? db()->prepare('SELECT u.*, r.nombre as rol_nombre FROM usuarios u JOIN roles r ON u.rol_id=r.id WHERE u.estado=? ORDER BY u.id DESC')->fetchAll([$estadoFilter])
+  : db()->query("SELECT u.*, r.nombre as rol_nombre FROM usuarios u JOIN roles r ON u.rol_id=r.id ORDER BY u.id DESC")->fetchAll();
 $roles = db()->query("SELECT * FROM roles ORDER BY id")->fetchAll();
 $edit = null;
 if (isset($_GET['edit'])) {
@@ -131,7 +163,13 @@ require_once __DIR__ . '/../../includes/header.php';
     </form>
   </div>
   <div class="card">
-    <div class="card-header"><div class="card-title"><i class="fa-solid fa-users"></i> Listado de Usuarios</div></div>
+    <div class="card-header">
+      <div class="card-title"><i class="fa-solid fa-users"></i> Listado de Usuarios</div>
+      <div style="display:flex;gap:8px;">
+        <a class="btn btn-ghost btn-sm" href="?estado=activo">Solo activos</a>
+        <a class="btn btn-ghost btn-sm" href="?estado=">Todos</a>
+      </div>
+    </div>
     <div class="table-wrap">
       <table>
         <thead><tr><th>Nombre</th><th>Email</th><th>Rol</th><th>Estado</th><th>Acciones</th></tr></thead>
@@ -143,19 +181,32 @@ require_once __DIR__ . '/../../includes/header.php';
             <td><?= h($u['rol_nombre']) ?></td>
             <td><?= badgeEstado($u['estado']) ?></td>
             <td style="display:flex;gap:6px;">
-              <a href="?edit=<?= $u['id'] ?>" class="btn btn-info btn-sm btn-icon"><i class="fa-solid fa-pen"></i></a>
+              <a href="?edit=<?= $u['id'] ?>&estado=<?= urlencode($_GET['estado'] ?? '') ?>" class="btn btn-info btn-sm btn-icon"><i class="fa-solid fa-pen"></i></a>
               <form method="post" onsubmit="return confirm('¿Desactivar este usuario?')" style="margin:0;">
                 <?= csrf_field() ?>
                 <input type="hidden" name="action" value="deactivate">
                 <input type="hidden" name="id" value="<?= (int)$u['id'] ?>">
                 <button class="btn btn-danger btn-sm btn-icon" type="submit" title="Desactivar"><i class="fa-solid fa-trash"></i></button>
               </form>
+              <form method="post" onsubmit="return confirm('¿Quitar (eliminar) la cuenta de este usuario? Los registros asociados no se borran.')" style="margin:0;">
+                <?= csrf_field() ?>
+                <input type="hidden" name="action" value="delete">
+                <input type="hidden" name="id" value="<?= (int)$u['id'] ?>">
+                <button class="btn btn-ghost btn-sm btn-icon" type="submit" title="Quitar cuenta"><i class="fa-solid fa-user-xmark"></i></button>
+              </form>
             </td>
           </tr>
         <?php endforeach; ?>
+        <?php if (empty($usuarios)): ?>
+        <tr><td colspan="5" style="text-align:center;color:var(--muted);">Sin usuarios con este filtro.</td></tr>
+        <?php endif; ?>
         </tbody>
       </table>
     </div>
+  </div>
+  <div class="card" style="margin-top:18px;">
+    <div class="card-header"><div class="card-title"><i class="fa-solid fa-shield-halved"></i> Registro de acceso del usuario</div></div>
+    <p class="muted" style="margin:0;font-size:.85rem">Solo el personal con permiso "usuarios" puede ver, desactivar o quitar cuentas. Quitar: las compras/pedidos/carritos asociados deben quedar protegidos por restricciones de base de datos.</p>
   </div>
 </div>
 <?php require_once __DIR__ . '/../../includes/footer.php'; ?>
