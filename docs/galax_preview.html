@@ -123,15 +123,24 @@ button,input,select{font:inherit}
 .chat-panel{position:fixed;right:22px;bottom:96px;z-index:70;width:min(420px,calc(100vw - 32px));height:min(620px,calc(100dvh - 120px));
   background:#0a1426;border:1px solid var(--border);border-radius:18px;display:none;grid-template-columns:1fr;grid-template-rows:270px 1fr;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.6)}
 .chat-panel.open{display:grid!important}
-.sanara-stage{position:relative;height:100%;min-width:0;overflow:hidden;background:radial-gradient(circle at 50% 40%,rgba(124,58,237,.45),transparent 65%),#070b1e}
-.sanara-room{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55;z-index:0}
-.sanara-fallback{display:none!important}
-.sanara-canvas{display:none!important}
-.sanara-desk{display:none!important}
-.sanara-portrait{display:block!important;object-position:77% 29%;transform:none;clip-path:circle(48% at 50% 50%);animation:airiBreathe 4s ease-in-out infinite}
-@keyframes airiBreathe{0%,100%{transform:scale(1) translateY(0)}50%{transform:scale(1.02) translateY(-2px)}}
-.sanara-stage::before{content:'';position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,rgba(7,11,30,1) 0%,rgba(7,11,30,.95) 30%,rgba(7,11,30,.25) 58%,transparent 72%);pointer-events:none}
-.sanara-stage::after{content:'';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:200px;height:200px;border-radius:50%;border:2px solid rgba(124,58,237,.85);box-shadow:0 0 26px rgba(124,58,237,.6),inset 0 0 22px rgba(34,211,238,.35);z-index:3;pointer-events:none}
+.sanara-stage{position:relative;height:100%;min-width:0;overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 44%,rgba(124,58,237,.44),transparent 58%),
+    radial-gradient(circle at 86% 16%,rgba(34,211,238,.16),transparent 46%),
+    linear-gradient(rgba(56,189,248,.055) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(56,189,248,.055) 1px,transparent 1px),
+    #070b1e;
+  background-size:auto,auto,36px 36px,36px 36px,auto;
+  box-shadow:inset 0 0 46px rgba(2,6,18,.85)}
+.sanara-room,.sanara-desk,.sanara-portrait{display:none!important}
+.sanara-fallback{display:none;position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:cover;object-position:77% 29%}
+.sanara-fallback.show{display:block!important}
+.sanara-canvas{position:absolute;inset:0;z-index:1}
+.sanara-canvas canvas{display:block;width:100%!important;height:100%!important}
+.sanara-stage::after{content:'';position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);width:196px;height:196px;border-radius:50%;
+  border:2px solid rgba(124,58,237,.82);
+  box-shadow:0 0 28px rgba(124,58,237,.55),inset 0 0 24px rgba(34,211,238,.26);
+  z-index:0;pointer-events:none}
 .chat-col{display:flex;flex-direction:column;min-width:0;height:100%}
 .chat-col header{padding:16px 20px;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(120deg,rgba(30,58,138,.95),rgba(8,145,178,.55));border-bottom:1px solid var(--border);flex-shrink:0}
 .chat-col header strong{font-size:1.25rem;font-weight:800;letter-spacing:.01em}
@@ -145,7 +154,7 @@ button,input,select{font:inherit}
 
 @media(max-width:1000px){.main-nav{display:none}.hero-row{grid-template-columns:1fr}.categories{grid-template-columns:repeat(3,1fr)}.products{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:640px){.categories{grid-template-columns:repeat(2,1fr)}.products{grid-template-columns:repeat(2,1fr)}.benefits{grid-template-columns:1fr}.benefit{border-right:0;border-bottom:1px solid var(--border)}.assistant-pill{right:96px;font-size:.72rem;padding:9px 11px}}
-@media(max-width:700px){.chat-panel{grid-template-columns:1fr;grid-template-rows:190px 1fr;width:min(360px,calc(100vw - 24px))}.sanara-stage{height:190px}}
+@media(max-width:700px){.chat-panel{grid-template-columns:1fr;grid-template-rows:190px 1fr;width:min(360px,calc(100vw - 24px))}.sanara-stage{height:190px}.sanara-stage::after{width:150px;height:150px;top:42%}}
 @media(max-width:767px){
   .top-right a,.logo,.cat-btn,.main-nav a{display:inline-flex;align-items:center;min-height:44px;min-width:44px}
   .top-right{gap:6px}
@@ -156,6 +165,9 @@ button,input,select{font:inherit}
   .hero-main .btn,.assistant-pill{min-height:44px}
 }
 </style>
+<script type="importmap">
+{"imports":{"three":"./vendor/three.module.js"}}
+</script>
 </head>
 <body>
 
@@ -235,11 +247,8 @@ button,input,select{font:inherit}
 
 <div class="chat-panel" id="chatPanel">
   <div class="sanara-stage" id="sanaraStage">
-    <img class="sanara-room" src="../assets/img/samer-room.svg" alt="">
-    <img class="sanara-portrait" src="anuncio/anuncio_movible%2001.jpeg" alt="Airi, asistente virtual de GALAX PC REPAIR">
-    <img class="sanara-fallback" src="../assets/img/sanara-avatar.svg" alt="Airi">
-    <div class="sanara-canvas" id="sanaraCanvas"></div>
-    <img class="sanara-desk" src="../assets/img/samer-desk.svg" alt="">
+    <div class="sanara-canvas" id="sanaraCanvas" aria-hidden="true"></div>
+    <img class="sanara-fallback" src="anuncio/anuncio_movible%2001.jpeg" alt="Airi, asistente virtual de GALAX PC REPAIR">
   </div>
   <div class="chat-col">
     <header><strong>Airi · Asistente IA</strong><button type="button" id="closeChat" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button></header>
@@ -248,34 +257,235 @@ button,input,select{font:inherit}
   </div>
 </div>
 
-<script>
-  const panel = document.getElementById('chatPanel');
-  const body = document.querySelector('.chat-body');
-  const input = document.querySelector('.chat-col footer input');
-  const send = document.querySelector('.chat-col footer button');
-  const hello = '<div style="margin:8px 0;padding:8px 12px;border-radius:12px;background:rgba(79,70,229,.22);border:1px solid rgba(34,211,238,.25)">¡Hola! Soy <strong>Airi</strong>, tu asistente de GALAX PC REPAIR. Pregúntame por productos, precios, stock o reparaciones.</div>';
-  body.innerHTML = hello;
-  document.getElementById('assistantBtn').addEventListener('click', () => panel.classList.toggle('open'));
-  document.getElementById('closeChat').addEventListener('click', () => panel.classList.remove('open'));
-  function say(html, mine) {
-    const d = document.createElement('div');
-    d.style.cssText = 'margin:8px 0;padding:8px 12px;border-radius:12px;background:' + (mine ? 'rgba(34,211,238,.16)' : 'rgba(79,70,229,.22)') + ';border:1px solid rgba(34,211,238,.25)';
-    d.innerHTML = html; body.appendChild(d); body.scrollTop = body.scrollHeight;
+<script type="module">
+import * as THREE from 'three';
+import { GLTFLoader } from './vendor/loaders/GLTFLoader.js';
+
+const panel = document.getElementById('chatPanel');
+const body = document.querySelector('.chat-body');
+const input = document.querySelector('.chat-col footer input');
+const send = document.querySelector('.chat-col footer button');
+const stage = document.getElementById('sanaraCanvas');
+const fallback = document.querySelector('.sanara-fallback');
+const hello = '<div style="margin:8px 0;padding:8px 12px;border-radius:12px;background:rgba(79,70,229,.22);border:1px solid rgba(34,211,238,.25)">¡Hola! Soy <strong>Airi</strong>, tu asistente de GALAX PC REPAIR. Pregúntame por productos, precios, stock o reparaciones.</div>';
+body.innerHTML = hello;
+
+const bones = {};
+const basePose = {};
+let renderer, scene, camera, clock, model3d = null;
+let started = false, waveUntil = 0, waveAmount = 0, waveUp = 1.12, waveFwd = 0.26;
+
+const AXIS_X = new THREE.Vector3(1, 0, 0);
+const AXIS_Y = new THREE.Vector3(0, 1, 0);
+const AXIS_Z = new THREE.Vector3(0, 0, 1);
+const _parentQ = new THREE.Quaternion();
+const _invParent = new THREE.Quaternion();
+const _axisQ = new THREE.Quaternion();
+const _deltaQ = new THREE.Quaternion();
+
+function rotateWorld(bone, axis, angle) {
+  if (!bone || !angle) return;
+  bone.parent.getWorldQuaternion(_parentQ);
+  _axisQ.setFromAxisAngle(axis, angle);
+  _invParent.copy(_parentQ).invert();
+  _deltaQ.copy(_invParent).multiply(_axisQ).multiply(_parentQ);
+  bone.quaternion.premultiply(_deltaQ);
+}
+
+function applyWorldQuat(bone, worldQ) {
+  if (!bone) return;
+  bone.parent.getWorldQuaternion(_parentQ);
+  _invParent.copy(_parentQ).invert();
+  _deltaQ.copy(_invParent).multiply(worldQ).multiply(_parentQ);
+  bone.quaternion.premultiply(_deltaQ);
+  bone.updateWorldMatrix(false, true);
+}
+
+function aimForearm() {
+  const low = bones.lowerarm_l, hand = bones.hand_l;
+  if (!low || !hand) return;
+  model3d.updateMatrixWorld(true);
+  const ePos = new THREE.Vector3();
+  const hPos = new THREE.Vector3();
+  low.getWorldPosition(ePos);
+  hand.getWorldPosition(hPos);
+  const dir = hPos.sub(ePos).normalize();
+  const target = new THREE.Vector3(0.18, 1, 0.12).normalize();
+  applyWorldQuat(low, new THREE.Quaternion().setFromUnitVectors(dir, target));
+}
+
+function lowerArms() {
+  model3d.updateMatrixWorld(true);
+  for (const side of ['l', 'r']) {
+    const up = bones['upperarm_' + side];
+    const low = bones['lowerarm_' + side];
+    if (!up || !low) continue;
+    const sPos = new THREE.Vector3();
+    const ePos = new THREE.Vector3();
+    up.getWorldPosition(sPos);
+    low.getWorldPosition(ePos);
+    const dir = ePos.sub(sPos).normalize();
+    const sign = sPos.x < 0 ? -1 : 1;
+    const target = new THREE.Vector3(sign * 0.22, -1, 0.05).normalize();
+    applyWorldQuat(up, new THREE.Quaternion().setFromUnitVectors(dir, target));
+    applyWorldQuat(low, new THREE.Quaternion().setFromAxisAngle(AXIS_X, -0.22));
   }
-  function respond() {
-    const q = (input.value || '').trim(); if (!q) return; input.value = ''; say(q, true);
-    const s = q.toLowerCase();
-    let a = 'Soy el asistente de GALAX PC REPAIR: puedo orientarte sobre laptops, monitores, componentes, periféricos, precios, stock y reparaciones.';
-    if (/laptop|portátil|notebook/.test(s)) a = 'Tenemos laptops HP Pavilion 15, Lenovo IdeaPad 3 y Asus VivoBook 15. Verás precios reales en el catálogo.';
-    else if (/monitor|pantalla/.test(s)) a = 'Hay monitores gaming 24&quot; 165Hz y monitores Samsung en el catálogo.';
-    else if (/gpu|gráfica|rtx/.test(s)) a = 'Contamos con tarjeta gráfica RTX y componentes en Ofertas Especiales.';
-    else if (/teclado|ratón|mouse|perif/.test(s)) a = 'Tenemos teclados gaming, ratones y accesorios en el catálogo.';
-    else if (/repar|taller|servicio/.test(s)) a = 'Reparamos PC y laptops: diagnóstico, limpieza, formateo y mantenimiento.';
-    else if (/precio|stock|oferta/.test(s)) a = 'Precios y stock son reales; revisa la sección Ofertas Especiales.';
-    say(a, false);
+  model3d.updateMatrixWorld(true);
+}
+
+document.getElementById('assistantBtn').addEventListener('click', () => {
+  const open = panel.classList.toggle('open');
+  if (!open) return;
+  initAiri();
+  requestAnimationFrame(fit);
+  if (model3d) waveUntil = performance.now() + 2800;
+});
+document.getElementById('closeChat').addEventListener('click', () => panel.classList.remove('open'));
+
+function say(html, mine) {
+  const d = document.createElement('div');
+  d.style.cssText = 'margin:8px 0;padding:8px 12px;border-radius:12px;background:' + (mine ? 'rgba(34,211,238,.16)' : 'rgba(79,70,229,.22)') + ';border:1px solid rgba(34,211,238,.25)';
+  d.innerHTML = html; body.appendChild(d); body.scrollTop = body.scrollHeight;
+}
+function respond() {
+  const q = (input.value || '').trim(); if (!q) return; input.value = ''; say(q, true);
+  const s = q.toLowerCase();
+  let a = 'Soy el asistente de GALAX PC REPAIR: puedo orientarte sobre laptops, monitores, componentes, periféricos, precios, stock y reparaciones.';
+  if (/laptop|portátil|notebook/.test(s)) a = 'Tenemos laptops HP Pavilion 15, Lenovo IdeaPad 3 y Asus VivoBook 15. Verás precios reales en el catálogo.';
+  else if (/monitor|pantalla/.test(s)) a = 'Hay monitores gaming 24&quot; 165Hz y monitores Samsung en el catálogo.';
+  else if (/gpu|gráfica|rtx/.test(s)) a = 'Contamos con tarjeta gráfica RTX y componentes en Ofertas Especiales.';
+  else if (/teclado|ratón|mouse|perif/.test(s)) a = 'Tenemos teclados gaming, ratones y accesorios en el catálogo.';
+  else if (/repar|taller|servicio/.test(s)) a = 'Reparamos PC y laptops: diagnóstico, limpieza, formateo y mantenimiento.';
+  else if (/precio|stock|oferta/.test(s)) a = 'Precios y stock son reales; revisa la sección Ofertas Especiales.';
+  say(a, false);
+  waveUntil = performance.now() + 1500;
+}
+send.addEventListener('click', respond);
+input.addEventListener('keydown', e => { if (e.key === 'Enter') respond(); });
+
+function initAiri() {
+  if (started) return;
+  started = true;
+  try {
+    renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  } catch (e) {
+    console.warn('[Airi] WebGL no disponible', e);
+    fallback.classList.add('show');
+    return;
   }
-  send.addEventListener('click', respond);
-  input.addEventListener('keydown', e => { if (e.key === 'Enter') respond(); });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.02;
+  stage.appendChild(renderer.domElement);
+
+  scene = new THREE.Scene();
+  scene.add(new THREE.HemisphereLight(0xd7ecff, 0x1a1238, 1.35));
+  const key = new THREE.DirectionalLight(0xffffff, 1.75); key.position.set(1.4, 2.7, 2.4); scene.add(key);
+  const fill = new THREE.DirectionalLight(0x38bdf8, 0.6); fill.position.set(-2.2, 1.5, 1.1); scene.add(fill);
+  const rim = new THREE.DirectionalLight(0x8b5cf6, 2.0); rim.position.set(1.2, 2.2, -1.8); scene.add(rim);
+  const face = new THREE.DirectionalLight(0xfff1e2, 1.15); face.position.set(0.5, 2.8, 3.2); scene.add(face);
+  const side = new THREE.DirectionalLight(0xbfe8ff, 0.45); side.position.set(-1.6, 2.2, 2.4); scene.add(side);
+  const aura = new THREE.PointLight(0x7c3aed, 0.55, 3.5); aura.position.set(0, 1.5, 0.6); scene.add(aura);
+
+  camera = new THREE.PerspectiveCamera(30, 1, 0.01, 40);
+  clock = new THREE.Clock();
+  fit();
+
+  new GLTFLoader().load('Cuerpo_SANARA%20IA/sanara_listo.glb', onModelLoaded, undefined, err => {
+    console.warn('[Airi] No se pudo cargar el modelo 3D', err);
+    fallback.classList.add('show');
+  });
+
+  function loop() {
+    requestAnimationFrame(loop);
+    if (!renderer) return;
+    const dt = Math.min(clock.getDelta(), 0.05);
+    const t = clock.elapsedTime;
+
+    if (model3d) {
+      for (const name in basePose) bones[name].quaternion.copy(basePose[name]);
+      rotateWorld(bones.head, AXIS_Y, Math.sin(t * 0.65) * 0.10);
+      rotateWorld(bones.head, AXIS_X, Math.sin(t * 0.9) * 0.03);
+      rotateWorld(bones.spine_02, AXIS_Y, Math.sin(t * 0.45) * 0.024);
+      rotateWorld(bones.spine_03, AXIS_Y, Math.sin(t * 0.55) * 0.014);
+
+      const target = performance.now() < waveUntil ? 1 : 0;
+      waveAmount += (target - waveAmount) * Math.min(1, dt * 7);
+      if (waveAmount > 0.002) {
+        const swing = Math.sin(t * 8.5) * 0.14;
+        rotateWorld(bones.upperarm_l, AXIS_Z, (waveUp + swing * 0.7) * waveAmount);
+        rotateWorld(bones.upperarm_l, AXIS_X, waveFwd * 0.8 * waveAmount);
+        aimForearm();
+        rotateWorld(bones.hand_l, AXIS_Z, Math.sin(t * 8.5 + 0.5) * 0.2 * waveAmount);
+      }
+    }
+
+    renderer.render(scene, camera);
+  }
+  loop();
+}
+
+function onModelLoaded(gltf) {
+  model3d = gltf.scene;
+  scene.add(model3d);
+  model3d.traverse(o => {
+    if (o.isBone) bones[o.name] = o;
+    if (o.isMesh) {
+      o.frustumCulled = false;
+      const src = Array.isArray(o.material) ? o.material[0] : o.material;
+      const tex = src && (src.emissiveMap || src.map);
+      if (tex) {
+        tex.colorSpace = THREE.SRGBColorSpace;
+        tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+      }
+      o.material = new THREE.MeshStandardMaterial({
+        map: tex || null,
+        color: 0xffffff,
+        emissive: new THREE.Color(0xffffff),
+        emissiveMap: tex || null,
+        emissiveIntensity: 0.22,
+        metalness: 0.05,
+        roughness: 0.55,
+        side: THREE.DoubleSide
+      });
+    }
+  });
+  model3d.updateMatrixWorld(true);
+  lowerArms();
+  for (const name of ['upperarm_l', 'lowerarm_l', 'hand_l', 'upperarm_r', 'lowerarm_r', 'hand_r', 'head', 'spine_02', 'spine_03']) {
+    if (bones[name]) basePose[name] = bones[name].quaternion.clone();
+  }
+  frameModel();
+  fallback.classList.remove('show');
+  new ResizeObserver(fit).observe(stage);
+  fit();
+  waveUntil = performance.now() + 3000;
+  window.__AIRI_READY = true;
+  window.__AIRI = { bones, get camera() { return camera; }, get model() { return model3d; }, wave(ms = 3000) { waveUntil = performance.now() + ms; }, setCam(y, d) { camera.position.set(0, y, d); camera.lookAt(0, y, 0); } };
+}
+
+function frameModel() {
+  const head = bones.head;
+  const headPos = new THREE.Vector3();
+  if (head) head.getWorldPosition(headPos);
+  const leafPos = headPos.clone();
+  if (bones.head_leaf) bones.head_leaf.getWorldPosition(leafPos);
+  const targetY = Math.max(headPos.y, leafPos.y) + 0.43;
+  const dist = 2.85;
+  camera.position.set(headPos.x || 0, targetY, dist);
+  camera.lookAt(headPos.x || 0, targetY, 0);
+  camera.updateProjectionMatrix();
+}
+
+function fit() {
+  if (!renderer || !camera) return;
+  const w = stage.clientWidth || 420;
+  const h = stage.clientHeight || 270;
+  renderer.setSize(w, h, false);
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+}
 </script>
 </body>
 </html>
