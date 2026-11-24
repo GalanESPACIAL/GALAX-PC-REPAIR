@@ -128,10 +128,10 @@ button,input,select{font:inherit}
 .sanara-fallback{display:none!important}
 .sanara-canvas{display:none!important}
 .sanara-desk{display:none!important}
-.sanara-portrait{display:block!important;object-position:100% 22%;transform:scale(1.45);transform-origin:82% 35%;animation:airiBreathe 4s ease-in-out infinite}
-@keyframes airiBreathe{0%,100%{transform:scale(1.45) translateY(0)}50%{transform:scale(1.47) translateY(-3px)}}
-.sanara-stage::before{content:'';position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,rgba(7,11,30,.96),rgba(7,11,30,.6) 26%,transparent 52%);pointer-events:none}
-.sanara-stage::after{content:'';position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);width:190px;height:190px;border-radius:50%;border:2px solid rgba(124,58,237,.85);box-shadow:0 0 26px rgba(124,58,237,.6),inset 0 0 22px rgba(34,211,238,.35);z-index:3;pointer-events:none}
+.sanara-portrait{display:block!important;object-position:77% 29%;transform:none;clip-path:circle(48% at 50% 50%);animation:airiBreathe 4s ease-in-out infinite}
+@keyframes airiBreathe{0%,100%{transform:scale(1) translateY(0)}50%{transform:scale(1.02) translateY(-2px)}}
+.sanara-stage::before{content:'';position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,rgba(7,11,30,1) 0%,rgba(7,11,30,.95) 30%,rgba(7,11,30,.25) 58%,transparent 72%);pointer-events:none}
+.sanara-stage::after{content:'';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:200px;height:200px;border-radius:50%;border:2px solid rgba(124,58,237,.85);box-shadow:0 0 26px rgba(124,58,237,.6),inset 0 0 22px rgba(34,211,238,.35);z-index:3;pointer-events:none}
 .chat-col{display:flex;flex-direction:column;min-width:0;height:100%}
 .chat-col header{padding:16px 20px;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(120deg,rgba(30,58,138,.95),rgba(8,145,178,.55));border-bottom:1px solid var(--border);flex-shrink:0}
 .chat-col header strong{font-size:1.25rem;font-weight:800;letter-spacing:.01em}
