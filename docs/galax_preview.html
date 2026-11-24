@@ -120,27 +120,32 @@ button,input,select{font:inherit}
   box-shadow:0 0 30px rgba(37,211,102,.6);font-size:1.6rem}
 .whatsapp-float span{position:absolute;bottom:-14px;background:#25d366;color:#04140a;font-size:.58rem;font-weight:800;padding:1px 7px;border-radius:99px}
 
-.chat-panel{position:fixed;right:22px;bottom:96px;z-index:70;width:min(260px,calc(100vw - 32px));height:min(300px,calc(100dvh - 130px));
-  background:#0a1426;border:1px solid var(--border);border-radius:16px;display:none;grid-template-columns:1fr;grid-template-rows:138px 1fr;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.6)}
+.chat-panel{position:fixed;right:22px;bottom:96px;z-index:70;width:min(420px,calc(100vw - 32px));height:min(620px,calc(100dvh - 120px));
+  background:#0a1426;border:1px solid var(--border);border-radius:18px;display:none;grid-template-columns:1fr;grid-template-rows:270px 1fr;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.6)}
 .chat-panel.open{display:grid!important}
-.sanara-stage{position:relative;height:100%;min-width:0;overflow:hidden;background:radial-gradient(circle at 45% 35%,rgba(79,70,229,.35),transparent 60%),#0a1022}
-.sanara-room{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.65;z-index:0}
-.sanara-fallback{position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:contain;opacity:.9}
-.sanara-canvas{position:absolute;inset:0;z-index:2}
+.sanara-stage{position:relative;height:100%;min-width:0;overflow:hidden;background:radial-gradient(circle at 50% 40%,rgba(124,58,237,.45),transparent 65%),#070b1e}
+.sanara-room{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55;z-index:0}
+.sanara-fallback{display:block!important;position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:contain;opacity:.35}
+.sanara-canvas{display:block!important}
 .sanara-canvas canvas{width:100%!important;height:100%!important;display:block}
-.sanara-desk{position:absolute;left:0;bottom:0;width:100%;height:35%;object-fit:cover;z-index:3;pointer-events:none}
+.sanara-desk{display:none!important}
+.sanara-portrait{display:none!important}
+.sanara-stage::before{content:'';position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(7,11,30,.15),rgba(7,11,30,.35));pointer-events:none}
+.sanara-stage::after{content:'';position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);width:190px;height:190px;border-radius:50%;border:2px solid rgba(124,58,237,.85);box-shadow:0 0 26px rgba(124,58,237,.6),inset 0 0 22px rgba(34,211,238,.35);z-index:3;pointer-events:none}
 .chat-col{display:flex;flex-direction:column;min-width:0;height:100%}
-.chat-col header{padding:12px 14px;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(120deg,rgba(79,70,229,.35),rgba(34,211,238,.2));border-bottom:1px solid var(--border);flex-shrink:0}
-.chat-col header strong{font-size:.9rem}
-.chat-col header button{background:transparent;border:0;color:#fff;cursor:pointer;font-size:1rem}
-.chat-body{flex:1;padding:14px;overflow:auto;font-size:.82rem;line-height:1.5;color:#cfe3f8}
-.chat-col footer{display:flex;gap:6px;padding:10px;border-top:1px solid var(--border);flex-shrink:0}
-.chat-col footer input{flex:1;min-width:0;background:#111b2e;border:1px solid var(--border);border-radius:9px;padding:9px;color:#fff;outline:0}
-.chat-col footer button{background:var(--cyan2);border:0;border-radius:9px;color:#04121c;font-weight:800;padding:0 13px;cursor:pointer}
+.chat-col header{padding:16px 20px;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(120deg,rgba(30,58,138,.95),rgba(8,145,178,.55));border-bottom:1px solid var(--border);flex-shrink:0}
+.chat-col header strong{font-size:1.25rem;font-weight:800;letter-spacing:.01em}
+.chat-col header button{background:transparent;border:0;color:#fff;cursor:pointer;font-size:1.5rem;line-height:1}
+.chat-body{flex:1;padding:20px;overflow:auto;font-size:1.02rem;line-height:1.55;color:#dbeafe;background:#0a1122}
+.chat-body strong{color:#fff}
+.chat-col footer{display:flex;gap:10px;padding:14px;border-top:1px solid var(--border);flex-shrink:0}
+.chat-col footer input{flex:1;min-width:0;background:#0f1a30;border:1px solid rgba(34,211,238,.35);border-radius:14px;padding:14px 16px;color:#fff;font-size:1rem;outline:0}
+.chat-col footer input::placeholder{color:#8fa6c4}
+.chat-col footer button{background:var(--cyan2);border:0;border-radius:14px;color:#04121c;font-weight:800;font-size:1.1rem;width:56px;cursor:pointer}
 
 @media(max-width:1000px){.main-nav{display:none}.hero-row{grid-template-columns:1fr}.categories{grid-template-columns:repeat(3,1fr)}.products{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:640px){.categories{grid-template-columns:repeat(2,1fr)}.products{grid-template-columns:repeat(2,1fr)}.benefits{grid-template-columns:1fr}.benefit{border-right:0;border-bottom:1px solid var(--border)}.assistant-pill{right:96px;font-size:.72rem;padding:9px 11px}}
-@media(max-width:700px){.chat-panel{grid-template-columns:1fr;grid-template-rows:120px 1fr;width:min(260px,calc(100vw - 32px))}.sanara-stage{height:120px}}
+@media(max-width:700px){.chat-panel{grid-template-columns:1fr;grid-template-rows:190px 1fr;width:min(360px,calc(100vw - 24px))}.sanara-stage{height:190px}}
 @media(max-width:767px){
   .top-right a,.logo,.cat-btn,.main-nav a{display:inline-flex;align-items:center;min-height:44px;min-width:44px}
   .top-right{gap:6px}
@@ -235,6 +240,7 @@ button,input,select{font:inherit}
 <div class="chat-panel" id="chatPanel">
   <div class="sanara-stage" id="sanaraStage">
     <img class="sanara-room" src="../assets/img/samer-room.svg" alt="">
+    <img class="sanara-portrait" src="anuncio/anuncio_movible%2001.jpeg" alt="Airi, asistente virtual de GALAX PC REPAIR">
     <img class="sanara-fallback" src="../assets/img/sanara-avatar.svg" alt="Airi">
     <div class="sanara-canvas" id="sanaraCanvas"></div>
     <img class="sanara-desk" src="../assets/img/samer-desk.svg" alt="">
@@ -264,13 +270,9 @@ document.getElementById('assistantBtn').addEventListener('click', () => {
 document.getElementById('closeChat').addEventListener('click', () => panel.classList.remove('open'));
 
 function initAiri() {
-  if (started || !window.__GLB_B64__) return;
+  if (started) return;
   started = true;
   try {
-    const bin = atob(window.__GLB_B64__);
-    const bytes = new Uint8Array(bin.length);
-    for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
-
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
     stage.appendChild(renderer.domElement);
@@ -281,19 +283,29 @@ function initAiri() {
     const fill = new THREE.DirectionalLight(0x88ccff, 1.3); fill.position.set(-2, 1, 2); scene.add(fill);
     const camera = new THREE.PerspectiveCamera(40, 1, 0.01, 100);
 
-    new GLTFLoader().parse(bytes.buffer, '', gltf => {
+    new GLTFLoader().load('Cuerpo_SANARA%20IA/exported-model.glb', gltf => {
       const pivot = new THREE.Group();
       pivot.add(gltf.scene);
       scene.add(pivot);
+      const maxAniso = renderer.capabilities.getMaxAnisotropy();
       gltf.scene.traverse(o => {
         if (!o.isMesh) return;
         o.frustumCulled = false;
         const mats = Array.isArray(o.material) ? o.material : [o.material];
         mats.forEach(m => {
           if (!m) return;
-          if (m.map) m.map.colorSpace = THREE.SRGBColorSpace;
-          if (m.emissiveMap) m.emissiveMap.colorSpace = THREE.SRGBColorSpace;
+          const tex = m.map || m.emissiveMap;
+          if (tex) {
+            tex.colorSpace = THREE.SRGBColorSpace;
+            tex.anisotropy = maxAniso;
+            tex.needsUpdate = true;
+            if (!m.map) m.map = tex;
+          }
           if (m.color) m.color.set(0xffffff);
+          if (m.emissive) m.emissive.set(0xffffff);
+          if ('emissiveIntensity' in m) m.emissiveIntensity = 0.32;
+          if ('metalness' in m) m.metalness = 0.1;
+          if ('roughness' in m) m.roughness = 0.62;
           m.needsUpdate = true;
         });
       });
