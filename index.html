@@ -34,9 +34,23 @@
   .entry-right img.small-logo{max-height:44px;object-fit:contain;filter:drop-shadow(0 4px 12px rgba(34,211,238,.2))}
   @media(max-width:760px){.entry-wrap{grid-template-columns:1fr}.entry-left h1{font-size:2rem}}
   .badge-new{background:linear-gradient(90deg,#22d3ee,#8b5cf6);color:#04122a;font-size:.62rem;font-weight:800;padding:2px 7px;border-radius:8px;letter-spacing:.08em;text-transform:uppercase;margin-left:8px}
-</style>
+  /* Entrada a la tienda: en GitHub Pages (hosting estático) los .php no se ejecutan y se descargan; evitamos el explorador de archivos. */
+  (function () {
+    const host = location.hostname;
+    const isStaticHost = host.endsWith('.github.io') || host === 'github.io' || location.protocol === 'file:';
+    if (!isStaticHost) return; // en XAMPP (localhost:8099) los .php funcionan normal
+    document.addEventListener('click', function (e) {
+      const a = e.target.closest('a[href]');
+      if (!a) return;
+      const href = a.getAttribute('href') || '';
+      if (!/\.php(\?|#|$)/i.test(href)) return;
+      e.preventDefault();
+      e.stopPropagation();
+      alert('La tienda con datos reales (productos, precios, stock) se ejecuta en un servidor PHP (XAMPP). En la demo estática de GitHub Pages los enlaces a PHP se sirven como archivo.\n\nPara ver los productos funcionales, abre el proyecto en XAMPP: http://127.0.0.1:8099/shop/catalog.php\n\nPuedes descargar el proyecto y ejecutarlo localmente (instrucciones en README.md).');
+    }, true);
+  })();
+</script>
 </head>
-<body class="entry">
   <main>
     <div class="entry-wrap">
       <div class="entry-left">
