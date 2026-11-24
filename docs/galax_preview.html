@@ -128,7 +128,8 @@ button,input,select{font:inherit}
 .sanara-fallback{display:none!important}
 .sanara-canvas{display:none!important}
 .sanara-desk{display:none!important}
-.sanara-portrait{display:block!important;object-position:100% 22%;transform:scale(1.45);transform-origin:82% 35%}
+.sanara-portrait{display:block!important;object-position:100% 22%;transform:scale(1.45);transform-origin:82% 35%;animation:airiBreathe 4s ease-in-out infinite}
+@keyframes airiBreathe{0%,100%{transform:scale(1.45) translateY(0)}50%{transform:scale(1.47) translateY(-3px)}}
 .sanara-stage::before{content:'';position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,rgba(7,11,30,.96),rgba(7,11,30,.6) 26%,transparent 52%);pointer-events:none}
 .sanara-stage::after{content:'';position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);width:190px;height:190px;border-radius:50%;border:2px solid rgba(124,58,237,.85);box-shadow:0 0 26px rgba(124,58,237,.6),inset 0 0 22px rgba(34,211,238,.35);z-index:3;pointer-events:none}
 .chat-col{display:flex;flex-direction:column;min-width:0;height:100%}
@@ -249,8 +250,32 @@ button,input,select{font:inherit}
 
 <script>
   const panel = document.getElementById('chatPanel');
+  const body = document.querySelector('.chat-body');
+  const input = document.querySelector('.chat-col footer input');
+  const send = document.querySelector('.chat-col footer button');
+  const hello = '<div style="margin:8px 0;padding:8px 12px;border-radius:12px;background:rgba(79,70,229,.22);border:1px solid rgba(34,211,238,.25)">¡Hola! Soy <strong>Airi</strong>, tu asistente de GALAX PC REPAIR. Pregúntame por productos, precios, stock o reparaciones.</div>';
+  body.innerHTML = hello;
   document.getElementById('assistantBtn').addEventListener('click', () => panel.classList.toggle('open'));
   document.getElementById('closeChat').addEventListener('click', () => panel.classList.remove('open'));
+  function say(html, mine) {
+    const d = document.createElement('div');
+    d.style.cssText = 'margin:8px 0;padding:8px 12px;border-radius:12px;background:' + (mine ? 'rgba(34,211,238,.16)' : 'rgba(79,70,229,.22)') + ';border:1px solid rgba(34,211,238,.25)';
+    d.innerHTML = html; body.appendChild(d); body.scrollTop = body.scrollHeight;
+  }
+  function respond() {
+    const q = (input.value || '').trim(); if (!q) return; input.value = ''; say(q, true);
+    const s = q.toLowerCase();
+    let a = 'Soy el asistente de GALAX PC REPAIR: puedo orientarte sobre laptops, monitores, componentes, periféricos, precios, stock y reparaciones.';
+    if (/laptop|portátil|notebook/.test(s)) a = 'Tenemos laptops HP Pavilion 15, Lenovo IdeaPad 3 y Asus VivoBook 15. Verás precios reales en el catálogo.';
+    else if (/monitor|pantalla/.test(s)) a = 'Hay monitores gaming 24&quot; 165Hz y monitores Samsung en el catálogo.';
+    else if (/gpu|gráfica|rtx/.test(s)) a = 'Contamos con tarjeta gráfica RTX y componentes en Ofertas Especiales.';
+    else if (/teclado|ratón|mouse|perif/.test(s)) a = 'Tenemos teclados gaming, ratones y accesorios en el catálogo.';
+    else if (/repar|taller|servicio/.test(s)) a = 'Reparamos PC y laptops: diagnóstico, limpieza, formateo y mantenimiento.';
+    else if (/precio|stock|oferta/.test(s)) a = 'Precios y stock son reales; revisa la sección Ofertas Especiales.';
+    say(a, false);
+  }
+  send.addEventListener('click', respond);
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') respond(); });
 </script>
 </body>
 </html>
