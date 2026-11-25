@@ -7,6 +7,9 @@ $pageTitle = 'Iniciar sesión';
 $errors = [];
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     require_csrf();
+    if (trim((string)($_POST['website'] ?? '')) !== '') {
+        $errors[] = 'Solicitud rechazada.';
+    } else {
     $email = trim((string)($_POST['email'] ?? ''));
     $pass = (string)($_POST['password'] ?? '');
     if ($email === '' || $pass === '') {
@@ -18,6 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         redirect(hasPermission('dashboard') || isStaff() ? BASE_URL . '/dashboard/index.php' : BASE_URL . '/shop/portal.php');
     } else {
         $errors[] = 'Credenciales incorrectas o cuenta inactiva';
+    }
     }
 }
 require_once __DIR__ . '/../includes/header.php';
@@ -42,12 +46,39 @@ require_once __DIR__ . '/../includes/header.php';
     </div>
     <div class="form-group">
       <label class="form-label">Contraseña</label>
-      <input type="password" name="password" class="form-control" autocomplete="current-password" required>
+      <div style="position:relative">
+        <input type="password" name="password" id="loginPassword" class="form-control" autocomplete="current-password" required>
+        <button type="button" id="togglePassword" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--muted);cursor:pointer;font-size:1rem" aria-label="Mostrar contraseña"><i class="fa-solid fa-eye"></i></button>
+      </div>
     </div>
+    <!-- Honeypot anti-spam -->
+    <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;height:0;width:0">
     <button type="submit" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;margin-top:8px;">
       <i class="fa-solid fa-right-to-bracket"></i> Ingresar
     </button>
   </form>
+  <script>
+    (function () {
+      const btn = document.getElementById('togglePassword');
+      const input = document.getElementById('loginPassword');
+      if (btn && input) {
+        btn.addEventListener('click', function () {
+          const show = input.type === 'password';
+          input.type = show ? 'text' : 'password';
+          btn.innerHTML = show ? '<i class="fa-solid fa-eye-slash"></i>' : '<i class="fa-solid fa-eye"></i>';
+          btn.setAttribute('aria-label', show ? 'Ocultar contraseña' : 'Mostrar contraseña');
+        });
+      }
+      // Honeypot check
+      const form = document.querySelector('form');
+      if (form) {
+        form.addEventListener('submit', function (e) {
+          const hp = form.querySelector('input[name="website"]');
+          if (hp && hp.value.trim() !== '') { e.preventDefault(); return false; }
+        });
+      }
+    })();
+  </script>
   <div style="text-align:center;margin-top:18px;color:var(--muted);font-size:.85rem;">
     ¿No tiene cuenta? <a href="<?= BASE_URL ?>/auth/register.php" style="color:var(--accent);">Regístrese aquí</a>
     · <a href="<?= BASE_URL ?>/auth/recover.php" style="color:var(--accent);">Olvidé mi contraseña</a>
