@@ -8,7 +8,32 @@
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://galanespacial.github.io/GALAX-PC-REPAIR/">
 <link rel="alternate" hreflang="es" href="https://galanespacial.github.io/GALAX-PC-REPAIR/">
-<link rel="icon" type="image/jpeg" href="/docs/logo/logo.jpeg">
+<!-- HTTPS redirect (excluye localhost) -->
+<script>
+  (function () {
+    if (location.protocol !== 'https:' && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+      location.replace('https://' + location.host + location.pathname + location.search + location.hash);
+    }
+  })();
+</script>
+<!-- Schema.org JSON-LD: OnlineStore -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "OnlineStore",
+  "name": "GALAX PC REPAIR",
+  "url": "https://galanespacial.github.io/GALAX-PC-REPAIR/",
+  "telephone": "+51963058461",
+  "address": { "@type": "PostalAddress", "addressCountry": "PE" },
+  "currenciesAccepted": "PEN, USD",
+  "paymentAccepted": "Yape, Plin, Tarjetas",
+  "description": "Tienda de computadoras, laptops y componentes. Reparación técnica, diagnóstico y asistencia de hardware."
+}
+</script>
+<!-- Google Analytics 4 (reemplazar G-XXXXXXXXXX con el ID real cuando corresponda) -->
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script> -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <link rel="stylesheet" href="/assets/css/style.css">
 <link rel="stylesheet" href="/assets/css/theme.css">
@@ -54,7 +79,7 @@
   <main>
     <div class="entry-wrap">
       <div class="entry-left">
-        <img class="small-logo" src="/docs/logo/logo.jpeg" alt="GALAX PC REPAIR">
+        <img class="small-logo" src="/docs/logo/logo.jpeg" alt="GALAX PC REPAIR" loading="lazy">
         <span class="glx">GALAX PC REPAIR</span>
         <h1>GALAX PC REPAIR</h1>
         <div class="tagline">Bienvenidos a la era inteligente Airi</div>
@@ -81,7 +106,7 @@
       <div class="entry-right">
         <div class="card compact">
           <h3><i class="fa-solid fa-microchip"></i> GALAX PC REPAIR</h3>
-          <img class="small-logo" src="/docs/logo/logo.jpeg" alt="Logotipo">
+          <img class="small-logo" src="/docs/logo/logo.jpeg" alt="Logotipo GALAX PC REPAIR" loading="lazy">
           <p class="muted" style="margin:0;color:#8fa6c4;font-size:.85rem;text-align:center">Tecnología que funciona. Servicio en el que confía.</p>
         </div>
         <div class="card compact">
@@ -97,5 +122,29 @@
       <p class="muted" style="grid-column:1/-1;margin-top:10px;font-size:.82rem;text-align:center">Nota: el catálogo con datos reales de productos se ejecuta en un servidor PHP (XAMPP); en GitHub Pages el sitio estático muestra la entrada y los catálogos sin ejecutar.</p>
     </div>
   </main>
+  <footer style="max-width:920px;margin:0 auto 24px;padding:0 24px;text-align:center;font-size:.78rem;color:#64748b">
+    <a href="/aviso-legal.html" style="color:#8fa6c4;margin:0 8px">Aviso legal y T&C</a> ·
+    <a href="/privacidad.html" style="color:#8fa6c4;margin:0 8px">Política de privacidad</a> ·
+    <a href="/reclamaciones.html" style="color:#8fa6c4;margin:0 8px">Libro de reclamaciones</a>
+  </footer>
+  <div id="cookieBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:90;background:rgba(9,13,22,.95);border-top:1px solid rgba(34,211,238,.25);padding:14px 20px;backdrop-filter:blur(12px);font-size:.85rem;color:#cbd5e1">
+    <div style="max-width:1240px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:12px;justify-content:space-between">
+      <span>Usamos almacenamiento local (localStorage) y cookies técnicas para recordar preferencias. <a href="/privacidad.html" style="color:#06B6D4">Política de privacidad</a></span>
+      <div style="display:flex;gap:8px">
+        <button id="cookieEssential" style="padding:8px 14px;border-radius:8px;border:1px solid rgba(34,211,238,.25);background:transparent;color:#cbd5e1;cursor:pointer">Solo esenciales</button>
+        <button id="cookieAccept" style="padding:8px 14px;border-radius:8px;border:0;background:linear-gradient(135deg,#3B82F6,#06B6D4);color:#fff;cursor:pointer;font-weight:700">Aceptar</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const key = 'gx_cookie_consent';
+      const banner = document.getElementById('cookieBanner');
+      const choice = localStorage.getItem(key);
+      if (!choice) banner.style.display = 'block';
+      document.getElementById('cookieAccept').addEventListener('click', function () { localStorage.setItem(key, 'all'); banner.style.display = 'none'; });
+      document.getElementById('cookieEssential').addEventListener('click', function () { localStorage.setItem(key, 'essential'); banner.style.display = 'none'; });
+    })();
+  </script>
 </body>
 </html>

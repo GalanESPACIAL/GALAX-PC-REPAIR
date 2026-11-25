@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Libro de Reclamaciones — GALAX PC REPAIR</title>
+<meta name="description" content="Libro de reclamaciones virtual de GALAX PC REPAIR conforme a INDECOPI.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/theme.css">
+<style>
+  body{margin:0;min-height:100vh;background:linear-gradient(180deg,#090D16,#0B1120);color:#eef2ff;font-family:Inter,Segoe UI,system-ui,sans-serif}
+  .rc{max-width:900px;margin:40px auto;padding:24px}
+  .rc h1{font-size:2rem;margin-bottom:8px;background:linear-gradient(120deg,#fff,#06B6D4,#3B82F6);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .rc h2{margin-top:20px;font-size:1.15rem;color:#06B6D4}
+  .rc p,.rc li{color:#9aa8c7;line-height:1.6;font-size:.95rem}
+  .rc .form-group{margin-bottom:14px}
+  .rc .form-label{display:block;margin-bottom:4px;font-size:.85rem;color:#9aa8c7}
+  .rc .form-control{width:100%;padding:10px 12px;background:rgba(255,255,255,.06);border:1px solid rgba(148,163,184,.18);border-radius:8px;color:#eef2ff;font-family:inherit}
+  .rc .btn{padding:10px 18px;border-radius:8px;border:0;cursor:pointer;font-weight:600}
+  .rc .btn-primary{background:linear-gradient(135deg,#3B82F6,#06B6D4);color:#fff}
+  .rc .back{display:inline-block;margin-bottom:20px;padding:8px 16px;border-radius:8px;background:#111d33;border:1px solid rgba(34,211,238,.25);color:#eef2ff;text-decoration:none}
+  .rc .constancia{margin-top:20px;padding:16px;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.3);border-radius:10px;display:none}
+  .rc .constancia.show{display:block}
+  .rc .constancia h3{margin:0 0 8px;color:#34d399}
+  .rc .constancia p{color:#d1fae5;margin:4px 0}
+  .rc .honeypot{display:none!important;position:absolute;left:-9999px}
+  @media print{body{background:#fff;color:#000}.rc .back,.rc form,.rc .no-print{display:none}.rc .constancia{display:block!important;border:0}}
+</style>
+</head>
+<body>
+<div class="rc">
+  <a class="back no-print" href="/index.html"><i class="fa-solid fa-arrow-left"></i> Volver al inicio</a>
+  <h1>Libro de Reclamaciones</h1>
+  <p>En cumplimiento del Código de Protección y Defensa del Consumidor (INDECOPI, Perú). Complete el formulario; se generará una constancia con código de hoja de reclamación.</p>
+
+  <form id="reclamoForm" class="no-print" onsubmit="return false;">
+    <!-- Honeypot anti-spam -->
+    <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off">
+    <h2>Datos del consumidor</h2>
+    <div class="form-group"><label class="form-label">Nombre completo *</label><input class="form-control" type="text" name="nombre" required minlength="3" maxlength="120"></div>
+    <div class="form-group"><label class="form-label">DNI / CE *</label><input class="form-control" type="text" name="dni" required pattern="[0-9A-Za-z]{6,15}" maxlength="15"></div>
+    <div class="form-group"><label class="form-label">Correo electrónico *</label><input class="form-control" type="email" name="email" required maxlength="120"></div>
+    <div class="form-group"><label class="form-label">Teléfono</label><input class="form-control" type="tel" name="telefono" maxlength="20"></div>
+    <div class="form-group"><label class="form-label">Dirección</label><input class="form-control" type="text" name="direccion" maxlength="200"></div>
+
+    <h2>Identificación del bien o servicio</h2>
+    <div class="form-group">
+      <label class="form-label">Tipo *</label>
+      <select class="form-control" name="tipo" required>
+        <option value="">Seleccione</option>
+        <option value="Producto">Producto</option>
+        <option value="Servicio">Servicio</option>
+      </select>
+    </div>
+    <div class="form-group"><label class="form-label">Descripción del bien/servicio *</label><textarea class="form-control" name="descripcion" required minlength="5" maxlength="500" rows="3"></textarea></div>
+    <div class="form-group"><label class="form-label">Monto reclamado (S/) *</label><input class="form-control" type="number" name="monto" required min="0" step="0.01"></div>
+
+    <h2>Detalle del reclamo</h2>
+    <div class="form-group">
+      <label class="form-label">Tipo de solicitud *</label>
+      <select class="form-control" name="solicitud" required>
+        <option value="">Seleccione</option>
+        <option value="Reclamo">Reclamo (disconformidad con el bien o servicio)</option>
+        <option value="Queja">Queja (disconformidad con la atención al cliente)</option>
+      </select>
+    </div>
+    <div class="form-group"><label class="form-label">Detalle *</label><textarea class="form-control" name="detalle" required minlength="10" maxlength="1000" rows="4"></textarea></div>
+    <div class="form-group"><label class="form-label">Pedido del consumidor *</label><textarea class="form-control" name="pedido" required minlength="5" maxlength="500" rows="3"></textarea></div>
+
+    <button type="submit" class="btn btn-primary" style="margin-top:12px;"><i class="fa-solid fa-paper-plane"></i> Registrar reclamo</button>
+  </form>
+
+  <div id="constancia" class="constancia">
+    <h3><i class="fa-solid fa-circle-check"></i> Reclamo registrado</h3>
+    <p><strong>Código de hoja de reclamación:</strong> <span id="codigo"></span></p>
+    <p><strong>Fecha:</strong> <span id="fecha"></span></p>
+    <p><strong>Consumidor:</strong> <span id="cNombre"></span></p>
+    <p><strong>Solicitud:</strong> <span id="cSol"></span></p>
+    <p>Conserva este código para seguimiento. Puedes imprimir esta constancia.</p>
+    <button class="btn btn-primary" onclick="window.print()" style="margin-top:8px;"><i class="fa-solid fa-print"></i> Imprimir constancia</button>
+    <a class="btn btn-ghost" href="https://wa.me/51963058461?text=Hola%20GALAX%20PC%20REPAIR%2C%20tengo%20un%20reclamo%20con%20c%C3%B3digo%20" target="_blank" rel="noopener" style="margin-left:8px;margin-top:8px;display:inline-flex"><i class="fa-brands fa-whatsapp"></i> Enviar por WhatsApp</a>
+  </div>
+</div>
+<script>
+  (function () {
+    const form = document.getElementById('reclamoForm');
+    const constancia = document.getElementById('constancia');
+    const lastKey = 'rc_last_submit';
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      // Honeypot
+      if (form.website && form.website.value.trim() !== '') return;
+      // Rate limit básico (1 envío por minuto)
+      const last = parseInt(localStorage.getItem(lastKey) || '0', 10);
+      if (Date.now() - last < 60000) { alert('Espere un minuto antes de enviar otro reclamo.'); return; }
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+      const code = 'RC-' + Date.now().toString(36).toUpperCase() + '-' + Math.random().toString(36).slice(2,6).toUpperCase();
+      document.getElementById('codigo').textContent = code;
+      document.getElementById('fecha').textContent = new Date().toLocaleString('es-PE');
+      document.getElementById('cNombre').textContent = form.nombre.value;
+      document.getElementById('cSol').textContent = form.solicitud.value;
+      constancia.classList.add('show');
+      localStorage.setItem(lastKey, String(Date.now()));
+      form.reset();
+      window.scrollTo({ top: constancia.offsetTop - 20, behavior: 'smooth' });
+    });
+  })();
+</script>
+</body>
+</html>
