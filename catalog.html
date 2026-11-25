@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Catálogo — GALAX PC REPAIR</title>
+<meta name="description" content="Catálogo de productos de GALAX PC REPAIR: PCs, laptops, componentes, periféricos y accesorios con precios reales.">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="stylesheet" href="../assets/css/theme.css">
+<style>
+  body{margin:0;min-height:100vh}
+  .catalog-layout{display:grid;grid-template-columns:260px 1fr;gap:18px;padding:24px 0}
+  .filter-panel{background:linear-gradient(180deg,#111d33,#0c1628);border:1px solid var(--gx-border,rgba(34,211,238,.18));border-radius:14px;padding:18px;align-self:start}
+  .product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+  .product-card{background:linear-gradient(180deg,#111d33,#0b1526);border:1px solid rgba(34,211,238,.18);border-radius:14px;padding:14px;transition:.25s;overflow:hidden}
+  .product-card:hover{transform:translateY(-4px);border-color:rgba(59,130,246,.55);box-shadow:0 14px 30px rgba(0,0,0,.4)}
+  .product-card .media{height:150px;display:grid;place-items:center;background:radial-gradient(circle at 50% 40%,rgba(59,130,246,.12),rgba(8,13,31,.3));border-radius:10px;margin-bottom:10px}
+  .product-card .media img{max-height:130px;width:auto;object-fit:contain}
+  .product-card .badge{position:absolute;right:10px;top:10px;background:rgba(59,130,246,.18);border:1px solid #3B82F6;color:#a5b4fc;font-size:.62rem;padding:4px 7px;border-radius:8px}
+  .product-card h4{font-size:.78rem;line-height:1.3;min-height:2.4em;margin-bottom:6px}
+  .product-card .price{font-size:.72rem;color:var(--text,#e8f4ff);margin-top:6px}
+  .product-card .price strong{color:#fff;font-size:.95rem}
+  .product-card .price s{color:#6b7f9c}
+  .product-card .meta{font-size:.7rem;color:#8fa6c4;margin-bottom:6px}
+  .filter-group{margin-bottom:12px}
+  .filter-group label{display:block;font-size:.8rem;color:#8fa6c4;margin-bottom:4px}
+  .range-row{display:flex;gap:8px}
+  .range-row input{flex:1}
+  .empty{grid-column:1/-1;text-align:center;padding:40px;color:#8fa6c4}
+  .note{font-size:.8rem;color:#8fa6c4;margin:12px 0}
+  @media(max-width:760px){.catalog-layout{grid-template-columns:1fr}.filter-panel{margin-bottom:18px}}
+</style>
+</head>
+<body class="store-body">
+<div class="topbar">
+  <div class="container topbar-inner">
+    <div class="top-left"><span class="flag">🇵🇪</span> PEN S/ | USD $</div>
+    <div class="top-right">
+      <a href="/index.html"><i class="fa-regular fa-user"></i> Iniciar sesión</a>
+      <a href="/index.html"><i class="fa-regular fa-heart"></i> Wishlist (0)</a>
+      <a href="/index.html"><i class="fa-solid fa-cart-shopping"></i> Mi Carrito (0)</a>
+    </div>
+  </div>
+</div>
+<header class="main-header">
+  <div class="container header-inner">
+    <a class="logo" href="/index.html"><img src="../docs/logo/logo.png" alt="GALAX PC REPAIR" style="width:42px;height:42px;object-fit:contain"><span>GALAX <b>PC REPAIR</b></span></a>
+    <div class="search"><input type="search" id="siteSearch" placeholder="Buscar productos, componentes y servicios..." aria-label="Buscar productos"><button type="button" aria-label="Buscar"><i class="fa-solid fa-magnifying-glass"></i></button></div>
+    <nav class="main-nav">
+      <a href="/index.html">Inicio</a><a href="/shop/catalog.html" class="active">Catálogo</a>
+      <a href="/index.html">Servicios</a><a href="/index.html">Reparaciones</a><a href="/index.html">Ubícanos</a>
+    </nav>
+  </div>
+</header>
+<main class="container">
+  <div class="section-head" style="margin-top:6px;">
+    <div>
+      <span class="eyebrow">Tienda</span>
+      <h1 style="font-size:2rem;">Catálogo de productos</h1>
+      <p>Filtra por categoría, marca o precio. Todos los datos provienen del inventario real de GALAX PC REPAIR.</p>
+    </div>
+  </div>
+  <div class="catalog-layout">
+    <aside class="filter-panel store-form">
+      <h3><i class="fa-solid fa-sliders"></i> Filtros</h3>
+      <div class="filter-group">
+        <label for="fcat">Categoría</label>
+        <select class="form-control" id="fcat">
+          <option value="">Todas las categorías</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="fbrand">Marca</label>
+        <select class="form-control" id="fbrand">
+          <option value="">Todas las marcas</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label>Precio (S/)</label>
+        <div class="range-row">
+          <input class="form-control" type="number" id="fmin" min="0" step="0.01" placeholder="Mín">
+          <input class="form-control" type="number" id="fmax" min="0" step="0.01" placeholder="Máx">
+        </div>
+      </div>
+      <div class="filter-group">
+        <label for="fsearch">Buscar</label>
+        <input class="form-control" id="fsearch" type="search" placeholder="Ej. SSD, 16GB, RTX">
+      </div>
+      <button id="apply" class="btn btn-primary" style="width:100%;margin-top:6px;"><i class="fa-solid fa-magnifying-glass"></i> Aplicar filtros</button>
+      <p class="note">Demo estática (GitHub Pages). Para comprar, contacta por WhatsApp o abre el proyecto en XAMPP.</p>
+    </aside>
+    <section>
+      <div id="info" class="muted" style="margin-bottom:10px;font-size:.85rem;color:#8fa6c4"></div>
+      <div class="product-grid" id="grid"></div>
+      <div id="empty" class="empty" style="display:none">Sin productos que coincidan con los filtros.</div>
+    </section>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="footer-bottom">© <script>document.write(new Date().getFullYear())</script> GALAX PC REPAIR · Precios y stock en tiempo real · <a href="/index.html">Crear cuenta</a></div>
+</footer>
+<script src="../docs/inventario_categoria1.js"></script>
+<script>
+(function () {
+  const grid = document.getElementById('grid');
+  const info = document.getElementById('info');
+  const empty = document.getElementById('empty');
+  const fcat = document.getElementById('fcat');
+  const fbrand = document.getElementById('fbrand');
+  const fmin = document.getElementById('fmin');
+  const fmax = document.getElementById('fmax');
+  const fsearch = document.getElementById('fsearch');
+  const apply = document.getElementById('apply');
+
+  const data = (window.INVENTARIO_CAT1 || []);
+  const categories = [...new Set(data.map(d => d.category))].sort();
+  const brands = [...new Set(data.map(d => d.brand))].sort();
+
+  categories.forEach(c => { const o = document.createElement('option'); o.value = c; o.textContent = c; fcat.appendChild(o); });
+  brands.forEach(b => { const o = document.createElement('option'); o.value = b; o.textContent = b; fbrand.appendChild(o); });
+
+  function render() {
+    const cat = fcat.value; const brand = fbrand.value;
+    const min = fmin.value !== '' ? parseFloat(fmin.value) : null;
+    const max = fmax.value !== '' ? parseFloat(fmax.value) : null;
+    const q = fsearch.value.trim().toLowerCase();
+    let rows = data.filter(d => {
+      if (cat && d.category !== cat) return false;
+      if (brand && d.brand !== brand) return false;
+      if (min !== null && d.price < min) return false;
+      if (max !== null && d.price > max) return false;
+      if (q && !((d.name + ' ' + d.brand + ' ' + d.sku).toLowerCase().includes(q))) return false;
+      return true;
+    });
+    grid.innerHTML = '';
+    if (!rows.length) { empty.style.display = 'block'; info.textContent = '0 productos'; return; }
+    empty.style.display = 'none';
+    info.textContent = rows.length + ' producto(s) encontrados';
+    rows.forEach(d => {
+      const card = document.createElement('article');
+      card.className = 'product-card';
+      card.innerHTML = `
+        <div class="media"><img src="../assets/img/product-placeholder.svg" alt="${d.name}"></div>
+        <h4>${d.name}</h4>
+        <div class="meta">${d.sku} · ${d.brand}</div>
+        <div class="meta">${d.category}</div>
+        <div class="price"><strong>S/ ${d.price.toFixed(2)}</strong></div>
+      `;
+      grid.appendChild(card);
+    });
+  }
+  apply.addEventListener('click', render);
+  fsearch.addEventListener('input', render);
+  render();
+})();
+</script>
+</body>
+</html>

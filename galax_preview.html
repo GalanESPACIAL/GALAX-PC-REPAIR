@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>GALAX PC REPAIR — Tienda de tecnología y reparación</title>
+<meta name="description" content="GALAX PC REPAIR: laptops, componentes, periféricos, reparación técnica y asistencia IA.">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{
+  --bg:#070d1a; --panel:#0d1628; --panel2:#101d33; --border:rgba(34,211,238,.22);
+  --cyan:#22d3ee; --cyan2:#06b6d4; --text:#e8f4ff; --muted:#8fa6c4;
+  --navy:#080f1f; --radius:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:Inter,Segoe UI,system-ui,sans-serif;
+  background:radial-gradient(1000px 520px at 12% -8%,rgba(79,70,229,.22),transparent 62%),
+             radial-gradient(900px 460px at 92% 4%,rgba(34,211,238,.14),transparent 60%),
+             linear-gradient(180deg,#070d1a,#0a1426);
+  color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+button,input,select{font:inherit}
+.container{max-width:1240px;margin:0 auto;padding:0 18px}
+
+/* ---------- Top bar ---------- */
+.topbar{background:#050a14;border-bottom:1px solid rgba(148,163,184,.12);font-size:.72rem;color:var(--muted)}
+.topbar-inner{display:flex;align-items:center;justify-content:space-between;min-height:30px;gap:12px;flex-wrap:wrap}
+.top-left{display:flex;align-items:center;gap:7px}
+.top-left .flag{font-size:.95rem}
+.top-right{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.top-right a:hover{color:var(--cyan)}
+.top-right i{color:var(--cyan)}
+.top-menu{position:relative;display:inline-block}
+.top-menu summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:8px;border:1px solid rgba(34,211,238,.25);background:rgba(8,18,38,.6);color:#e8f4ff;font-size:.72rem;font-weight:700;transition:.2s}
+.top-menu summary::-webkit-details-marker{display:none}
+.top-menu summary:hover{background:rgba(34,211,238,.15);border-color:var(--cyan)}
+.top-menu-items{position:absolute;right:0;top:calc(100% + 6px);min-width:200px;display:flex;flex-direction:column;gap:4px;padding:8px;background:rgba(8,18,38,.95);border:1px solid rgba(34,211,238,.25);border-radius:10px;box-shadow:0 12px 30px rgba(0,0,0,.5);z-index:60}
+.top-menu-items a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;color:#e8f4ff;text-decoration:none;font-size:.78rem;transition:.2s}
+.top-menu-items a:hover{background:rgba(34,211,238,.12);color:var(--cyan)}
+.top-menu:not([open]) .top-menu-items{display:none}
+@media(max-width:640px){.top-menu-items{right:auto;left:0;min-width:180px}}
+
+/* ---------- Header ---------- */
+.main-header{background:rgba(7,13,26,.94);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:50;backdrop-filter:blur(12px)}
+.header-inner{display:flex;align-items:center;gap:16px;min-height:74px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:9px;font-weight:800;letter-spacing:.02em;white-space:nowrap}
+.logo img{width:42px;height:42px;object-fit:contain}
+.logo span{font-size:1.02rem;line-height:1.05;display:block}
+.logo span b{color:var(--cyan)}
+.search{flex:1;min-width:220px;display:flex;align-items:center;background:#111b2e;border:1px solid rgba(34,211,238,.25);border-radius:10px;padding:0 12px;height:42px}
+.search input{flex:1;min-width:0;background:transparent;border:0;outline:0;color:var(--text);font-size:.85rem}
+.search input::placeholder{color:#7d90ad}
+.search button{background:transparent;border:0;color:var(--cyan);cursor:pointer;font-size:1rem;padding:6px}
+.cat-btn{display:inline-flex;align-items:center;gap:9px;background:#14223a;border:1px solid var(--border);color:var(--text);border-radius:10px;padding:10px 14px;cursor:pointer;white-space:nowrap;font-size:.82rem;font-weight:700}
+.cat-btn i{color:var(--cyan)}
+.main-nav{display:flex;align-items:center;gap:14px;font-size:.78rem;color:#b9cbe4;flex-wrap:wrap}
+.main-nav a:hover{color:var(--cyan)}
+
+/* ---------- Hero ---------- */
+.hero-row{display:grid;grid-template-columns:1.55fr 1fr;gap:14px;margin:20px 0 26px}
+.hero-main{
+  position:relative;min-height:250px;border-radius:16px;overflow:hidden;border:1px solid rgba(124,58,237,.45);
+  background:linear-gradient(120deg,rgba(8,13,31,.35),rgba(8,13,31,.05)),url('anuncio/anuncio_movible%2001.jpeg') center/cover no-repeat;
+  box-shadow:0 0 0 1px rgba(34,211,238,.18),0 18px 44px rgba(0,0,0,.45);
+}
+.hero-main::after{content:'';position:absolute;inset:8px;border:1px solid rgba(34,211,238,.35);border-radius:12px;pointer-events:none}
+.hero-main .hero-copy{position:relative;z-index:2;padding:30px;max-width:60%}
+.hero-main .kicker{color:#67e8f9;font-size:.85rem;font-weight:700;letter-spacing:.02em}
+.hero-main h1{font-size:clamp(1.3rem,2.4vw,2rem);line-height:1.1;margin:8px 0 16px;text-transform:uppercase}
+.hero-main .btn{border:1px solid var(--cyan);background:rgba(8,20,38,.65);color:#fff;border-radius:999px;padding:9px 18px;font-size:.8rem;font-weight:700;cursor:pointer}
+.hero-main .btn:hover{background:rgba(34,211,238,.2)}
+.dots{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:7px;z-index:3}
+.dots span{width:18px;height:4px;border-radius:99px;background:rgba(255,255,255,.35)}
+.dots span.active{background:var(--cyan)}
+.side-col{display:grid;grid-template-rows:1fr 1fr;gap:14px}
+.side-card{position:relative;min-height:118px;border-radius:14px;overflow:hidden;border:1px solid var(--border);
+  background:linear-gradient(110deg,rgba(8,18,34,.92),rgba(12,40,64,.75));
+  display:flex;align-items:center;padding:18px 20px;box-shadow:0 12px 30px rgba(0,0,0,.35)}
+.side-card h3{font-size:1.1rem;line-height:1.15;font-weight:700}
+.side-card h3 em{color:var(--cyan);font-style:normal;display:block;font-size:1.3rem}
+.side-card img{position:absolute;right:6px;top:0;height:100%;width:46%;object-fit:contain;opacity:.92}
+.side-card::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 55%,rgba(8,13,31,.1));pointer-events:none}
+
+/* ---------- Section titles ---------- */
+.section-title{text-align:center;font-size:1rem;letter-spacing:.12em;text-transform:uppercase;font-weight:800;margin:8px 0 16px}
+.section-title.left{text-align:left;text-transform:none;letter-spacing:0;font-size:1.25rem}
+
+/* ---------- Categories ---------- */
+.categories{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.cat-card{background:linear-gradient(180deg,#111d33,#0c1628);border:1px solid rgba(34,211,238,.18);border-radius:var(--radius);
+  padding:16px 12px;text-align:center;transition:.25s;min-height:165px}
+.cat-card:hover{transform:translateY(-4px);border-color:var(--cyan);box-shadow:0 12px 26px rgba(34,211,238,.14)}
+.cat-icon{width:52px;height:52px;margin:0 auto 10px;border-radius:12px;display:grid;place-items:center;font-size:1.4rem;
+  color:var(--cyan);background:rgba(34,211,238,.08);border:1px solid rgba(34,211,238,.22)}
+.cat-card h4{font-size:.88rem;margin-bottom:6px}
+.cat-card p{font-size:.68rem;color:var(--muted);line-height:1.35}
+
+/* ---------- Benefits ---------- */
+.benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:22px 0 26px;background:rgba(13,22,40,.8)}
+.benefit{display:flex;align-items:center;justify-content:center;gap:10px;padding:14px;font-size:.78rem;color:#bcd0e8;border-right:1px solid var(--border)}
+.benefit:last-child{border-right:0}
+.benefit i{color:var(--cyan);font-size:1.05rem}
+
+/* ---------- Products ---------- */
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding-bottom:60px}
+.product{position:relative;background:linear-gradient(180deg,#111d33,#0b1526);border:1px solid rgba(34,211,238,.18);border-radius:var(--radius);padding:14px;transition:.25s}
+.product:hover{transform:translateY(-4px);border-color:rgba(34,211,238,.55);box-shadow:0 14px 30px rgba(0,0,0,.4)}
+.badge-offer{position:absolute;right:10px;top:10px;background:rgba(34,211,238,.18);border:1px solid var(--cyan);color:#a5f3fc;font-size:.62rem;padding:4px 7px;border-radius:8px;z-index:2}
+.product-media{height:150px;display:grid;place-items:center;background:radial-gradient(circle at 50% 40%,rgba(34,211,238,.12),rgba(8,13,31,.3));border-radius:10px;margin-bottom:10px}
+.product-media img{max-height:130px;width:auto;object-fit:contain}
+.product h4{font-size:.78rem;line-height:1.3;min-height:2.4em;margin-bottom:6px}
+.stars{color:#fbbf24;font-size:.7rem;letter-spacing:1px}
+.price{font-size:.72rem;color:var(--muted);margin-top:6px}
+.price strong{color:#fff;font-size:.95rem}
+.price s{color:#6b7f9c}
+
+/* ---------- Floating ---------- */
+.assistant-pill{position:fixed;right:120px;bottom:28px;z-index:60;display:flex;align-items:center;gap:9px;
+  background:rgba(8,18,38,.9);border:1px solid var(--cyan);color:#dffaff;border-radius:999px;padding:10px 16px;
+  box-shadow:0 0 26px rgba(34,211,238,.5);cursor:pointer;font-weight:700;font-size:.82rem}
+.assistant-pill i{font-size:1.1rem;color:var(--cyan)}
+.whatsapp-float{position:fixed;right:22px;bottom:22px;z-index:61;width:60px;height:60px;border-radius:50%;
+  background:linear-gradient(135deg,#128c7e,#25d366);color:#fff;display:grid;place-items:center;
+  box-shadow:0 0 30px rgba(37,211,102,.6);font-size:1.6rem}
+.whatsapp-float span{position:absolute;bottom:-14px;background:#25d366;color:#04140a;font-size:.58rem;font-weight:800;padding:1px 7px;border-radius:99px}
+
+.chat-panel{position:fixed;right:22px;bottom:96px;z-index:70;width:min(420px,calc(100vw - 32px));height:min(620px,calc(100dvh - 120px));
+  background:#0a1426;border:1px solid var(--border);border-radius:18px;display:none;grid-template-columns:1fr;grid-template-rows:270px 1fr;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.6)}
+.chat-panel.open{display:grid!important}
+.sanara-stage{position:relative;height:100%;min-width:0;overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 44%,rgba(124,58,237,.44),transparent 58%),
+    radial-gradient(circle at 86% 16%,rgba(34,211,238,.16),transparent 46%),
+    linear-gradient(rgba(56,189,248,.055) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(56,189,248,.055) 1px,transparent 1px),
+    #070b1e;
+  background-size:auto,auto,36px 36px,36px 36px,auto;
+  box-shadow:inset 0 0 46px rgba(2,6,18,.85)}
+.sanara-room,.sanara-desk,.sanara-portrait{display:none!important}
+.sanara-fallback{display:none;position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:cover;object-position:77% 29%}
+.sanara-fallback.show{display:block!important}
+.sanara-canvas{position:absolute;inset:0;z-index:1}
+.sanara-canvas canvas{display:block;width:100%!important;height:100%!important}
+.sanara-stage::after{content:'';position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);width:196px;height:196px;border-radius:50%;
+  border:2px solid rgba(124,58,237,.82);
+  box-shadow:0 0 28px rgba(124,58,237,.55),inset 0 0 24px rgba(34,211,238,.26);
+  z-index:0;pointer-events:none}
+.chat-col{display:flex;flex-direction:column;min-width:0;height:100%}
+.chat-col header{padding:16px 20px;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(120deg,rgba(30,58,138,.95),rgba(8,145,178,.55));border-bottom:1px solid var(--border);flex-shrink:0}
+.chat-col header strong{font-size:1.25rem;font-weight:800;letter-spacing:.01em}
+.chat-col header button{background:transparent;border:0;color:#fff;cursor:pointer;font-size:1.5rem;line-height:1}
+.chat-body{flex:1;padding:20px;overflow:auto;font-size:1.02rem;line-height:1.55;color:#dbeafe;background:#0a1122}
+.chat-body strong{color:#fff}
+.chat-col footer{display:flex;gap:10px;padding:14px;border-top:1px solid var(--border);flex-shrink:0}
+.chat-col footer input{flex:1;min-width:0;background:#0f1a30;border:1px solid rgba(34,211,238,.35);border-radius:14px;padding:14px 16px;color:#fff;font-size:1rem;outline:0}
+.chat-col footer input::placeholder{color:#8fa6c4}
+.chat-col footer button{background:var(--cyan2);border:0;border-radius:14px;color:#04121c;font-weight:800;font-size:1.1rem;width:56px;cursor:pointer}
+
+@media(max-width:1000px){.main-nav{display:none}.hero-row{grid-template-columns:1fr}.categories{grid-template-columns:repeat(3,1fr)}.products{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.categories{grid-template-columns:repeat(2,1fr)}.products{grid-template-columns:repeat(2,1fr)}.benefits{grid-template-columns:1fr}.benefit{border-right:0;border-bottom:1px solid var(--border)}.assistant-pill{right:96px;font-size:.72rem;padding:9px 11px}}
+@media(max-width:700px){.chat-panel{grid-template-columns:1fr;grid-template-rows:190px 1fr;width:min(360px,calc(100vw - 24px))}.sanara-stage{height:190px}.sanara-stage::after{width:150px;height:150px;top:42%}}
+@media(max-width:767px){
+  .top-right a,.logo,.cat-btn,.main-nav a{display:inline-flex;align-items:center;min-height:44px;min-width:44px}
+  .top-right{gap:6px}
+  .search{height:auto;min-height:44px}
+  .search input{min-height:44px;font-size:16px}
+  .search button{min-height:44px;width:44px}
+  .cat-btn{min-height:44px}
+  .hero-main .btn,.assistant-pill{min-height:44px}
+}
+</style>
+<script type="importmap">
+{"imports":{"three":"./vendor/three.module.js"}}
+</script>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="container topbar-inner">
+    <div class="top-left"><span class="flag">🇵🇪</span> PEN S/ <i class="fa-solid fa-chevron-down"></i> &nbsp;|&nbsp; USD $</div>
+    <div class="top-right">
+      <details class="top-menu">
+        <summary>Menú</summary>
+        <div class="top-menu-items">
+          <a href="/auth/login.php"><i class="fa-regular fa-user"></i> Iniciar sesión</a>
+          <a href="/index.html"><i class="fa-regular fa-heart"></i> Wishlist (0)</a>
+          <a href="/index.html"><i class="fa-solid fa-code-compare"></i> Comparar (0)</a>
+          <a href="/shop/cart.php"><i class="fa-solid fa-cart-shopping"></i> Mi Carrito (0)</a>
+        </div>
+      </details>
+    </div>
+  </div>
+</div>
+
+<header class="main-header">
+  <div class="container header-inner">
+    <a class="logo" href="/index.html"><img src="../assets/img/galax-wolf.svg" alt="GALAX PC REPAIR"><span>GALAX <b>PC REPAIR</b></span></a>
+    <div class="search"><input type="search" id="siteSearch" placeholder="Buscar productos, componentes y servicios..." aria-label="Buscar productos"><button type="button" aria-label="Buscar"><i class="fa-solid fa-magnifying-glass"></i></button></div>
+    <nav class="main-nav">
+      <a href="#categorias">Laptops</a><a href="/shop/catalog.html">Arma tu PC</a><a href="/shop/catalog.html">Marcas</a>
+      <a href="#beneficios">Servicio Técnico</a><a href="/index.html">Medios de Pago</a><a href="/index.html">Ubícanos</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero-row">
+    <div class="hero-main">
+      <div class="hero-copy">
+        <div class="kicker">OFERTAS ESPECIALES</div>
+        <h1>RTX 5080 Ti SUPRIM X</h1>
+        <button class="btn" type="button">Ver Oferta</button>
+      </div>
+      <div class="dots"><span class="active"></span><span></span><span></span><span></span><span></span></div>
+    </div>
+    <div class="side-col">
+      <div class="side-card">
+        <div><h3>Gaming <em>Monitor -15%</em></h3></div>
+        <img src="../assets/img/productos/MON-001.svg" alt="Monitor gamer">
+      </div>
+      <div class="side-card">
+        <div><h3>Asus Laptop <em>10% OFF</em></h3></div>
+        <img src="../assets/img/productos/LAP-003.svg" alt="Laptop Asus">
+      </div>
+    </div>
+  </section>
+
+  <h2 class="section-title" id="categorias">COMPRA POR CATEGORÍA</h2>
+  <section class="categories">
+    <article class="cat-card"><div class="cat-icon"><i class="fa-solid fa-computer"></i></div><h4>Computadoras</h4><p>Desktop, Gaming PCs, Workstations, Servidores</p></article>
+    <article class="cat-card"><div class="cat-icon"><i class="fa-solid fa-laptop"></i></div><h4>Laptops</h4><p>Gaming Laptops, Ultrabooks, Convertible PCs, MacBooks</p></article>
+    <article class="cat-card"><div class="cat-icon"><i class="fa-solid fa-microchip"></i></div><h4>Arma tu PC</h4><p>CPU, Motherboard, GPU, RAM, Almacenamiento, Gabinete</p></article>
+    <article class="cat-card"><div class="cat-icon"><i class="fa-solid fa-display"></i></div><h4>Monitores</h4><p>4K, Ultrawide, Curved, Gaming Monitors, Accesorios</p></article>
+    <article class="cat-card"><div class="cat-icon"><i class="fa-solid fa-keyboard"></i></div><h4>Periféricos</h4><p>Teclado, Ratón, Auriculares, Sillas, Micrófonos</p></article>
+    <article class="cat-card"><div class="cat-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div><h4>Reparación</h4><p>Servicio Técnico PC, Limpieza, Diagnóstico, Mantenimiento</p></article>
+  </section>
+
+  <section class="benefits" id="beneficios">
+    <div class="benefit"><i class="fa-solid fa-truck"></i> Envíos a todo el Perú</div>
+    <div class="benefit"><i class="fa-solid fa-shield-halved"></i> Pago Seguro (Yape, Pin y Tarjetas)</div>
+    <div class="benefit"><i class="fa-solid fa-headset"></i> Asesoría y Soporte Técnico</div>
+  </section>
+
+  <h2 class="section-title left">Ofertas Especiales</h2>
+  <section class="products">
+    <article class="product"><span class="badge-offer">-12% (En oferta)</span><div class="product-media"><img src="../assets/img/productos/COM-002.svg" alt="Tarjeta gráfica"></div><h4>Tarjeta Gráfica RTX Gaming 16GB</h4><div class="stars">★★★★★</div><div class="price"><strong>S/ 284.90</strong> / <s>S/ 932.45</s></div></article>
+    <article class="product"><span class="badge-offer">-12% (En oferta)</span><div class="product-media"><img src="../assets/img/productos/PER-001.svg" alt="Teclado gamer"></div><h4>Teclado Mecánico Gamer RGB</h4><div class="stars">★★★★★</div><div class="price"><strong>S/ 284.90</strong> / <s>S/ 932.45</s></div></article>
+    <article class="product"><span class="badge-offer">-12% (En oferta)</span><div class="product-media"><img src="../assets/img/productos/MON-002.svg" alt="Monitor Samsung"></div><h4>Monitor Samsung 24" Full HD 75Hz</h4><div class="stars">★★★★★</div><div class="price"><strong>S/ 284.90</strong> / <s>S/ 932.45</s></div></article>
+    <article class="product"><span class="badge-offer">-12% (En oferta)</span><div class="product-media"><img src="../assets/img/productos/COM-001.svg" alt="Componente PC"></div><h4>SSD NVMe 1TB High Speed</h4><div class="stars">★★★★★</div><div class="price"><strong>S/ 284.90</strong> / <s>S/ 932.45</s></div></article>
+  </section>
+</main>
+
+<button class="assistant-pill" id="assistantBtn" type="button">Asistente IA <i class="fa-solid fa-robot"></i></button>
+<a class="whatsapp-float" href="https://chat.whatsapp.com/I7Syor85Jia6lfE6oIJ7tX?s=sh&amp;p=a&amp;iam=2//de" target="_blank" rel="noopener noreferrer" aria-label="Soporte por WhatsApp"><i class="fa-brands fa-whatsapp"></i><span>Soporte</span></a>
+
+<div class="chat-panel" id="chatPanel">
+  <div class="sanara-stage" id="sanaraStage">
+    <div class="sanara-canvas" id="sanaraCanvas" aria-hidden="true"></div>
+    <img class="sanara-fallback" src="anuncio/anuncio_movible%2001.jpeg" alt="Airi, asistente virtual de GALAX PC REPAIR">
+  </div>
+  <div class="chat-col">
+    <header><strong>Airi · Asistente IA</strong><button type="button" id="closeChat" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button></header>
+    <div class="chat-body"><p>¡Hola! Soy <strong>Airi</strong>, tu asistente de GALAX PC REPAIR. Pregúntame por productos, precios, stock o reparaciones.</p></div>
+    <footer><input type="text" placeholder="Haz una pregunta..." aria-label="Mensaje"><button type="button"><i class="fa-solid fa-paper-plane"></i></button></footer>
+  </div>
+</div>
+
+<script type="module">
+import * as THREE from 'three';
+import { GLTFLoader } from './vendor/loaders/GLTFLoader.js';
+
+const panel = document.getElementById('chatPanel');
+const body = document.querySelector('.chat-body');
+const input = document.querySelector('.chat-col footer input');
+const send = document.querySelector('.chat-col footer button');
+const stage = document.getElementById('sanaraCanvas');
+const fallback = document.querySelector('.sanara-fallback');
+const hello = '<div style="margin:8px 0;padding:8px 12px;border-radius:12px;background:rgba(79,70,229,.22);border:1px solid rgba(34,211,238,.25)">¡Hola! Soy <strong>Airi</strong>, tu asistente de GALAX PC REPAIR. Pregúntame por productos, precios, stock o reparaciones.</div>';
+body.innerHTML = hello;
+
+const bones = {};
+const basePose = {};
+let renderer, scene, camera, clock, model3d = null;
+let started = false, waveUntil = 0, waveAmount = 0, waveUp = 1.12, waveFwd = 0.26;
+
+const AXIS_X = new THREE.Vector3(1, 0, 0);
+const AXIS_Y = new THREE.Vector3(0, 1, 0);
+const AXIS_Z = new THREE.Vector3(0, 0, 1);
+const _parentQ = new THREE.Quaternion();
+const _invParent = new THREE.Quaternion();
+const _axisQ = new THREE.Quaternion();
+const _deltaQ = new THREE.Quaternion();
+
+function rotateWorld(bone, axis, angle) {
+  if (!bone || !angle) return;
+  bone.parent.getWorldQuaternion(_parentQ);
+  _axisQ.setFromAxisAngle(axis, angle);
+  _invParent.copy(_parentQ).invert();
+  _deltaQ.copy(_invParent).multiply(_axisQ).multiply(_parentQ);
+  bone.quaternion.premultiply(_deltaQ);
+}
+
+function applyWorldQuat(bone, worldQ) {
+  if (!bone) return;
+  bone.parent.getWorldQuaternion(_parentQ);
+  _invParent.copy(_parentQ).invert();
+  _deltaQ.copy(_invParent).multiply(worldQ).multiply(_parentQ);
+  bone.quaternion.premultiply(_deltaQ);
+  bone.updateWorldMatrix(false, true);
+}
+
+function aimForearm() {
+  const low = bones.lowerarm_l, hand = bones.hand_l;
+  if (!low || !hand) return;
+  model3d.updateMatrixWorld(true);
+  const ePos = new THREE.Vector3();
+  const hPos = new THREE.Vector3();
+  low.getWorldPosition(ePos);
+  hand.getWorldPosition(hPos);
+  const dir = hPos.sub(ePos).normalize();
+  const target = new THREE.Vector3(0.18, 1, 0.12).normalize();
+  applyWorldQuat(low, new THREE.Quaternion().setFromUnitVectors(dir, target));
+}
+
+function lowerArms() {
+  model3d.updateMatrixWorld(true);
+  for (const side of ['l', 'r']) {
+    const up = bones['upperarm_' + side];
+    const low = bones['lowerarm_' + side];
+    if (!up || !low) continue;
+    const sPos = new THREE.Vector3();
+    const ePos = new THREE.Vector3();
+    up.getWorldPosition(sPos);
+    low.getWorldPosition(ePos);
+    const dir = ePos.sub(sPos).normalize();
+    const sign = sPos.x < 0 ? -1 : 1;
+    const target = new THREE.Vector3(sign * 0.22, -1, 0.05).normalize();
+    applyWorldQuat(up, new THREE.Quaternion().setFromUnitVectors(dir, target));
+    applyWorldQuat(low, new THREE.Quaternion().setFromAxisAngle(AXIS_X, -0.22));
+  }
+  model3d.updateMatrixWorld(true);
+}
+
+document.getElementById('assistantBtn').addEventListener('click', () => {
+  const open = panel.classList.toggle('open');
+  if (!open) return;
+  initAiri();
+  requestAnimationFrame(fit);
+  if (model3d) waveUntil = performance.now() + 2800;
+});
+document.getElementById('closeChat').addEventListener('click', () => panel.classList.remove('open'));
+
+function say(html, mine) {
+  const d = document.createElement('div');
+  d.style.cssText = 'margin:8px 0;padding:8px 12px;border-radius:12px;background:' + (mine ? 'rgba(34,211,238,.16)' : 'rgba(79,70,229,.22)') + ';border:1px solid rgba(34,211,238,.25)';
+  d.innerHTML = html; body.appendChild(d); body.scrollTop = body.scrollHeight;
+}
+function respond() {
+  const q = (input.value || '').trim(); if (!q) return; input.value = ''; say(q, true);
+  const s = q.toLowerCase();
+  let a = 'Soy el asistente de GALAX PC REPAIR: puedo orientarte sobre laptops, monitores, componentes, periféricos, precios, stock y reparaciones.';
+  if (/laptop|portátil|notebook/.test(s)) a = 'Tenemos laptops HP Pavilion 15, Lenovo IdeaPad 3 y Asus VivoBook 15. Verás precios reales en el catálogo.';
+  else if (/monitor|pantalla/.test(s)) a = 'Hay monitores gaming 24&quot; 165Hz y monitores Samsung en el catálogo.';
+  else if (/gpu|gráfica|rtx/.test(s)) a = 'Contamos con tarjeta gráfica RTX y componentes en Ofertas Especiales.';
+  else if (/teclado|ratón|mouse|perif/.test(s)) a = 'Tenemos teclados gaming, ratones y accesorios en el catálogo.';
+  else if (/repar|taller|servicio/.test(s)) a = 'Reparamos PC y laptops: diagnóstico, limpieza, formateo y mantenimiento.';
+  else if (/precio|stock|oferta/.test(s)) a = 'Precios y stock son reales; revisa la sección Ofertas Especiales.';
+  say(a, false);
+  waveUntil = performance.now() + 1500;
+}
+send.addEventListener('click', respond);
+input.addEventListener('keydown', e => { if (e.key === 'Enter') respond(); });
+
+function initAiri() {
+  if (started) return;
+  started = true;
+  try {
+    renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  } catch (e) {
+    console.warn('[Airi] WebGL no disponible', e);
+    fallback.classList.add('show');
+    return;
+  }
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.02;
+  stage.appendChild(renderer.domElement);
+
+  scene = new THREE.Scene();
+  scene.add(new THREE.HemisphereLight(0xd7ecff, 0x1a1238, 1.35));
+  const key = new THREE.DirectionalLight(0xffffff, 1.75); key.position.set(1.4, 2.7, 2.4); scene.add(key);
+  const fill = new THREE.DirectionalLight(0x38bdf8, 0.6); fill.position.set(-2.2, 1.5, 1.1); scene.add(fill);
+  const rim = new THREE.DirectionalLight(0x8b5cf6, 2.0); rim.position.set(1.2, 2.2, -1.8); scene.add(rim);
+  const face = new THREE.DirectionalLight(0xfff1e2, 1.15); face.position.set(0.5, 2.8, 3.2); scene.add(face);
+  const side = new THREE.DirectionalLight(0xbfe8ff, 0.45); side.position.set(-1.6, 2.2, 2.4); scene.add(side);
+  const aura = new THREE.PointLight(0x7c3aed, 0.55, 3.5); aura.position.set(0, 1.5, 0.6); scene.add(aura);
+
+  camera = new THREE.PerspectiveCamera(30, 1, 0.01, 40);
+  clock = new THREE.Clock();
+  fit();
+
+  new GLTFLoader().load('Cuerpo_SANARA%20IA/sanara_listo.glb', onModelLoaded, undefined, err => {
+    console.warn('[Airi] No se pudo cargar el modelo 3D', err);
+    fallback.classList.add('show');
+  });
+
+  function loop() {
+    requestAnimationFrame(loop);
+    if (!renderer) return;
+    const dt = Math.min(clock.getDelta(), 0.05);
+    const t = clock.elapsedTime;
+
+    if (model3d) {
+      for (const name in basePose) bones[name].quaternion.copy(basePose[name]);
+      rotateWorld(bones.head, AXIS_Y, Math.sin(t * 0.65) * 0.10);
+      rotateWorld(bones.head, AXIS_X, Math.sin(t * 0.9) * 0.03);
+      rotateWorld(bones.spine_02, AXIS_Y, Math.sin(t * 0.45) * 0.024);
+      rotateWorld(bones.spine_03, AXIS_Y, Math.sin(t * 0.55) * 0.014);
+
+      const target = performance.now() < waveUntil ? 1 : 0;
+      waveAmount += (target - waveAmount) * Math.min(1, dt * 7);
+      if (waveAmount > 0.002) {
+        const swing = Math.sin(t * 8.5) * 0.14;
+        rotateWorld(bones.upperarm_l, AXIS_Z, (waveUp + swing * 0.7) * waveAmount);
+        rotateWorld(bones.upperarm_l, AXIS_X, waveFwd * 0.8 * waveAmount);
+        aimForearm();
+        rotateWorld(bones.hand_l, AXIS_Z, Math.sin(t * 8.5 + 0.5) * 0.2 * waveAmount);
+      }
+    }
+
+    renderer.render(scene, camera);
+  }
+  loop();
+}
+
+function onModelLoaded(gltf) {
+  model3d = gltf.scene;
+  scene.add(model3d);
+  model3d.traverse(o => {
+    if (o.isBone) bones[o.name] = o;
+    if (o.isMesh) {
+      o.frustumCulled = false;
+      const src = Array.isArray(o.material) ? o.material[0] : o.material;
+      const tex = src && (src.emissiveMap || src.map);
+      if (tex) {
+        tex.colorSpace = THREE.SRGBColorSpace;
+        tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+      }
+      o.material = new THREE.MeshStandardMaterial({
+        map: tex || null,
+        color: 0xffffff,
+        emissive: new THREE.Color(0xffffff),
+        emissiveMap: tex || null,
+        emissiveIntensity: 0.22,
+        metalness: 0.05,
+        roughness: 0.55,
+        side: THREE.DoubleSide
+      });
+    }
+  });
+  model3d.updateMatrixWorld(true);
+  lowerArms();
+  for (const name of ['upperarm_l', 'lowerarm_l', 'hand_l', 'upperarm_r', 'lowerarm_r', 'hand_r', 'head', 'spine_02', 'spine_03']) {
+    if (bones[name]) basePose[name] = bones[name].quaternion.clone();
+  }
+  frameModel();
+  fallback.classList.remove('show');
+  new ResizeObserver(fit).observe(stage);
+  fit();
+  waveUntil = performance.now() + 3000;
+  window.__AIRI_READY = true;
+  window.__AIRI = { bones, get camera() { return camera; }, get model() { return model3d; }, wave(ms = 3000) { waveUntil = performance.now() + ms; }, setCam(y, d) { camera.position.set(0, y, d); camera.lookAt(0, y, 0); } };
+}
+
+function frameModel() {
+  const head = bones.head;
+  const headPos = new THREE.Vector3();
+  if (head) head.getWorldPosition(headPos);
+  const leafPos = headPos.clone();
+  if (bones.head_leaf) bones.head_leaf.getWorldPosition(leafPos);
+  const targetY = Math.max(headPos.y, leafPos.y) + 0.43;
+  const dist = 2.85;
+  camera.position.set(headPos.x || 0, targetY, dist);
+  camera.lookAt(headPos.x || 0, targetY, 0);
+  camera.updateProjectionMatrix();
+}
+
+function fit() {
+  if (!renderer || !camera) return;
+  const w = stage.clientWidth || 420;
+  const h = stage.clientHeight || 270;
+  renderer.setSize(w, h, false);
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+}
+</script>
+</body>
+</html>
