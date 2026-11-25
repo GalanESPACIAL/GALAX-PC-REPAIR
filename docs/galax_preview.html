@@ -35,6 +35,15 @@ button,input,select{font:inherit}
 .top-right{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
 .top-right a:hover{color:var(--cyan)}
 .top-right i{color:var(--cyan)}
+.top-menu{position:relative;display:inline-block}
+.top-menu summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:8px;border:1px solid rgba(34,211,238,.25);background:rgba(8,18,38,.6);color:#e8f4ff;font-size:.72rem;font-weight:700;transition:.2s}
+.top-menu summary::-webkit-details-marker{display:none}
+.top-menu summary:hover{background:rgba(34,211,238,.15);border-color:var(--cyan)}
+.top-menu-items{position:absolute;right:0;top:calc(100% + 6px);min-width:200px;display:flex;flex-direction:column;gap:4px;padding:8px;background:rgba(8,18,38,.95);border:1px solid rgba(34,211,238,.25);border-radius:10px;box-shadow:0 12px 30px rgba(0,0,0,.5);z-index:60}
+.top-menu-items a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;color:#e8f4ff;text-decoration:none;font-size:.78rem;transition:.2s}
+.top-menu-items a:hover{background:rgba(34,211,238,.12);color:var(--cyan)}
+.top-menu:not([open]) .top-menu-items{display:none}
+@media(max-width:640px){.top-menu-items{right:auto;left:0;min-width:180px}}
 
 /* ---------- Header ---------- */
 .main-header{background:rgba(7,13,26,.94);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:50;backdrop-filter:blur(12px)}
@@ -175,10 +184,15 @@ button,input,select{font:inherit}
   <div class="container topbar-inner">
     <div class="top-left"><span class="flag">🇵🇪</span> PEN S/ <i class="fa-solid fa-chevron-down"></i> &nbsp;|&nbsp; USD $</div>
     <div class="top-right">
-      <a href="/auth/login.php"><i class="fa-regular fa-user"></i> Iniciar sesión</a>
-      <a href="/index.html"><i class="fa-regular fa-heart"></i> Wishlist (0)</a>
-      <a href="/index.html"><i class="fa-solid fa-code-compare"></i> Comparar (0)</a>
-      <a href="/shop/cart.php"><i class="fa-solid fa-cart-shopping"></i> Mi Carrito (0)</a>
+      <details class="top-menu">
+        <summary><i class="fa-solid fa-bars"></i> Menú</summary>
+        <div class="top-menu-items">
+          <a href="/auth/login.php"><i class="fa-regular fa-user"></i> Iniciar sesión</a>
+          <a href="/index.html"><i class="fa-regular fa-heart"></i> Wishlist (0)</a>
+          <a href="/index.html"><i class="fa-solid fa-code-compare"></i> Comparar (0)</a>
+          <a href="/shop/cart.php"><i class="fa-solid fa-cart-shopping"></i> Mi Carrito (0)</a>
+        </div>
+      </details>
     </div>
   </div>
 </div>
