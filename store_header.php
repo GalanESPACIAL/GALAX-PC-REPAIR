@@ -24,7 +24,7 @@ $storeUser = currentUser();
 <meta property="og:description" content="<?= h($company['descripcion'] ?? 'Venta de computadoras, laptops y componentes. Reparación técnica especializada.') ?>">
 <meta property="og:type" content="website">
 <meta property="og:url" content="<?= BASE_URL . '/shop/index.php' ?>">
-<meta property="og:image" content="<?= h(product_image_url('docs/logo/logo.jpeg')) ?>">
+<meta property="og:image" content="<?= h(product_image_url('docs/logo/logo.png')) ?>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -37,7 +37,7 @@ $storeUser = currentUser();
   <div class="site-header-inner">
     <button class="header-icon mobile-menu-btn" id="storeMenuBtn" aria-label="Abrir menú" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
     <a class="brand-mark" href="<?= BASE_URL ?>/shop/index.php">
-      <img class="brand-logo" src="<?= h(product_image_url('docs/logo/logo.jpeg')) ?>" alt="GALAX PC REPAIR" loading="lazy">
+      <img class="brand-logo" src="<?= h(product_image_url('docs/logo/logo.png')) ?>" alt="GALAX PC REPAIR" loading="lazy">
       <span class="brand-name">GALAX <span class="gradient-text">PC REPAIR</span><small>TECNOLOGÍA &amp; SERVICIO</small></span>
     </a>
     <nav class="site-nav" id="storeNav" aria-label="Navegación principal">
