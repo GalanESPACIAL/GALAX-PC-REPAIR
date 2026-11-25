@@ -82,7 +82,10 @@
   </div>
   <div class="footer-bottom">
     © <?= date('Y') ?> <?= h($company['nombre']) ?> · Precios y stock en tiempo real ·
-    <a href="<?= BASE_URL ?>/auth/register.php">Crear cuenta</a>
+    <a href="<?= BASE_URL ?>/auth/register.php">Crear cuenta</a> ·
+    <a href="<?= BASE_URL ?>/aviso-legal.html">Aviso legal</a> ·
+    <a href="<?= BASE_URL ?>/privacidad.html">Privacidad</a> ·
+    <a href="<?= BASE_URL ?>/reclamaciones.html">Libro de reclamaciones</a>
   </div>
 </footer>
 
