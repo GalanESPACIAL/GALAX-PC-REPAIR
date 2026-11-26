@@ -21,7 +21,9 @@
 ## Voz
 - **Grabación original integrada**: `docs/Voz de Airi/voz de Airi.mp3` (~15 s) se reproduce al abrir el chat y al pulsar "Escuchar saludo de Airi"; también queda disponible como reproductor dentro de la conversación.
 - Las respuestas dinámicas se leen con Web Speech API; clonar la grabación original para texto arbitrario requiere un servicio de TTS con voz propia (dependencia pendiente, no simulada).
-- Web Speech API: una sola voz en español (femenina por defecto, guardada en localStorage).
+- La lectura en voz está **activada por defecto** en el preview; el botón superior permite silenciarla y el estado se guarda en localStorage.
+- Web Speech API: voz femenina española preferida y recordada en localStorage, con `rate` 0.94 y `pitch` 1.12 para un timbre cálido cercano a la grabación original; se usan `es-PE` y volumen 1.
+- Las respuestas dinámicas se leen en voz automáticamente; el saludo usa la grabación original y muestra en pantalla el texto exacto de bienvenida.
 - Salida: `speechSynthesis`; entrada: `SpeechRecognition`/`webkitSpeechRecognition` con `es-PE`.
 - Si no hay voz disponible, se ofrece alternativa honesta (escribir / botón de escucha).
 
