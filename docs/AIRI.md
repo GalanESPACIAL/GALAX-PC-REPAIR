@@ -1,22 +1,31 @@
 # Airi — asistente de GALAX PC REPAIR
 
-Identidad:
-- Se conserva el avatar existente `assets/img/optimized/airi.jpg`.
-- No se creó un personaje nuevo.
-- El saludo inicial es por voz y animación CSS; no se muestra burbuja de texto automática.
+## Identidad visual
+- El avatar de Airi es el cuerpo 3D del proyecto: `docs/Cuerpo_SANARA IA/sanara_listo.glb` (personaje Sanara, animación `Levitate_Idle`).
+- Fallback obligatorio: si WebGL falla o el modelo no carga, se conserva el avatar existente `assets/img/optimized/airi.jpg`.
+- El saludo inicial se anima con la rama de la mano real (`upperarm_l`, `lowerarm_l`, `hand_l`) + respiración; sin animación de mano "inventada".
 
-Voz:
-- Se selecciona una sola voz en español cuando está disponible.
-- La disponibilidad y calidad dependen del navegador/dispositivo.
-- No se clona ninguna voz real.
+## Chat
+- Implementación: `docs/galax_preview.html` (preview con stage 3D + chat) y panel flotante de `assets/js/airi.js`.
+- Stage 3D: canvas WebGL con luces de estudio, glow neón, `MeshStandardMaterial` con textura del modelo.
+- Animación: cabeza (head/spine) con micro-oscilaciones, saludo por rama de mano, respiración; respuesta → saludo/nod.
+- Renderizado solo cuando el panel está abierto (performance).
 
-Imágenes:
-- Formatos admitidos: JPG, JPEG, PNG, WEBP.
-- Tamaño máximo: 8 MB.
-- Cámara mediante `getUserMedia` con opción de retomar.
-- El análisis visual requiere `visual-search` desplegado; si no está disponible, Airi lo indica honestamente.
-- Los productos recomendados se validan contra el catálogo real.
+## Voz
+- Web Speech API: una sola voz en español (femenina por defecto, guardada en localStorage).
+- Salida: `speechSynthesis`; entrada: `SpeechRecognition`/`webkitSpeechRecognition` con `es-PE`.
+- Si no hay voz disponible, se ofrece alternativa honesta (escribir / botón de escucha).
 
-Limitaciones:
-- La animación de saludo rota el avatar completo porque el asset actual no tiene una mano separada.
-- Gemma y visión requieren credenciales/endpoints externos.
+## Imágenes y cámara
+- Formatos: JPG/JPEG, PNG, WEBP. Máx. 8 MB. Validación por tipo y tamaño.
+- Cámara: `getUserMedia({ video: { facingMode: 'environment' } })`, captura a canvas, retoma/usar.
+- Análisis visual: solo con Edge Function `visual-search` desplegada; si no, respuesta honesta sin adivinar.
+
+## Respuestas
+- Solo catálogo real (`assets/data/catalog.json`, 209 productos) + Edge Function `ai-chat` (Gemma) cuando esté configurada.
+- No se inventan precios, stock ni productos. Productos recomendados validan contra el catálogo.
+
+## Limitaciones
+- La IA conversacional (Gemma) y el análisis visual requieren credenciales/endpoints externos y despliegue de Edge Functions.
+- El cuerpo 3D depende de WebGL del navegador; en dispositivos sin WebGL se usa el fallback.
+- Los pagos y datos sensibles requieren backend Supabase + pasarelas oficiales (ver `docs/PAGOS.md`).
