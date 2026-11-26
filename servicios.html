@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Servicios técnicos — GALAX PC REPAIR</title>
+<meta name="description" content="Reparación de PC y laptops, microsoldadura, formateo, mantenimiento, redes y diagnóstico electrónico. Coordina tu evaluación por WhatsApp.">
+<meta name="theme-color" content="#050812">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/galax.css">
+</head>
+<body data-page="servicios">
+<a class="skip-link" href="#main">Saltar al contenido principal</a>
+<div id="site-header"></div>
+<main id="main">
+  <div class="container">
+    <nav class="breadcrumbs" aria-label="Migas de pan"><a href="index.html">Inicio</a><span aria-hidden="true">/</span><span>Servicios</span></nav>
+    <div class="page-head">
+      <h1>Servicio técnico</h1>
+      <p>Diagnóstico, reparación y mantenimiento. Cada caso se evalúa antes de cotizar; no publicamos precios de servicio que no estén confirmados.</p>
+    </div>
+    <section aria-labelledby="srv-list-title" style="padding-bottom:36px">
+      <div class="section-head"><div><span class="eyebrow">Qué hacemos</span><h2 id="srv-list-title">Servicios disponibles</h2></div><a class="link-more" href="#solicitud">Solicitar diagnóstico</a></div>
+      <div class="service-grid" id="services-grid"></div>
+      <div class="info-box warn mt-3" id="services-note">El precio final depende del diagnóstico, repuestos y estado del equipo. No se cobra ni se promete un resultado antes de revisar el equipo.</div>
+    </section>
+    <section class="split" aria-labelledby="process-title" style="padding-bottom:40px">
+      <div class="panel">
+        <span class="eyebrow">Cómo trabajamos</span>
+        <h2 id="process-title" style="margin:8px 0 14px">De la consulta al equipo funcionando</h2>
+        <div class="process-list">
+          <div class="process-item"><div><strong>Cuéntanos el problema</strong><span>Escribe por WhatsApp o completa la solicitud con el modelo y la falla observada.</span></div></div>
+          <div class="process-item"><div><strong>Evaluación</strong><span>Revisamos el equipo y explicamos qué encontramos, sin inventar un diagnóstico a distancia.</span></div></div>
+          <div class="process-item"><div><strong>Cotización</strong><span>Recibes el alcance y el costo antes de autorizar la reparación. Si no se aprueba, se coordina la devolución.</span></div></div>
+          <div class="process-item"><div><strong>Reparación y prueba</strong><span>Se realiza el trabajo autorizado y se prueba el equipo antes de la entrega.</span></div></div>
+          <div class="process-item"><div><strong>Entrega y seguimiento</strong><span>Coordinas recojo o envío. La garantía del servicio se conversa según el trabajo realizado.</span></div></div>
+        </div>
+      </div>
+      <div class="panel">
+        <span class="eyebrow">Alcance</span>
+        <h2 style="margin:8px 0 10px">Qué podemos revisar</h2>
+        <div class="service-detail" id="service-scope"></div>
+        <div class="showcase-note"><span>Importante:</span><span>No prometemos recuperar datos ni reparar todos los equipos. Si el daño es irreversible o el repuesto no está disponible, se informa con honestidad.</span></div>
+      </div>
+    </section>
+    <section id="solicitud" class="split" aria-labelledby="request-title" style="padding-bottom:60px">
+      <div class="panel">
+        <span class="eyebrow">Solicitud de diagnóstico</span>
+        <h2 id="request-title" style="margin:8px 0 4px">Cuéntanos qué pasa con tu equipo</h2>
+        <p class="small muted">El formulario prepara un mensaje de WhatsApp con tus datos. No se envía ni se guarda en un servidor desde esta página.</p>
+        <form id="service-form" class="form-grid mt-2">
+          <div class="field"><label for="sv-name">Nombre *</label><input class="input" id="sv-name" required maxlength="80" autocomplete="name"></div>
+          <div class="field"><label for="sv-phone">WhatsApp *</label><input class="input" id="sv-phone" type="tel" required maxlength="24" autocomplete="tel" placeholder="+51 9…"></div>
+          <div class="field"><label for="sv-type">Tipo de equipo *</label><select class="select-full" id="sv-type" required><option value="">Selecciona</option><option>Laptop</option><option>PC de escritorio</option><option>Monitor</option><option>Otro equipo</option></select></div>
+          <div class="field"><label for="sv-service">Servicio de interés</label><select class="select-full" id="sv-service"><option value="">No estoy seguro</option></select></div>
+          <div class="field full"><label for="sv-problem">Describe la falla *</label><textarea class="textarea" id="sv-problem" required maxlength="600" placeholder="Ej. La laptop no enciende, se apaga sola, tiene pantalla rota, necesita mantenimiento…"></textarea></div>
+          <div class="field full"><label class="check-inline"><input type="checkbox" id="sv-consent" required><span>Acepto que mis datos se usen para responder esta solicitud por WhatsApp. <a href="privacidad.html" style="color:var(--gx-cyan)">Privacidad</a>.</span></label></div>
+          <div class="full form-message" id="service-message" role="status"></div>
+          <div class="full flex flex-wrap"><button class="btn btn-primary" type="submit" id="service-submit">Preparar mensaje de WhatsApp</button><a class="btn btn-ghost" href="contacto.html">Otros canales</a></div>
+        </form>
+      </div>
+      <div class="panel">
+        <span class="eyebrow">Antes de escribir</span>
+        <h2 style="margin:8px 0 10px">Datos útiles</h2>
+        <ul class="editorial-list">
+          <li><span id="srv-check-1"></span><span>Modelo exacto del equipo y código de producto si lo compraste en GALAX.</span></li>
+          <li><span id="srv-check-2"></span><span>Qué falla, desde cuándo y si hubo golpes, líquidos o cambios recientes.</span></li>
+          <li><span id="srv-check-3"></span><span>Si el equipo enciende, muestra imagen o emite algún sonido.</span></li>
+          <li><span id="srv-check-4"></span><span>Si necesitas conservar datos; el respaldo no está garantizado.</span></li>
+        </ul>
+        <div class="info-box mt-2" id="srv-info">No envíes contraseñas ni datos de tarjeta por chat. Para revisar el equipo, coordina primero el recojo o la entrega en el taller.</div>
+        <a class="btn btn-soft btn-block mt-3" id="srv-wa" href="#" target="_blank" rel="noopener"><span id="srv-wa-icon"></span>Escribir por WhatsApp</a>
+      </div>
+    </section>
+    <section aria-labelledby="srv-faq-title" style="padding-bottom:60px">
+      <div class="section-head section-head-center"><span class="eyebrow">Dudas frecuentes</span><h2 id="srv-faq-title">Sobre el servicio técnico</h2></div>
+      <div class="faq-list" id="service-faq"></div>
+    </section>
+  </div>
+</main>
+<div id="site-footer"></div>
+<script src="assets/js/config.js" defer></script>
+<script src="assets/js/supabase-client.js" defer></script>
+<script src="assets/js/core.js" defer></script>
+<script src="assets/js/festive.js" defer></script>
+<script src="assets/js/airi.js" defer></script>
+<script src="assets/js/servicios.js" defer></script>
+</body>
+</html>

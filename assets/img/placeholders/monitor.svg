@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Ilustración referencial de monitor">
+  <defs>
+    <linearGradient id="bg-mon" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0c4a6e"/><stop offset="1" stop-color="#0284c7"/>
+    </linearGradient>
+    <linearGradient id="screen-mon" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1220"/><stop offset="1" stop-color="#111d33"/>
+    </linearGradient>
+    <filter id="shadow-mon" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#020617" flood-opacity=".55"/>
+    </filter>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg-mon)"/>
+  <circle cx="96" cy="86" r="210" fill="#ffffff" opacity=".045"/>
+  <circle cx="716" cy="536" r="250" fill="#ffffff" opacity=".035"/>
+  <path d="M0 500L800 380V600H0Z" fill="#020617" opacity=".22"/>
+  <g opacity=".12" stroke="#ffffff" stroke-width="1">
+    <path d="M0 0V600"/><path d="M100 0V600"/><path d="M200 0V600"/><path d="M300 0V600"/><path d="M400 0V600"/><path d="M500 0V600"/><path d="M600 0V600"/><path d="M700 0V600"/><path d="M800 0V600"/>
+    <path d="M0 0H800"/><path d="M0 100H800"/><path d="M0 200H800"/><path d="M0 300H800"/><path d="M0 400H800"/><path d="M0 500H800"/>
+  </g>
+  <g filter="url(#shadow-mon)">
+    <rect x="180" y="150" width="440" height="260" rx="14" fill="#0b1220"/>
+    <rect x="198" y="168" width="404" height="224" rx="7" fill="url(#screen-mon)"/>
+    <path d="M240 350l80-104 62 70 78-116 92 150z" fill="#38bdf8" opacity=".18"/>
+    <rect x="370" y="410" width="60" height="46" fill="#94a3b8"/>
+    <rect x="300" y="456" width="200" height="16" rx="8" fill="#cbd5e1"/>
+    <circle cx="654" cy="190" r="34" fill="#38bdf8" opacity=".14"/>
+    <path d="M640 190a14 14 0 1 1 28 0 14 14 0 0 1-28 0Z" fill="none" stroke="#7dd3fc" stroke-width="3"/>
+    <path d="M640 226h28" stroke="#7dd3fc" stroke-width="3" stroke-linecap="round"/></g>
+  <text x="52" y="64" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#ffffff" opacity=".82" letter-spacing="2">GALAX PC REPAIR</text>
+  <text x="52" y="556" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="600" fill="#ffffff" opacity=".62" letter-spacing="1.6">IMAGEN REFERENCIAL</text>
+  <rect x="52" y="92" width="66" height="3" rx="1.5" fill="#ffffff" opacity=".55"/>
+</svg>

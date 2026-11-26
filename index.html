@@ -1,146 +1,223 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>GALAX PC REPAIR — Bienvenidos</title>
-<meta name="description" content="GALAX PC REPAIR: tienda de computadoras, laptops y componentes, reparación técnica, y asistente virtual Airi. Accede como cliente o administrador.">
-<meta name="robots" content="index,follow">
-<link rel="canonical" href="https://galanespacial.github.io/GALAX-PC-REPAIR/">
-<link rel="alternate" hreflang="es" href="https://galanespacial.github.io/GALAX-PC-REPAIR/">
-<!-- HTTPS redirect (excluye localhost) -->
-<script>
-  (function () {
-    if (location.protocol !== 'https:' && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
-      location.replace('https://' + location.host + location.pathname + location.search + location.hash);
-    }
-  })();
-</script>
-<!-- Schema.org JSON-LD: OnlineStore -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "OnlineStore",
-  "name": "GALAX PC REPAIR",
-  "url": "https://galanespacial.github.io/GALAX-PC-REPAIR/",
-  "telephone": "+51963058461",
-  "address": { "@type": "PostalAddress", "addressCountry": "PE" },
-  "currenciesAccepted": "PEN, USD",
-  "paymentAccepted": "Yape, Plin, Tarjetas",
-  "description": "Tienda de computadoras, laptops y componentes. Reparación técnica, diagnóstico y asistencia de hardware."
-}
-</script>
-<!-- Google Analytics 4 (reemplazar G-XXXXXXXXXX con el ID real cuando corresponda) -->
-<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script> -->
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-<link rel="stylesheet" href="/assets/css/style.css">
-<link rel="stylesheet" href="/assets/css/theme.css">
-<style>
-  /* Entry screen — bienvenida profesional al sistema GALAX PC REPAIR */
-  body.entry{background:#042f57;color:var(--text);font-family:Inter,Segoe UI,system-ui,sans-serif;min-height:100vh;display:grid;place-items:center;padding:24px;margin:0}
-  .entry-wrap{width:min(920px,100%);display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center}
-  .entry-left{text-align:center;color:#fff}
-  .entry-left .glx{font-size:1rem;letter-spacing:.35em;color:#22d3ee;font-weight:800;text-transform:uppercase}
-  .entry-left h1{font-size:clamp(2.4rem,6vw,3.6rem);font-weight:800;margin:14px 0 8px;background:linear-gradient(120deg,#fff,#22d3ee,#8b5cf6);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.05;letter-spacing:-.01em}
-  .entry-left .tagline{font-size:1.1rem;color:#dbe3ff;margin:0 0 10px;font-weight:600}
-  .entry-left .reg-note{font-size:.92rem;color:#b8c2d6;margin:0 0 22px;max-width:480px;text-align:left}
-  .entry-left p{max-width:520px;margin:0 auto 22px;color:#c2cbe1;font-size:1.05rem;line-height:1.6}
-  .entry-cards{display:grid;gap:12px;max-width:560px;margin:0 auto}
-  .entry-card{background:linear-gradient(180deg,#111d33,#0c1628);border:1px solid rgba(34,211,238,.25);border-radius:16px;padding:24px;text-decoration:none;transition:.28s;color:inherit;display:flex;align-items:center;gap:14px;box-shadow:0 8px 26px rgba(0,0,0,.35)}
-  .entry-card:hover{transform:translateY(-3px);border-color:rgba(34,211,238,.7);box-shadow:0 14px 40px rgba(34,211,238,.12);color:#fff}
-  .entry-card .ic{width:46px;height:46px;border-radius:50%;background:rgba(34,211,238,.12);color:#22d3ee;display:grid;place-items:center;font-size:1.4rem;flex-shrink:0}
-  .entry-card strong{display:block;font-size:1.05rem}
-  .entry-card small{color:#8fa6c4;font-size:.85rem}
-  .entry-right{display:flex;flex-direction:column;gap:12px}
-  .entry-right .card.compact{background:#0d1628;border:1px solid rgba(34,211,238,.2);border-radius:16px;padding:18px}
-  .entry-right .card.compact h3{margin:0 0 6px;font-size:.95rem}
-  .entry-right img.small-logo{max-height:44px;object-fit:contain;filter:drop-shadow(0 4px 12px rgba(34,211,238,.2))}
-  @media(max-width:760px){.entry-wrap{grid-template-columns:1fr}.entry-left h1{font-size:2rem}}
-  .badge-new{background:linear-gradient(90deg,#22d3ee,#8b5cf6);color:#04122a;font-size:.62rem;font-weight:800;padding:2px 7px;border-radius:8px;letter-spacing:.08em;text-transform:uppercase;margin-left:8px}
-  /* Entrada a la tienda: en GitHub Pages (hosting estático) los .php no se ejecutan y se descargan; evitamos el explorador de archivos. */
-  (function () {
-    const host = location.hostname;
-    const isStaticHost = host.endsWith('.github.io') || host === 'github.io' || location.protocol === 'file:';
-    if (!isStaticHost) return; // en XAMPP (localhost:8099) los .php funcionan normal
-    document.addEventListener('click', function (e) {
-      const a = e.target.closest('a[href]');
-      if (!a) return;
-      const href = a.getAttribute('href') || '';
-      if (!/\.php(\?|#|$)/i.test(href)) return;
-      e.preventDefault();
-      e.stopPropagation();
-      alert('La tienda con datos reales (productos, precios, stock) se ejecuta en un servidor PHP (XAMPP). En la demo estática de GitHub Pages los enlaces a PHP se sirven como archivo.\n\nPara ver los productos funcionales, abre el proyecto en XAMPP: http://127.0.0.1:8099/shop/catalog.php\n\nPuedes descargar el proyecto y ejecutarlo localmente (instrucciones en README.md).');
-    }, true);
-  })();
-</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GALAX PC REPAIR — Laptops, computadoras y servicio técnico en Perú</title>
+<meta name="description" content="Tienda de laptops, computadoras, monitores y componentes con stock real. Reparación y soporte técnico en Lima, Perú. Catálogo con precios en soles y atención por WhatsApp.">
+<meta name="theme-color" content="#050812">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="GALAX PC REPAIR — Tecnología que sí funciona">
+<meta property="og:description" content="Catálogo real de equipos, componentes y servicio técnico. Lima, Perú.">
+<meta property="og:url" content="https://galanespacial.github.io/GALAX-PC-REPAIR/">
+<meta property="og:image" content="https://galanespacial.github.io/GALAX-PC-REPAIR/assets/img/optimized/promo.jpg">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" as="image" href="assets/img/optimized/promo.jpg">
+<link rel="stylesheet" href="assets/css/galax.css">
 </head>
-  <main>
-    <div class="entry-wrap">
-      <div class="entry-left">
-        <img class="small-logo" src="/docs/logo/logo.png" alt="GALAX PC REPAIR" loading="lazy">
-        <span class="glx">GALAX PC REPAIR</span>
-        <h1>GALAX PC REPAIR</h1>
-        <div class="tagline">Bienvenidos a la era inteligente Airi</div>
-        <p class="reg-note">Aquí registras tu cuenta: como <strong>usuario/cliente</strong> o como <strong>administrador</strong>, desde donde harás los cambios de toda la tienda.</p>
-        <div class="entry-cards">
-          <a class="entry-card" href="/auth/login.php">
-            <span class="ic"><i class="fa-solid fa-right-to-bracket"></i></span>
-            <span><strong>Iniciar sesión</strong><small>Usuario / cliente — acceso a la tienda</small></span>
-          </a>
-          <a class="entry-card" href="/auth/register.php">
-            <span class="ic"><i class="fa-solid fa-user-plus"></i></span>
-            <span><strong>Registrarse</strong><small>Crea tu cuenta como usuario/cliente de GALAX PC REPAIR</small></span>
-          </a>
-          <a class="entry-card" href="/dashboard/index.php">
-            <span class="ic"><i class="fa-solid fa-shield-halved"></i></span>
-            <span><strong>Acceso administrativo</strong><small>Gestión de tienda, productos, categorías, promociones y panel de control</small></span>
-          </a>
+<body data-page="home">
+<a class="skip-link" href="#main">Saltar al contenido principal</a>
+<div id="site-header"></div>
+<main id="main">
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">Venta · Reparación · Asistencia</span>
+          <h1>Tecnología que <span class="grad">sí funciona</span></h1>
+          <p class="hero-lead" id="hero-lead">Equipos con stock real, componentes seleccionados y servicio técnico especializado. Airi te ayuda a elegir con datos del catálogo, sin inventar precios ni disponibilidad.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary btn-lg" href="tienda.html">Explorar catálogo <span id="hero-count" class="badge" style="background:rgba(4,16,25,.16);border-color:rgba(4,16,25,.2);color:#041019">209 equipos</span></a>
+            <a class="btn btn-ghost btn-lg" href="servicios.html#solicitud">Reparar mi equipo</a>
+          </div>
+          <div class="hero-proof">
+            <div class="hero-proof-item"><strong id="stat-products">209</strong><span>equipos en catálogo</span></div>
+            <div class="hero-proof-item"><strong id="stat-brands">15</strong><span>marcas</span></div>
+            <div class="hero-proof-item"><strong id="stat-categories">7</strong><span>categorías</span></div>
+            <div class="hero-proof-item"><strong>6</strong><span>servicios técnicos</span></div>
+          </div>
+        </div>
+        <div class="hero-visual" aria-label="Campaña visual de GALAX PC REPAIR">
+          <div class="hero-ring" aria-hidden="true"></div>
+          <div class="hero-media">
+            <img src="assets/img/optimized/promo.jpg" alt="Campaña visual de componentes de alto rendimiento de GALAX PC REPAIR" width="1400" height="933" fetchpriority="high">
+            <div class="hero-media-copy">
+              <span class="badge badge-cyan">Catálogo 2026</span>
+              <h2>Equipos para trabajo, estudio y gaming</h2>
+              <p>Inventario del proyecto, precios en soles y stock verificable.</p>
+            </div>
+          </div>
+          <div class="hero-float hero-float-a"><span class="icon-wrap"></span><div><strong>Catálogo real</strong><span>Sin precios inventados</span></div></div>
+          <div class="hero-float hero-float-b"><span class="icon-wrap"></span><div><strong>Atención directa</strong><span>WhatsApp +51 986 260 738</span></div></div>
         </div>
       </div>
-      <div class="entry-right">
-        <div class="card compact">
-          <h3><i class="fa-solid fa-microchip"></i> GALAX PC REPAIR</h3>
-          <img class="small-logo" src="/docs/logo/logo.png" alt="Logotipo GALAX PC REPAIR" loading="lazy">
-          <p class="muted" style="margin:0;color:#8fa6c4;font-size:.85rem;text-align:center">Tecnología que funciona. Servicio en el que confía.</p>
-        </div>
-        <div class="card compact">
-          <h3><i class="fa-solid fa-store"></i> Tienda pública</h3>
-          <a href="/shop/index.php" class="btn btn-primary" style="width:100%">Ver tienda — catálogo y promociones</a>
-        </div>
-        <div class="card compact">
-          <h3><i class="fa-solid fa-terminal"></i> Demo de Airi</h3>
-          <a href="/docs/galax_preview.html" class="btn btn-ghost" style="width:100%">Abrir la demostración en vivo</a>
-          <small class="muted" style="display:block;margin-top:8px;color:#8fa6c4">Airi virtual — asistente con modelo 3D propio.</small>
-        </div>
-      </div>
-      <p class="muted" style="grid-column:1/-1;margin-top:10px;font-size:.82rem;text-align:center">Nota: el catálogo con datos reales de productos se ejecuta en un servidor PHP (XAMPP); en GitHub Pages el sitio estático muestra la entrada y los catálogos sin ejecutar.</p>
-    </div>
-  </main>
-  <footer style="max-width:920px;margin:0 auto 24px;padding:0 24px;text-align:center;font-size:.78rem;color:#64748b">
-    <a href="/aviso-legal.html" style="color:#8fa6c4;margin:0 8px">Aviso legal y T&C</a> ·
-    <a href="/privacidad.html" style="color:#8fa6c4;margin:0 8px">Política de privacidad</a> ·
-    <a href="/reclamaciones.html" style="color:#8fa6c4;margin:0 8px">Libro de reclamaciones</a>
-  </footer>
-  <div id="cookieBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:90;background:rgba(9,13,22,.95);border-top:1px solid rgba(34,211,238,.25);padding:14px 20px;backdrop-filter:blur(12px);font-size:.85rem;color:#cbd5e1">
-    <div style="max-width:1240px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:12px;justify-content:space-between">
-      <span>Usamos almacenamiento local (localStorage) y cookies técnicas para recordar preferencias. <a href="/privacidad.html" style="color:#06B6D4">Política de privacidad</a></span>
-      <div style="display:flex;gap:8px">
-        <button id="cookieEssential" style="padding:8px 14px;border-radius:8px;border:1px solid rgba(34,211,238,.25);background:transparent;color:#cbd5e1;cursor:pointer">Solo esenciales</button>
-        <button id="cookieAccept" style="padding:8px 14px;border-radius:8px;border:0;background:linear-gradient(135deg,#3B82F6,#06B6D4);color:#fff;cursor:pointer;font-weight:700">Aceptar</button>
+      <div class="trust-strip" role="list" aria-label="Beneficios de comprar en GALAX">
+        <div class="trust-item" role="listitem"><span id="trust-icon-stock"></span><div><strong>Stock visible</strong><span>Se valida nuevamente al crear el pedido</span></div></div>
+        <div class="trust-item" role="listitem"><span id="trust-icon-service"></span><div><strong>Servicio técnico</strong><span>Diagnóstico y reparación coordinada</span></div></div>
+        <div class="trust-item" role="listitem"><span id="trust-icon-pay"></span><div><strong>Pago coordinado</strong><span>Yape, Plin y transferencia</span></div></div>
+        <div class="trust-item" role="listitem"><span id="trust-icon-receipt"></span><div><strong>Recibo del pedido</strong><span>PNG interno, no factura SUNAT</span></div></div>
       </div>
     </div>
-  </div>
-  <script>
-    (function () {
-      const key = 'gx_cookie_consent';
-      const banner = document.getElementById('cookieBanner');
-      const choice = localStorage.getItem(key);
-      if (!choice) banner.style.display = 'block';
-      document.getElementById('cookieAccept').addEventListener('click', function () { localStorage.setItem(key, 'all'); banner.style.display = 'none'; });
-      document.getElementById('cookieEssential').addEventListener('click', function () { localStorage.setItem(key, 'essential'); banner.style.display = 'none'; });
-    })();
-  </script>
+  </section>
+
+  <section class="section section-tight" aria-labelledby="cat-title">
+    <div class="container">
+      <div class="section-head">
+        <div><span class="eyebrow">Explora por categoría</span><h2 id="cat-title">Todo para tu setup</h2></div>
+        <a class="link-more" href="tienda.html">Ver catálogo completo <span id="arrow-cat"></span></a>
+      </div>
+      <div class="category-grid" id="category-grid"></div>
+    </div>
+  </section>
+
+  <section class="section section-band" aria-labelledby="featured-title">
+    <div class="container">
+      <div class="section-head">
+        <div><span class="eyebrow">Selección con stock real</span><h2 id="featured-title">Equipos destacados</h2><p>Precios y existencias tomados del inventario del proyecto. Las fotos reales están identificadas; las ilustraciones son referenciales.</p></div>
+        <a class="link-more" href="tienda.html">Ver todos <span id="arrow-featured"></span></a>
+      </div>
+      <div class="flex flex-wrap" id="featured-tabs" role="tablist" aria-label="Filtrar destacados" style="margin-bottom:16px"></div>
+      <div class="product-grid" id="featured-grid" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="reco-title">
+    <div class="container">
+      <div class="editorial-grid">
+        <div class="editorial-media">
+          <img src="assets/img/optimized/store.jpg" alt="Interior de la tienda y taller GALAX PC REPAIR" loading="lazy" width="1024" height="1024">
+          <div class="editorial-media-caption"><span class="badge badge-cyan">Tienda y taller</span><h3>Personas, equipos y soporte real</h3><p>La identidad original de GALAX, conservada y llevada a una experiencia de compra moderna.</p></div>
+        </div>
+        <div class="editorial-copy">
+          <span class="eyebrow">Compra con criterio</span>
+          <h2 id="reco-title">El equipo correcto, sin adivinar</h2>
+          <p>No todos necesitan la misma máquina. Filtra por uso, presupuesto y marca; revisa las especificaciones registradas y confirma el stock antes de cerrar el pedido.</p>
+          <ul class="editorial-list">
+            <li><span id="reco-check-1"></span><span>Catálogo construido con 200 equipos del inventario real y productos del seed de Supabase.</span></li>
+            <li><span id="reco-check-2"></span><span>Airi responde solo con fichas existentes y te avisa cuando no encuentra un dato.</span></li>
+            <li><span id="reco-check-3"></span><span>Puedes coordinar la compra por WhatsApp o guardar tu pedido en este dispositivo.</span></li>
+          </ul>
+          <div class="flex flex-wrap">
+            <a class="chip" href="tienda.html?q=gaming#catalogo">Para gaming</a>
+            <a class="chip" href="tienda.html?q=estudio#catalogo">Para estudiar</a>
+            <a class="chip" href="tienda.html?categoria=laptops#catalogo">Laptops</a>
+            <a class="chip" href="tienda.html?categoria=computadoras#catalogo">Computadoras</a>
+            <a class="chip" href="tienda.html?max=3500#catalogo">Hasta S/ 3,500</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="gallery-title">
+    <div class="container">
+      <div class="section-head">
+        <div><span class="eyebrow">Material real del proyecto</span><h2 id="gallery-title">La tienda, en imágenes</h2><p>Fotografías del taller y campañas visuales existentes. El video del monitor Samsung usa el material original del catálogo.</p></div>
+      </div>
+      <div class="gallery-row">
+        <figure class="gallery-item">
+          <img src="assets/img/optimized/store.jpg" alt="Interior de GALAX PC REPAIR" loading="lazy" width="1024" height="1024">
+          <figcaption>Tienda y taller GALAX PC REPAIR · Lima, Perú</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <video controls preload="none" poster="assets/img/optimized/monitor-samsung.jpg" width="1200" height="655" aria-label="Video del monitor Samsung 24 pulgadas Full HD 75 Hz">
+            <source src="docs/producto/Monitores/Monitor%20Samsung%2024%20Full%20HD%2075Hz/Monitor%20Samsung%2024%20Full%20HD_video.mp4" type="video/mp4">
+            Tu navegador no puede reproducir este video.
+          </video>
+          <figcaption>Monitor Samsung 24" Full HD · material real</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="assets/img/optimized/promo.jpg" alt="Campaña visual de componentes de alto rendimiento" loading="lazy" width="1400" height="933">
+          <figcaption>Campaña visual del catálogo</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="services-title">
+    <div class="container">
+      <div class="section-head">
+        <div><span class="eyebrow">Servicio técnico</span><h2 id="services-title">Reparación y soporte con seguimiento</h2><p>Diagnóstico, reparación, mantenimiento y redes. Cada servicio se cotiza según la evaluación del equipo.</p></div>
+        <a class="link-more" href="servicios.html">Ver servicios <span id="arrow-services"></span></a>
+      </div>
+      <div class="service-grid" id="service-grid"></div>
+      <div class="info-box mt-3"><span id="service-info-icon"></span><div><strong>Los precios de servicio se confirman después del diagnóstico.</strong> No publicamos tarifas que no estén aprobadas. Puedes solicitar una evaluación desde la página de servicios o por WhatsApp.</div></div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="airi-title">
+    <div class="container">
+      <div class="airi-band">
+        <div class="airi-band-media"><img src="assets/img/optimized/airi.jpg" alt="Airi, asistente virtual de GALAX PC REPAIR" loading="lazy" width="836" height="540"></div>
+        <div class="airi-band-copy">
+          <span class="eyebrow">Asistente con catálogo real</span>
+          <h2 id="airi-title">Conoce a Airi</h2>
+          <p>Airi puede buscar equipos por presupuesto, comparar fichas, explicarte cómo pagar o derivarte al taller. No inventa productos, precios ni stock; si no sabe algo, lo dice y te conecta con el equipo.</p>
+          <div class="airi-prompts">
+            <button type="button" data-airi-prompt="Laptop para estudiar hasta S/ 3000">Laptop para estudiar</button>
+            <button type="button" data-airi-prompt="Quiero comparar dos modelos del catálogo">Comparar modelos</button>
+            <button type="button" data-airi-prompt="¿Cómo pago con Yape o Plin?">¿Cómo pago?</button>
+            <button type="button" data-airi-prompt="¿El stock que se muestra es real?">Estado del stock</button>
+          </div>
+          <div class="flex flex-wrap">
+            <button class="btn btn-violet" type="button" data-open-airi>Abrir Airi <span id="airi-arrow"></span></button>
+            <a class="btn btn-ghost" href="contacto.html">Hablar con una persona</a>
+          </div>
+          <p class="airi-status mt-2"><span class="dot"></span>Disponible en este dispositivo · voz y cámara según soporte del navegador</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="monitor-title">
+    <div class="container">
+      <div class="split">
+        <div class="panel" style="padding:0;overflow:hidden">
+          <img src="assets/img/optimized/monitor-samsung.jpg" alt="Monitor Samsung 24 pulgadas Full HD 75 Hz, material fotográfico real" loading="lazy" width="1200" height="655" style="width:100%;max-height:430px;object-fit:cover">
+        </div>
+        <div class="panel">
+          <span class="eyebrow">Producto documentado</span>
+          <h2 id="monitor-title">Monitor Samsung 24" Full HD 75 Hz</h2>
+          <p>Las fotografías y el video de este monitor forman parte del material real del proyecto. No hay precio ni stock publicados para este modelo en el catálogo; por eso no se agrega al carrito ni se inventa una oferta.</p>
+          <div class="detail-specs">
+            <div class="spec-row"><span>Pantalla</span><strong>24 pulgadas</strong></div>
+            <div class="spec-row"><span>Resolución</span><strong>Full HD 1920×1080</strong></div>
+            <div class="spec-row"><span>Frecuencia</span><strong>75 Hz</strong></div>
+            <div class="spec-row"><span>Marca</span><strong>Samsung</strong></div>
+          </div>
+          <div class="showcase-note"><span>Importante:</span><span>Precio y disponibilidad se confirman con el equipo. No se muestran datos no verificados.</span></div>
+          <div class="flex flex-wrap mt-3">
+            <a class="btn btn-primary" href="https://wa.me/51986260738?text=Hola%2C%20consulto%20por%20el%20monitor%20Samsung%2024%20Full%20HD%2075Hz" target="_blank" rel="noopener">Consultar disponibilidad</a>
+            <a class="btn btn-ghost" href="docs/producto/Monitores/Monitor%20Samsung%2024%20Full%20HD%2075Hz/Monitor%20Samsung%2024%20Full%20HD_video.mp4" target="_blank" rel="noopener">Ver video del producto</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-band" aria-labelledby="faq-title">
+    <div class="container">
+      <div class="section-head section-head-center"><span class="eyebrow">Antes de comprar</span><h2 id="faq-title">Preguntas frecuentes</h2></div>
+      <div class="faq-list" id="faq-list"></div>
+    </div>
+  </section>
+
+  <section class="section section-tight">
+    <div class="container">
+      <div class="panel" style="display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;background:linear-gradient(100deg,rgba(34,211,238,.08),rgba(139,92,246,.1))">
+        <div><span class="eyebrow">Siguiente paso</span><h2 style="margin-top:6px">Encuentra tu equipo o cuéntanos qué necesitas reparar</h2><p>Catálogo real, atención directa y un proceso claro. Sin promesas de stock que no podamos confirmar.</p></div>
+        <div class="flex flex-wrap"><a class="btn btn-primary" href="tienda.html">Ir al catálogo</a><button class="btn btn-ghost" type="button" data-open-airi>Preguntar a Airi</button></div>
+      </div>
+    </div>
+  </section>
+</main>
+<div id="site-footer"></div>
+<script src="assets/js/config.js" defer></script>
+<script src="assets/js/supabase-client.js" defer></script>
+<script src="assets/js/core.js" defer></script>
+<script src="assets/js/festive.js" defer></script>
+<script src="assets/js/airi.js" defer></script>
+<script src="assets/js/home.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Completar pedido — GALAX PC REPAIR</title>
+<meta name="description" content="Completa tus datos de contacto, envío y forma de pago coordinada. El pedido queda pendiente de confirmación de stock y pago.">
+<meta name="theme-color" content="#050812">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/galax.css">
+</head>
+<body data-page="checkout">
+<a class="skip-link" href="#main">Saltar al contenido principal</a>
+<div id="site-header"></div>
+<main id="main">
+  <div class="container">
+    <nav class="breadcrumbs" aria-label="Migas de pan"><a href="index.html">Inicio</a><span aria-hidden="true">/</span><a href="carrito.html">Carrito</a><span aria-hidden="true">/</span><span>Checkout</span></nav>
+    <div class="page-head"><h1>Completar pedido</h1><p>No se cobra automáticamente. El pedido queda pendiente hasta que el equipo confirme stock y pago.</p></div>
+    <div id="checkout-view">
+      <div class="steps" aria-label="Pasos del pedido">
+        <div class="step is-done"><span>1</span>Carrito</div><div class="step-sep"></div>
+        <div class="step is-active"><span>2</span>Datos y pago</div><div class="step-sep"></div>
+        <div class="step"><span>3</span>Confirmación</div>
+      </div>
+      <form id="checkout-form" class="checkout-grid" novalidate>
+        <div class="stack">
+          <section class="panel" aria-labelledby="contact-title">
+            <div class="panel-head"><div><h2 id="contact-title" style="font-size:1.05rem">Datos de contacto</h2><p class="small muted">Se usan para coordinar el pedido y la entrega.</p></div></div>
+            <div class="form-grid">
+              <div class="field"><label for="co-name">Nombre y apellidos *</label><input class="input" id="co-name" name="name" autocomplete="name" required maxlength="90"><p class="hint">Como figura en tu documento.</p></div>
+              <div class="field"><label for="co-phone">WhatsApp / teléfono *</label><input class="input" id="co-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required maxlength="24" placeholder="+51 9…"><p class="hint">Solo para coordinar este pedido.</p></div>
+              <div class="field"><label for="co-email">Correo electrónico</label><input class="input" id="co-email" name="email" type="email" autocomplete="email" maxlength="120" placeholder="opcional@correo.com"><p class="hint">Opcional. No verificamos cuentas por correo en modo local.</p></div>
+              <div class="field"><label for="co-document">Documento (opcional)</label><input class="input" id="co-document" name="document" inputmode="numeric" autocomplete="off" maxlength="20" placeholder="DNI / RUC"><p class="hint">No se usa para emitir factura SUNAT automáticamente.</p></div>
+              <div class="field full"><label for="co-notes">Notas del pedido</label><textarea class="textarea" id="co-notes" name="notes" maxlength="500" placeholder="Horario de entrega, referencia, consulta de garantía u otra indicación."></textarea></div>
+            </div>
+          </section>
+
+          <section class="panel" aria-labelledby="shipping-title">
+            <div class="panel-head"><div><h2 id="shipping-title" style="font-size:1.05rem">Entrega</h2><p class="small muted">Envío o recojo coordinado en Lima.</p></div></div>
+            <div class="stack" id="shipping-options">
+              <label class="radio-card"><input type="radio" name="shipping" value="lima" checked><span><strong>Envío en Lima — S/ 12</strong><small class="muted" style="display:block">Delivery a domicilio coordinado. El plazo se confirma según stock y zona.</small></span></label>
+              <label class="radio-card"><input type="radio" name="shipping" value="pickup"><span><strong>Recojo en el taller — sin costo de envío</strong><small class="muted" style="display:block">Coordinamos fecha y punto de recojo por WhatsApp.</small></span></label>
+              <label class="radio-card"><input type="radio" name="shipping" value="province"><span><strong>Provincia — envío por cotizar</strong><small class="muted" style="display:block">El costo real se cotiza con el courier según destino; no se inventa una tarifa.</small></span></label>
+            </div>
+            <div class="form-grid mt-2" id="address-fields">
+              <div class="field full"><label for="co-address">Dirección de entrega *</label><input class="input" id="co-address" name="address" autocomplete="street-address" maxlength="160" placeholder="Calle, número, distrito, referencia"><p class="hint">No publiques esta dirección en la web; solo se usa para tu pedido.</p></div>
+              <div class="field"><label for="co-city">Ciudad / distrito *</label><input class="input" id="co-city" name="city" autocomplete="address-level2" maxlength="80" placeholder="Ej. Lima / Surco"></div>
+              <div class="field"><label for="co-region">Departamento</label><input class="input" id="co-region" name="region" autocomplete="address-level1" maxlength="60" placeholder="Lima / Arequipa / …"></div>
+            </div>
+          </section>
+
+          <section class="panel" aria-labelledby="payment-title">
+            <div class="panel-head"><div><h2 id="payment-title" style="font-size:1.05rem">Forma de pago</h2><p class="small muted">Elige cómo quieres coordinar el pago. Nada se cobra al enviar este formulario.</p></div></div>
+            <div class="stack">
+              <label class="radio-card"><input type="radio" name="payment" value="yape" checked><span><strong>Yape</strong><small class="muted" style="display:block">El pedido queda pendiente hasta que GALAX confirme la transferencia.</small></span></label>
+              <label class="radio-card"><input type="radio" name="payment" value="plin"><span><strong>Plin</strong><small class="muted" style="display:block">Mismo flujo: confirmación manual, sin marcar como pagado automáticamente.</small></span></label>
+              <label class="radio-card"><input type="radio" name="payment" value="transfer"><span><strong>Transferencia bancaria</strong><small class="muted" style="display:block">Coordinamos los datos de la cuenta por WhatsApp. No se publican cuentas sin verificar.</small></span></label>
+              <label class="radio-card disabled" id="card-option"><input type="radio" name="payment" value="card" disabled><span><strong>Tarjeta Visa / Mastercard</strong><small class="muted" style="display:block" id="card-note">Pendiente de habilitación con la pasarela oficial. No se simula un cobro ni se solicitan datos de tarjeta por este medio.</small></span></label>
+            </div>
+            <div class="info-box warn mt-2"><span id="payment-info-icon"></span><div><strong>Pago pendiente, no automático.</strong> Tras enviar el pedido recibirás un código y podrás coordinar Yape/Plin/transferencia por WhatsApp. El recibo PNG es interno, no una factura SUNAT.</div></div>
+            <label class="check-inline mt-3"><input type="checkbox" id="co-terms" name="terms" required><span>He revisado el pedido y acepto que las imágenes referenciales no garantizan el acabado exacto, que el stock se valida al confirmar y que este recibo no es una factura SUNAT. <a href="aviso-legal.html" style="color:var(--gx-cyan)">Aviso legal</a>.</span></label>
+            <div class="form-message" id="checkout-message" role="alert"></div>
+            <button class="btn btn-primary btn-lg btn-block mt-2" type="submit" id="checkout-submit"><span id="checkout-submit-icon"></span>Enviar pedido (pendiente de pago)</button>
+            <p class="form-note mt-1">No ingreses números de tarjeta ni CVV. GALAX nunca los solicita por chat o formularios externos.</p>
+          </section>
+        </div>
+
+        <aside class="panel order-summary" aria-labelledby="order-summary-title">
+          <div class="panel-head"><div><h2 id="order-summary-title" style="font-size:1.05rem">Tu pedido</h2><p class="small muted" id="order-count">—</p></div><a href="carrito.html" class="small cyan">Editar</a></div>
+          <div id="order-items"></div>
+          <div class="summary-list mt-2" id="order-totals"></div>
+          <div class="info-box mt-2"><span id="order-info-icon"></span><div>Los totales son referenciales hasta validar stock, envío y pago. Si un precio cambió, el equipo te lo informará antes de confirmar.</div></div>
+          <div class="divider"></div>
+          <h3 style="font-size:.82rem">Qué pasa después</h3>
+          <ol class="small muted" style="padding-left:18px;line-height:1.8;margin-top:6px"><li>Recibes un código de pedido y el recibo PNG.</li><li>Coordinamos stock y pago por WhatsApp.</li><li>El pedido se marca confirmado solo cuando el equipo verifica el pago.</li></ol>
+        </aside>
+      </form>
+    </div>
+  </div>
+</main>
+<div id="site-footer"></div>
+<script src="assets/js/config.js" defer></script>
+<script src="assets/js/supabase-client.js" defer></script>
+<script src="assets/js/core.js" defer></script>
+<script src="assets/js/festive.js" defer></script>
+<script src="assets/js/airi.js" defer></script>
+<script src="assets/js/receipt.js" defer></script>
+<script src="assets/js/checkout.js" defer></script>
+</body>
+</html>

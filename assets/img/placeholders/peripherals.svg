@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Ilustración referencial de periféricos">
+  <defs>
+    <linearGradient id="bg-per" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#831843"/><stop offset="1" stop-color="#db2777"/>
+    </linearGradient>
+    <linearGradient id="screen-per" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1220"/><stop offset="1" stop-color="#111d33"/>
+    </linearGradient>
+    <filter id="shadow-per" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#020617" flood-opacity=".55"/>
+    </filter>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg-per)"/>
+  <circle cx="96" cy="86" r="210" fill="#ffffff" opacity=".045"/>
+  <circle cx="716" cy="536" r="250" fill="#ffffff" opacity=".035"/>
+  <path d="M0 500L800 380V600H0Z" fill="#020617" opacity=".22"/>
+  <g opacity=".12" stroke="#ffffff" stroke-width="1">
+    <path d="M0 0V600"/><path d="M100 0V600"/><path d="M200 0V600"/><path d="M300 0V600"/><path d="M400 0V600"/><path d="M500 0V600"/><path d="M600 0V600"/><path d="M700 0V600"/><path d="M800 0V600"/>
+    <path d="M0 0H800"/><path d="M0 100H800"/><path d="M0 200H800"/><path d="M0 300H800"/><path d="M0 400H800"/><path d="M0 500H800"/>
+  </g>
+  <g filter="url(#shadow-per)">
+    <rect x="190" y="300" width="380" height="130" rx="18" fill="#0b1220" stroke="#475569"/>
+    <rect x="216" y="326" width="30" height="24" rx="5" fill="#ec4899" opacity="0.2"/><rect x="259" y="326" width="30" height="24" rx="5" fill="#ec4899" opacity="0.32"/><rect x="302" y="326" width="30" height="24" rx="5" fill="#ec4899" opacity="0.44"/><rect x="345" y="326" width="30" height="24" rx="5" fill="#ec4899" opacity="0.2"/><rect x="388" y="326" width="30" height="24" rx="5" fill="#ec4899" opacity="0.32"/><rect x="431" y="326" width="30" height="24" rx="5" fill="#ec4899" opacity="0.44"/><rect x="474" y="326" width="30" height="24" rx="5" fill="#ec4899" opacity="0.2"/><rect x="517" y="326" width="30" height="24" rx="5" fill="#ec4899" opacity="0.32"/>
+    <rect x="216" y="366" width="230" height="24" rx="6" fill="#334155"/>
+    <rect x="456" y="366" width="86" height="24" rx="6" fill="#334155"/>
+    <path d="M604 210c34 0 62 28 62 62v70h-124v-70c0-34 28-62 62-62Z" fill="#0b1220" stroke="#475569"/>
+    <circle cx="604" cy="278" r="22" fill="#ec4899" opacity=".55"/>
+    <path d="M604 300v22" stroke="#ec4899" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="214" cy="238" r="34" fill="#0b1220" stroke="#475569"/>
+    <circle cx="214" cy="238" r="8" fill="#f472b6"/></g>
+  <text x="52" y="64" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#ffffff" opacity=".82" letter-spacing="2">GALAX PC REPAIR</text>
+  <text x="52" y="556" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="600" fill="#ffffff" opacity=".62" letter-spacing="1.6">IMAGEN REFERENCIAL</text>
+  <rect x="52" y="92" width="66" height="3" rx="1.5" fill="#ffffff" opacity=".55"/>
+</svg>

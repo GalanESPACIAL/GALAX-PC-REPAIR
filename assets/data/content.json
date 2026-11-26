@@ -1,0 +1,144 @@
+{
+  "version": "2026.11.26",
+  "brand": {
+    "name": "GALAX PC REPAIR",
+    "tagline": "Tecnología que funciona. Servicio en el que confía.",
+    "description": "Tienda de computadoras, laptops y componentes; reparación técnica, diagnóstico y asistencia con Airi.",
+    "phone": "",
+    "whatsapp": "51986260738",
+    "whatsappDisplay": "+51 986 260 738",
+    "whatsappGroup": "https://chat.whatsapp.com/I7Syor85Jia6lfE6oIJ7tX",
+    "email": "",
+    "location": "Lima, Perú",
+    "hours": "Atención online y coordinación de servicio técnico",
+    "github": "https://github.com/GalanESPACIAL/GALAX-PC-REPAIR",
+    "siteUrl": "https://galanespacial.github.io/GALAX-PC-REPAIR/",
+    "logo": "assets/img/logo.jpeg"
+  },
+  "home": {
+    "kicker": "Venta · Reparación · Asistencia",
+    "title": "Tecnología que",
+    "highlight": "sí funciona",
+    "text": "Equipos con stock real, componentes seleccionados y servicio técnico especializado. Airi te ayuda a elegir con datos del catálogo, sin inventar precios ni disponibilidad.",
+    "primaryText": "Explorar catálogo",
+    "primaryUrl": "tienda.html",
+    "secondaryText": "Reparar mi equipo",
+    "secondaryUrl": "servicios.html#solicitud",
+    "promoTitle": "Equipos para trabajo, estudio y gaming",
+    "promoText": "Catálogo con inventario real de GALAX PC REPAIR. Consulta stock y coordina tu compra por WhatsApp o desde tu cuenta.",
+    "aboutTitle": "Un taller, una tienda y una comunidad tecnológica",
+    "aboutText": "GALAX PC REPAIR reúne venta de equipos, componentes, reparación y soporte en un solo lugar. Este sitio conserva la identidad gamer del proyecto y ahora funciona sin depender de XAMPP: el catálogo puede operar con Supabase y la tienda se publica como sitio estático en GitHub Pages.",
+    "servicesTitle": "Servicio técnico con seguimiento",
+    "servicesText": "Diagnóstico, reparación, mantenimiento y configuración de redes. Cada servicio se coordina con el taller."
+  },
+  "about": {
+    "title": "Sobre GALAX PC REPAIR",
+    "subtitle": "Hardware, servicio técnico y una identidad propia",
+    "paragraphs": [
+      "GALAX PC REPAIR nace como un proyecto de tecnología y servicio técnico: venta de computadoras, laptops y componentes, además de reparación, mantenimiento y soporte.",
+      "La identidad visual del lobo y el circuito forma parte del proyecto original. Este rediseño conserva el logo, los colores, las fotografías y los videos existentes, y moderniza la experiencia de compra.",
+      "La tienda está preparada para operar con Supabase (catálogo, cuentas, favoritos y pedidos) y publicarse en GitHub Pages sin necesidad de mantener una computadora encendida con XAMPP."
+    ],
+    "image": "assets/img/store/galax-store.jpg"
+  },
+  "payments": {
+    "methods": [
+      "Yape",
+      "Plin",
+      "Transferencia bancaria",
+      "Tarjeta (Culqi, cuando esté habilitado)"
+    ],
+    "note": "Los pagos con tarjeta se procesan mediante una pasarela oficial cuando las credenciales comerciales estén configuradas. GALAX PC REPAIR nunca solicita el número completo de tarjeta ni el CVV por chat.",
+    "yapePlinNote": "Para Yape o Plin, el pedido queda pendiente hasta que el equipo confirme la transferencia. No se marca como pagado por presionar un botón."
+  },
+  "shipping": {
+    "note": "Envíos coordinados a todo el Perú. En Lima, el costo de envío a domicilio configurado es S/ 12. Para otras regiones se cotiza según destino y courier.",
+    "pickup": "Recojo coordinado en el taller (sin costo de envío).",
+    "time": "El plazo se confirma al validar stock y destino."
+  },
+  "policies": {
+    "terms": "El uso de esta tienda implica aceptar las condiciones comerciales de GALAX PC REPAIR. Los precios están expresados en soles peruanos (PEN) e incluyen IGV cuando corresponde. La disponibilidad se valida al confirmar el pedido. Las imágenes referenciales no sustituyen una verificación del producto.",
+    "privacy": "Usamos los datos que proporcionas (nombre, contacto, dirección y datos del pedido) para gestionar la compra, la entrega y el soporte. No vendemos datos personales. El historial de Airi se guarda en tu dispositivo y puedes borrarlo desde Configuración. Cuando Supabase está conectado, las cuentas y pedidos se almacenan en la nube con políticas de acceso por usuario.",
+    "returns": "Los cambios y devoluciones se evalúan según el estado del producto, la garantía del fabricante y la normativa peruana aplicable. Coordina cualquier caso por WhatsApp o desde tu cuenta con el número de pedido.",
+    "warranty": "La garantía depende del fabricante y del producto. GALAX PC REPAIR brinda soporte para canalizar la garantía; no se promete una cobertura distinta a la ofrecida por el fabricante.",
+    "receipt": "El recibo PNG es un comprobante comercial interno generado con los datos del pedido. No sustituye automáticamente una factura electrónica SUNAT."
+  },
+  "services": [
+    {
+      "code": "SRV-001",
+      "name": "Reparación de PC y laptops",
+      "description": "Diagnóstico y reparación de fallas de hardware, arranque, pantalla y componentes.",
+      "icon": "fa-laptop",
+      "from": null,
+      "duration": null,
+      "id": "servicio-reparacion-de-pc-y-laptops"
+    },
+    {
+      "code": "SRV-002",
+      "name": "Microsoldadura de placas",
+      "description": "Revisión electrónica y reparación especializada de placas y conectores.",
+      "icon": "fa-microchip",
+      "from": null,
+      "duration": null,
+      "id": "servicio-microsoldadura-de-placas"
+    },
+    {
+      "code": "SRV-003",
+      "name": "Formateo e instalación",
+      "description": "Instalación y configuración del sistema operativo y programas esenciales.",
+      "icon": "fa-windows",
+      "from": null,
+      "duration": null,
+      "id": "servicio-formateo-e-instalacion"
+    },
+    {
+      "code": "SRV-004",
+      "name": "Mantenimiento preventivo",
+      "description": "Limpieza interna, cuidado térmico y puesta a punto para prolongar la vida útil.",
+      "icon": "fa-fan",
+      "from": null,
+      "duration": null,
+      "id": "servicio-mantenimiento-preventivo"
+    },
+    {
+      "code": "SRV-005",
+      "name": "Instalación de redes",
+      "description": "Configuración de redes cableadas e inalámbricas para hogares y negocios.",
+      "icon": "fa-network-wired",
+      "from": null,
+      "duration": null,
+      "id": "servicio-instalacion-de-redes"
+    },
+    {
+      "code": "SRV-006",
+      "name": "Diagnóstico electrónico",
+      "description": "Evaluación técnica para identificar el origen de la falla y recomendar una solución.",
+      "icon": "fa-chart-simple",
+      "from": null,
+      "duration": null,
+      "id": "servicio-diagnostico-electronico"
+    }
+  ],
+  "faq": [
+    {
+      "q": "¿Los precios y el stock son reales?",
+      "a": "El catálogo se construye con el inventario del proyecto (200 equipos con precio y stock) y los productos del seed de Supabase. No se generan precios ni stock ficticios. Si Supabase está conectado, la base de datos es la fuente de verdad."
+    },
+    {
+      "q": "¿Cómo compro?",
+      "a": "Agrega productos al carrito, completa tus datos y elige el método de pago. En modo local el pedido se registra en tu dispositivo y se confirma por WhatsApp. Con Supabase conectado, el pedido se guarda en la nube y queda pendiente hasta validar el pago."
+    },
+    {
+      "q": "¿Puedo pagar con Yape o Plin?",
+      "a": "Sí, se coordinan como pago pendiente de confirmación. La tienda no marca un pedido como pagado hasta que el equipo verifica la transferencia."
+    },
+    {
+      "q": "¿Airi inventa productos?",
+      "a": "No. Airi busca en el catálogo real y muestra solo productos existentes. Si no encuentra una coincidencia, lo dice y ofrece contactar al taller."
+    },
+    {
+      "q": "¿Necesito XAMPP?",
+      "a": "No para esta tienda estática. GitHub Pages sirve el frontend y Supabase cubre datos, cuentas y pedidos. El panel PHP heredado se conserva en el repositorio como referencia, pero la tienda nueva no depende de él."
+    }
+  ]
+}

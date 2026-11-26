@@ -1,21 +1,28 @@
-# Pesos del modelo local (16 GB) y entornos virtuales: no se suben a GitHub
-/gemma-4-E4B-it/
-/ai_service/.venv/
-/ai_service/venv2/
-/PC/
-/REPAIR/
-
-# Node / Playwright (temporal)
-/node_modules/
-/package-lock.json
-
-# Python
-**/__pycache__/
-*.py[cod]
-
-# Archivos locales / temporales
+# Secretos y entornos
 .env
+.env.*
+*.pem
+*.key
+
+# Dependencias y entornos virtuales
+node_modules/
+venv/
+.venv/
+__pycache__/
+
+# Modelos y binarios pesados
+PC/
+REPAIR/
+gemma-4-E4B-it/
+*.glb
+*.gltf
+*.bin
+*.onnx
+*.pt
+*.safetensors
+
+# Temporales
 *.log
-Thumbs.db
 .DS_Store
-/tmp/
+Thumbs.db
+opencode/

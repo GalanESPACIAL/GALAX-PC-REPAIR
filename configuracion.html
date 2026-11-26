@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Configuración — GALAX PC REPAIR</title>
+<meta name="description" content="Preferencias de efectos, movimiento, privacidad y datos locales de GALAX PC REPAIR.">
+<meta name="theme-color" content="#050812">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/galax.css">
+</head>
+<body data-page="configuracion">
+<a class="skip-link" href="#main">Saltar al contenido principal</a>
+<div id="site-header"></div>
+<main id="main">
+  <div class="container">
+    <nav class="breadcrumbs" aria-label="Migas de pan"><a href="index.html">Inicio</a><span aria-hidden="true">/</span><span>Configuración</span></nav>
+    <div class="page-head">
+      <h1>Configuración</h1>
+      <p>Preferencias de este dispositivo. No se guardan en un servidor salvo que inicies sesión y uses funciones de tu cuenta.</p>
+    </div>
+    <div class="split" style="padding-bottom:50px">
+      <div class="stack">
+        <section class="panel" aria-labelledby="pref-title">
+          <div class="panel-head"><div><h2 id="pref-title" style="font-size:1.05rem">Apariencia y movimiento</h2><p class="small muted">Los efectos festivos son decorativos y nunca bloquean la compra.</p></div></div>
+          <div class="settings-list">
+            <div class="settings-row"><div><strong>Efectos festivos</strong><span>Confeti, corazones, nieve u otros según la fecha configurada.</span></div><button class="switch" type="button" data-setting="effects" aria-pressed="true" aria-label="Activar o desactivar efectos festivos"></button></div>
+            <div class="settings-row"><div><strong>Reducir movimiento</strong><span>Desactiva animaciones y efectos. También se respeta la preferencia del sistema operativo.</span></div><button class="switch" type="button" data-setting="motion" aria-pressed="true" aria-label="Activar o desactivar animaciones"></button></div>
+            <div class="settings-row"><div><strong>Lectura en voz alta de Airi</strong><span>Cuando está activa, Airi lee sus respuestas si el navegador soporta voz.</span></div><button class="switch" type="button" id="voice-setting" aria-pressed="false" aria-label="Activar o desactivar la voz de Airi"></button></div>
+          </div>
+          <div class="info-box mt-2" id="a11y-info"></div>
+        </section>
+        <section class="panel" aria-labelledby="privacy-title">
+          <div class="panel-head"><div><h2 id="privacy-title" style="font-size:1.05rem">Privacidad y datos locales</h2><p class="small muted">Puedes borrar lo que este navegador guardó de la tienda.</p></div></div>
+          <div class="settings-list">
+            <div class="settings-row"><div><strong>Historial de Airi</strong><span>Consultas guardadas en este dispositivo para continuar la conversación.</span></div><button class="btn btn-ghost btn-sm" type="button" id="clear-airi">Borrar</button></div>
+            <div class="settings-row"><div><strong>Carrito, favoritos y perfil local</strong><span>Se guardan en este navegador. Borrarlos no elimina pedidos ya coordinados por WhatsApp.</span></div><button class="btn btn-danger btn-sm" type="button" id="clear-local">Borrar datos</button></div>
+            <div class="settings-row"><div><strong>Cuenta y pedidos en la nube</strong><span>Se administran desde tu cuenta. La disponibilidad depende de la configuración de Supabase.</span></div><a class="btn btn-ghost btn-sm" href="cuenta.html">Mi cuenta</a></div>
+          </div>
+          <p class="form-note mt-2">No se solicitan datos de tarjeta en esta tienda. El recibo PNG es un comprobante interno, no una factura SUNAT. <a href="privacidad.html" style="color:var(--gx-cyan)">Leer política de privacidad</a>.</p>
+        </section>
+      </div>
+      <div class="stack">
+        <section class="panel" aria-labelledby="status-title">
+          <div class="panel-head"><div><h2 id="status-title" style="font-size:1.05rem">Estado del servicio</h2></div></div>
+          <div class="summary-list" id="system-status"></div>
+          <div class="info-box mt-2" id="system-info"></div>
+        </section>
+        <section class="panel" aria-labelledby="help-title">
+          <div class="panel-head"><div><h2 id="help-title" style="font-size:1.05rem">Ayuda</h2></div></div>
+          <div class="stack">
+            <a class="btn btn-soft btn-sm" href="contacto.html" id="config-wa"><span id="config-wa-icon"></span>Contactar por WhatsApp</a>
+            <a class="btn btn-ghost btn-sm" href="servicios.html#solicitud">Solicitar servicio técnico</a>
+            <a class="btn btn-ghost btn-sm" href="reclamaciones.html">Libro de reclamaciones</a>
+            <button class="btn btn-ghost btn-sm" type="button" data-open-airi>Abrir Airi</button>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</main>
+<div id="site-footer"></div>
+<script src="assets/js/config.js" defer></script>
+<script src="assets/js/supabase-client.js" defer></script>
+<script src="assets/js/core.js" defer></script>
+<script src="assets/js/festive.js" defer></script>
+<script src="assets/js/airi.js" defer></script>
+<script src="assets/js/configuracion.js" defer></script>
+</body>
+</html>

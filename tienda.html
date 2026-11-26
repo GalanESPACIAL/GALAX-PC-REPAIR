@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Catálogo — GALAX PC REPAIR</title>
+<meta name="description" content="Catálogo de laptops, computadoras, monitores, componentes, periféricos, redes y accesorios con precios en soles y stock real. Filtra por marca, categoría y presupuesto.">
+<meta name="theme-color" content="#050812">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/galax.css">
+</head>
+<body data-page="tienda">
+<a class="skip-link" href="#main">Saltar al contenido principal</a>
+<div id="site-header"></div>
+<main id="main">
+  <div class="container">
+    <nav class="breadcrumbs" aria-label="Migas de pan"><a href="index.html">Inicio</a><span aria-hidden="true">/</span><span>Catálogo</span></nav>
+    <div class="page-head">
+      <h1>Catálogo</h1>
+      <p>Equipos y componentes con datos del inventario real del proyecto. Los precios están en soles peruanos (PEN); el stock se valida otra vez al crear el pedido.</p>
+    </div>
+    <div id="catalog-alert"></div>
+    <div class="catalog-layout">
+      <aside class="catalog-sidebar" id="catalog-filters" aria-label="Filtros del catálogo">
+        <div class="filter-head"><h2><span id="filter-head-icon"></span> Filtros</h2><button class="filter-reset" type="button" id="reset-filters">Limpiar</button></div>
+        <form class="drawer-search" id="catalog-search-form" role="search" style="margin-top:10px"><span id="catalog-search-icon"></span><input type="search" id="catalog-search" placeholder="Buscar en el catálogo…" aria-label="Buscar en el catálogo" autocomplete="off"><button class="icon-btn" type="submit" aria-label="Buscar" style="width:28px;height:28px;border:0;background:transparent"><span id="catalog-search-btn"></span></button></form>
+        <details class="filter-group" open>
+          <summary>Categoría <span id="chev-cat"></span></summary>
+          <div class="filter-options" id="category-filters"></div>
+        </details>
+        <details class="filter-group" open>
+          <summary>Marca <span id="chev-brand"></span></summary>
+          <div class="filter-options" id="brand-filters"></div>
+        </details>
+        <details class="filter-group" open>
+          <summary>Precio (S/) <span id="chev-price"></span></summary>
+          <div class="price-range"><input type="number" id="price-min" min="0" step="50" placeholder="Mín." inputmode="numeric" aria-label="Precio mínimo"><span>—</span><input type="number" id="price-max" min="0" step="50" placeholder="Máx." inputmode="numeric" aria-label="Precio máximo"></div>
+          <button class="btn btn-soft btn-sm btn-block" type="button" id="apply-price" style="margin-top:8px">Aplicar precio</button>
+        </details>
+        <details class="filter-group" open>
+          <summary>Disponibilidad <span id="chev-stock"></span></summary>
+          <label class="check"><input type="checkbox" id="filter-stock"> Solo con stock</label>
+          <label class="check"><input type="checkbox" id="filter-photo"> Solo con foto real</label>
+        </details>
+        <div class="menu-contact" style="margin-top:14px"><strong>¿No encuentras un modelo?</strong><p>Escríbenos con el código o lo que buscas y revisamos disponibilidad.</p><a class="btn btn-soft btn-sm" href="https://wa.me/51986260738?text=Hola%2C%20busco%20un%20producto%20que%20no%20encuentro%20en%20el%20cat%C3%A1logo." target="_blank" rel="noopener">Consultar por WhatsApp</a></div>
+      </aside>
+      <section aria-label="Resultados del catálogo" id="catalogo">
+        <div class="toolbar">
+          <button class="btn btn-ghost btn-sm filter-toggle" type="button" id="filter-toggle" aria-expanded="false" aria-controls="catalog-filters"><span id="filter-toggle-icon"></span> Filtros</button>
+          <span class="results" id="results-count" aria-live="polite">Cargando catálogo…</span>
+          <span class="spacer"></span>
+          <label class="sr-only" for="sort-select">Ordenar por</label>
+          <select class="select" id="sort-select">
+            <option value="relevance">Relevancia</option>
+            <option value="price-asc">Menor precio</option>
+            <option value="price-desc">Mayor precio</option>
+            <option value="name-asc">Nombre A–Z</option>
+            <option value="newest">Novedades</option>
+            <option value="stock-desc">Mayor stock</option>
+          </select>
+          <label class="sr-only" for="per-page">Productos por página</label>
+          <select class="select" id="per-page">
+            <option value="12">12 / página</option>
+            <option value="24" selected>24 / página</option>
+            <option value="48">48 / página</option>
+            <option value="100">100 / página</option>
+          </select>
+          <div class="view-toggle" role="group" aria-label="Vista de resultados">
+            <button type="button" id="view-grid" class="is-active" aria-label="Vista de cuadrícula" aria-pressed="true"><span id="view-grid-icon"></span></button>
+            <button type="button" id="view-list" aria-label="Vista de lista" aria-pressed="false"><span id="view-list-icon"></span></button>
+          </div>
+        </div>
+        <div class="active-filters" id="active-filters"></div>
+        <div class="catalog-grid-wrap" id="catalog-wrap">
+          <div class="skeleton-grid" aria-hidden="true"><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div></div>
+        </div>
+        <div class="pagination" id="pagination" aria-label="Paginación del catálogo"></div>
+        <p class="form-note" style="margin-top:18px">Las imágenes marcadas como «referencial» son ilustraciones de categoría y no representan necesariamente el modelo exacto. Los productos con foto real están identificados. Precios y stock provienen de la base del proyecto y se validan al confirmar el pedido.</p>
+      </section>
+    </div>
+  </div>
+</main>
+<div id="site-footer"></div>
+<script src="assets/js/config.js" defer></script>
+<script src="assets/js/supabase-client.js" defer></script>
+<script src="assets/js/core.js" defer></script>
+<script src="assets/js/festive.js" defer></script>
+<script src="assets/js/airi.js" defer></script>
+<script src="assets/js/tienda.js" defer></script>
+</body>
+</html>

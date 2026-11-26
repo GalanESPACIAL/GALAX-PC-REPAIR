@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Contacto — GALAX PC REPAIR</title>
+<meta name="description" content="Contacta a GALAX PC REPAIR por WhatsApp para compras, servicio técnico y consultas sobre el catálogo. Lima, Perú.">
+<meta name="theme-color" content="#050812">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/galax.css">
+</head>
+<body data-page="contacto">
+<a class="skip-link" href="#main">Saltar al contenido principal</a>
+<div id="site-header"></div>
+<main id="main">
+  <div class="container">
+    <nav class="breadcrumbs" aria-label="Migas de pan"><a href="index.html">Inicio</a><span aria-hidden="true">/</span><span>Contacto</span></nav>
+    <div class="page-head">
+      <h1>Contacto</h1>
+      <p>La atención principal es por WhatsApp. Coordinamos compras, recojo, envíos y servicio técnico por ese canal.</p>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-list">
+          <div class="contact-card"><span class="icon-wrap" id="cc-wa"></span><div><h3>WhatsApp</h3><p>Compras, stock, pagos coordinados y servicio técnico.</p><a id="contact-wa" href="#" target="_blank" rel="noopener">+51 986 260 738</a></div></div>
+          <div class="contact-card"><span class="icon-wrap" id="cc-loc"></span><div><h3>Ubicación</h3><p>Lima, Perú. El taller y el recojo se coordinan por WhatsApp; no publicamos una dirección que no esté confirmada.</p><a href="servicios.html#solicitud">Solicitar evaluación técnica</a></div></div>
+          <div class="contact-card"><span class="icon-wrap" id="cc-clock"></span><div><h3>Atención</h3><p>Atención online y coordinación de citas. La disponibilidad exacta se confirma al escribir.</p><a href="cuenta.html">Revisar mis pedidos</a></div></div>
+          <div class="contact-card"><span class="icon-wrap" id="cc-shield"></span><div><h3>Seguridad</h3><p>No compartas contraseñas, números completos de tarjeta ni CVV por chat. GALAX nunca los solicita.</p><a href="privacidad.html">Aviso de privacidad</a></div></div>
+        </div>
+        <div class="info-box warn mt-3" id="contact-note"></div>
+      </div>
+      <div class="panel">
+        <span class="eyebrow">Mensaje directo</span>
+        <h2 style="margin:8px 0 4px">Prepara tu consulta</h2>
+        <p class="small muted">El formulario arma un mensaje de WhatsApp. No se envía ni se guarda en un servidor desde esta página.</p>
+        <form id="contact-form" class="stack mt-2">
+          <div class="field"><label for="ct-name">Nombre *</label><input class="input" id="ct-name" required maxlength="80" autocomplete="name"></div>
+          <div class="field"><label for="ct-phone">WhatsApp *</label><input class="input" id="ct-phone" type="tel" required maxlength="24" autocomplete="tel" placeholder="+51 9…"></div>
+          <div class="field"><label for="ct-topic">Motivo *</label><select class="select-full" id="ct-topic" required><option value="">Selecciona</option><option>Consulta por un producto</option><option>Estado de mi pedido</option><option>Servicio técnico</option><option>Pagos o envíos</option><option>Otro</option></select></div>
+          <div class="field"><label for="ct-message">Mensaje *</label><textarea class="textarea" id="ct-message" required maxlength="600" placeholder="Incluye el código del producto o pedido si lo tienes."></textarea></div>
+          <div class="form-message" id="contact-msg" role="status"></div>
+          <button class="btn btn-primary" type="submit" id="contact-submit">Abrir WhatsApp con el mensaje</button>
+          <p class="form-note">Al abrir WhatsApp, el mensaje aún debe enviarse desde tu aplicación. Si no se abre, escríbenos directamente al número confirmado.</p>
+        </form>
+      </div>
+    </div>
+    <section class="section-tight" style="padding-bottom:50px">
+      <div class="section-head section-head-center"><span class="eyebrow">Antes de escribir</span><h2>Preguntas rápidas</h2></div>
+      <div class="faq-list" id="contact-faq"></div>
+    </section>
+  </div>
+</main>
+<div id="site-footer"></div>
+<script src="assets/js/config.js" defer></script>
+<script src="assets/js/supabase-client.js" defer></script>
+<script src="assets/js/core.js" defer></script>
+<script src="assets/js/festive.js" defer></script>
+<script src="assets/js/airi.js" defer></script>
+<script src="assets/js/contacto.js" defer></script>
+</body>
+</html>

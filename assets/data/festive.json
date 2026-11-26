@@ -1,0 +1,278 @@
+{
+  "timezone": "America/Lima",
+  "events": [
+    {
+      "id": "black-friday-2026",
+      "name": "Black Friday",
+      "theme": "blackfriday",
+      "effect": "spark",
+      "start": "2026-11-23T00:00:00-05:00",
+      "end": "2026-11-30T23:59:59-05:00",
+      "message": "Black Friday: revisa el catálogo y consulta disponibilidad real.",
+      "cta": {
+        "text": "Ver catálogo",
+        "url": "tienda.html"
+      },
+      "colors": [
+        "#fbbf24",
+        "#22d3ee",
+        "#f472b6"
+      ],
+      "density": 55,
+      "priority": 100,
+      "enabled": true
+    },
+    {
+      "id": "aniversario-galax-2026",
+      "name": "Aniversario GALAX",
+      "theme": "galax",
+      "effect": "stars",
+      "start": "2026-11-21T00:00:00-05:00",
+      "end": "2026-11-30T23:59:59-05:00",
+      "message": "Aniversario GALAX PC REPAIR: tecnología y servicio técnico.",
+      "cta": {
+        "text": "Conocer la tienda",
+        "url": "nosotros.html"
+      },
+      "colors": [
+        "#22d3ee",
+        "#8b5cf6",
+        "#ffffff"
+      ],
+      "density": 45,
+      "priority": 90,
+      "enabled": true
+    },
+    {
+      "id": "cyber-days-2026",
+      "name": "Cyber Days",
+      "theme": "cyber",
+      "effect": "spark",
+      "start": "2026-12-01T00:00:00-05:00",
+      "end": "2026-12-05T23:59:59-05:00",
+      "message": "Cyber Days: encuentra tu próximo equipo.",
+      "cta": {
+        "text": "Explorar",
+        "url": "tienda.html"
+      },
+      "colors": [
+        "#22d3ee",
+        "#38bdf8",
+        "#a78bfa"
+      ],
+      "density": 50,
+      "priority": 80,
+      "enabled": true
+    },
+    {
+      "id": "navidad-2026",
+      "name": "Navidad",
+      "theme": "christmas",
+      "effect": "snow",
+      "start": "2026-12-01T00:00:00-05:00",
+      "end": "2026-12-26T23:59:59-05:00",
+      "message": "Navidad tecnológica en GALAX PC REPAIR.",
+      "cta": {
+        "text": "Ver regalos tech",
+        "url": "tienda.html"
+      },
+      "colors": [
+        "#f8fafc",
+        "#22d3ee",
+        "#ef4444"
+      ],
+      "density": 70,
+      "priority": 70,
+      "enabled": true
+    },
+    {
+      "id": "ano-nuevo-2027",
+      "name": "Año Nuevo",
+      "theme": "newyear",
+      "effect": "confetti",
+      "start": "2026-12-27T00:00:00-05:00",
+      "end": "2027-01-06T23:59:59-05:00",
+      "message": "Nuevo año, nuevo setup. Bienvenido a GALAX PC REPAIR.",
+      "cta": {
+        "text": "Empezar el año",
+        "url": "tienda.html"
+      },
+      "colors": [
+        "#fbbf24",
+        "#22d3ee",
+        "#f472b6"
+      ],
+      "density": 75,
+      "priority": 85,
+      "enabled": true
+    },
+    {
+      "id": "san-valentin-2027",
+      "name": "San Valentín",
+      "theme": "valentine",
+      "effect": "hearts",
+      "start": "2027-02-07T00:00:00-05:00",
+      "end": "2027-02-15T23:59:59-05:00",
+      "message": "Un detalle tecnológico para quien te importa.",
+      "cta": {
+        "text": "Ver ideas",
+        "url": "tienda.html"
+      },
+      "colors": [
+        "#fb7185",
+        "#f472b6",
+        "#fda4af"
+      ],
+      "density": 45,
+      "priority": 50,
+      "enabled": true
+    },
+    {
+      "id": "carnaval-2027",
+      "name": "Carnaval",
+      "theme": "carnaval",
+      "effect": "confetti",
+      "start": "2027-02-13T00:00:00-05:00",
+      "end": "2027-02-17T23:59:59-05:00",
+      "message": "Carnaval: color y tecnología.",
+      "cta": {
+        "text": "Ver catálogo",
+        "url": "tienda.html"
+      },
+      "colors": [
+        "#f59e0b",
+        "#22d3ee",
+        "#ec4899"
+      ],
+      "density": 55,
+      "priority": 45,
+      "enabled": true
+    },
+    {
+      "id": "dia-madre-2027",
+      "name": "Día de la Madre",
+      "theme": "mother",
+      "effect": "petals",
+      "start": "2027-05-01T00:00:00-05:00",
+      "end": "2027-05-10T23:59:59-05:00",
+      "message": "Tecnología para mamá, con servicio de confianza.",
+      "cta": {
+        "text": "Ver regalos",
+        "url": "tienda.html"
+      },
+      "colors": [
+        "#f9a8d4",
+        "#f472b6",
+        "#fde68a"
+      ],
+      "density": 40,
+      "priority": 50,
+      "enabled": true
+    },
+    {
+      "id": "dia-padre-2027",
+      "name": "Día del Padre",
+      "theme": "father",
+      "effect": "spark",
+      "start": "2027-06-10T00:00:00-05:00",
+      "end": "2027-06-21T23:59:59-05:00",
+      "message": "Un setup a la altura de papá.",
+      "cta": {
+        "text": "Ver equipos",
+        "url": "tienda.html"
+      },
+      "colors": [
+        "#38bdf8",
+        "#22d3ee",
+        "#ffffff"
+      ],
+      "density": 40,
+      "priority": 50,
+      "enabled": true
+    },
+    {
+      "id": "fiestas-patrias-2027",
+      "name": "Fiestas Patrias del Perú",
+      "theme": "peru",
+      "effect": "ribbons",
+      "start": "2027-07-20T00:00:00-05:00",
+      "end": "2027-07-29T23:59:59-05:00",
+      "message": "Fiestas Patrias: orgullo peruano y tecnología.",
+      "cta": {
+        "text": "Ver catálogo",
+        "url": "tienda.html"
+      },
+      "colors": [
+        "#ef4444",
+        "#ffffff",
+        "#dc2626"
+      ],
+      "density": 45,
+      "priority": 60,
+      "enabled": true
+    },
+    {
+      "id": "halloween-2027",
+      "name": "Halloween",
+      "theme": "halloween",
+      "effect": "embers",
+      "start": "2027-10-25T00:00:00-05:00",
+      "end": "2027-11-01T23:59:59-05:00",
+      "message": "Halloween en GALAX PC REPAIR.",
+      "cta": {
+        "text": "Entrar al catálogo",
+        "url": "tienda.html"
+      },
+      "colors": [
+        "#f97316",
+        "#a855f7",
+        "#22d3ee"
+      ],
+      "density": 45,
+      "priority": 60,
+      "enabled": true
+    },
+    {
+      "id": "black-friday-2027",
+      "name": "Black Friday",
+      "theme": "blackfriday",
+      "effect": "spark",
+      "start": "2027-11-22T00:00:00-05:00",
+      "end": "2027-11-29T23:59:59-05:00",
+      "message": "Black Friday: ofertas y stock por confirmar.",
+      "cta": {
+        "text": "Ver catálogo",
+        "url": "tienda.html"
+      },
+      "colors": [
+        "#fbbf24",
+        "#22d3ee",
+        "#f472b6"
+      ],
+      "density": 55,
+      "priority": 100,
+      "enabled": true
+    },
+    {
+      "id": "navidad-2027",
+      "name": "Navidad",
+      "theme": "christmas",
+      "effect": "snow",
+      "start": "2027-12-01T00:00:00-05:00",
+      "end": "2027-12-26T23:59:59-05:00",
+      "message": "Navidad tecnológica en GALAX PC REPAIR.",
+      "cta": {
+        "text": "Ver regalos tech",
+        "url": "tienda.html"
+      },
+      "colors": [
+        "#f8fafc",
+        "#22d3ee",
+        "#ef4444"
+      ],
+      "density": 70,
+      "priority": 70,
+      "enabled": true
+    }
+  ]
+}

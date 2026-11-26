@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Carrito — GALAX PC REPAIR</title>
+<meta name="description" content="Revisa los productos de tu carrito, cantidades y total referencial antes de completar tu pedido en GALAX PC REPAIR.">
+<meta name="theme-color" content="#050812">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/galax.css">
+</head>
+<body data-page="carrito">
+<a class="skip-link" href="#main">Saltar al contenido principal</a>
+<div id="site-header"></div>
+<main id="main">
+  <div class="container">
+    <nav class="breadcrumbs" aria-label="Migas de pan"><a href="index.html">Inicio</a><span aria-hidden="true">/</span><span>Carrito</span></nav>
+    <div class="page-head">
+      <h1>Tu carrito</h1>
+      <p>Revisa cantidades y disponibilidad. El precio y el stock se validan otra vez al crear el pedido.</p>
+    </div>
+    <div class="checkout-grid" style="padding-bottom:50px">
+      <section class="panel" aria-labelledby="cart-lines-title">
+        <div class="panel-head"><div><h2 id="cart-lines-title" style="font-size:1.05rem">Productos</h2><p class="small muted" id="cart-lines-count">—</p></div><button class="btn btn-ghost btn-sm" type="button" data-clear-cart><span id="cart-clear-icon"></span>Vaciar</button></div>
+        <div id="cart-lines"></div>
+        <div class="flex flex-wrap mt-3"><a class="btn btn-ghost btn-sm" href="tienda.html"><span id="cart-back-icon"></span>Seguir comprando</a><span class="form-note" style="margin-left:auto">Los pedidos guardados en este dispositivo no son una compra confirmada hasta coordinarlo con el equipo.</span></div>
+      </section>
+      <aside class="panel order-summary" aria-labelledby="summary-title">
+        <div class="panel-head"><h2 id="summary-title" style="font-size:1.05rem">Resumen</h2></div>
+        <div class="summary-list" id="cart-summary"></div>
+        <div class="info-box mt-2"><span id="summary-info-icon"></span><div>En Lima el envío a domicilio configurado es S/ 12; el recojo en el taller no tiene costo de envío. Otras regiones se cotizan.</div></div>
+        <a class="btn btn-primary btn-block btn-lg mt-3" id="go-checkout" href="checkout.html">Finalizar compra <span id="summary-arrow"></span></a>
+        <p class="form-note mt-2">No se procesa ningún pago automáticamente. Yape, Plin y transferencia quedan pendientes de confirmación.</p>
+        <div class="divider-text">o</div>
+        <a class="btn btn-soft btn-block" id="cart-wa" href="#" target="_blank" rel="noopener"><span id="cart-wa-icon"></span>Consultar por WhatsApp</a>
+      </aside>
+    </div>
+  </div>
+</main>
+<div id="site-footer"></div>
+<script src="assets/js/config.js" defer></script>
+<script src="assets/js/supabase-client.js" defer></script>
+<script src="assets/js/core.js" defer></script>
+<script src="assets/js/festive.js" defer></script>
+<script src="assets/js/airi.js" defer></script>
+<script src="assets/js/carrito.js" defer></script>
+</body>
+</html>
