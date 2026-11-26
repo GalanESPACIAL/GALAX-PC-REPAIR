@@ -68,17 +68,33 @@ img{max-width:100%;display:block}a{text-decoration:none;color:inherit}button,inp
 .product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:26px}
 .product-card{display:flex;flex-direction:column;background:#0c1526;border:1px solid rgba(148,163,184,.14);border-radius:14px;overflow:hidden;transition:.25s}
 .product-card:hover{transform:translateY(-3px);border-color:rgba(34,211,238,.45);box-shadow:0 14px 30px rgba(0,0,0,.4)}
-.product-card .pc-media{height:168px;overflow:hidden;background:#0b1526}
-.product-card .pc-media img{width:100%;height:100%;object-fit:cover;object-position:center 42%}
-.product-card .pc-icons{display:flex;align-items:center;gap:10px;padding:9px 12px 4px;color:#7d93b3;font-size:.68rem}
+.product-card .pc-media{height:178px;overflow:hidden;background:radial-gradient(circle at 50% 40%,#12203a,#070d1a);display:flex;align-items:center;justify-content:center;padding:8px}
+.product-card .pc-media img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
+.product-card .pc-icons{display:flex;align-items:center;gap:12px;padding:9px 12px 4px;color:#7d93b3;font-size:.68rem}
+.product-card .pc-icons button{display:inline-flex;align-items:center;gap:5px;border:0;background:transparent;color:#8fa6c4;padding:2px;cursor:pointer;font-size:.72rem;transition:.18s}
+.product-card .pc-icons button:hover{color:var(--cyan)}
+.product-card .pc-icons button.is-active{color:#f472b6}
 .product-card .pc-icons .count{color:#9fb2cc}
-.product-card .pc-icons .video{margin-left:auto;display:inline-flex;align-items:center;gap:5px;color:#9fb2cc}
+.product-card .pc-icons .video{margin-left:auto}
 .product-card .pc-body{display:flex;flex-direction:column;flex:1;padding:0 12px 12px}
 .product-card h4{font-size:.82rem;line-height:1.3;color:#fff;margin-bottom:5px}
 .product-card p{font-size:.67rem;color:var(--muted);line-height:1.45;flex:1}
 .product-card .pc-price{display:block;margin-top:9px;color:var(--cyan-soft);font-weight:800;font-size:.76rem}
 .product-card .pc-cta{align-self:flex-start;margin-top:9px;border:1px solid rgba(34,211,238,.4);border-radius:999px;padding:5px 11px;color:var(--cyan-soft);background:transparent;font-size:.65rem;cursor:pointer;transition:.18s}
 .product-card .pc-cta:hover{background:rgba(34,211,238,.12);color:#fff}
+.media-modal{position:fixed;inset:0;z-index:120;display:none;place-items:center;padding:18px;background:rgba(2,6,16,.82);backdrop-filter:blur(6px)}
+.media-modal.open{display:grid}
+.media-card{position:relative;width:min(720px,100%);max-height:90vh;overflow:auto;border:1px solid rgba(139,92,246,.45);border-radius:18px;background:#0a1222;padding:18px;box-shadow:0 30px 90px rgba(0,0,0,.7)}
+.media-card h3{font-size:1rem;margin-bottom:12px;color:#fff}
+.media-close{position:absolute;right:12px;top:12px;border:1px solid rgba(148,163,184,.16);border-radius:9px;background:rgba(255,255,255,.05);color:#cbd5e1;width:32px;height:32px;cursor:pointer}
+.media-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.media-gallery img{width:100%;height:150px;object-fit:contain;background:#070d1a;border:1px solid rgba(148,163,184,.16);border-radius:10px;padding:6px}
+.media-video{width:100%;border-radius:10px;background:#000}
+.review{background:rgba(255,255,255,.04);border:1px solid rgba(148,163,184,.16);border-radius:10px;padding:9px 11px;margin-bottom:8px;font-size:.75rem}
+.review b{color:#fff}.review small{color:var(--muted);display:block;margin-top:3px}
+.review-form{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.review-form input,.review-form textarea{flex:1;min-width:180px;background:#0d1628;border:1px solid rgba(148,163,184,.16);border-radius:9px;color:var(--text);padding:8px;font-size:.75rem}
+.review-form button{border:1px solid rgba(34,211,238,.45);border-radius:999px;padding:7px 14px;background:rgba(34,211,238,.12);color:var(--cyan-soft);cursor:pointer;font-size:.72rem}
 
 /* ---------- Floating buttons ---------- */
 .assistant-pill{position:fixed;right:120px;bottom:28px;z-index:60;display:flex;align-items:center;gap:9px;background:rgba(8,18,38,.92);border:1px solid var(--cyan);color:#dffaff;border-radius:999px;padding:10px 16px;box-shadow:0 0 26px rgba(34,211,238,.45);cursor:pointer;font-weight:700;font-size:.82rem;transition:.2s}
@@ -212,39 +228,44 @@ img{max-width:100%;display:block}a{text-decoration:none;color:inherit}button,inp
 
   <h2 class="section-title left">Productos con foto real</h2>
   <section class="product-grid">
-    <article class="product-card">
+    <article class="product-card" data-code="PC-001" data-name="Laptop HP Pavilion 15">
       <div class="pc-media"><img src="producto/Laptop/Laptop-HP-Pavilion-15/Laptop-HP-Pavilion-15.png" alt="Laptop HP Pavilion 15, foto real"></div>
-      <div class="pc-icons"><i class="fa-regular fa-heart"></i><i class="fa-regular fa-comment"></i><i class="fa-regular fa-star"></i><i class="fa-solid fa-camera"></i><span class="count">5</span><span class="video"><i class="fa-solid fa-play"></i> Ver video</span></div>
+      <div class="pc-icons" data-actions></div>
       <div class="pc-body"><h4>Laptop HP Pavilion 15</h4><p>Foto real del equipo. Precio y stock registrados en el catálogo de GALAX PC REPAIR.</p><span class="pc-price">S/ 2,899 · PC-001</span><button type="button" class="pc-cta" data-query="HP Pavilion 15">Preguntar a Airi</button></div>
     </article>
-    <article class="product-card">
+    <article class="product-card" data-code="PC-041" data-name="Laptop Lenovo IdeaPad 3">
       <div class="pc-media"><img src="producto/Laptop/Laptop-Lenovo-IdeaPad-3/Laptop-Lenovo-IdeaPad-3.png" alt="Laptop Lenovo IdeaPad 3, foto real"></div>
-      <div class="pc-icons"><i class="fa-regular fa-heart"></i><i class="fa-regular fa-comment"></i><i class="fa-regular fa-star"></i><i class="fa-solid fa-camera"></i><span class="count">5</span><span class="video"><i class="fa-solid fa-play"></i> Ver video</span></div>
+      <div class="pc-icons" data-actions></div>
       <div class="pc-body"><h4>Laptop Lenovo IdeaPad 3</h4><p>Foto real del equipo. Precio y stock registrados en el catálogo de GALAX PC REPAIR.</p><span class="pc-price">S/ 2,799 · PC-041</span><button type="button" class="pc-cta" data-query="Lenovo IdeaPad 3">Preguntar a Airi</button></div>
     </article>
-    <article class="product-card">
+    <article class="product-card" data-code="PC-Y540" data-name="Lenovo Legion Y540">
       <div class="pc-media"><img src="producto/Laptop/Lenovo Legion Y540/Lenovo Legion Y540.webp" alt="Lenovo Legion Y540, foto real"></div>
-      <div class="pc-icons"><i class="fa-regular fa-heart"></i><i class="fa-regular fa-comment"></i><i class="fa-regular fa-star"></i><i class="fa-solid fa-camera"></i><span class="count">5</span><span class="video"><i class="fa-solid fa-play"></i> Ver video</span></div>
+      <div class="pc-icons" data-actions></div>
       <div class="pc-body"><h4>Lenovo Legion Y540</h4><p>Foto real del equipo. No publicamos precio ni stock sin confirmación del equipo.</p><span class="pc-price">Consultar disponibilidad</span><a class="pc-cta" href="https://wa.me/51986260738?text=Hola%2C%20consulto%20por%20la%20Lenovo%20Legion%20Y540" target="_blank" rel="noopener">Consultar por WhatsApp</a></div>
     </article>
   </section>
 
   <h2 class="section-title left">Más productos del catálogo</h2>
   <section class="product-grid">
-    <article class="product-card">
+    <article class="product-card" data-code="PC-001" data-name="HP Pavilion 15-eg2053TU">
       <div class="pc-media"><img src="../assets/img/optimized/laptop-hp.jpg" alt="HP Pavilion 15"></div>
-      <div class="pc-icons"><i class="fa-regular fa-heart"></i><i class="fa-regular fa-comment"></i><i class="fa-regular fa-star"></i><i class="fa-solid fa-camera"></i><span class="count">5</span><span class="video"><i class="fa-solid fa-play"></i> Ver video</span></div>
+      <div class="pc-icons" data-actions></div>
       <div class="pc-body"><h4>HP Pavilion 15-eg2053TU</h4><p>Laptop con Core i5-1240P, 8GB, 512GB SSD y pantalla 15.6" FHD. Stock registrado.</p><span class="pc-price">S/ 2,899 · PC-001</span><button type="button" class="pc-cta" data-query="HP Pavilion 15">Preguntar a Airi</button></div>
     </article>
-    <article class="product-card">
+    <article class="product-card" data-code="PC-041" data-name="Lenovo IdeaPad 3 15IAU7">
       <div class="pc-media"><img src="../assets/img/optimized/laptop-lenovo.jpg" alt="Lenovo IdeaPad 3"></div>
-      <div class="pc-icons"><i class="fa-regular fa-heart"></i><i class="fa-regular fa-comment"></i><i class="fa-regular fa-star"></i><i class="fa-solid fa-camera"></i><span class="count">5</span><span class="video"><i class="fa-solid fa-play"></i> Ver video</span></div>
+      <div class="pc-icons" data-actions></div>
       <div class="pc-body"><h4>Lenovo IdeaPad 3 15IAU7</h4><p>Laptop con Core i5-1235U, 8GB, 512GB SSD y pantalla 15.6" FHD. Stock registrado.</p><span class="pc-price">S/ 2,799 · PC-041</span><button type="button" class="pc-cta" data-query="Lenovo IdeaPad 3">Preguntar a Airi</button></div>
     </article>
-    <article class="product-card">
+    <article class="product-card" data-code="GAMING-PC" data-name="Computadoras gaming">
       <div class="pc-media"><img src="../assets/img/placeholders/desktop.svg" alt="Computadora gaming"></div>
-      <div class="pc-icons"><i class="fa-regular fa-heart"></i><i class="fa-regular fa-comment"></i><i class="fa-regular fa-star"></i><i class="fa-solid fa-camera"></i><span class="count">5</span><span class="video"><i class="fa-solid fa-play"></i> Ver video</span></div>
+      <div class="pc-icons" data-actions></div>
       <div class="pc-body"><h4>Computadoras gaming</h4><p>Equipos de escritorio con GPU dedicada registrada. Precio y stock reales del catálogo.</p><span class="pc-price">Desde S/ 4,599</span><button type="button" class="pc-cta" data-query="computadora gaming">Preguntar a Airi</button></div>
+    </article>
+    <article class="product-card" data-code="MON-SAMSUNG" data-name="Monitor Samsung 24 Full HD 75Hz">
+      <div class="pc-media"><img src="../assets/img/optimized/monitor-samsung.jpg" alt="Monitor Samsung 24 Full HD"></div>
+      <div class="pc-icons" data-actions></div>
+      <div class="pc-body"><h4>Monitor Samsung 24" Full HD 75Hz</h4><p>Producto documentado con fotos y video reales del proyecto. Precio y stock a confirmar.</p><span class="pc-price">Consultar disponibilidad</span><a class="pc-cta" href="https://wa.me/51986260738?text=Hola%2C%20consulto%20por%20el%20monitor%20Samsung%2024" target="_blank" rel="noopener">Consultar por WhatsApp</a></div>
     </article>
   </section>
 </main>
@@ -685,7 +706,91 @@ else {
   micBtn.addEventListener('click',()=>{try{recording?recognition.stop():recognition.start();}catch(e){note('No se pudo iniciar el micrófono.');}});
 }
 
+/* ==================================================================
+   4) Barra de acciones: favoritos, comentarios, galería y video
+   (sin estrella; el botón de video solo se crea si hay video real)
+   ================================================================== */
+const MEDIA = {
+  'PC-001':{ images:['producto/Laptop/Laptop-HP-Pavilion-15/Laptop-HP-Pavilion-15.png','../assets/img/optimized/laptop-hp.jpg','../assets/img/productos/LAP-001.png'], video:null },
+  'PC-041':{ images:['producto/Laptop/Laptop-Lenovo-IdeaPad-3/Laptop-Lenovo-IdeaPad-3.png','../assets/img/optimized/laptop-lenovo.jpg','../assets/img/productos/LAP-002.png'], video:null },
+  'PC-Y540':{ images:['producto/Laptop/Lenovo Legion Y540/Lenovo Legion Y540.webp'], video:null },
+  'GAMING-PC':{ images:[], video:null },
+  'MON-SAMSUNG':{
+    images:['../assets/img/optimized/monitor-samsung.jpg','producto/Monitores/Monitor Samsung 24 Full HD 75Hz/Monitor Samsung 24 Full HD 75Hz_parte 01.jpg','producto/Monitores/Monitor Samsung 24 Full HD 75Hz/Monitor Samsung 24 Full HD 75Hz_parte 02.jpg'],
+    video:'producto/Monitores/Monitor Samsung 24 Full HD 75Hz/Monitor Samsung 24 Full HD_video.mp4'
+  }
+};
+const FAV_KEY='galax_preview_favorites', REV_KEY='galax_preview_reviews';
+function readStore(k,f){try{return JSON.parse(localStorage.getItem(k))||f}catch{return f}}
+function writeStore(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch{}}
+const favorites=new Set(readStore(FAV_KEY,[]));
+const reviews=readStore(REV_KEY,{});
+const modal=document.getElementById('mediaModal'), modalTitle=document.getElementById('mediaTitle'), modalContent=document.getElementById('mediaContent');
+function openModal(title,html){modalTitle.textContent=title;modalContent.innerHTML=html;modal.classList.add('open');}
+function closeModal(){modal.classList.remove('open');modalContent.innerHTML='';}
+document.getElementById('mediaClose').addEventListener('click',closeModal);
+modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('open'))closeModal();});
+
+function buildActions(){
+  document.querySelectorAll('.product-card[data-code]').forEach(card=>{
+    const code=card.dataset.code, name=card.dataset.name||code, host=card.querySelector('[data-actions]');
+    if(!host) return;
+    const media=MEDIA[code]||{images:[],video:null};
+    const isFav=favorites.has(code);
+    let html='<button type="button" class="fav'+(isFav?' is-active':'')+'" data-act="fav" aria-label="Añadir a favoritos" aria-pressed="'+isFav+'"><i class="'+(isFav?'fa-solid':'fa-regular')+' fa-heart"></i></button>'+
+      '<button type="button" data-act="comments" aria-label="Ver comentarios"><i class="fa-regular fa-comment"></i></button>'+
+      '<button type="button" data-act="gallery" aria-label="Ver galería"><i class="fa-solid fa-camera"></i><span class="count">'+media.images.length+'</span></button>';
+    if(media.video) html+='<button type="button" class="video" data-act="video" aria-label="Ver video"><i class="fa-solid fa-play"></i> Ver video</button>';
+    host.innerHTML=html;
+    host.querySelectorAll('button').forEach(btn=>btn.addEventListener('click',()=>{
+      const act=btn.dataset.act;
+      if(act==='fav'){
+        if(favorites.has(code)) favorites.delete(code); else favorites.add(code);
+        writeStore(FAV_KEY,[...favorites]);
+        const on=favorites.has(code);
+        btn.classList.toggle('is-active',on);
+        btn.setAttribute('aria-pressed',String(on));
+        btn.setAttribute('aria-label',on?'Quitar de favoritos':'Añadir a favoritos');
+        btn.innerHTML='<i class="'+(on?'fa-solid':'fa-regular')+' fa-heart"></i>';
+      } else if(act==='comments') openComments(code,name);
+      else if(act==='gallery') openGallery(name,media.images);
+      else if(act==='video') openVideo(name,media.video);
+    }));
+  });
+}
+function openComments(code,name){
+  const list=reviews[code]||[];
+  const html='<div id="reviewList">'+(list.length?list.map(r=>'<div class="review"><b>'+esc(r.author)+'</b> · '+esc(r.rating)+'/5<small>'+esc(r.text)+' · '+esc(r.date)+'</small></div>').join(''):'<p style="color:var(--muted);font-size:.75rem">Aún no hay comentarios. Sé el primero en opinar.</p>')+'</div>'+
+    '<form class="review-form" id="reviewForm"><input id="rvAuthor" placeholder="Tu nombre" required maxlength="60"><input id="rvRating" type="number" min="1" max="5" value="5" aria-label="Calificación"><textarea id="rvText" placeholder="Escribe tu comentario" required maxlength="400" rows="2"></textarea><button type="submit">Publicar</button></form>';
+  openModal('Comentarios · '+name,html);
+  document.getElementById('reviewForm').addEventListener('submit',e=>{
+    e.preventDefault();
+    const author=document.getElementById('rvAuthor').value.trim(), text=document.getElementById('rvText').value.trim(), rating=document.getElementById('rvRating').value;
+    if(!author||!text) return;
+    reviews[code]=[{author,text,rating,date:new Date().toLocaleDateString('es-PE')},...(reviews[code]||[])].slice(0,20);
+    writeStore(REV_KEY,reviews);
+    openComments(code,name);
+  });
+}
+function openGallery(name,images){
+  if(!images.length){openModal(name,'<p style="color:var(--muted);font-size:.75rem">No hay imágenes adicionales registradas.</p>');return;}
+  openModal('Galería · '+name+' ('+images.length+')','<div class="media-gallery">'+images.map(src=>'<img src="'+esc(src)+'" alt="'+esc(name)+'" loading="lazy">').join('')+'</div>');
+}
+function openVideo(name,src){
+  openModal('Video · '+name,'<video class="media-video" controls autoplay playsinline><source src="'+esc(src)+'" type="video/mp4">Tu navegador no puede reproducir este video.</video>');
+}
+buildActions();
+
 loadCatalog().then(()=>{ if(!history.length) note('Listo. Soy Airi y solo uso el catálogo real de GALAX PC REPAIR. Elige un acceso rápido o escríbeme.'); });
 </script>
+
+<div class="media-modal" id="mediaModal" role="dialog" aria-modal="true" aria-label="Detalle del producto">
+  <div class="media-card">
+    <button type="button" class="media-close" id="mediaClose" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+    <h3 id="mediaTitle"></h3>
+    <div id="mediaContent"></div>
+  </div>
+</div>
 </body>
 </html>
