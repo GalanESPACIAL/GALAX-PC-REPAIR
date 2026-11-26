@@ -359,6 +359,7 @@
       if (!answer) answer = localAnswer(message);
       appendMessage('assistant', answer.text, answer.products || [], answer);
       addHistory('assistant', answer.text, answer.products || []);
+      if (window.GALAX_Airi3D) window.GALAX_Airi3D.wave(1800);
       if (answer.cloud) state.cloudTried = true;
     } catch (error) {
       if (typing) typing.remove();
@@ -488,9 +489,9 @@
       utterance.volume = state.volume != null ? state.volume : 1;
       const voice = selectVoice();
       if (voice) utterance.voice = voice;
-      utterance.onstart = () => { state.speaking = true; updateVoiceIndicators(true); };
-      utterance.onend = () => { state.speaking = false; updateVoiceIndicators(false); resolve(true); };
-      utterance.onerror = (e) => { state.speaking = false; updateVoiceIndicators(false); console.warn('[Airi] TTS:', e && e.error); resolve(false); };
+      utterance.onstart = () => { state.speaking = true; updateVoiceIndicators(true); if (window.GALAX_Airi3D) window.GALAX_Airi3D.setSpeaking(Math.min(4200, 900 + String(text).length * 32)); };
+      utterance.onend = () => { state.speaking = false; updateVoiceIndicators(false); if (window.GALAX_Airi3D) window.GALAX_Airi3D.setSpeaking(0); resolve(true); };
+      utterance.onerror = (e) => { state.speaking = false; updateVoiceIndicators(false); if (window.GALAX_Airi3D) window.GALAX_Airi3D.setSpeaking(0); console.warn('[Airi] TTS:', e && e.error); resolve(false); };
       speechSynthesis.speak(utterance);
     });
   }
@@ -585,7 +586,8 @@
     return '<button class="airi-fab" type="button" data-airi-toggle aria-label="Abrir Airi, asistente de GALAX" aria-expanded="false">' +
       '<img src="' + avatar + '" alt="" width="34" height="34"><span>Airi</span><span class="airi-pulse"></span></button>' +
       '<aside class="airi-panel" id="airi-panel" aria-label="Airi, asistente de GALAX PC REPAIR" aria-hidden="true">' +
-        '<div class="airi-head"><img class="airi-avatar" src="' + avatar + '" alt="Airi"><div><h2>Airi</h2><p><span class="dot"></span>Asistente del catálogo real</p></div><div class="airi-head-actions"><button class="icon-btn" type="button" data-airi-voice aria-pressed="false" aria-label="Lectura en voz alta" title="Lectura en voz alta">' + GALAX.icon('volumeOff', 'icon-sm') + '</button><button class="icon-btn" type="button" data-airi-clear aria-label="Borrar historial" title="Borrar historial local">' + GALAX.icon('trash', 'icon-sm') + '</button><button class="icon-btn" type="button" data-airi-close aria-label="Cerrar Airi">' + GALAX.icon('close', 'icon-sm') + '</button></div></div>' +
+        '<div class="airi-head"><div class="airi-avatar" id="airiStage" aria-hidden="true"><div class="sanara-canvas"></div><img class="sanara-fallback" src="' + avatar + '" alt="Airi"></div><div><h2>Airi</h2><p><span class="dot"></span>Asistente del catálogo real</p></div><div class="airi-head-actions"><button class="icon-btn" type="button" data-airi-voice aria-pressed="false" aria-label="Lectura en voz alta" title="Lectura en voz alta">' + GALAX.icon('volumeOff', 'icon-sm') + '</button><button class="icon-btn" type="button" data-airi-clear aria-label="Borrar historial" title="Borrar historial local">' + GALAX.icon('trash', 'icon-sm') + '</button><button class="icon-btn" type="button" data-airi-close aria-label="Cerrar Airi">' + GALAX.icon('close', 'icon-sm') + '</button></div></div>' +
+        '<button class="airi-greet" type="button" data-airi-greet>' + GALAX.icon('volume', 'icon-sm') + ' Escuchar saludo de Airi</button>' +
         '<div class="airi-messages" id="airi-messages" aria-live="polite" aria-relevant="additions"></div>' +
         '<div class="airi-prompts">' +
           '<button type="button" data-airi-prompt="Laptop para estudiar hasta S/ 3000">Laptop para estudiar</button>' +
@@ -624,6 +626,12 @@
     panel.classList.add('is-open');
     panel.setAttribute('aria-hidden', 'false');
     state.open = true;
+    // Carga diferida del avatar 3D: three.js solo se descarga cuando se abre Airi.
+    if (!state.threeRequested) {
+      state.threeRequested = true;
+      import('./airi-3d.js').catch((error) => console.warn('[Airi] Avatar 3D no disponible:', error.message));
+    }
+    if (window.GALAX_Airi3D) window.GALAX_Airi3D.wave(2800);
     const fabEl = document.querySelector('.airi-fab');
     if (fabEl) fabEl.setAttribute('aria-expanded', 'true');
     setTimeout(() => { if (input) input.focus(); }, 120);
@@ -640,23 +648,10 @@
     if (state.history.length) { state.greetingShown = true; try { sessionStorage.setItem('galax_airi_greeted_v1', '1'); } catch {}; return; }
     state.greetingShown = true;
     try { sessionStorage.setItem('galax_airi_greeted_v1', '1'); } catch {}
-    const avatar = panel && panel.querySelector('.airi-avatar');
-    if (avatar) {
-      avatar.classList.add('is-waving');
-      setTimeout(() => avatar.classList.remove('is-waving'), 2600);
-    }
-    if (state.voiceOut || true) {
-      // Intenta reproducir; si el navegador bloquea, no simula y ofrece botón.
-      const ok = await speak(GREETING);
-      if (!ok) {
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'chip';
-        btn.textContent = 'Escuchar saludo de Airi';
-        btn.addEventListener('click', () => { speak(GREETING); btn.remove(); });
-        messagesEl && messagesEl.appendChild(btn);
-      }
-    }
+    if (window.GALAX_Airi3D) window.GALAX_Airi3D.wave(3000);
+    // El chip "Escuchar saludo de Airi" permanece visible para repetirlo.
+    const ok = await speak(GREETING);
+    if (!ok) console.warn('[Airi] TTS no disponible; usa el botón de saludo.');
   }
   function closePanel() {
     if (!panel) return;
@@ -693,6 +688,12 @@
       state.history = []; saveHistory(); renderHistory(); GALAX.toast('Historial local de Airi borrado.', 'info');
     });
     if (voiceBtn) voiceBtn.addEventListener('click', toggleVoiceOut);
+    const greetBtn = document.querySelector('[data-airi-greet]');
+    if (greetBtn) greetBtn.addEventListener('click', () => {
+      if (!state.open) openPanel();
+      speak(GREETING);
+      if (window.GALAX_Airi3D) window.GALAX_Airi3D.wave(3000);
+    });
     if (voiceBtn && state.voiceOut) { voiceBtn.setAttribute('aria-pressed', 'true'); voiceBtn.innerHTML = GALAX.icon('volume', 'icon-sm'); }
     document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && state.open) closePanel(); });
     document.addEventListener('click', (event) => {
@@ -729,6 +730,7 @@
     input.addEventListener('input', () => {
       input.style.height = 'auto';
       input.style.height = Math.min(input.scrollHeight, 100) + 'px';
+      if (window.GALAX_Airi3D) window.GALAX_Airi3D.setTyping(2500);
     });
     micBtn.addEventListener('click', toggleRecognition);
     if (importBtn) importBtn.addEventListener('click', () => imageInput.click());

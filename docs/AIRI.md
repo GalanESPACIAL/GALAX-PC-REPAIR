@@ -6,10 +6,11 @@
 - El saludo inicial se anima con la rama de la mano real (`upperarm_l`, `lowerarm_l`, `hand_l`) + respiración; sin animación de mano "inventada".
 
 ## Chat
-- Implementación: `docs/galax_preview.html` (panel flotante compacto: avatar 3D animado, "Airi · Asistente del catálogo real", volumen/borrar/cerrar, chip "Escuchar saludo de Airi", mensajes, prompts, input con imagen/cámara/mic/enviar y footnote) y panel flotante de `assets/js/airi.js`.
+- Implementación en **todo el sitio**: panel flotante compacto (avatar 3D animado, "Airi · Asistente del catálogo real", volumen/borrar/cerrar, chip "Escuchar saludo de Airi", mensajes, prompts, input con imagen/cámara/mic/enviar y footnote) en `assets/js/airi.js` + `assets/css/galax.css`, y mismo diseño en `docs/galax_preview.html`.
+- Todas las páginas incluyen el import map `three`; el módulo `assets/js/airi-3d.js` se carga **de forma diferida al abrir el chat** (no descarga three.js al entrar a la página).
 - Encuadre del avatar: cámara fov 18, distancia 2.85 centrada en la cabeza para mostrar el rostro del personaje.
-- Animación: cabeza (head/spine) con micro-oscilaciones, saludo por rama de mano, respiración; respuesta → saludo/nod.
-- Renderizado solo cuando el panel está abierto (performance).
+- Animación: cabeza (head/spine) con micro-oscilaciones, saludo por rama de mano, respiración; respuesta → saludo/nod; mira al usuario mientras escribe.
+- Renderizado solo cuando el panel está abierto y la pestaña está visible (performance); respeta `prefers-reduced-motion`.
 
 ## Voz
 - Web Speech API: una sola voz en español (femenina por defecto, guardada en localStorage).
