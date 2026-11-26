@@ -12,6 +12,12 @@
 - Animación: cabeza (head/spine) con micro-oscilaciones, saludo por rama de mano, respiración; respuesta → saludo/nod; mira al usuario mientras escribe.
 - Renderizado solo cuando el panel está abierto y la pestaña está visible (performance); respeta `prefers-reduced-motion`.
 
+## Interacción y accesibilidad
+- Panel con `role="dialog"` y `aria-labelledby` único (`airi-panel-title`), `aria-live` en mensajes, retorno de foco al cerrar y estados `:focus-visible`.
+- **Autocompletado del catálogo real**: al escribir 2+ caracteres se muestran hasta 4 coincidencias con precio y código; al hacer clic se consulta ese código exacto. No inventa sugerencias.
+- Tras una respuesta con 2+ productos se ofrece un chip **"Comparar estos modelos"** que usa códigos reales.
+- Escape cierra sugerencias primero y luego el panel; clic fuera oculta las sugerencias.
+
 ## Voz
 - Web Speech API: una sola voz en español (femenina por defecto, guardada en localStorage).
 - Salida: `speechSynthesis`; entrada: `SpeechRecognition`/`webkitSpeechRecognition` con `es-PE`.

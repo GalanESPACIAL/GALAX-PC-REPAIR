@@ -24,9 +24,11 @@
     cloudTried: false,
     cameraStream: null,
     cameraShot: null,
-    greetingShown: false
+    greetingShown: false,
+    threeRequested: false,
+    lastFocus: null
   };
-  let panel, fab, messagesEl, form, input, sendBtn, micBtn, imageInput, voiceBtn, imagePreview, cameraBtn, importBtn, cameraPanel, cameraVideo, cameraCanvas, cameraCapture, cameraRetake, cameraUse, cameraClose;
+  let panel, fab, messagesEl, form, input, sendBtn, micBtn, imageInput, voiceBtn, imagePreview, cameraBtn, importBtn, cameraPanel, cameraVideo, cameraCanvas, cameraCapture, cameraRetake, cameraUse, cameraClose, suggestEl;
 
   const STOP = new Set(['de','la','el','los','las','un','una','unos','unas','que','con','para','por','en','y','o','mi','me','al','del','se','su','sus','es','son','como','cual','cuales','quiero','necesito','busco','buscar','recomienda','recomiendame','dame','ver','precio','precios','stock','tienen','tienes','hay','hola','buenas','buenos','dias','tardes','noches','gracias','porfa','porfavor','soles','s/','pen','presupuesto','hasta','menos','maximo','entre','mas','muy','pero','sin','sobre','este','esta','estos','estas','algo','equipo','equipos','producto','productos']);
   const LAPTOP_WORDS = /(laptop|portatil|notebook|ultrabook|pavilion|ideapad|thinkpad|vivobook|zenbook|elitebook|probook|spectre|victus|omen|legion|aspire|nitro|predator|macbook|rog|tuf|katana|modern|stealth|swift|travelmate|expertbook|latitude|inspiron|xps|thinkbook|yoga|loq|raider|creator|summit|prestige)/i;
@@ -338,11 +340,40 @@
     if (state.image) renderImagePreview();
   }
 
+  function hideSuggestions() {
+    if (suggestEl) { suggestEl.hidden = true; suggestEl.innerHTML = ''; }
+  }
+  function renderSuggestions(raw) {
+    if (!suggestEl) return;
+    const q = normalize(raw || '').trim();
+    if (q.length < 2) { hideSuggestions(); return; }
+    const tokens = q.split(/\W+/).filter((w) => w.length > 1);
+    if (!tokens.length) { hideSuggestions(); return; }
+    const list = catalogProducts()
+      .filter((p) => p.published && p.stock > 0)
+      .map((p) => {
+        const hay = normalize([p.name, p.model, p.brand, p.code, p.category, p.categoryName, p.description, p.specText].join(' '));
+        let score = 0;
+        for (const t of tokens) if (hay.includes(t)) score += t.length >= 4 ? 3 : 1;
+        if (normalize(p.code).includes(q)) score += 12;
+        return { p, score };
+      })
+      .filter((x) => x.score > 0)
+      .sort((a, b) => b.score - a.score || a.p.price - b.p.price)
+      .slice(0, 4);
+    if (!list.length) { hideSuggestions(); return; }
+    suggestEl.hidden = false;
+    suggestEl.innerHTML = '<div class="airi-suggest-head">Coincidencias del catálogo real</div>' + list.map((x) =>
+      '<button type="button" data-airi-code="' + esc(x.p.code) + '"><span>' + esc(String(x.p.name).split(' — ')[0]) + '</span><small>' + money(x.p.price) + ' · ' + esc(x.p.code) + '</small></button>'
+    ).join('');
+  }
+
   async function send(text, image) {
     if (state.busy) return;
     const message = String(text || '').trim();
     if (!message && !image) return;
     state.busy = true;
+    hideSuggestions();
     if (input) input.value = '';
     appendMessage('user', message || 'Analiza esta imagen, por favor.', [], image ? { image } : {});
     addHistory('user', message || '[imagen]', []);
@@ -359,6 +390,14 @@
       if (!answer) answer = localAnswer(message);
       appendMessage('assistant', answer.text, answer.products || [], answer);
       addHistory('assistant', answer.text, answer.products || []);
+      const codes = (answer.products || []).slice(0, 2);
+      if (codes.length === 2 && messagesEl) {
+        const row = document.createElement('div');
+        row.className = 'airi-followups';
+        row.innerHTML = '<button type="button" data-airi-prompt="compara ' + esc(codes[0]) + ' y ' + esc(codes[1]) + '">Comparar estos modelos</button>';
+        messagesEl.appendChild(row);
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+      }
       if (window.GALAX_Airi3D) window.GALAX_Airi3D.wave(1800);
       if (answer.cloud) state.cloudTried = true;
     } catch (error) {
@@ -585,8 +624,8 @@
     const avatar = 'assets/img/optimized/airi.jpg';
     return '<button class="airi-fab" type="button" data-airi-toggle aria-label="Abrir Airi, asistente de GALAX" aria-expanded="false">' +
       '<img src="' + avatar + '" alt="" width="34" height="34"><span>Airi</span><span class="airi-pulse"></span></button>' +
-      '<aside class="airi-panel" id="airi-panel" aria-label="Airi, asistente de GALAX PC REPAIR" aria-hidden="true">' +
-        '<div class="airi-head"><div class="airi-avatar" id="airiStage" aria-hidden="true"><div class="sanara-canvas"></div><img class="sanara-fallback" src="' + avatar + '" alt="Airi"></div><div><h2>Airi</h2><p><span class="dot"></span>Asistente del catálogo real</p></div><div class="airi-head-actions"><button class="icon-btn" type="button" data-airi-voice aria-pressed="false" aria-label="Lectura en voz alta" title="Lectura en voz alta">' + GALAX.icon('volumeOff', 'icon-sm') + '</button><button class="icon-btn" type="button" data-airi-clear aria-label="Borrar historial" title="Borrar historial local">' + GALAX.icon('trash', 'icon-sm') + '</button><button class="icon-btn" type="button" data-airi-close aria-label="Cerrar Airi">' + GALAX.icon('close', 'icon-sm') + '</button></div></div>' +
+      '<aside class="airi-panel" id="airi-panel" role="dialog" aria-labelledby="airi-panel-title" aria-label="Airi, asistente de GALAX PC REPAIR" aria-hidden="true">' +
+        '<div class="airi-head"><div class="airi-avatar" id="airiStage" aria-hidden="true"><div class="sanara-canvas"></div><img class="sanara-fallback" src="' + avatar + '" alt="Airi"></div><div><h2 id="airi-panel-title">Airi</h2><p><span class="dot"></span>Asistente del catálogo real</p></div><div class="airi-head-actions"><button class="icon-btn" type="button" data-airi-voice aria-pressed="false" aria-label="Lectura en voz alta" title="Lectura en voz alta">' + GALAX.icon('volumeOff', 'icon-sm') + '</button><button class="icon-btn" type="button" data-airi-clear aria-label="Borrar historial" title="Borrar historial local">' + GALAX.icon('trash', 'icon-sm') + '</button><button class="icon-btn" type="button" data-airi-close aria-label="Cerrar Airi">' + GALAX.icon('close', 'icon-sm') + '</button></div></div>' +
         '<button class="airi-greet" type="button" data-airi-greet>' + GALAX.icon('volume', 'icon-sm') + ' Escuchar saludo de Airi</button>' +
         '<div class="airi-messages" id="airi-messages" aria-live="polite" aria-relevant="additions"></div>' +
         '<div class="airi-prompts">' +
@@ -597,6 +636,7 @@
           '<button type="button" data-airi-prompt="Quiero reparar mi laptop">Reparación</button>' +
         '</div>' +
         '<div class="airi-compose">' +
+          '<div class="airi-suggest" id="airi-suggest" hidden></div>' +
           '<form class="airi-form" id="airi-form">' +
             '<textarea id="airi-input" rows="1" placeholder="Pregunta por un equipo, presupuesto, stock…" aria-label="Mensaje para Airi"></textarea>' +
             '<button class="icon-btn" type="button" id="airi-import" aria-label="Importar imagen" title="Importar imagen">' + GALAX.icon('image') + '</button>' +
@@ -623,6 +663,7 @@
   }
   function openPanel() {
     if (!panel) return;
+    state.lastFocus = document.activeElement;
     panel.classList.add('is-open');
     panel.setAttribute('aria-hidden', 'false');
     state.open = true;
@@ -656,11 +697,13 @@
   function closePanel() {
     if (!panel) return;
     closeCamera();
+    hideSuggestions();
     panel.classList.remove('is-open');
     panel.setAttribute('aria-hidden', 'true');
     state.open = false;
     const fabEl = document.querySelector('.airi-fab');
     if (fabEl) fabEl.setAttribute('aria-expanded', 'false');
+    if (state.lastFocus && document.contains(state.lastFocus)) state.lastFocus.focus();
   }
   function bind() {
     fab = document.querySelector('.airi-fab');
@@ -668,6 +711,7 @@
     messagesEl = document.getElementById('airi-messages');
     form = document.getElementById('airi-form');
     input = document.getElementById('airi-input');
+    suggestEl = document.getElementById('airi-suggest');
     sendBtn = form && form.querySelector('[type=submit]');
     micBtn = document.getElementById('airi-mic');
     imageInput = document.getElementById('airi-file');
@@ -695,8 +739,15 @@
       if (window.GALAX_Airi3D) window.GALAX_Airi3D.wave(3000);
     });
     if (voiceBtn && state.voiceOut) { voiceBtn.setAttribute('aria-pressed', 'true'); voiceBtn.innerHTML = GALAX.icon('volume', 'icon-sm'); }
-    document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && state.open) closePanel(); });
+    document.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape') return;
+      if (suggestEl && !suggestEl.hidden) hideSuggestions();
+      else if (state.open) closePanel();
+    });
     document.addEventListener('click', (event) => {
+      const codeBtn = event.target.closest('[data-airi-code]');
+      if (codeBtn) { event.preventDefault(); hideSuggestions(); send(codeBtn.getAttribute('data-airi-code')); return; }
+      if (suggestEl && !suggestEl.hidden && !event.target.closest('.airi-suggest') && !event.target.closest('#airi-input')) hideSuggestions();
       if (event.target.closest('[data-open-airi]')) { event.preventDefault(); openPanel(); }
       const prompt = event.target.closest('[data-airi-prompt]');
       if (prompt) { openPanel(); send(prompt.getAttribute('data-airi-prompt')); }
@@ -730,6 +781,7 @@
     input.addEventListener('input', () => {
       input.style.height = 'auto';
       input.style.height = Math.min(input.scrollHeight, 100) + 'px';
+      renderSuggestions(input.value);
       if (window.GALAX_Airi3D) window.GALAX_Airi3D.setTyping(2500);
     });
     micBtn.addEventListener('click', toggleRecognition);
