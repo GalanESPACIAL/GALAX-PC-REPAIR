@@ -337,10 +337,12 @@ const AXIS_X = new THREE.Vector3(1,0,0), AXIS_Y = new THREE.Vector3(0,1,0), AXIS
 const _pq = new THREE.Quaternion(), _iq = new THREE.Quaternion(), _aq = new THREE.Quaternion(), _dq = new THREE.Quaternion();
 let renderer, scene, camera, clock, model3d = null, started = false;
 let waveUntil = 0, waveAmount = 0, speakingUntil = 0, typingUntil = 0, waveUp = 1.12, waveLow = -0.45;
-let catalog = null, voiceOut = false, recognition = null, recording = false, lastFocus = null, pendingImage = null, cameraStream = null;
+let catalog = null, voiceOut = true, recognition = null, recording = false, lastFocus = null, pendingImage = null, cameraStream = null;
+try { const savedVoice = localStorage.getItem('galax_preview_voice'); if (savedVoice !== null) voiceOut = savedVoice === '1'; } catch {}
+if (voiceOut && voiceBtn) { voiceBtn.innerHTML = '<i class="fa-solid fa-volume"></i>'; voiceBtn.title = 'Silenciar voz'; voiceBtn.setAttribute('aria-label', 'Silenciar voz'); }
 const context = { category:null, brand:null, use:null, max:null, min:null };
 const history = [];
-const GREETING = '¡Hola! Bienvenido a GALAX PC REPAIR. Soy Airi, tu asistente del catálogo real. Puedo ayudarte a encontrar laptops, computadoras, componentes y servicios. ¿Qué estás buscando hoy?';
+const GREETING = 'Hola, soy Airi, la asistente de Galax PC Repair. Trabajo con el catálogo real, 209 equipos con precios y stock registrados. ¿Buscas una laptop, una computadora, componentes o necesitas servicio técnico?';
 const VOICE_URL = 'Voz de Airi/voz%20de%20Airi.mp3';
 const airiVoiceAudio = document.getElementById('airiVoice');
 let recordedPlaying = false;
@@ -586,7 +588,14 @@ function answerFor(text) {
    ================================================================== */
 function pickVoice() {
   const voices = ('speechSynthesis' in window) ? (speechSynthesis.getVoices()||[]).filter(v=>/^es/i.test(v.lang)) : [];
-  return voices.find(v=>/elvira|dalia|lucia|sofia|camila|monica|mujer|female/i.test(v.name)) || voices[0] || null;
+  if (!voices.length) return null;
+  let saved = null; try { saved = localStorage.getItem('galax_preview_voice_name'); } catch {}
+  let chosen = saved ? voices.find(v => v.name === saved) : null;
+  if (!chosen) chosen = voices.find(v=>/elvira|dalia|lucia|sofia|camila|monica|paulina|isabela|luciana|valentina|mujer|female/i.test(v.name));
+  if (!chosen) chosen = voices.find(v=>!/masculino|male|pablo|jorge|diego|carlos|andrés|andres/i.test(v.name));
+  if (!chosen) chosen = voices[0];
+  try { localStorage.setItem('galax_preview_voice_name', chosen.name); } catch {}
+  return chosen;
 }
 function speak(text) {
   if (!('speechSynthesis' in window)) { note('La lectura en voz alta no está disponible en este navegador.'); return Promise.resolve(false); }
@@ -594,7 +603,7 @@ function speak(text) {
   return new Promise(resolve => {
     speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(String(text||'').replace(/[#*_`]/g,' '));
-    u.lang='es-PE'; u.rate=.98; u.pitch=1.05;
+    u.lang='es-PE'; u.rate=.94; u.pitch=1.12; u.volume=1;
     const v = pickVoice(); if (v) u.voice=v;
     u.onstart = () => { speakingUntil = performance.now()+Math.min(4200,900+String(text).length*32); };
     u.onend = () => { speakingUntil=0; resolve(true); };
@@ -665,25 +674,28 @@ document.getElementById('assistantBtn').addEventListener('click', () => {
 });
 document.getElementById('closeChat').addEventListener('click', ()=>{ panel.classList.remove('open'); panel.setAttribute('aria-hidden','true'); stopCamera(); hideSuggest(); });
 document.getElementById('clearBtn').addEventListener('click', ()=>{ body.innerHTML=''; history.length=0; Object.assign(context,{category:null,brand:null,use:null,max:null,min:null}); });
-greetBtn.addEventListener('click', ()=>{ playRecordedVoice(); });
 let greeted = false;
-function greetOnce() {
-  if (greeted || history.length) return;
+function showGreeting() {
+  if (greeted) { playRecordedVoice(); return; }
   greeted = true;
-  setTimeout(() => {
-    playRecordedVoice();
-    const bubble = document.createElement('div');
-    bubble.className = 'airi-msg assistant';
-    bubble.innerHTML = '<div style="font-size:.68rem;color:#a5f3fc;margin-bottom:5px"><i class="fa-solid fa-volume"></i> Voz original de Airi</div><audio controls preload="none" src="' + VOICE_URL + '" style="width:100%;max-width:320px"></audio>';
-    body.appendChild(bubble);
-    body.scrollTop = body.scrollHeight;
-  }, 650);
+  appendMsg('assistant', esc(GREETING), GREETING);
+  playRecordedVoice();
+  const bubble = document.createElement('div');
+  bubble.className = 'airi-msg assistant';
+  bubble.innerHTML = '<div style="font-size:.68rem;color:#a5f3fc;margin-bottom:5px"><i class="fa-solid fa-volume"></i> Voz original de Airi</div><audio controls preload="none" src="' + VOICE_URL + '" style="width:100%;max-width:320px"></audio>';
+  body.appendChild(bubble);
+  body.scrollTop = body.scrollHeight;
 }
+function greetOnce() { if (greeted || history.length) return; setTimeout(showGreeting, 650); }
+greetBtn.addEventListener('click', showGreeting);
 voiceBtn.addEventListener('click', ()=>{
   voiceOut=!voiceOut;
+  try { localStorage.setItem('galax_preview_voice', voiceOut?'1':'0'); } catch {}
   voiceBtn.innerHTML='<i class="fa-solid fa-'+(voiceOut?'volume':'volume-xmark')+'"></i>';
-  voiceBtn.title=voiceOut?'Lectura activada':'Lectura desactivada';
-  if (voiceOut) speak(GREETING); else if ('speechSynthesis' in window) speechSynthesis.cancel();
+  voiceBtn.title=voiceOut?'Silenciar voz':'Activar voz';
+  voiceBtn.setAttribute('aria-label',voiceBtn.title);
+  if (voiceOut) speak('Voz activada.');
+  else { if ('speechSynthesis' in window) speechSynthesis.cancel(); if (airiVoiceAudio) airiVoiceAudio.pause(); recordedPlaying=false; }
 });
 form.addEventListener('submit', e=>{ e.preventDefault(); sendMessage(input.value, pendingImage); input.value=''; });
 input.addEventListener('keydown', e=>{ if(e.key==='Enter'){e.preventDefault(); sendMessage(input.value,pendingImage); input.value='';} });
