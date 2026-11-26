@@ -120,41 +120,54 @@ button,input,select{font:inherit}
   box-shadow:0 0 30px rgba(37,211,102,.6);font-size:1.6rem}
 .whatsapp-float span{position:absolute;bottom:-14px;background:#25d366;color:#04140a;font-size:.58rem;font-weight:800;padding:1px 7px;border-radius:99px}
 
-.chat-panel{position:fixed;right:22px;bottom:96px;z-index:70;width:min(420px,calc(100vw - 32px));height:min(620px,calc(100dvh - 120px));
-  background:#0a1426;border:1px solid var(--border);border-radius:18px;display:none;grid-template-columns:1fr;grid-template-rows:270px 1fr;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.6)}
-.chat-panel.open{display:grid!important}
-.sanara-stage{position:relative;height:100%;min-width:0;overflow:hidden;
-  background:
-    radial-gradient(circle at 50% 44%,rgba(124,58,237,.44),transparent 58%),
-    radial-gradient(circle at 86% 16%,rgba(34,211,238,.16),transparent 46%),
-    linear-gradient(rgba(56,189,248,.055) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(56,189,248,.055) 1px,transparent 1px),
-    #070b1e;
-  background-size:auto,auto,36px 36px,36px 36px,auto;
-  box-shadow:inset 0 0 46px rgba(2,6,18,.85)}
-.sanara-room,.sanara-desk,.sanara-portrait{display:none!important}
-.sanara-fallback{display:none;position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:cover;object-position:77% 29%}
-.sanara-fallback.show{display:block!important}
-.sanara-canvas{position:absolute;inset:0;z-index:1}
-.sanara-canvas canvas{display:block;width:100%!important;height:100%!important}
-.sanara-stage::after{content:'';position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);width:196px;height:196px;border-radius:50%;
-  border:2px solid rgba(124,58,237,.82);
-  box-shadow:0 0 28px rgba(124,58,237,.55),inset 0 0 24px rgba(34,211,238,.26);
-  z-index:0;pointer-events:none}
-.chat-col{display:flex;flex-direction:column;min-width:0;height:100%}
-.chat-col header{padding:16px 20px;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(120deg,rgba(30,58,138,.95),rgba(8,145,178,.55));border-bottom:1px solid var(--border);flex-shrink:0}
-.chat-col header strong{font-size:1.25rem;font-weight:800;letter-spacing:.01em}
-.chat-col header button{background:transparent;border:0;color:#fff;cursor:pointer;font-size:1.5rem;line-height:1}
-.chat-body{flex:1;padding:20px;overflow:auto;font-size:1.02rem;line-height:1.55;color:#dbeafe;background:#0a1122}
+/* ---------- Chat flotante Airi ---------- */
+.chat-panel{position:fixed;right:22px;bottom:96px;z-index:70;width:min(400px,calc(100vw - 24px));height:min(560px,calc(100dvh - 120px));
+  background:#080f1e;border:1px solid rgba(139,92,246,.36);border-radius:18px;display:none;flex-direction:column;overflow:hidden;
+  box-shadow:0 24px 70px rgba(0,0,0,.55),0 0 60px rgba(139,92,246,.12)}
+.chat-panel.open{display:flex!important}
+.airi-head{display:flex;align-items:center;gap:10px;padding:13px 14px;border-bottom:1px solid rgba(148,163,184,.14);
+  background:linear-gradient(90deg,rgba(34,211,238,.07),rgba(139,92,246,.1));flex:0 0 auto}
+.airi-avatar{position:relative;width:42px;height:42px;border-radius:50%;overflow:hidden;flex:0 0 auto;
+  border:1px solid rgba(139,92,246,.5);background:radial-gradient(circle at 50% 34%,rgba(124,58,237,.55),#070b1e)}
+.airi-avatar .sanara-fallback{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.airi-avatar canvas{position:relative;z-index:1;display:block;width:100%!important;height:100%!important}
+.airi-head-copy{min-width:0}
+.airi-head strong{display:block;font-size:.92rem;color:#fff;line-height:1.2}
+.airi-head p{display:flex;align-items:center;gap:5px;color:var(--muted);font-size:.64rem;margin-top:2px}
+.airi-head p .dot{width:5px;height:5px;border-radius:50%;background:#4ade80;box-shadow:0 0 8px #4ade80}
+.airi-head-actions{margin-left:auto;display:flex;gap:4px}
+.airi-head-actions button{width:30px;height:30px;display:grid;place-items:center;border:1px solid rgba(148,163,184,.2);
+  background:rgba(255,255,255,.04);color:#cbd5e1;border-radius:8px;cursor:pointer;font-size:.78rem;transition:.18s}
+.airi-head-actions button:hover{color:var(--cyan);border-color:rgba(34,211,238,.45);background:rgba(34,211,238,.1)}
+.airi-greet{display:block;margin:10px 14px 2px;padding:8px 12px;border-radius:999px;border:1px solid rgba(34,211,238,.35);
+  background:rgba(34,211,238,.08);color:#a5f3fc;font-size:.72rem;cursor:pointer;transition:.18s}
+.airi-greet:hover{background:rgba(34,211,238,.18)}
+.chat-body{flex:1;min-height:0;padding:14px;overflow-y:auto;font-size:.79rem;line-height:1.55;color:#dbeafe}
 .chat-body strong{color:#fff}
-.chat-col footer{display:flex;gap:10px;padding:14px;border-top:1px solid var(--border);flex-shrink:0}
-.chat-col footer input{flex:1;min-width:0;background:#0f1a30;border:1px solid rgba(34,211,238,.35);border-radius:14px;padding:14px 16px;color:#fff;font-size:1rem;outline:0}
-.chat-col footer input::placeholder{color:#8fa6c4}
-.chat-col footer button{background:var(--cyan2);border:0;border-radius:14px;color:#04121c;font-weight:800;font-size:1.1rem;width:56px;cursor:pointer}
+.airi-msg{margin:0 0 8px;padding:9px 11px;border-radius:12px;border:1px solid rgba(139,92,246,.2);
+  background:rgba(139,92,246,.1);color:var(--text);max-width:93%;overflow-wrap:anywhere}
+.airi-msg.mine{margin-left:auto;background:rgba(34,211,238,.12);border-color:rgba(34,211,238,.25)}
+.airi-prompts{display:flex;gap:5px;overflow-x:auto;padding:6px 12px 0;flex:0 0 auto;scrollbar-width:none}
+.airi-prompts::-webkit-scrollbar{display:none}
+.airi-prompts button{border:1px solid rgba(148,163,184,.2);background:rgba(255,255,255,.035);color:var(--muted);
+  border-radius:999px;padding:4px 9px;font-size:.63rem;white-space:nowrap;cursor:pointer}
+.airi-prompts button:hover{color:var(--cyan);border-color:rgba(34,211,238,.3)}
+.airi-compose{padding:9px 11px 11px;border-top:1px solid rgba(148,163,184,.14);flex:0 0 auto}
+.airi-form{display:flex;align-items:center;gap:5px;border:1px solid rgba(148,163,184,.2);border-radius:12px;
+  background:rgba(255,255,255,.035);padding:5px}
+.airi-form input{flex:1;min-width:0;border:0;outline:0;background:transparent;color:var(--text);padding:6px;font-size:.78rem}
+.airi-form input::placeholder{color:#7d90ad}
+.airi-form button{width:32px;height:32px;display:grid;place-items:center;border:0;border-radius:8px;
+  background:transparent;color:var(--muted);cursor:pointer;transition:.18s}
+.airi-form button:hover{color:var(--cyan);background:rgba(34,211,238,.1)}
+.airi-form .send-btn{background:rgba(34,211,238,.16);color:var(--cyan)}
+.airi-form .send-btn:hover{background:var(--cyan);color:#041019}
+.airi-footnote{color:#64748b;font-size:.57rem;line-height:1.4;padding:5px 2px 0}
+.airi-footnote a{color:var(--cyan)}
 
 @media(max-width:1000px){.main-nav{display:none}.hero-row{grid-template-columns:1fr}.categories{grid-template-columns:repeat(3,1fr)}.products{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:640px){.categories{grid-template-columns:repeat(2,1fr)}.products{grid-template-columns:repeat(2,1fr)}.benefits{grid-template-columns:1fr}.benefit{border-right:0;border-bottom:1px solid var(--border)}.assistant-pill{right:96px;font-size:.72rem;padding:9px 11px}}
-@media(max-width:700px){.chat-panel{grid-template-columns:1fr;grid-template-rows:190px 1fr;width:min(360px,calc(100vw - 24px))}.sanara-stage{height:190px}.sanara-stage::after{width:150px;height:150px;top:42%}}
+@media(max-width:700px){.chat-panel{width:min(360px,calc(100vw - 24px));height:min(540px,calc(100dvh - 110px))}}
 @media(max-width:767px){
   .top-right a,.logo,.cat-btn,.main-nav a{display:inline-flex;align-items:center;min-height:44px;min-width:44px}
   .top-right{gap:6px}
@@ -246,14 +259,34 @@ button,input,select{font:inherit}
 <a class="whatsapp-float" href="https://chat.whatsapp.com/I7Syor85Jia6lfE6oIJ7tX?s=sh&amp;p=a&amp;iam=2//de" target="_blank" rel="noopener noreferrer" aria-label="Soporte por WhatsApp"><i class="fa-brands fa-whatsapp"></i><span>Soporte</span></a>
 
 <div class="chat-panel" id="chatPanel">
-  <div class="sanara-stage" id="sanaraStage">
-    <div class="sanara-canvas" id="sanaraCanvas" aria-hidden="true"></div>
-    <img class="sanara-fallback" src="anuncio/anuncio_movible%2001.jpeg" alt="Airi, asistente virtual de GALAX PC REPAIR">
+  <div class="airi-head">
+    <div class="airi-avatar" id="sanaraCanvas" aria-hidden="true"><img class="sanara-fallback" src="../assets/img/optimized/airi.jpg" alt=""></div>
+    <div class="airi-head-copy"><strong>Airi</strong><p><span class="dot"></span>Asistente del catálogo real</p></div>
+    <div class="airi-head-actions">
+      <button type="button" id="voiceBtn" aria-label="Lectura en voz alta" title="Lectura en voz alta"><i class="fa-solid fa-volume-xmark"></i></button>
+      <button type="button" id="clearBtn" aria-label="Borrar historial" title="Borrar historial local"><i class="fa-solid fa-trash"></i></button>
+      <button type="button" id="closeChat" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+    </div>
   </div>
-  <div class="chat-col">
-    <header><strong>Airi · Asistente IA</strong><button type="button" id="closeChat" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button></header>
-    <div class="chat-body"><p>¡Hola! Soy <strong>Airi</strong>, tu asistente de GALAX PC REPAIR. Pregúntame por productos, precios, stock o reparaciones.</p></div>
-    <footer><input type="text" placeholder="Haz una pregunta..." aria-label="Mensaje"><button type="button"><i class="fa-solid fa-paper-plane"></i></button></footer>
+  <button type="button" class="airi-greet" id="greetBtn"><i class="fa-solid fa-volume"></i> Escuchar saludo de Airi</button>
+  <div class="chat-body" id="chatBody"></div>
+  <div class="airi-prompts">
+    <button type="button" data-prompt="Laptop para estudiar hasta S/ 3000">Laptop para estudiar</button>
+    <button type="button" data-prompt="Equipo para gaming con GPU dedicada">Gaming</button>
+    <button type="button" data-prompt="¿Cómo pago con Yape o Plin?">Pagos</button>
+    <button type="button" data-prompt="¿Hacen envíos a provincias?">Envíos</button>
+    <button type="button" data-prompt="Quiero reparar mi laptop">Reparación</button>
+  </div>
+  <div class="airi-compose">
+    <form class="airi-form" id="chatForm">
+      <input type="text" id="chatInput" placeholder="Pregunta por un equipo, presupuesto, stock..." aria-label="Mensaje" autocomplete="off">
+      <button type="button" id="importBtn" aria-label="Importar imagen" title="Importar imagen"><i class="fa-solid fa-image"></i></button>
+      <button type="button" id="cameraBtn" aria-label="Tomar fotografía" title="Tomar fotografía"><i class="fa-solid fa-camera"></i></button>
+      <button type="button" id="micBtn" aria-label="Dictar mensaje" title="Dictar mensaje"><i class="fa-solid fa-microphone"></i></button>
+      <button type="submit" class="send-btn" aria-label="Enviar mensaje"><i class="fa-solid fa-paper-plane"></i></button>
+    </form>
+    <div class="airi-footnote">Airi usa el catálogo real y puede equivocarse. Confirma stock y compatibilidad con el equipo. No compartas datos de tarjeta por chat. <a href="#">Privacidad</a>.</div>
+    <input type="file" id="imageInput" accept="image/jpeg,image/png,image/webp" hidden>
   </div>
 </div>
 
@@ -262,27 +295,45 @@ import * as THREE from 'three';
 import { GLTFLoader } from './vendor/loaders/GLTFLoader.js';
 
 const panel = document.getElementById('chatPanel');
-const body = document.querySelector('.chat-body');
-const input = document.querySelector('.chat-col footer input');
-const send = document.querySelector('.chat-col footer button');
+const body = document.getElementById('chatBody');
+const form = document.getElementById('chatForm');
+const input = document.getElementById('chatInput');
 const stage = document.getElementById('sanaraCanvas');
-const fallback = document.querySelector('.sanara-fallback');
-const hello = '<div style="margin:8px 0;padding:8px 12px;border-radius:12px;background:rgba(79,70,229,.22);border:1px solid rgba(34,211,238,.25)">¡Hola! Soy <strong>Airi</strong>, tu asistente de GALAX PC REPAIR. Pregúntame por productos, precios, stock o reparaciones.</div>';
+const fallback = stage.querySelector('.sanara-fallback');
+const voiceBtn = document.getElementById('voiceBtn');
+const greetBtn = document.getElementById('greetBtn');
+const micBtn = document.getElementById('micBtn');
+const importBtn = document.getElementById('importBtn');
+const cameraBtn = document.getElementById('cameraBtn');
+const imageInput = document.getElementById('imageInput');
+const hello = '<div class="airi-msg">¡Hola! Soy <strong>Airi</strong>, tu asistente de GALAX PC REPAIR. Pregúntame por productos, precios, stock o reparaciones.</div>';
+const GREETING = '¡Hola! Bienvenido a GALAX PC REPAIR. Soy Airi y estoy aquí para ayudarte a encontrar tu próxima computadora o componente. ¿Qué estás buscando hoy?';
 body.innerHTML = hello;
 
-const bones = {};
-const basePose = {};
+const bones = {}, basePose = {};
 let renderer, scene, camera, clock, model3d = null;
-let started = false, waveUntil = 0, waveAmount = 0, waveUp = 1.12, waveLow = -0.45, waveFwd = 0.26;
+let started = false, waveUntil = 0, waveAmount = 0, waveUp = 1.12, waveLow = -0.45;
+let voiceOut = false, recognition = null, recording = false, pendingImage = null, greeted = false, cameraStream = null;
 
-const AXIS_X = new THREE.Vector3(1, 0, 0);
-const AXIS_Y = new THREE.Vector3(0, 1, 0);
-const AXIS_Z = new THREE.Vector3(0, 0, 1);
-const _parentQ = new THREE.Quaternion();
-const _invParent = new THREE.Quaternion();
-const _axisQ = new THREE.Quaternion();
-const _deltaQ = new THREE.Quaternion();
+/* ---------- Voz ---------- */
+function pickVoice() {
+  const voices = ('speechSynthesis' in window) ? (speechSynthesis.getVoices() || []).filter(v => /^es/i.test(v.lang)) : [];
+  return voices.find(v => /elvira|dalia|lucia|sofia|camila|mujer|female|monica/i.test(v.name)) || voices[0] || null;
+}
+function speak(text) {
+  if (!('speechSynthesis' in window)) { note('La lectura en voz alta no está disponible en este navegador.'); return; }
+  const u = new SpeechSynthesisUtterance(String(text || '').replace(/[#*_`]/g, ' '));
+  u.lang = 'es-PE'; u.rate = 0.98; u.pitch = 1.05;
+  const v = pickVoice(); if (v) u.voice = v;
+  speechSynthesis.cancel();
+  speechSynthesis.speak(u);
+  waveUntil = performance.now() + Math.min(4200, 900 + String(text).length * 32);
+}
+function note(text) { const d = document.createElement('div'); d.className = 'airi-msg'; d.textContent = text; body.appendChild(d); body.scrollTop = body.scrollHeight; }
 
+/* ---------- Auxiliares 3D ---------- */
+const AXIS_X = new THREE.Vector3(1, 0, 0), AXIS_Y = new THREE.Vector3(0, 1, 0), AXIS_Z = new THREE.Vector3(0, 0, 1);
+const _parentQ = new THREE.Quaternion(), _invParent = new THREE.Quaternion(), _axisQ = new THREE.Quaternion(), _deltaQ = new THREE.Quaternion();
 function rotateWorld(bone, axis, angle) {
   if (!bone || !angle) return;
   bone.parent.getWorldQuaternion(_parentQ);
@@ -291,7 +342,6 @@ function rotateWorld(bone, axis, angle) {
   _deltaQ.copy(_invParent).multiply(_axisQ).multiply(_parentQ);
   bone.quaternion.premultiply(_deltaQ);
 }
-
 function applyWorldQuat(bone, worldQ) {
   if (!bone) return;
   bone.parent.getWorldQuaternion(_parentQ);
@@ -300,131 +350,37 @@ function applyWorldQuat(bone, worldQ) {
   bone.quaternion.premultiply(_deltaQ);
   bone.updateWorldMatrix(false, true);
 }
-
-function aimForearm() {
-  const low = bones.lowerarm_l, hand = bones.hand_l;
-  if (!low || !hand) return;
-  model3d.updateMatrixWorld(true);
-  const ePos = new THREE.Vector3();
-  const hPos = new THREE.Vector3();
-  low.getWorldPosition(ePos);
-  hand.getWorldPosition(hPos);
-  const dir = hPos.sub(ePos).normalize();
-  const target = new THREE.Vector3(0.18, 1, 0.12).normalize();
-  applyWorldQuat(low, new THREE.Quaternion().setFromUnitVectors(dir, target));
-}
-
 function lowerArms() {
   model3d.updateMatrixWorld(true);
   for (const side of ['l', 'r']) {
-    const up = bones['upperarm_' + side];
-    const low = bones['lowerarm_' + side];
+    const up = bones['upperarm_' + side], low = bones['lowerarm_' + side];
     if (!up || !low) continue;
-    const sPos = new THREE.Vector3();
-    const ePos = new THREE.Vector3();
-    up.getWorldPosition(sPos);
-    low.getWorldPosition(ePos);
-    const dir = ePos.sub(sPos).normalize();
-    const sign = sPos.x < 0 ? -1 : 1;
-    const target = new THREE.Vector3(sign * 0.22, -1, 0.05).normalize();
-    applyWorldQuat(up, new THREE.Quaternion().setFromUnitVectors(dir, target));
+    const sPos = new THREE.Vector3(), ePos = new THREE.Vector3();
+    up.getWorldPosition(sPos); low.getWorldPosition(ePos);
+    const dir = ePos.sub(sPos).normalize(), sign = sPos.x < 0 ? -1 : 1;
+    applyWorldQuat(up, new THREE.Quaternion().setFromUnitVectors(dir, new THREE.Vector3(sign * 0.22, -1, 0.05).normalize()));
     applyWorldQuat(low, new THREE.Quaternion().setFromAxisAngle(AXIS_X, -0.22));
   }
   model3d.updateMatrixWorld(true);
 }
-
-document.getElementById('assistantBtn').addEventListener('click', () => {
-  const open = panel.classList.toggle('open');
-  if (!open) return;
-  initAiri();
-  requestAnimationFrame(fit);
-  if (model3d) waveUntil = performance.now() + 2800;
-});
-document.getElementById('closeChat').addEventListener('click', () => panel.classList.remove('open'));
-
-function say(html, mine) {
-  const d = document.createElement('div');
-  d.style.cssText = 'margin:8px 0;padding:8px 12px;border-radius:12px;background:' + (mine ? 'rgba(34,211,238,.16)' : 'rgba(79,70,229,.22)') + ';border:1px solid rgba(34,211,238,.25)';
-  d.innerHTML = html; body.appendChild(d); body.scrollTop = body.scrollHeight;
+function frameModel() {
+  const head = bones.head, headPos = new THREE.Vector3();
+  if (head) head.getWorldPosition(headPos);
+  const leafPos = headPos.clone();
+  if (bones.head_leaf) bones.head_leaf.getWorldPosition(leafPos);
+  const y = Math.max(headPos.y, leafPos.y) + 0.43;
+  camera.fov = 18;
+  camera.position.set(headPos.x || 0, y, 2.85);
+  camera.lookAt(headPos.x || 0, y, 0);
+  camera.updateProjectionMatrix();
 }
-function respond() {
-  const q = (input.value || '').trim(); if (!q) return; input.value = ''; say(q, true);
-  const s = q.toLowerCase();
-  let a = 'Soy el asistente de GALAX PC REPAIR: puedo orientarte sobre laptops, monitores, componentes, periféricos, precios, stock y reparaciones.';
-  if (/laptop|portátil|notebook/.test(s)) a = 'Tenemos laptops HP Pavilion 15, Lenovo IdeaPad 3 y Asus VivoBook 15. Verás precios reales en el catálogo.';
-  else if (/monitor|pantalla/.test(s)) a = 'Hay monitores gaming 24&quot; 165Hz y monitores Samsung en el catálogo.';
-  else if (/gpu|gráfica|rtx/.test(s)) a = 'Contamos con tarjeta gráfica RTX y componentes en Ofertas Especiales.';
-  else if (/teclado|ratón|mouse|perif/.test(s)) a = 'Tenemos teclados gaming, ratones y accesorios en el catálogo.';
-  else if (/repar|taller|servicio/.test(s)) a = 'Reparamos PC y laptops: diagnóstico, limpieza, formateo y mantenimiento.';
-  else if (/precio|stock|oferta/.test(s)) a = 'Precios y stock son reales; revisa la sección Ofertas Especiales.';
-  say(a, false);
-  waveUntil = performance.now() + 1500;
+function fit() {
+  if (!renderer || !camera) return;
+  const w = stage.clientWidth || 42, h = stage.clientHeight || 42;
+  renderer.setSize(w, h, false);
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
 }
-send.addEventListener('click', respond);
-input.addEventListener('keydown', e => { if (e.key === 'Enter') respond(); });
-
-function initAiri() {
-  if (started) return;
-  started = true;
-  try {
-    renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-  } catch (e) {
-    console.warn('[Airi] WebGL no disponible', e);
-    fallback.classList.add('show');
-    return;
-  }
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-  renderer.outputColorSpace = THREE.SRGBColorSpace;
-  renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.02;
-  stage.appendChild(renderer.domElement);
-
-  scene = new THREE.Scene();
-  scene.add(new THREE.HemisphereLight(0xd7ecff, 0x1a1238, 1.35));
-  const key = new THREE.DirectionalLight(0xffffff, 1.75); key.position.set(1.4, 2.7, 2.4); scene.add(key);
-  const fill = new THREE.DirectionalLight(0x38bdf8, 0.6); fill.position.set(-2.2, 1.5, 1.1); scene.add(fill);
-  const rim = new THREE.DirectionalLight(0x8b5cf6, 2.0); rim.position.set(1.2, 2.2, -1.8); scene.add(rim);
-  const face = new THREE.DirectionalLight(0xfff1e2, 1.15); face.position.set(0.5, 2.8, 3.2); scene.add(face);
-  const side = new THREE.DirectionalLight(0xbfe8ff, 0.45); side.position.set(-1.6, 2.2, 2.4); scene.add(side);
-  const aura = new THREE.PointLight(0x7c3aed, 0.55, 3.5); aura.position.set(0, 1.5, 0.6); scene.add(aura);
-
-  camera = new THREE.PerspectiveCamera(30, 1, 0.01, 40);
-  clock = new THREE.Clock();
-  fit();
-
-  new GLTFLoader().load('Cuerpo_SANARA%20IA/sanara_listo.glb', onModelLoaded, undefined, err => {
-    console.warn('[Airi] No se pudo cargar el modelo 3D', err);
-    fallback.classList.add('show');
-  });
-
-  function loop() {
-    requestAnimationFrame(loop);
-    if (!renderer) return;
-    const dt = Math.min(clock.getDelta(), 0.05);
-    const t = clock.elapsedTime;
-
-    if (model3d) {
-      for (const name in basePose) bones[name].quaternion.copy(basePose[name]);
-      rotateWorld(bones.head, AXIS_Y, Math.sin(t * 0.65) * 0.10);
-      rotateWorld(bones.head, AXIS_X, Math.sin(t * 0.9) * 0.03);
-      rotateWorld(bones.spine_02, AXIS_Y, Math.sin(t * 0.45) * 0.024);
-      rotateWorld(bones.spine_03, AXIS_Y, Math.sin(t * 0.55) * 0.014);
-
-      const target = performance.now() < waveUntil ? 1 : 0;
-      waveAmount += (target - waveAmount) * Math.min(1, dt * 7);
-      if (waveAmount > 0.002) {
-        const swing = Math.sin(t * 8.5) * 0.16;
-        rotateWorld(bones.upperarm_l, AXIS_Z, (waveUp + swing * 0.6) * waveAmount);
-        rotateWorld(bones.lowerarm_l, AXIS_Z, (waveLow + swing * 1.2) * waveAmount);
-        rotateWorld(bones.hand_l, AXIS_Z, Math.sin(t * 8.5 + 0.5) * 0.18 * waveAmount);
-      }
-    }
-
-    if (panel.classList.contains('open')) renderer.render(scene, camera);
-  }
-  loop();
-}
-
 function onModelLoaded(gltf) {
   model3d = gltf.scene;
   scene.add(model3d);
@@ -434,56 +390,179 @@ function onModelLoaded(gltf) {
       o.frustumCulled = false;
       const src = Array.isArray(o.material) ? o.material[0] : o.material;
       const tex = src && (src.emissiveMap || src.map);
-      if (tex) {
-        tex.colorSpace = THREE.SRGBColorSpace;
-        tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
-      }
+      if (tex) { tex.colorSpace = THREE.SRGBColorSpace; tex.anisotropy = renderer.capabilities.getMaxAnisotropy(); }
       o.material = new THREE.MeshStandardMaterial({
-        map: tex || null,
-        color: 0xffffff,
-        emissive: new THREE.Color(0xffffff),
-        emissiveMap: tex || null,
-        emissiveIntensity: 0.22,
-        metalness: 0.05,
-        roughness: 0.55,
-        side: THREE.DoubleSide
+        map: tex || null, color: 0xffffff,
+        emissive: new THREE.Color(0xffffff), emissiveMap: tex || null, emissiveIntensity: 0.22,
+        metalness: 0.05, roughness: 0.55, side: THREE.DoubleSide
       });
     }
   });
   model3d.updateMatrixWorld(true);
   lowerArms();
-  for (const name of ['upperarm_l', 'lowerarm_l', 'hand_l', 'upperarm_r', 'lowerarm_r', 'hand_r', 'head', 'spine_02', 'spine_03']) {
+  for (const name of ['upperarm_l','lowerarm_l','hand_l','upperarm_r','lowerarm_r','hand_r','head','spine_02','spine_03']) {
     if (bones[name]) basePose[name] = bones[name].quaternion.clone();
   }
   frameModel();
-  fallback.classList.remove('show');
+  fallback.style.display = 'none';
   new ResizeObserver(fit).observe(stage);
   fit();
   waveUntil = performance.now() + 3000;
   window.__AIRI_READY = true;
-  window.__AIRI = { bones, get camera() { return camera; }, get model() { return model3d; }, get scene() { return scene; }, get renderer() { return renderer; }, wave(ms = 3000) { waveUntil = performance.now() + ms; }, setCam(y, d) { camera.position.set(0, y, d); camera.lookAt(0, y, 0); }, setWavePose(up, low) { waveUp = up; waveLow = low; } };
+  window.__AIRI = { bones, get camera(){return camera;}, get model(){return model3d;}, get scene(){return scene;}, get renderer(){return renderer;}, wave(ms=3000){waveUntil = performance.now()+ms;}, setWavePose(up,low){waveUp=up;waveLow=low;} };
+}
+function initAiri() {
+  if (started) return;
+  started = true;
+  try { renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true }); }
+  catch (e) { console.warn('[Airi] WebGL no disponible', e); return; }
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.12;
+  stage.appendChild(renderer.domElement);
+  scene = new THREE.Scene();
+  scene.add(new THREE.HemisphereLight(0xd7ecff, 0x1a1238, 1.55));
+  const key = new THREE.DirectionalLight(0xffffff, 1.9); key.position.set(1.4, 2.7, 2.4); scene.add(key);
+  const rim = new THREE.DirectionalLight(0x8b5cf6, 2.1); rim.position.set(1.2, 2.2, -1.8); scene.add(rim);
+  const face = new THREE.DirectionalLight(0xfff1e2, 1.2); face.position.set(0.5, 2.8, 3.2); scene.add(face);
+  camera = new THREE.PerspectiveCamera(34, 1, 0.01, 40);
+  clock = new THREE.Clock();
+  fit();
+  new GLTFLoader().load('Cuerpo_SANARA%20IA/sanara_listo.glb', onModelLoaded, undefined, err => console.warn('[Airi] No se pudo cargar el modelo 3D', err));
+  (function loop() {
+    requestAnimationFrame(loop);
+    if (!renderer || !scene || !camera) return;
+    const dt = Math.min(clock.getDelta(), 0.05), t = clock.elapsedTime;
+    if (model3d) {
+      for (const name in basePose) bones[name].quaternion.copy(basePose[name]);
+      rotateWorld(bones.head, AXIS_Y, Math.sin(t * 0.65) * 0.10);
+      rotateWorld(bones.head, AXIS_X, Math.sin(t * 0.9) * 0.03);
+      rotateWorld(bones.spine_02, AXIS_Y, Math.sin(t * 0.45) * 0.024);
+      rotateWorld(bones.spine_03, AXIS_Y, Math.sin(t * 0.55) * 0.014);
+      const target = performance.now() < waveUntil ? 1 : 0;
+      waveAmount += (target - waveAmount) * Math.min(1, dt * 7);
+      if (waveAmount > 0.002) {
+        const swing = Math.sin(t * 8.5) * 0.16;
+        rotateWorld(bones.upperarm_l, AXIS_Z, (waveUp + swing * 0.6) * waveAmount);
+        rotateWorld(bones.lowerarm_l, AXIS_Z, (waveLow + swing * 1.2) * waveAmount);
+        rotateWorld(bones.hand_l, AXIS_Z, Math.sin(t * 8.5 + 0.5) * 0.18 * waveAmount);
+      }
+    }
+    if (panel.classList.contains('open')) renderer.render(scene, camera);
+  })();
 }
 
-function frameModel() {
-  const head = bones.head;
-  const headPos = new THREE.Vector3();
-  if (head) head.getWorldPosition(headPos);
-  const leafPos = headPos.clone();
-  if (bones.head_leaf) bones.head_leaf.getWorldPosition(leafPos);
-  const targetY = Math.max(headPos.y, leafPos.y) + 0.43;
-  const dist = 2.85;
-  camera.position.set(headPos.x || 0, targetY, dist);
-  camera.lookAt(headPos.x || 0, targetY, 0);
-  camera.updateProjectionMatrix();
+/* ---------- Chat ---------- */
+function say(html, mine) {
+  const d = document.createElement('div');
+  d.className = 'airi-msg' + (mine ? ' mine' : '');
+  d.innerHTML = html;
+  body.appendChild(d);
+  body.scrollTop = body.scrollHeight;
+}
+function respond() {
+  const q = (input.value || '').trim();
+  if (!q && !pendingImage) return;
+  input.value = '';
+  if (pendingImage) { say('<img src="' + pendingImage + '" alt="Imagen adjunta" style="max-width:100%;border-radius:8px">' + (q ? '<br>' + q : ''), true); pendingImage = null; }
+  else if (q) say(q, true);
+  const s = (q || '').toLowerCase();
+  let a = 'Soy el asistente de GALAX PC REPAIR: puedo orientarte sobre laptops, monitores, componentes, periféricos, precios, stock y reparaciones.';
+  if (/laptop|portátil|notebook/.test(s)) a = 'Tenemos laptops HP Pavilion 15, Lenovo IdeaPad 3 y Asus VivoBook 15. Verás precios reales en el catálogo.';
+  else if (/monitor|pantalla/.test(s)) a = 'Hay monitores gaming 24&quot; 165Hz y monitores Samsung en el catálogo.';
+  else if (/gpu|gráfica|rtx/.test(s)) a = 'Contamos con tarjeta gráfica RTX y componentes en Ofertas Especiales.';
+  else if (/teclado|ratón|mouse|perif/.test(s)) a = 'Tenemos teclados gaming, ratones y accesorios en el catálogo.';
+  else if (/repar|taller|servicio/.test(s)) a = 'Reparamos PC y laptops: diagnóstico, limpieza, formateo y mantenimiento.';
+  else if (/precio|stock|oferta/.test(s)) a = 'Precios y stock son reales; revisa la sección Ofertas Especiales.';
+  else if (/pago|yape|plin|tarjeta/.test(s)) a = 'Yape, Plin y transferencia se coordinan con confirmación manual. La tarjeta solo se habilita con pasarela oficial.';
+  say(a, false);
+  if (voiceOut) speak(a);
+  waveUntil = performance.now() + 1800;
 }
 
-function fit() {
-  if (!renderer || !camera) return;
-  const w = stage.clientWidth || 420;
-  const h = stage.clientHeight || 270;
-  renderer.setSize(w, h, false);
-  camera.aspect = w / h;
-  camera.updateProjectionMatrix();
+/* ---------- Eventos ---------- */
+document.getElementById('assistantBtn').addEventListener('click', () => {
+  const open = panel.classList.toggle('open');
+  if (!open) { stopCamera(); return; }
+  initAiri();
+  requestAnimationFrame(fit);
+  if (model3d) waveUntil = performance.now() + 2800;
+  if (!greeted) {
+    greeted = true;
+    setTimeout(() => { speak(GREETING); }, 700);
+  }
+});
+document.getElementById('closeChat').addEventListener('click', () => { panel.classList.remove('open'); stopCamera(); });
+document.getElementById('clearBtn').addEventListener('click', () => { body.innerHTML = hello; });
+greetBtn.addEventListener('click', () => { speak(GREETING); });
+voiceBtn.addEventListener('click', () => {
+  voiceOut = !voiceOut;
+  voiceBtn.innerHTML = '<i class="fa-solid fa-' + (voiceOut ? 'volume' : 'volume-xmark') + '"></i>';
+  voiceBtn.title = voiceOut ? 'Lectura en voz alta activada' : 'Lectura en voz alta desactivada';
+  if (voiceOut) speak(GREETING); else if ('speechSynthesis' in window) speechSynthesis.cancel();
+});
+form.addEventListener('submit', e => { e.preventDefault(); respond(); });
+input.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); respond(); } });
+document.querySelectorAll('[data-prompt]').forEach(b => b.addEventListener('click', () => {
+  if (!panel.classList.contains('open')) document.getElementById('assistantBtn').click();
+  input.value = b.dataset.prompt; respond();
+}));
+
+/* importar imagen */
+importBtn.addEventListener('click', () => imageInput.click());
+imageInput.addEventListener('change', () => {
+  const f = imageInput.files && imageInput.files[0];
+  if (!f) return;
+  if (!/^image\/(jpeg|jpg|png|webp)$/i.test(f.type)) { note('Formato no admitido. Usa JPG, PNG o WEBP.'); return; }
+  if (f.size > 8 * 1024 * 1024) { note('La imagen debe pesar menos de 8 MB.'); return; }
+  const r = new FileReader();
+  r.onload = () => { pendingImage = r.result; say('<img src="' + pendingImage + '" alt="Vista previa" style="max-width:100%;border-radius:8px">', true); };
+  r.readAsDataURL(f);
+  imageInput.value = '';
+});
+
+/* cámara */
+function stopCamera() { if (cameraStream) { cameraStream.getTracks().forEach(t => t.stop()); cameraStream = null; } }
+cameraBtn.addEventListener('click', async () => {
+  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) { note('La cámara no está disponible. Puedes importar una imagen.'); return; }
+  try {
+    cameraStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' }, audio: false });
+    const wrap = document.createElement('div');
+    wrap.className = 'airi-msg';
+    wrap.innerHTML = '<video autoplay playsinline muted style="width:100%;border-radius:8px"></video><div style="display:flex;gap:6px;margin-top:6px"><button class="btn btn-sm" type="button" data-cap>Capturar</button><button class="btn btn-sm" type="button" data-cancel>Cancelar</button></div>';
+    body.appendChild(wrap);
+    wrap.querySelector('video').srcObject = cameraStream;
+    wrap.querySelector('[data-cap]').addEventListener('click', () => {
+      const v = wrap.querySelector('video'), c = document.createElement('canvas');
+      c.width = v.videoWidth || 640; c.height = v.videoHeight || 480;
+      c.getContext('2d').drawImage(v, 0, 0, c.width, c.height);
+      pendingImage = c.toDataURL('image/jpeg', 0.82);
+      wrap.remove(); stopCamera();
+      say('<img src="' + pendingImage + '" alt="Foto capturada" style="max-width:100%;border-radius:8px">', true);
+    });
+    wrap.querySelector('[data-cancel]').addEventListener('click', () => { wrap.remove(); stopCamera(); });
+  } catch (e) { note('No se pudo acceder a la cámara: ' + (e && e.message ? e.message : 'permiso denegado')); }
+});
+
+/* micrófono */
+if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) micBtn.disabled = true;
+else {
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  recognition = new SR();
+  recognition.lang = 'es-PE'; recognition.interimResults = true; recognition.continuous = false;
+  recognition.onstart = () => { recording = true; micBtn.style.color = '#fb7185'; };
+  recognition.onend = () => { recording = false; micBtn.style.color = ''; };
+  recognition.onresult = e => {
+    let txt = '';
+    for (let i = e.resultIndex; i < e.results.length; i++) txt += e.results[i][0].transcript;
+    input.value = txt.trim();
+    if (e.results[e.results.length - 1].isFinal) respond();
+  };
+  recognition.onerror = e => note('No se pudo usar el micrófono: ' + e.error);
+  micBtn.addEventListener('click', () => {
+    try { recording ? recognition.stop() : recognition.start(); } catch (e) { note('No se pudo iniciar el micrófono.'); }
+  });
 }
 </script>
 </body>
