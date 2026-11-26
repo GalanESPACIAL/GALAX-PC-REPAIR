@@ -1,13 +1,13 @@
 # Airi — asistente de GALAX PC REPAIR
 
 ## Identidad visual
-- El avatar de Airi es el cuerpo 3D del proyecto: `docs/Cuerpo_SANARA IA/sanara_listo.glb` (personaje Sanara, animación `Levitate_Idle`).
+- El avatar de Airi es el cuerpo 3D del proyecto: `docs/Cuerpo_SANARA IA/sanara_listo.glb` (personaje Sanara, animación `Levitate_Idle`), renderizado en vivo dentro del avatar circular del header del chat.
 - Fallback obligatorio: si WebGL falla o el modelo no carga, se conserva el avatar existente `assets/img/optimized/airi.jpg`.
 - El saludo inicial se anima con la rama de la mano real (`upperarm_l`, `lowerarm_l`, `hand_l`) + respiración; sin animación de mano "inventada".
 
 ## Chat
-- Implementación: `docs/galax_preview.html` (preview con stage 3D + chat) y panel flotante de `assets/js/airi.js`.
-- Stage 3D: canvas WebGL con luces de estudio, glow neón, `MeshStandardMaterial` con textura del modelo.
+- Implementación: `docs/galax_preview.html` (panel flotante compacto: avatar 3D animado, "Airi · Asistente del catálogo real", volumen/borrar/cerrar, chip "Escuchar saludo de Airi", mensajes, prompts, input con imagen/cámara/mic/enviar y footnote) y panel flotante de `assets/js/airi.js`.
+- Encuadre del avatar: cámara fov 18, distancia 2.85 centrada en la cabeza para mostrar el rostro del personaje.
 - Animación: cabeza (head/spine) con micro-oscilaciones, saludo por rama de mano, respiración; respuesta → saludo/nod.
 - Renderizado solo cuando el panel está abierto (performance).
 
