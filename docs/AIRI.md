@@ -19,6 +19,8 @@
 - Escape cierra sugerencias primero y luego el panel; clic fuera oculta las sugerencias.
 
 ## Voz
+- **Grabación original integrada**: `docs/Voz de Airi/voz de Airi.mp3` (~15 s) se reproduce al abrir el chat y al pulsar "Escuchar saludo de Airi"; también queda disponible como reproductor dentro de la conversación.
+- Las respuestas dinámicas se leen con Web Speech API; clonar la grabación original para texto arbitrario requiere un servicio de TTS con voz propia (dependencia pendiente, no simulada).
 - Web Speech API: una sola voz en español (femenina por defecto, guardada en localStorage).
 - Salida: `speechSynthesis`; entrada: `SpeechRecognition`/`webkitSpeechRecognition` con `es-PE`.
 - Si no hay voz disponible, se ofrece alternativa honesta (escribir / botón de escucha).
