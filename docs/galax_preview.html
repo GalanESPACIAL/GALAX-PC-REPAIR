@@ -586,31 +586,65 @@ function answerFor(text) {
 /* ==================================================================
    3) Interacción, voz, imágenes y render
    ================================================================== */
+/* Motor de voz: selección femenina natural + limpieza de texto para entonación */
+const DIGITOS_ES = ['cero','uno','dos','tres','cuatro','cinco','seis','siete','ocho','nueve'];
+function digitosEnPalabras(n) { return String(n).split('').map((d) => DIGITOS_ES[Number(d)] || d).join(' '); }
+function sanitizeTextForSpeech(raw) {
+  let t = String(raw || '');
+  // Códigos de producto: PC-001 -> "código P C cero cero uno"
+  t = t.replace(/\b([A-Za-z]{2,4})-(\d{1,5})\b/g, (_, letras, nums) =>
+    'código ' + letras.toUpperCase().split('').join(' ') + ' ' + digitosEnPalabras(nums));
+  // Moneda: S/ -> "soles" (se conservan comas para las pausas)
+  t = t.replace(/S\/\s*/g, 'soles ').replace(/s\/\s*/g, 'soles ');
+  // Emojis y símbolos que no deben leerse en voz alta
+  t = t.replace(/[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}\u{FE0F}]/gu, ' ');
+  t = t.replace(/[#*_`~|<>«»]/g, ' ').replace(/—|–/g, ', ');
+  t = t.replace(/código\s+código\s*/gi, 'código ').replace(/\s+([,;:])/g, '$1');
+  // Comas, puntos y signos de interrogación se conservan para la entonación
+  t = t.replace(/\s{2,}/g, ' ').trim();
+  return t;
+}
+function scoreVoice(v) {
+  const n = String(v.name || '');
+  let s = 0;
+  if (/natural|online|neural|premium|enhanced/i.test(n)) s += 120;
+  if (/sabina|dalia|paulina|monica|mónica|elvira|lucía|lucia|sofía|sofia|camila|helena|isabela|valentina|luciana|google español|zoe|aria/i.test(n)) s += 90;
+  if (/mujer|female|femenina/i.test(n)) s += 70;
+  if (/^es-(ES|MX|AR|CO|PE)/i.test(v.lang)) s += 25;
+  if (/david|pablo|jorge|diego|carlos|andrés|andres|antonio|alex|mark|steve|daniel|ricardo|raúl|raul|enrique|gabriel|óscar|oscar|javier|luis|pedro|miguel|juan|male|masculino|hombre/i.test(n)) s -= 200;
+  return s;
+}
 function pickVoice() {
-  const voices = ('speechSynthesis' in window) ? (speechSynthesis.getVoices()||[]).filter(v=>/^es/i.test(v.lang)) : [];
+  const voices = ('speechSynthesis' in window) ? (speechSynthesis.getVoices() || []) : [];
   if (!voices.length) return null;
   let saved = null; try { saved = localStorage.getItem('galax_preview_voice_name'); } catch {}
-  let chosen = saved ? voices.find(v => v.name === saved) : null;
-  if (!chosen) chosen = voices.find(v=>/elvira|dalia|lucia|sofia|camila|monica|paulina|isabela|luciana|valentina|mujer|female/i.test(v.name));
-  if (!chosen) chosen = voices.find(v=>!/masculino|male|pablo|jorge|diego|carlos|andrés|andres/i.test(v.name));
-  if (!chosen) chosen = voices[0];
+  let chosen = saved ? voices.find((v) => v.name === saved && scoreVoice(v) > 0) : null;
+  if (!chosen) {
+    const ranked = voices.map((v) => ({ v, s: scoreVoice(v) })).filter((x) => x.s > 0).sort((a, b) => b.s - a.s);
+    chosen = ranked.length ? ranked[0].v : (voices.find((v) => /^es/i.test(v.lang)) || voices[0]);
+  }
   try { localStorage.setItem('galax_preview_voice_name', chosen.name); } catch {}
   return chosen;
 }
 function speak(text) {
   if (!('speechSynthesis' in window)) { note('La lectura en voz alta no está disponible en este navegador.'); return Promise.resolve(false); }
   if (recordedPlaying && airiVoiceAudio) { airiVoiceAudio.pause(); recordedPlaying = false; }
+  const clean = sanitizeTextForSpeech(text);
   return new Promise(resolve => {
     speechSynthesis.cancel();
-    const u = new SpeechSynthesisUtterance(String(text||'').replace(/[#*_`]/g,' '));
-    u.lang='es-PE'; u.rate=.94; u.pitch=1.12; u.volume=1;
-    const v = pickVoice(); if (v) u.voice=v;
-    u.onstart = () => { speakingUntil = performance.now()+Math.min(4200,900+String(text).length*32); };
-    u.onend = () => { speakingUntil=0; resolve(true); };
-    u.onerror = () => { speakingUntil=0; resolve(false); };
+    const u = new SpeechSynthesisUtterance(clean);
+    u.lang = 'es-PE';
+    u.rate = 1.09;
+    u.pitch = 1.25;
+    u.volume = 1;
+    const v = pickVoice(); if (v) u.voice = v;
+    u.onstart = () => { speakingUntil = performance.now() + Math.min(4200, 900 + clean.length * 32); };
+    u.onend = () => { speakingUntil = 0; resolve(true); };
+    u.onerror = () => { speakingUntil = 0; resolve(false); };
     speechSynthesis.speak(u);
   });
 }
+window.__AIRI_SPEECH_TEST = { sanitizeTextForSpeech, pickVoice, scoreVoice };
 function note(text) { const d=document.createElement('div'); d.className='airi-msg assistant'; d.textContent=text; body.appendChild(d); body.scrollTop=body.scrollHeight; }
 function showTyping() { const d=document.createElement('div'); d.className='airi-msg assistant'; d.innerHTML='<span class="airi-typing" aria-label="Airi está escribiendo"><i></i><i></i><i></i></span>'; body.appendChild(d); body.scrollTop=body.scrollHeight; return d; }
 function appendMsg(role, html, plain) {
