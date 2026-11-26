@@ -65,15 +65,20 @@ img{max-width:100%;display:block}a{text-decoration:none;color:inherit}button,inp
 .product-media{height:150px;display:grid;place-items:center;background:radial-gradient(circle at 50% 40%,rgba(34,211,238,.12),rgba(8,13,31,.3));border-radius:10px;margin-bottom:10px}.product-media img{max-height:130px;width:auto;object-fit:contain}
 .product h4{font-size:.78rem;line-height:1.3;min-height:2.4em;margin-bottom:6px}.stars{color:#fbbf24;font-size:.7rem;letter-spacing:1px}
 .price{font-size:.72rem;color:var(--muted);margin-top:6px}.price strong{color:#fff;font-size:.95rem}.price s{color:#6b7f9c}
-.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:26px}
-.photo-card{background:linear-gradient(180deg,#111d33,#0b1526);border:1px solid rgba(34,211,238,.2);border-radius:14px;overflow:hidden;transition:.25s}
-.photo-card:hover{transform:translateY(-3px);border-color:rgba(139,92,246,.6)}
-.photo-card img{width:100%;height:170px;object-fit:cover;background:#0b1526}
-.photo-card .photo-body{padding:12px}
-.photo-card h4{font-size:.82rem;margin-bottom:5px;color:#fff}
-.photo-card p{font-size:.67rem;color:var(--muted);line-height:1.4}
-.photo-card .photo-price{display:inline-block;margin-top:7px;color:var(--cyan-soft);font-weight:800;font-size:.76rem}
-.photo-card button,.photo-card a{display:inline-block;margin-top:8px;border:1px solid rgba(34,211,238,.4);border-radius:999px;padding:5px 11px;color:var(--cyan-soft);background:transparent;font-size:.65rem;cursor:pointer}
+.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:26px}
+.product-card{display:flex;flex-direction:column;background:#0c1526;border:1px solid rgba(148,163,184,.14);border-radius:14px;overflow:hidden;transition:.25s}
+.product-card:hover{transform:translateY(-3px);border-color:rgba(34,211,238,.45);box-shadow:0 14px 30px rgba(0,0,0,.4)}
+.product-card .pc-media{height:168px;overflow:hidden;background:#0b1526}
+.product-card .pc-media img{width:100%;height:100%;object-fit:cover;object-position:center 42%}
+.product-card .pc-icons{display:flex;align-items:center;gap:10px;padding:9px 12px 4px;color:#7d93b3;font-size:.68rem}
+.product-card .pc-icons .count{color:#9fb2cc}
+.product-card .pc-icons .video{margin-left:auto;display:inline-flex;align-items:center;gap:5px;color:#9fb2cc}
+.product-card .pc-body{display:flex;flex-direction:column;flex:1;padding:0 12px 12px}
+.product-card h4{font-size:.82rem;line-height:1.3;color:#fff;margin-bottom:5px}
+.product-card p{font-size:.67rem;color:var(--muted);line-height:1.45;flex:1}
+.product-card .pc-price{display:block;margin-top:9px;color:var(--cyan-soft);font-weight:800;font-size:.76rem}
+.product-card .pc-cta{align-self:flex-start;margin-top:9px;border:1px solid rgba(34,211,238,.4);border-radius:999px;padding:5px 11px;color:var(--cyan-soft);background:transparent;font-size:.65rem;cursor:pointer;transition:.18s}
+.product-card .pc-cta:hover{background:rgba(34,211,238,.12);color:#fff}
 
 /* ---------- Floating buttons ---------- */
 .assistant-pill{position:fixed;right:120px;bottom:28px;z-index:60;display:flex;align-items:center;gap:9px;background:rgba(8,18,38,.92);border:1px solid var(--cyan);color:#dffaff;border-radius:999px;padding:10px 16px;box-shadow:0 0 26px rgba(34,211,238,.45);cursor:pointer;font-weight:700;font-size:.82rem;transition:.2s}
@@ -149,7 +154,7 @@ img{max-width:100%;display:block}a{text-decoration:none;color:inherit}button,inp
 
 @media(max-width:1000px){.main-nav{display:none}.hero-row{grid-template-columns:1fr}.categories{grid-template-columns:repeat(3,1fr)}.products{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:700px){
-  .photo-grid{grid-template-columns:1fr}.photo-card img{height:190px}
+  .product-grid{grid-template-columns:1fr}.product-card .pc-media{height:190px}
   .chat-panel{left:10px;right:10px;width:auto;bottom:88px;height:min(600px,calc(100dvh - 102px));border-radius:18px}
   .airi-stage{height:168px}.airi-stage::after{width:140px;height:140px;top:40%}
   .chat-body{padding:12px 10px}.quick-bar{padding:6px 8px 2px}.compose{padding:8px 9px 10px}
@@ -206,27 +211,41 @@ img{max-width:100%;display:block}a{text-decoration:none;color:inherit}button,inp
   </section>
 
   <h2 class="section-title left">Productos con foto real</h2>
-  <section class="photo-grid">
-    <article class="photo-card">
-      <img src="producto/Laptop/Laptop-HP-Pavilion-15/Laptop-HP-Pavilion-15.png" alt="Laptop HP Pavilion 15, foto real">
-      <div class="photo-body"><h4>Laptop HP Pavilion 15</h4><p>Foto real del equipo. Precio y stock registrados en el catálogo de GALAX PC REPAIR.</p><span class="photo-price">S/ 2,899 · PC-001</span><br><button type="button" data-query="HP Pavilion 15">Preguntar a Airi</button></div>
+  <section class="product-grid">
+    <article class="product-card">
+      <div class="pc-media"><img src="producto/Laptop/Laptop-HP-Pavilion-15/Laptop-HP-Pavilion-15.png" alt="Laptop HP Pavilion 15, foto real"></div>
+      <div class="pc-icons"><i class="fa-regular fa-heart"></i><i class="fa-regular fa-comment"></i><i class="fa-regular fa-star"></i><i class="fa-solid fa-camera"></i><span class="count">5</span><span class="video"><i class="fa-solid fa-play"></i> Ver video</span></div>
+      <div class="pc-body"><h4>Laptop HP Pavilion 15</h4><p>Foto real del equipo. Precio y stock registrados en el catálogo de GALAX PC REPAIR.</p><span class="pc-price">S/ 2,899 · PC-001</span><button type="button" class="pc-cta" data-query="HP Pavilion 15">Preguntar a Airi</button></div>
     </article>
-    <article class="photo-card">
-      <img src="producto/Laptop/Laptop-Lenovo-IdeaPad-3/Laptop-Lenovo-IdeaPad-3.png" alt="Laptop Lenovo IdeaPad 3, foto real">
-      <div class="photo-body"><h4>Laptop Lenovo IdeaPad 3</h4><p>Foto real del equipo. Precio y stock registrados en el catálogo de GALAX PC REPAIR.</p><span class="photo-price">S/ 2,799 · PC-041</span><br><button type="button" data-query="Lenovo IdeaPad 3">Preguntar a Airi</button></div>
+    <article class="product-card">
+      <div class="pc-media"><img src="producto/Laptop/Laptop-Lenovo-IdeaPad-3/Laptop-Lenovo-IdeaPad-3.png" alt="Laptop Lenovo IdeaPad 3, foto real"></div>
+      <div class="pc-icons"><i class="fa-regular fa-heart"></i><i class="fa-regular fa-comment"></i><i class="fa-regular fa-star"></i><i class="fa-solid fa-camera"></i><span class="count">5</span><span class="video"><i class="fa-solid fa-play"></i> Ver video</span></div>
+      <div class="pc-body"><h4>Laptop Lenovo IdeaPad 3</h4><p>Foto real del equipo. Precio y stock registrados en el catálogo de GALAX PC REPAIR.</p><span class="pc-price">S/ 2,799 · PC-041</span><button type="button" class="pc-cta" data-query="Lenovo IdeaPad 3">Preguntar a Airi</button></div>
     </article>
-    <article class="photo-card">
-      <img src="producto/Laptop/Lenovo Legion Y540/Lenovo Legion Y540.webp" alt="Lenovo Legion Y540, foto real">
-      <div class="photo-body"><h4>Lenovo Legion Y540</h4><p>Foto real del equipo. No publicamos precio ni stock sin confirmación del equipo.</p><span class="photo-price">Consultar disponibilidad</span><br><a href="https://wa.me/51986260738?text=Hola%2C%20consulto%20por%20la%20Lenovo%20Legion%20Y540" target="_blank" rel="noopener">Consultar por WhatsApp</a></div>
+    <article class="product-card">
+      <div class="pc-media"><img src="producto/Laptop/Lenovo Legion Y540/Lenovo Legion Y540.webp" alt="Lenovo Legion Y540, foto real"></div>
+      <div class="pc-icons"><i class="fa-regular fa-heart"></i><i class="fa-regular fa-comment"></i><i class="fa-regular fa-star"></i><i class="fa-solid fa-camera"></i><span class="count">5</span><span class="video"><i class="fa-solid fa-play"></i> Ver video</span></div>
+      <div class="pc-body"><h4>Lenovo Legion Y540</h4><p>Foto real del equipo. No publicamos precio ni stock sin confirmación del equipo.</p><span class="pc-price">Consultar disponibilidad</span><a class="pc-cta" href="https://wa.me/51986260738?text=Hola%2C%20consulto%20por%20la%20Lenovo%20Legion%20Y540" target="_blank" rel="noopener">Consultar por WhatsApp</a></div>
     </article>
   </section>
 
-  <h2 class="section-title left">Ofertas Especiales</h2>
-  <section class="products">
-    <article class="product"><span class="badge-offer">-12% (En oferta)</span><div class="product-media"><img src="../assets/img/productos/COM-002.svg" alt="Tarjeta gráfica"></div><h4>Tarjeta Gráfica RTX Gaming 16GB</h4><div class="stars">★★★★★</div><div class="price"><strong>S/ 284.90</strong> / <s>S/ 932.45</s></div></article>
-    <article class="product"><span class="badge-offer">-12% (En oferta)</span><div class="product-media"><img src="../assets/img/productos/PER-001.svg" alt="Teclado gamer"></div><h4>Teclado Mecánico Gamer RGB</h4><div class="stars">★★★★★</div><div class="price"><strong>S/ 284.90</strong> / <s>S/ 932.45</s></div></article>
-    <article class="product"><span class="badge-offer">-12% (En oferta)</span><div class="product-media"><img src="../assets/img/productos/MON-002.svg" alt="Monitor Samsung"></div><h4>Monitor Samsung 24" Full HD 75Hz</h4><div class="stars">★★★★★</div><div class="price"><strong>S/ 284.90</strong> / <s>S/ 932.45</s></div></article>
-    <article class="product"><span class="badge-offer">-12% (En oferta)</span><div class="product-media"><img src="../assets/img/productos/COM-001.svg" alt="Componente PC"></div><h4>SSD NVMe 1TB High Speed</h4><div class="stars">★★★★★</div><div class="price"><strong>S/ 284.90</strong> / <s>S/ 932.45</s></div></article>
+  <h2 class="section-title left">Más productos del catálogo</h2>
+  <section class="product-grid">
+    <article class="product-card">
+      <div class="pc-media"><img src="../assets/img/optimized/laptop-hp.jpg" alt="HP Pavilion 15"></div>
+      <div class="pc-icons"><i class="fa-regular fa-heart"></i><i class="fa-regular fa-comment"></i><i class="fa-regular fa-star"></i><i class="fa-solid fa-camera"></i><span class="count">5</span><span class="video"><i class="fa-solid fa-play"></i> Ver video</span></div>
+      <div class="pc-body"><h4>HP Pavilion 15-eg2053TU</h4><p>Laptop con Core i5-1240P, 8GB, 512GB SSD y pantalla 15.6" FHD. Stock registrado.</p><span class="pc-price">S/ 2,899 · PC-001</span><button type="button" class="pc-cta" data-query="HP Pavilion 15">Preguntar a Airi</button></div>
+    </article>
+    <article class="product-card">
+      <div class="pc-media"><img src="../assets/img/optimized/laptop-lenovo.jpg" alt="Lenovo IdeaPad 3"></div>
+      <div class="pc-icons"><i class="fa-regular fa-heart"></i><i class="fa-regular fa-comment"></i><i class="fa-regular fa-star"></i><i class="fa-solid fa-camera"></i><span class="count">5</span><span class="video"><i class="fa-solid fa-play"></i> Ver video</span></div>
+      <div class="pc-body"><h4>Lenovo IdeaPad 3 15IAU7</h4><p>Laptop con Core i5-1235U, 8GB, 512GB SSD y pantalla 15.6" FHD. Stock registrado.</p><span class="pc-price">S/ 2,799 · PC-041</span><button type="button" class="pc-cta" data-query="Lenovo IdeaPad 3">Preguntar a Airi</button></div>
+    </article>
+    <article class="product-card">
+      <div class="pc-media"><img src="../assets/img/placeholders/desktop.svg" alt="Computadora gaming"></div>
+      <div class="pc-icons"><i class="fa-regular fa-heart"></i><i class="fa-regular fa-comment"></i><i class="fa-regular fa-star"></i><i class="fa-solid fa-camera"></i><span class="count">5</span><span class="video"><i class="fa-solid fa-play"></i> Ver video</span></div>
+      <div class="pc-body"><h4>Computadoras gaming</h4><p>Equipos de escritorio con GPU dedicada registrada. Precio y stock reales del catálogo.</p><span class="pc-price">Desde S/ 4,599</span><button type="button" class="pc-cta" data-query="computadora gaming">Preguntar a Airi</button></div>
+    </article>
   </section>
 </main>
 
