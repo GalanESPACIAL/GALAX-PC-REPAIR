@@ -3,180 +3,145 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>GALAX PC REPAIR — Tienda de tecnología y reparación</title>
-<meta name="description" content="GALAX PC REPAIR: laptops, componentes, periféricos, reparación técnica y asistencia IA.">
+<title>GALAX PC REPAIR — Asistente Airi</title>
+<meta name="description" content="Airi, asistente virtual de GALAX PC REPAIR. Catálogo real, stock verificado y atención en Perú.">
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <style>
 :root{
-  --bg:#070d1a; --panel:#0d1628; --panel2:#101d33; --border:rgba(34,211,238,.22);
-  --cyan:#22d3ee; --cyan2:#06b6d4; --text:#e8f4ff; --muted:#8fa6c4;
-  --navy:#080f1f; --radius:14px;
+  --bg:#050a14; --panel:#080f1e; --panel2:#0d1628; --line:rgba(148,163,184,.16);
+  --cyan:#22d3ee; --cyan-soft:#a5f3fc; --violet:#8b5cf6; --violet-soft:#c4b5fd;
+  --text:#eaf4ff; --muted:#94a8c4; --green:#4ade80;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{
-  font-family:Inter,Segoe UI,system-ui,sans-serif;
-  background:radial-gradient(1000px 520px at 12% -8%,rgba(79,70,229,.22),transparent 62%),
-             radial-gradient(900px 460px at 92% 4%,rgba(34,211,238,.14),transparent 60%),
-             linear-gradient(180deg,#070d1a,#0a1426);
-  color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased;
-}
-img{max-width:100%;display:block}
-a{text-decoration:none;color:inherit}
-button,input,select{font:inherit}
+body{font-family:Inter,Segoe UI,system-ui,sans-serif;background:
+  radial-gradient(1000px 520px at 12% -8%,rgba(79,70,229,.22),transparent 62%),
+  radial-gradient(900px 460px at 92% 4%,rgba(34,211,238,.14),transparent 60%),
+  linear-gradient(180deg,#070d1a,#0a1426);color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}a{text-decoration:none;color:inherit}button,input,select{font:inherit}
 .container{max-width:1240px;margin:0 auto;padding:0 18px}
 
-/* ---------- Top bar ---------- */
+/* ---------- Storefront de referencia ---------- */
 .topbar{background:#050a14;border-bottom:1px solid rgba(148,163,184,.12);font-size:.72rem;color:var(--muted)}
 .topbar-inner{display:flex;align-items:center;justify-content:space-between;min-height:30px;gap:12px;flex-wrap:wrap}
-.top-left{display:flex;align-items:center;gap:7px}
-.top-left .flag{font-size:.95rem}
-.top-right{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
-.top-right a:hover{color:var(--cyan)}
-.top-right i{color:var(--cyan)}
-
-/* ---------- Header ---------- */
-.main-header{background:rgba(7,13,26,.94);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:50;backdrop-filter:blur(12px)}
+.top-left{display:flex;align-items:center;gap:7px}.top-left .flag{font-size:.95rem}
+.top-right{display:flex;align-items:center;gap:16px;flex-wrap:wrap}.top-right a:hover{color:var(--cyan)}.top-right i{color:var(--cyan)}
+.main-header{background:rgba(7,13,26,.94);border-bottom:1px solid rgba(34,211,238,.22);position:sticky;top:0;z-index:50;backdrop-filter:blur(12px)}
 .header-inner{display:flex;align-items:center;gap:16px;min-height:74px;flex-wrap:wrap}
-.logo{display:flex;align-items:center;gap:9px;font-weight:800;letter-spacing:.02em;white-space:nowrap}
-.logo img{width:42px;height:42px;object-fit:contain}
-.logo span{font-size:1.02rem;line-height:1.05;display:block}
-.logo span b{color:var(--cyan)}
+.logo{display:flex;align-items:center;gap:9px;font-weight:800;letter-spacing:.02em;white-space:nowrap}.logo img{width:42px;height:42px;object-fit:contain}.logo span{font-size:1.02rem;line-height:1.05;display:block}.logo span b{color:var(--cyan)}
 .search{flex:1;min-width:220px;display:flex;align-items:center;background:#111b2e;border:1px solid rgba(34,211,238,.25);border-radius:10px;padding:0 12px;height:42px}
-.search input{flex:1;min-width:0;background:transparent;border:0;outline:0;color:var(--text);font-size:.85rem}
-.search input::placeholder{color:#7d90ad}
+.search input{flex:1;min-width:0;background:transparent;border:0;outline:0;color:var(--text);font-size:.85rem}.search input::placeholder{color:#7d90ad}
 .search button{background:transparent;border:0;color:var(--cyan);cursor:pointer;font-size:1rem;padding:6px}
-.cat-btn{display:inline-flex;align-items:center;gap:9px;background:#14223a;border:1px solid var(--border);color:var(--text);border-radius:10px;padding:10px 14px;cursor:pointer;white-space:nowrap;font-size:.82rem;font-weight:700}
-.cat-btn i{color:var(--cyan)}
-.main-nav{display:flex;align-items:center;gap:14px;font-size:.78rem;color:#b9cbe4;flex-wrap:wrap}
-.main-nav a:hover{color:var(--cyan)}
-
-/* ---------- Hero ---------- */
+.cat-btn{display:inline-flex;align-items:center;gap:9px;background:#14223a;border:1px solid rgba(34,211,238,.22);color:var(--text);border-radius:10px;padding:10px 14px;cursor:pointer;white-space:nowrap;font-size:.82rem;font-weight:700}.cat-btn i{color:var(--cyan)}
+.main-nav{display:flex;align-items:center;gap:14px;font-size:.78rem;color:#b9cbe4;flex-wrap:wrap}.main-nav a:hover{color:var(--cyan)}
 .hero-row{display:grid;grid-template-columns:1.55fr 1fr;gap:14px;margin:20px 0 26px}
-.hero-main{
-  position:relative;min-height:250px;border-radius:16px;overflow:hidden;border:1px solid rgba(124,58,237,.45);
-  background:linear-gradient(120deg,rgba(8,13,31,.35),rgba(8,13,31,.05)),url('anuncio/anuncio_movible%2001.jpeg') center/cover no-repeat;
-  box-shadow:0 0 0 1px rgba(34,211,238,.18),0 18px 44px rgba(0,0,0,.45);
-}
+.hero-main{position:relative;min-height:250px;border-radius:16px;overflow:hidden;border:1px solid rgba(124,58,237,.45);background:linear-gradient(120deg,rgba(8,13,31,.35),rgba(8,13,31,.05)),url('anuncio/anuncio_movible%2001.jpeg') center/cover no-repeat;box-shadow:0 0 0 1px rgba(34,211,238,.18),0 18px 44px rgba(0,0,0,.45)}
 .hero-main::after{content:'';position:absolute;inset:8px;border:1px solid rgba(34,211,238,.35);border-radius:12px;pointer-events:none}
 .hero-main .hero-copy{position:relative;z-index:2;padding:30px;max-width:60%}
 .hero-main .kicker{color:#67e8f9;font-size:.85rem;font-weight:700;letter-spacing:.02em}
 .hero-main h1{font-size:clamp(1.3rem,2.4vw,2rem);line-height:1.1;margin:8px 0 16px;text-transform:uppercase}
 .hero-main .btn{border:1px solid var(--cyan);background:rgba(8,20,38,.65);color:#fff;border-radius:999px;padding:9px 18px;font-size:.8rem;font-weight:700;cursor:pointer}
 .hero-main .btn:hover{background:rgba(34,211,238,.2)}
-.dots{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:7px;z-index:3}
-.dots span{width:18px;height:4px;border-radius:99px;background:rgba(255,255,255,.35)}
-.dots span.active{background:var(--cyan)}
+.dots{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:7px;z-index:3}.dots span{width:18px;height:4px;border-radius:99px;background:rgba(255,255,255,.35)}.dots span.active{background:var(--cyan)}
 .side-col{display:grid;grid-template-rows:1fr 1fr;gap:14px}
-.side-card{position:relative;min-height:118px;border-radius:14px;overflow:hidden;border:1px solid var(--border);
-  background:linear-gradient(110deg,rgba(8,18,34,.92),rgba(12,40,64,.75));
-  display:flex;align-items:center;padding:18px 20px;box-shadow:0 12px 30px rgba(0,0,0,.35)}
-.side-card h3{font-size:1.1rem;line-height:1.15;font-weight:700}
-.side-card h3 em{color:var(--cyan);font-style:normal;display:block;font-size:1.3rem}
+.side-card{position:relative;min-height:118px;border-radius:14px;overflow:hidden;border:1px solid rgba(34,211,238,.22);background:linear-gradient(110deg,rgba(8,18,34,.92),rgba(12,40,64,.75));display:flex;align-items:center;padding:18px 20px;box-shadow:0 12px 30px rgba(0,0,0,.35)}
+.side-card h3{font-size:1.1rem;line-height:1.15;font-weight:700}.side-card h3 em{color:var(--cyan);font-style:normal;display:block;font-size:1.3rem}
 .side-card img{position:absolute;right:6px;top:0;height:100%;width:46%;object-fit:contain;opacity:.92}
 .side-card::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 55%,rgba(8,13,31,.1));pointer-events:none}
-
-/* ---------- Section titles ---------- */
 .section-title{text-align:center;font-size:1rem;letter-spacing:.12em;text-transform:uppercase;font-weight:800;margin:8px 0 16px}
 .section-title.left{text-align:left;text-transform:none;letter-spacing:0;font-size:1.25rem}
-
-/* ---------- Categories ---------- */
 .categories{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
-.cat-card{background:linear-gradient(180deg,#111d33,#0c1628);border:1px solid rgba(34,211,238,.18);border-radius:var(--radius);
-  padding:16px 12px;text-align:center;transition:.25s;min-height:165px}
+.cat-card{background:linear-gradient(180deg,#111d33,#0c1628);border:1px solid rgba(34,211,238,.18);border-radius:14px;padding:16px 12px;text-align:center;transition:.25s;min-height:165px}
 .cat-card:hover{transform:translateY(-4px);border-color:var(--cyan);box-shadow:0 12px 26px rgba(34,211,238,.14)}
-.cat-icon{width:52px;height:52px;margin:0 auto 10px;border-radius:12px;display:grid;place-items:center;font-size:1.4rem;
-  color:var(--cyan);background:rgba(34,211,238,.08);border:1px solid rgba(34,211,238,.22)}
-.cat-card h4{font-size:.88rem;margin-bottom:6px}
-.cat-card p{font-size:.68rem;color:var(--muted);line-height:1.35}
-
-/* ---------- Benefits ---------- */
-.benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:22px 0 26px;background:rgba(13,22,40,.8)}
-.benefit{display:flex;align-items:center;justify-content:center;gap:10px;padding:14px;font-size:.78rem;color:#bcd0e8;border-right:1px solid var(--border)}
-.benefit:last-child{border-right:0}
-.benefit i{color:var(--cyan);font-size:1.05rem}
-
-/* ---------- Products ---------- */
+.cat-icon{width:52px;height:52px;margin:0 auto 10px;border-radius:12px;display:grid;place-items:center;font-size:1.4rem;color:var(--cyan);background:rgba(34,211,238,.08);border:1px solid rgba(34,211,238,.22)}
+.cat-card h4{font-size:.88rem;margin-bottom:6px}.cat-card p{font-size:.68rem;color:var(--muted);line-height:1.35}
+.benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid rgba(34,211,238,.22);border-radius:12px;overflow:hidden;margin:22px 0 26px;background:rgba(13,22,40,.8)}
+.benefit{display:flex;align-items:center;justify-content:center;gap:10px;padding:14px;font-size:.78rem;color:#bcd0e8;border-right:1px solid rgba(34,211,238,.22)}.benefit:last-child{border-right:0}.benefit i{color:var(--cyan);font-size:1.05rem}
 .products{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding-bottom:60px}
-.product{position:relative;background:linear-gradient(180deg,#111d33,#0b1526);border:1px solid rgba(34,211,238,.18);border-radius:var(--radius);padding:14px;transition:.25s}
+.product{position:relative;background:linear-gradient(180deg,#111d33,#0b1526);border:1px solid rgba(34,211,238,.18);border-radius:14px;padding:14px;transition:.25s}
 .product:hover{transform:translateY(-4px);border-color:rgba(34,211,238,.55);box-shadow:0 14px 30px rgba(0,0,0,.4)}
 .badge-offer{position:absolute;right:10px;top:10px;background:rgba(34,211,238,.18);border:1px solid var(--cyan);color:#a5f3fc;font-size:.62rem;padding:4px 7px;border-radius:8px;z-index:2}
-.product-media{height:150px;display:grid;place-items:center;background:radial-gradient(circle at 50% 40%,rgba(34,211,238,.12),rgba(8,13,31,.3));border-radius:10px;margin-bottom:10px}
-.product-media img{max-height:130px;width:auto;object-fit:contain}
-.product h4{font-size:.78rem;line-height:1.3;min-height:2.4em;margin-bottom:6px}
-.stars{color:#fbbf24;font-size:.7rem;letter-spacing:1px}
-.price{font-size:.72rem;color:var(--muted);margin-top:6px}
-.price strong{color:#fff;font-size:.95rem}
-.price s{color:#6b7f9c}
+.product-media{height:150px;display:grid;place-items:center;background:radial-gradient(circle at 50% 40%,rgba(34,211,238,.12),rgba(8,13,31,.3));border-radius:10px;margin-bottom:10px}.product-media img{max-height:130px;width:auto;object-fit:contain}
+.product h4{font-size:.78rem;line-height:1.3;min-height:2.4em;margin-bottom:6px}.stars{color:#fbbf24;font-size:.7rem;letter-spacing:1px}
+.price{font-size:.72rem;color:var(--muted);margin-top:6px}.price strong{color:#fff;font-size:.95rem}.price s{color:#6b7f9c}
 
-/* ---------- Floating ---------- */
-.assistant-pill{position:fixed;right:120px;bottom:28px;z-index:60;display:flex;align-items:center;gap:9px;
-  background:rgba(8,18,38,.9);border:1px solid var(--cyan);color:#dffaff;border-radius:999px;padding:10px 16px;
-  box-shadow:0 0 26px rgba(34,211,238,.5);cursor:pointer;font-weight:700;font-size:.82rem}
-.assistant-pill i{font-size:1.1rem;color:var(--cyan)}
-.whatsapp-float{position:fixed;right:22px;bottom:22px;z-index:61;width:60px;height:60px;border-radius:50%;
-  background:linear-gradient(135deg,#128c7e,#25d366);color:#fff;display:grid;place-items:center;
-  box-shadow:0 0 30px rgba(37,211,102,.6);font-size:1.6rem}
+/* ---------- Floating buttons ---------- */
+.assistant-pill{position:fixed;right:120px;bottom:28px;z-index:60;display:flex;align-items:center;gap:9px;background:rgba(8,18,38,.92);border:1px solid var(--cyan);color:#dffaff;border-radius:999px;padding:10px 16px;box-shadow:0 0 26px rgba(34,211,238,.45);cursor:pointer;font-weight:700;font-size:.82rem;transition:.2s}
+.assistant-pill:hover{transform:translateY(-2px);box-shadow:0 0 36px rgba(34,211,238,.6)}.assistant-pill i{font-size:1.1rem;color:var(--cyan)}
+.whatsapp-float{position:fixed;right:22px;bottom:22px;z-index:61;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#128c7e,#25d366);color:#fff;display:grid;place-items:center;box-shadow:0 0 30px rgba(37,211,102,.6);font-size:1.6rem;transition:.2s}
 .whatsapp-float span{position:absolute;bottom:-14px;background:#25d366;color:#04140a;font-size:.58rem;font-weight:800;padding:1px 7px;border-radius:99px}
 
-/* ---------- Chat flotante Airi ---------- */
-.chat-panel{position:fixed;right:22px;bottom:96px;z-index:70;width:min(400px,calc(100vw - 24px));height:min(560px,calc(100dvh - 120px));
-  background:#080f1e;border:1px solid rgba(139,92,246,.36);border-radius:18px;display:none;flex-direction:column;overflow:hidden;
-  box-shadow:0 24px 70px rgba(0,0,0,.55),0 0 60px rgba(139,92,246,.12)}
-.chat-panel.open{display:flex!important}
-.airi-head{display:flex;align-items:center;gap:10px;padding:13px 14px;border-bottom:1px solid rgba(148,163,184,.14);
-  background:linear-gradient(90deg,rgba(34,211,238,.07),rgba(139,92,246,.1));flex:0 0 auto}
-.airi-avatar{position:relative;width:42px;height:42px;border-radius:50%;overflow:hidden;flex:0 0 auto;
-  border:1px solid rgba(139,92,246,.5);background:radial-gradient(circle at 50% 34%,rgba(124,58,237,.55),#070b1e)}
+/* ---------- Chatbox Airi — diseño futurista ---------- */
+.chat-panel{position:fixed;right:22px;bottom:96px;z-index:70;width:min(424px,calc(100vw - 24px));height:min(640px,calc(100dvh - 116px));display:flex;flex-direction:column;border-radius:20px;border:1px solid rgba(139,92,246,.42);background:linear-gradient(165deg,#0a1224,#070c18 62%);box-shadow:0 28px 80px rgba(0,0,0,.65),0 0 0 1px rgba(34,211,238,.08),0 0 70px rgba(124,58,237,.28);overflow:hidden;opacity:0;transform:translateY(18px) scale(.97);pointer-events:none;transition:opacity .28s ease,transform .28s cubic-bezier(.2,.9,.25,1)}
+.chat-panel.open{opacity:1;transform:none;pointer-events:auto}
+.chat-panel::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(360px 200px at 18% -12%,rgba(34,211,238,.14),transparent 70%),radial-gradient(320px 220px at 100% 0%,rgba(139,92,246,.18),transparent 70%)}
+.airi-head{position:relative;z-index:1;display:flex;align-items:center;gap:11px;padding:14px;border-bottom:1px solid var(--line);background:linear-gradient(90deg,rgba(34,211,238,.08),rgba(139,92,246,.12));flex:0 0 auto}
+.airi-avatar{position:relative;width:46px;height:46px;border-radius:50%;overflow:hidden;flex:0 0 auto;border:1px solid rgba(139,92,246,.6);background:radial-gradient(circle at 50% 34%,rgba(124,58,237,.6),#070b1e);box-shadow:0 0 0 3px rgba(139,92,246,.12),0 0 22px rgba(34,211,238,.3)}
+.airi-avatar .sanara-canvas{position:absolute;inset:0;z-index:1}.airi-avatar canvas{position:relative;z-index:1;display:block;width:100%!important;height:100%!important}
 .airi-avatar .sanara-fallback{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.airi-avatar canvas{position:relative;z-index:1;display:block;width:100%!important;height:100%!important}
-.airi-head-copy{min-width:0}
-.airi-head strong{display:block;font-size:.92rem;color:#fff;line-height:1.2}
-.airi-head p{display:flex;align-items:center;gap:5px;color:var(--muted);font-size:.64rem;margin-top:2px}
-.airi-head p .dot{width:5px;height:5px;border-radius:50%;background:#4ade80;box-shadow:0 0 8px #4ade80}
-.airi-head-actions{margin-left:auto;display:flex;gap:4px}
-.airi-head-actions button{width:30px;height:30px;display:grid;place-items:center;border:1px solid rgba(148,163,184,.2);
-  background:rgba(255,255,255,.04);color:#cbd5e1;border-radius:8px;cursor:pointer;font-size:.78rem;transition:.18s}
-.airi-head-actions button:hover{color:var(--cyan);border-color:rgba(34,211,238,.45);background:rgba(34,211,238,.1)}
-.airi-greet{display:block;margin:10px 14px 2px;padding:8px 12px;border-radius:999px;border:1px solid rgba(34,211,238,.35);
-  background:rgba(34,211,238,.08);color:#a5f3fc;font-size:.72rem;cursor:pointer;transition:.18s}
-.airi-greet:hover{background:rgba(34,211,238,.18)}
-.chat-body{flex:1;min-height:0;padding:14px;overflow-y:auto;font-size:.79rem;line-height:1.55;color:#dbeafe}
-.chat-body strong{color:#fff}
-.airi-msg{margin:0 0 8px;padding:9px 11px;border-radius:12px;border:1px solid rgba(139,92,246,.2);
-  background:rgba(139,92,246,.1);color:var(--text);max-width:93%;overflow-wrap:anywhere}
-.airi-msg.mine{margin-left:auto;background:rgba(34,211,238,.12);border-color:rgba(34,211,238,.25)}
-.airi-prompts{display:flex;gap:5px;overflow-x:auto;padding:6px 12px 0;flex:0 0 auto;scrollbar-width:none}
-.airi-prompts::-webkit-scrollbar{display:none}
-.airi-prompts button{border:1px solid rgba(148,163,184,.2);background:rgba(255,255,255,.035);color:var(--muted);
-  border-radius:999px;padding:4px 9px;font-size:.63rem;white-space:nowrap;cursor:pointer}
-.airi-prompts button:hover{color:var(--cyan);border-color:rgba(34,211,238,.3)}
-.airi-compose{padding:9px 11px 11px;border-top:1px solid rgba(148,163,184,.14);flex:0 0 auto}
-.airi-form{display:flex;align-items:center;gap:5px;border:1px solid rgba(148,163,184,.2);border-radius:12px;
-  background:rgba(255,255,255,.035);padding:5px}
-.airi-form input{flex:1;min-width:0;border:0;outline:0;background:transparent;color:var(--text);padding:6px;font-size:.78rem}
-.airi-form input::placeholder{color:#7d90ad}
-.airi-form button{width:32px;height:32px;display:grid;place-items:center;border:0;border-radius:8px;
-  background:transparent;color:var(--muted);cursor:pointer;transition:.18s}
-.airi-form button:hover{color:var(--cyan);background:rgba(34,211,238,.1)}
-.airi-form .send-btn{background:rgba(34,211,238,.16);color:var(--cyan)}
-.airi-form .send-btn:hover{background:var(--cyan);color:#041019}
-.airi-footnote{color:#64748b;font-size:.57rem;line-height:1.4;padding:5px 2px 0}
+.airi-avatar::after{content:'';position:absolute;inset:-2px;border-radius:50%;border:1px solid rgba(34,211,238,.35);pointer-events:none;z-index:2}
+.airi-head-copy{min-width:0;flex:1}
+.airi-head strong{display:block;font-size:.95rem;letter-spacing:.01em;color:#fff}
+.airi-status{display:inline-flex;align-items:center;gap:6px;margin-top:3px;color:var(--muted);font-size:.64rem}
+.airi-status .dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 9px var(--green);animation:glow 2.4s infinite}
+@keyframes glow{50%{opacity:.55;box-shadow:0 0 3px var(--green)}}
+.airi-head-actions{display:flex;gap:5px;flex:0 0 auto}
+.airi-head-actions button{width:32px;height:32px;display:grid;place-items:center;border:1px solid var(--line);border-radius:9px;background:rgba(255,255,255,.04);color:#a9bdd7;cursor:pointer;font-size:.78rem;transition:.18s}
+.airi-head-actions button:hover{color:#fff;border-color:rgba(34,211,238,.5);background:rgba(34,211,238,.12);transform:translateY(-1px)}
+.airi-greet{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:7px;margin:11px 14px 2px;padding:8px 12px;border-radius:999px;border:1px solid rgba(34,211,238,.32);background:rgba(34,211,238,.07);color:var(--cyan-soft);font-size:.71rem;cursor:pointer;transition:.2s}
+.airi-greet:hover{background:rgba(34,211,238,.16);border-color:rgba(34,211,238,.6);box-shadow:0 0 18px rgba(34,211,238,.18)}
+.chat-body{position:relative;z-index:1;flex:1;min-height:0;display:flex;flex-direction:column;gap:10px;overflow-y:auto;padding:16px 14px;scroll-behavior:smooth}
+.chat-body::-webkit-scrollbar{width:6px}.chat-body::-webkit-scrollbar-thumb{background:rgba(139,92,246,.35);border-radius:99px}
+.airi-msg{max-width:93%;padding:11px 13px;border-radius:14px;font-size:.81rem;line-height:1.58;animation:msgIn .26s ease both;overflow-wrap:anywhere}
+.airi-msg.assistant{align-self:flex-start;background:linear-gradient(135deg,rgba(139,92,246,.17),rgba(34,211,238,.07));border:1px solid rgba(139,92,246,.26);border-bottom-left-radius:5px;color:#e7eefb}
+.airi-msg.user{align-self:flex-end;background:linear-gradient(135deg,rgba(34,211,238,.19),rgba(59,130,246,.1));border:1px solid rgba(34,211,238,.3);border-bottom-right-radius:5px;color:#eafcff}
+@keyframes msgIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.airi-msg strong{color:#fff}
+.airi-msg .speak-row{display:flex;justify-content:flex-end;margin-top:6px}
+.airi-msg .speak-row button{border:0;background:transparent;color:var(--cyan);cursor:pointer;font-size:.72rem;padding:2px 5px}
+.airi-typing{display:inline-flex;gap:4px;align-items:center;padding:4px 0}
+.airi-typing i{width:6px;height:6px;border-radius:50%;background:var(--cyan);animation:bounce 1.1s infinite}
+.airi-typing i:nth-child(2){animation-delay:.16s}.airi-typing i:nth-child(3){animation-delay:.32s}
+@keyframes bounce{0%,80%,100%{transform:translateY(0);opacity:.4}40%{transform:translateY(-5px);opacity:1}}
+.pc-card{display:grid;grid-template-columns:48px minmax(0,1fr);gap:9px;padding:9px;margin-top:9px;border:1px solid rgba(34,211,238,.2);border-radius:11px;background:rgba(4,10,22,.55)}
+.pc-card img{width:48px;height:44px;object-fit:cover;border-radius:8px;background:#0b1526}
+.pc-card .pc-name{font-size:.73rem;font-weight:700;color:#fff;line-height:1.3}
+.pc-card .pc-price{color:var(--cyan-soft);font-size:.73rem;font-weight:800;margin-top:2px}
+.pc-card .pc-meta{color:var(--muted);font-size:.62rem;margin-top:2px}
+.pc-card .pc-specs{color:#b9cbe4;font-size:.6rem;margin-top:3px}
+.quick-bar{position:relative;z-index:1;display:flex;gap:6px;overflow-x:auto;padding:8px 12px 2px;flex:0 0 auto;scrollbar-width:none}
+.quick-bar::-webkit-scrollbar{display:none}
+.quick-bar button{display:inline-flex;align-items:center;gap:5px;white-space:nowrap;border:1px solid rgba(148,163,184,.22);border-radius:999px;background:rgba(255,255,255,.04);color:#b9cbe4;padding:6px 10px;font-size:.63rem;cursor:pointer;transition:.18s}
+.quick-bar button i{color:var(--cyan);font-size:.65rem}
+.quick-bar button:hover{color:#fff;border-color:rgba(34,211,238,.5);background:rgba(34,211,238,.1);transform:translateY(-1px)}
+.compose{position:relative;z-index:1;padding:9px 12px 12px;border-top:1px solid var(--line);flex:0 0 auto;background:rgba(4,9,20,.45)}
+.form{display:flex;align-items:center;gap:5px;border:1px solid rgba(34,211,238,.22);border-radius:14px;background:rgba(255,255,255,.04);padding:5px 6px;transition:.2s}
+.form:focus-within{border-color:rgba(34,211,238,.55);box-shadow:0 0 20px rgba(34,211,238,.12)}
+.form input{flex:1;min-width:0;border:0;outline:0;background:transparent;color:var(--text);padding:7px;font-size:.8rem}
+.form input::placeholder{color:#7d90ad}
+.form button{width:32px;height:32px;display:grid;place-items:center;border:0;border-radius:9px;background:rgba(255,255,255,.04);color:#a9bdd7;cursor:pointer;transition:.18s}
+.form button:hover{color:#fff;background:rgba(139,92,246,.22)}
+.form .send{background:linear-gradient(135deg,#22d3ee,#8b5cf6);color:#04101c;box-shadow:0 0 14px rgba(34,211,238,.3)}
+.form .send:hover{box-shadow:0 0 22px rgba(139,92,246,.45)}
+.airi-footnote{position:relative;z-index:1;color:#64748b;font-size:.56rem;line-height:1.45;padding:6px 12px 0}
 .airi-footnote a{color:var(--cyan)}
+.suggest{position:absolute;left:12px;right:12px;bottom:calc(100% - 6px);z-index:4;max-height:210px;overflow:auto;border:1px solid rgba(139,92,246,.4);border-radius:12px;background:#0b1526;box-shadow:0 -12px 34px rgba(0,0,0,.5);padding:6px}
+.suggest-head{padding:3px 6px 6px;color:var(--violet-soft);font-size:.56rem;text-transform:uppercase;letter-spacing:.08em}
+.suggest button{display:flex;justify-content:space-between;gap:8px;width:100%;padding:7px 8px;border:0;border-radius:8px;background:transparent;color:#dbeafe;text-align:left;cursor:pointer;font-size:.68rem}
+.suggest button:hover,.suggest button:focus-visible{background:rgba(34,211,238,.12);outline:none}
+.suggest button small{color:var(--cyan);font-size:.6rem;white-space:nowrap}
+.preview-img{max-width:100%;border-radius:8px;margin-bottom:6px;display:block}
 
 @media(max-width:1000px){.main-nav{display:none}.hero-row{grid-template-columns:1fr}.categories{grid-template-columns:repeat(3,1fr)}.products{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:640px){.categories{grid-template-columns:repeat(2,1fr)}.products{grid-template-columns:repeat(2,1fr)}.benefits{grid-template-columns:1fr}.benefit{border-right:0;border-bottom:1px solid var(--border)}.assistant-pill{right:96px;font-size:.72rem;padding:9px 11px}}
-@media(max-width:700px){.chat-panel{width:min(360px,calc(100vw - 24px));height:min(540px,calc(100dvh - 110px))}}
-@media(max-width:767px){
-  .top-right a,.logo,.cat-btn,.main-nav a{display:inline-flex;align-items:center;min-height:44px;min-width:44px}
-  .top-right{gap:6px}
-  .search{height:auto;min-height:44px}
-  .search input{min-height:44px;font-size:16px}
-  .search button{min-height:44px;width:44px}
-  .cat-btn{min-height:44px}
-  .hero-main .btn,.assistant-pill{min-height:44px}
+@media(max-width:700px){
+  .chat-panel{left:10px;right:10px;width:auto;bottom:88px;height:min(600px,calc(100dvh - 102px));border-radius:18px}
+  .chat-body{padding:12px 10px}.quick-bar{padding:6px 8px 2px}.compose{padding:8px 9px 10px}
+  .assistant-pill{right:92px;font-size:.7rem;padding:8px 10px}
 }
+@media(max-width:640px){.categories{grid-template-columns:repeat(2,1fr)}.products{grid-template-columns:repeat(2,1fr)}.benefits{grid-template-columns:1fr}.benefit{border-right:0;border-bottom:1px solid rgba(34,211,238,.22)}}
+@media(max-width:767px){.top-right a,.logo,.cat-btn,.main-nav a{display:inline-flex;align-items:center;min-height:44px;min-width:44px}.search input{min-height:44px;font-size:16px}.search button{min-height:44px;width:44px}.hero-main .btn,.assistant-pill{min-height:44px}}
+@media(prefers-reduced-motion:reduce){.airi-msg,.chat-panel,.quick-bar button,.airi-head-actions button{animation:none!important;transition:none!important}.airi-status .dot{animation:none}}
 </style>
 <script type="importmap">
 {"imports":{"three":"./vendor/three.module.js"}}
@@ -184,52 +149,31 @@ button,input,select{font:inherit}
 </head>
 <body>
 
-<div class="topbar">
-  <div class="container topbar-inner">
-    <div class="top-left"><span class="flag">🇵🇪</span> PEN S/ <i class="fa-solid fa-chevron-down"></i> &nbsp;|&nbsp; USD $</div>
-    <div class="top-right">
-      <a href="#"><i class="fa-regular fa-user"></i> Iniciar sesión</a>
-      <a href="#"><i class="fa-regular fa-heart"></i> Wishlist (0)</a>
-      <a href="#"><i class="fa-solid fa-code-compare"></i> Comparar (0)</a>
-      <a href="#"><i class="fa-solid fa-cart-shopping"></i> Mi Carrito (0)</a>
-    </div>
+<div class="topbar"><div class="container topbar-inner">
+  <div class="top-left"><span class="flag">🇵🇪</span> PEN S/ <i class="fa-solid fa-chevron-down"></i> &nbsp;|&nbsp; USD $</div>
+  <div class="top-right">
+    <a href="#"><i class="fa-regular fa-user"></i> Iniciar sesión</a>
+    <a href="#"><i class="fa-regular fa-heart"></i> Wishlist (0)</a>
+    <a href="#"><i class="fa-solid fa-code-compare"></i> Comparar (0)</a>
+    <a href="#"><i class="fa-solid fa-cart-shopping"></i> Mi Carrito (0)</a>
   </div>
-</div>
+</div></div>
 
-<header class="main-header">
-  <div class="container header-inner">
-    <a class="logo" href="#"><img src="../assets/img/galax-wolf.svg" alt="GALAX PC REPAIR"><span>GALAX <b>PC REPAIR</b></span></a>
-    <div class="search"><input type="search" id="siteSearch" placeholder="Buscar productos, componentes y servicios..." aria-label="Buscar productos"><button type="button" aria-label="Buscar"><i class="fa-solid fa-magnifying-glass"></i></button></div>
-    <button class="cat-btn" type="button">Menú Categorías <i class="fa-solid fa-bars"></i></button>
-    <nav class="main-nav">
-      <a href="#categorias">Laptops</a><a href="#">Arma tu PC</a><a href="#">Marcas</a>
-      <a href="#beneficios">Servicio Técnico</a><a href="#">Medios de Pago</a><a href="#">Ubícanos</a>
-    </nav>
-  </div>
-</header>
+<header class="main-header"><div class="container header-inner">
+  <a class="logo" href="#"><img src="../assets/img/galax-wolf.svg" alt="GALAX PC REPAIR"><span>GALAX <b>PC REPAIR</b></span></a>
+  <div class="search"><input type="search" id="siteSearch" placeholder="Buscar productos, componentes y servicios..." aria-label="Buscar productos"><button type="button" aria-label="Buscar"><i class="fa-solid fa-magnifying-glass"></i></button></div>
+  <button class="cat-btn" type="button">Menú Categorías <i class="fa-solid fa-bars"></i></button>
+  <nav class="main-nav"><a href="#categorias">Laptops</a><a href="#">Arma tu PC</a><a href="#">Marcas</a><a href="#beneficios">Servicio Técnico</a><a href="#">Medios de Pago</a><a href="#">Ubícanos</a></nav>
+</div></header>
 
 <main class="container">
   <section class="hero-row">
-    <div class="hero-main">
-      <div class="hero-copy">
-        <div class="kicker">OFERTAS ESPECIALES</div>
-        <h1>RTX 5080 Ti SUPRIM X</h1>
-        <button class="btn" type="button">Ver Oferta</button>
-      </div>
-      <div class="dots"><span class="active"></span><span></span><span></span><span></span><span></span></div>
-    </div>
+    <div class="hero-main"><div class="hero-copy"><div class="kicker">OFERTAS ESPECIALES</div><h1>RTX 5080 Ti SUPRIM X</h1><button class="btn" type="button">Ver Oferta</button></div><div class="dots"><span class="active"></span><span></span><span></span><span></span><span></span></div></div>
     <div class="side-col">
-      <div class="side-card">
-        <div><h3>Gaming <em>Monitor -15%</em></h3></div>
-        <img src="../assets/img/productos/MON-001.svg" alt="Monitor gamer">
-      </div>
-      <div class="side-card">
-        <div><h3>Asus Laptop <em>10% OFF</em></h3></div>
-        <img src="../assets/img/productos/LAP-003.svg" alt="Laptop Asus">
-      </div>
+      <div class="side-card"><div><h3>Gaming <em>Monitor -15%</em></h3></div><img src="../assets/img/productos/MON-001.svg" alt="Monitor gamer"></div>
+      <div class="side-card"><div><h3>Asus Laptop <em>10% OFF</em></h3></div><img src="../assets/img/productos/LAP-003.svg" alt="Laptop Asus"></div>
     </div>
   </section>
-
   <h2 class="section-title" id="categorias">COMPRA POR CATEGORÍA</h2>
   <section class="categories">
     <article class="cat-card"><div class="cat-icon"><i class="fa-solid fa-computer"></i></div><h4>Computadoras</h4><p>Desktop, Gaming PCs, Workstations, Servidores</p></article>
@@ -239,13 +183,11 @@ button,input,select{font:inherit}
     <article class="cat-card"><div class="cat-icon"><i class="fa-solid fa-keyboard"></i></div><h4>Periféricos</h4><p>Teclado, Ratón, Auriculares, Sillas, Micrófonos</p></article>
     <article class="cat-card"><div class="cat-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div><h4>Reparación</h4><p>Servicio Técnico PC, Limpieza, Diagnóstico, Mantenimiento</p></article>
   </section>
-
   <section class="benefits" id="beneficios">
     <div class="benefit"><i class="fa-solid fa-truck"></i> Envíos a todo el Perú</div>
-    <div class="benefit"><i class="fa-solid fa-shield-halved"></i> Pago Seguro (Yape, Pin y Tarjetas)</div>
+    <div class="benefit"><i class="fa-solid fa-shield-halved"></i> Pago Seguro (Yape, Plin y Tarjetas)</div>
     <div class="benefit"><i class="fa-solid fa-headset"></i> Asesoría y Soporte Técnico</div>
   </section>
-
   <h2 class="section-title left">Ofertas Especiales</h2>
   <section class="products">
     <article class="product"><span class="badge-offer">-12% (En oferta)</span><div class="product-media"><img src="../assets/img/productos/COM-002.svg" alt="Tarjeta gráfica"></div><h4>Tarjeta Gráfica RTX Gaming 16GB</h4><div class="stars">★★★★★</div><div class="price"><strong>S/ 284.90</strong> / <s>S/ 932.45</s></div></article>
@@ -256,36 +198,39 @@ button,input,select{font:inherit}
 </main>
 
 <button class="assistant-pill" id="assistantBtn" type="button">Asistente IA <i class="fa-solid fa-robot"></i></button>
-<a class="whatsapp-float" href="https://chat.whatsapp.com/I7Syor85Jia6lfE6oIJ7tX?s=sh&amp;p=a&amp;iam=2//de" target="_blank" rel="noopener noreferrer" aria-label="Soporte por WhatsApp"><i class="fa-brands fa-whatsapp"></i><span>Soporte</span></a>
+<a class="whatsapp-float" href="https://wa.me/51986260738" target="_blank" rel="noopener" aria-label="Soporte por WhatsApp"><i class="fa-brands fa-whatsapp"></i><span>Soporte</span></a>
 
-<div class="chat-panel" id="chatPanel">
+<div class="chat-panel" id="chatPanel" role="dialog" aria-labelledby="airiPanelTitle" aria-hidden="true">
   <div class="airi-head">
-    <div class="airi-avatar" id="sanaraCanvas" aria-hidden="true"><img class="sanara-fallback" src="../assets/img/optimized/airi.jpg" alt=""></div>
-    <div class="airi-head-copy"><strong>Airi</strong><p><span class="dot"></span>Asistente del catálogo real</p></div>
+    <div class="airi-avatar" id="sanaraCanvas" aria-hidden="true"><div class="sanara-canvas"></div><img class="sanara-fallback" src="../assets/img/optimized/airi.jpg" alt=""></div>
+    <div class="airi-head-copy"><strong id="airiPanelTitle">Airi</strong><span class="airi-status"><span class="dot"></span>Asistente del catálogo real · en línea</span></div>
     <div class="airi-head-actions">
       <button type="button" id="voiceBtn" aria-label="Lectura en voz alta" title="Lectura en voz alta"><i class="fa-solid fa-volume-xmark"></i></button>
-      <button type="button" id="clearBtn" aria-label="Borrar historial" title="Borrar historial local"><i class="fa-solid fa-trash"></i></button>
-      <button type="button" id="closeChat" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+      <button type="button" id="clearBtn" aria-label="Borrar historial" title="Borrar historial"><i class="fa-solid fa-trash"></i></button>
+      <button type="button" id="closeChat" aria-label="Cerrar Airi"><i class="fa-solid fa-xmark"></i></button>
     </div>
   </div>
   <button type="button" class="airi-greet" id="greetBtn"><i class="fa-solid fa-volume"></i> Escuchar saludo de Airi</button>
-  <div class="chat-body" id="chatBody"></div>
-  <div class="airi-prompts">
-    <button type="button" data-prompt="Laptop para estudiar hasta S/ 3000">Laptop para estudiar</button>
-    <button type="button" data-prompt="Equipo para gaming con GPU dedicada">Gaming</button>
-    <button type="button" data-prompt="¿Cómo pago con Yape o Plin?">Pagos</button>
-    <button type="button" data-prompt="¿Hacen envíos a provincias?">Envíos</button>
-    <button type="button" data-prompt="Quiero reparar mi laptop">Reparación</button>
+  <div class="chat-body" id="chatBody" aria-live="polite"></div>
+  <div class="quick-bar" id="quickBar">
+    <button type="button" data-query="buscar productos con stock real"><i class="fa-solid fa-magnifying-glass"></i> Buscar productos</button>
+    <button type="button" data-query="laptop para estudiar hasta 3500"><i class="fa-solid fa-graduation-cap"></i> Laptop para estudiar</button>
+    <button type="button" data-query="computadora gaming"><i class="fa-solid fa-gamepad"></i> Computadoras gaming</button>
+    <button type="button" data-query="precios y presupuestos"><i class="fa-solid fa-tags"></i> Precios y presupuestos</button>
+    <button type="button" data-query="disponibilidad y stock"><i class="fa-solid fa-boxes-stacked"></i> Disponibilidad y stock</button>
+    <button type="button" data-query="envíos a provincias"><i class="fa-solid fa-truck"></i> Envíos</button>
+    <button type="button" data-query="reparaciones y servicio técnico"><i class="fa-solid fa-screwdriver-wrench"></i> Reparaciones</button>
   </div>
-  <div class="airi-compose">
-    <form class="airi-form" id="chatForm">
-      <input type="text" id="chatInput" placeholder="Pregunta por un equipo, presupuesto, stock..." aria-label="Mensaje" autocomplete="off">
+  <div class="compose">
+    <div class="suggest" id="suggest" hidden></div>
+    <form class="form" id="chatForm">
+      <input type="text" id="chatInput" placeholder="Pregunta por un equipo, precio o stock…" aria-label="Mensaje para Airi" autocomplete="off">
       <button type="button" id="importBtn" aria-label="Importar imagen" title="Importar imagen"><i class="fa-solid fa-image"></i></button>
       <button type="button" id="cameraBtn" aria-label="Tomar fotografía" title="Tomar fotografía"><i class="fa-solid fa-camera"></i></button>
       <button type="button" id="micBtn" aria-label="Dictar mensaje" title="Dictar mensaje"><i class="fa-solid fa-microphone"></i></button>
-      <button type="submit" class="send-btn" aria-label="Enviar mensaje"><i class="fa-solid fa-paper-plane"></i></button>
+      <button type="submit" class="send" aria-label="Enviar mensaje"><i class="fa-solid fa-paper-plane"></i></button>
     </form>
-    <div class="airi-footnote">Airi usa el catálogo real y puede equivocarse. Confirma stock y compatibilidad con el equipo. No compartas datos de tarjeta por chat. <a href="#">Privacidad</a>.</div>
+    <div class="airi-footnote">Airi usa solo el catálogo real de GALAX PC REPAIR y puede equivocarse. Confirma stock y precio antes de comprar. <a href="https://wa.me/51986260738" target="_blank" rel="noopener">Hablar con una persona</a>.</div>
     <input type="file" id="imageInput" accept="image/jpeg,image/png,image/webp" hidden>
   </div>
 </div>
@@ -294,10 +239,14 @@ button,input,select{font:inherit}
 import * as THREE from 'three';
 import { GLTFLoader } from './vendor/loaders/GLTFLoader.js';
 
+/* ==================================================================
+   1) Modelo 3D de Airi (cuerpo Sanara real) — se inicia al abrir
+   ================================================================== */
+const MODEL_URL = new URL('Cuerpo_SANARA%20IA/sanara_listo.glb', import.meta.url).href;
 const panel = document.getElementById('chatPanel');
 const body = document.getElementById('chatBody');
-const form = document.getElementById('chatForm');
 const input = document.getElementById('chatInput');
+const form = document.getElementById('chatForm');
 const stage = document.getElementById('sanaraCanvas');
 const fallback = stage.querySelector('.sanara-fallback');
 const voiceBtn = document.getElementById('voiceBtn');
@@ -306,84 +255,54 @@ const micBtn = document.getElementById('micBtn');
 const importBtn = document.getElementById('importBtn');
 const cameraBtn = document.getElementById('cameraBtn');
 const imageInput = document.getElementById('imageInput');
-const hello = '<div class="airi-msg">¡Hola! Soy <strong>Airi</strong>, tu asistente de GALAX PC REPAIR. Pregúntame por productos, precios, stock o reparaciones.</div>';
-const GREETING = '¡Hola! Bienvenido a GALAX PC REPAIR. Soy Airi y estoy aquí para ayudarte a encontrar tu próxima computadora o componente. ¿Qué estás buscando hoy?';
-body.innerHTML = hello;
-
+const suggest = document.getElementById('suggest');
 const bones = {}, basePose = {};
-let renderer, scene, camera, clock, model3d = null;
-let started = false, waveUntil = 0, waveAmount = 0, waveUp = 1.12, waveLow = -0.45;
-let voiceOut = false, recognition = null, recording = false, pendingImage = null, greeted = false, cameraStream = null;
+const AXIS_X = new THREE.Vector3(1,0,0), AXIS_Y = new THREE.Vector3(0,1,0), AXIS_Z = new THREE.Vector3(0,0,1);
+const _pq = new THREE.Quaternion(), _iq = new THREE.Quaternion(), _aq = new THREE.Quaternion(), _dq = new THREE.Quaternion();
+let renderer, scene, camera, clock, model3d = null, started = false;
+let waveUntil = 0, waveAmount = 0, speakingUntil = 0, typingUntil = 0, waveUp = 1.12, waveLow = -0.45;
+let catalog = null, voiceOut = false, recognition = null, recording = false, lastFocus = null, pendingImage = null, cameraStream = null;
+const context = { category:null, brand:null, use:null, max:null, min:null };
+const history = [];
+const GREETING = '¡Hola! Bienvenido a GALAX PC REPAIR. Soy Airi, tu asistente del catálogo real. Puedo ayudarte a encontrar laptops, computadoras, componentes y servicios. ¿Qué estás buscando hoy?';
 
-/* ---------- Voz ---------- */
-function pickVoice() {
-  const voices = ('speechSynthesis' in window) ? (speechSynthesis.getVoices() || []).filter(v => /^es/i.test(v.lang)) : [];
-  return voices.find(v => /elvira|dalia|lucia|sofia|camila|mujer|female|monica/i.test(v.name)) || voices[0] || null;
-}
-function speak(text) {
-  if (!('speechSynthesis' in window)) { note('La lectura en voz alta no está disponible en este navegador.'); return; }
-  const u = new SpeechSynthesisUtterance(String(text || '').replace(/[#*_`]/g, ' '));
-  u.lang = 'es-PE'; u.rate = 0.98; u.pitch = 1.05;
-  const v = pickVoice(); if (v) u.voice = v;
-  speechSynthesis.cancel();
-  speechSynthesis.speak(u);
-  waveUntil = performance.now() + Math.min(4200, 900 + String(text).length * 32);
-}
-function note(text) { const d = document.createElement('div'); d.className = 'airi-msg'; d.textContent = text; body.appendChild(d); body.scrollTop = body.scrollHeight; }
-
-/* ---------- Auxiliares 3D ---------- */
-const AXIS_X = new THREE.Vector3(1, 0, 0), AXIS_Y = new THREE.Vector3(0, 1, 0), AXIS_Z = new THREE.Vector3(0, 0, 1);
-const _parentQ = new THREE.Quaternion(), _invParent = new THREE.Quaternion(), _axisQ = new THREE.Quaternion(), _deltaQ = new THREE.Quaternion();
 function rotateWorld(bone, axis, angle) {
   if (!bone || !angle) return;
-  bone.parent.getWorldQuaternion(_parentQ);
-  _axisQ.setFromAxisAngle(axis, angle);
-  _invParent.copy(_parentQ).invert();
-  _deltaQ.copy(_invParent).multiply(_axisQ).multiply(_parentQ);
-  bone.quaternion.premultiply(_deltaQ);
+  bone.parent.getWorldQuaternion(_pq); _aq.setFromAxisAngle(axis, angle); _iq.copy(_pq).invert();
+  _dq.copy(_iq).multiply(_aq).multiply(_pq); bone.quaternion.premultiply(_dq);
 }
 function applyWorldQuat(bone, worldQ) {
   if (!bone) return;
-  bone.parent.getWorldQuaternion(_parentQ);
-  _invParent.copy(_parentQ).invert();
-  _deltaQ.copy(_invParent).multiply(worldQ).multiply(_parentQ);
-  bone.quaternion.premultiply(_deltaQ);
-  bone.updateWorldMatrix(false, true);
+  bone.parent.getWorldQuaternion(_pq); _iq.copy(_pq).invert();
+  _dq.copy(_iq).multiply(worldQ).multiply(_pq); bone.quaternion.premultiply(_dq); bone.updateWorldMatrix(false, true);
 }
 function lowerArms() {
   model3d.updateMatrixWorld(true);
-  for (const side of ['l', 'r']) {
-    const up = bones['upperarm_' + side], low = bones['lowerarm_' + side];
+  for (const side of ['l','r']) {
+    const up = bones['upperarm_'+side], low = bones['lowerarm_'+side];
     if (!up || !low) continue;
-    const sPos = new THREE.Vector3(), ePos = new THREE.Vector3();
-    up.getWorldPosition(sPos); low.getWorldPosition(ePos);
-    const dir = ePos.sub(sPos).normalize(), sign = sPos.x < 0 ? -1 : 1;
-    applyWorldQuat(up, new THREE.Quaternion().setFromUnitVectors(dir, new THREE.Vector3(sign * 0.22, -1, 0.05).normalize()));
-    applyWorldQuat(low, new THREE.Quaternion().setFromAxisAngle(AXIS_X, -0.22));
+    const s = new THREE.Vector3(), e = new THREE.Vector3();
+    up.getWorldPosition(s); low.getWorldPosition(e);
+    const dir = e.sub(s).normalize(), sign = s.x < 0 ? -1 : 1;
+    applyWorldQuat(up, new THREE.Quaternion().setFromUnitVectors(dir, new THREE.Vector3(sign*0.22,-1,0.05).normalize()));
+    applyWorldQuat(low, new THREE.Quaternion().setFromAxisAngle(AXIS_X,-0.22));
   }
   model3d.updateMatrixWorld(true);
 }
 function frameModel() {
-  const head = bones.head, headPos = new THREE.Vector3();
-  if (head) head.getWorldPosition(headPos);
-  const leafPos = headPos.clone();
-  if (bones.head_leaf) bones.head_leaf.getWorldPosition(leafPos);
-  const y = Math.max(headPos.y, leafPos.y) + 0.43;
-  camera.fov = 18;
-  camera.position.set(headPos.x || 0, y, 2.85);
-  camera.lookAt(headPos.x || 0, y, 0);
-  camera.updateProjectionMatrix();
+  const head = bones.head, hp = new THREE.Vector3();
+  if (head) head.getWorldPosition(hp);
+  const lp = hp.clone(); if (bones.head_leaf) bones.head_leaf.getWorldPosition(lp);
+  const y = Math.max(hp.y, lp.y) + 0.43;
+  camera.fov = 18; camera.position.set(hp.x||0, y, 2.85); camera.lookAt(hp.x||0, y, 0); camera.updateProjectionMatrix();
 }
 function fit() {
   if (!renderer || !camera) return;
-  const w = stage.clientWidth || 42, h = stage.clientHeight || 42;
-  renderer.setSize(w, h, false);
-  camera.aspect = w / h;
-  camera.updateProjectionMatrix();
+  const w = stage.clientWidth || 46, h = stage.clientHeight || 46;
+  renderer.setSize(w, h, false); camera.aspect = w/h; camera.updateProjectionMatrix();
 }
 function onModelLoaded(gltf) {
-  model3d = gltf.scene;
-  scene.add(model3d);
+  model3d = gltf.scene; scene.add(model3d);
   model3d.traverse(o => {
     if (o.isBone) bones[o.name] = o;
     if (o.isMesh) {
@@ -391,179 +310,308 @@ function onModelLoaded(gltf) {
       const src = Array.isArray(o.material) ? o.material[0] : o.material;
       const tex = src && (src.emissiveMap || src.map);
       if (tex) { tex.colorSpace = THREE.SRGBColorSpace; tex.anisotropy = renderer.capabilities.getMaxAnisotropy(); }
-      o.material = new THREE.MeshStandardMaterial({
-        map: tex || null, color: 0xffffff,
-        emissive: new THREE.Color(0xffffff), emissiveMap: tex || null, emissiveIntensity: 0.22,
-        metalness: 0.05, roughness: 0.55, side: THREE.DoubleSide
-      });
+      o.material = new THREE.MeshStandardMaterial({ map:tex||null, color:0xffffff, emissive:new THREE.Color(0xffffff), emissiveMap:tex||null, emissiveIntensity:.22, metalness:.05, roughness:.55, side:THREE.DoubleSide });
     }
   });
-  model3d.updateMatrixWorld(true);
-  lowerArms();
-  for (const name of ['upperarm_l','lowerarm_l','hand_l','upperarm_r','lowerarm_r','hand_r','head','spine_02','spine_03']) {
-    if (bones[name]) basePose[name] = bones[name].quaternion.clone();
-  }
-  frameModel();
-  fallback.style.display = 'none';
-  new ResizeObserver(fit).observe(stage);
-  fit();
-  waveUntil = performance.now() + 3000;
-  window.__AIRI_READY = true;
-  window.__AIRI = { bones, get camera(){return camera;}, get model(){return model3d;}, get scene(){return scene;}, get renderer(){return renderer;}, wave(ms=3000){waveUntil = performance.now()+ms;}, setWavePose(up,low){waveUp=up;waveLow=low;} };
+  model3d.updateMatrixWorld(true); lowerArms();
+  for (const n of ['upperarm_l','lowerarm_l','hand_l','upperarm_r','lowerarm_r','hand_r','head','spine_02','spine_03']) if (bones[n]) basePose[n] = bones[n].quaternion.clone();
+  frameModel(); fallback.style.display = 'none';
+  if (window.ResizeObserver) new ResizeObserver(fit).observe(stage);
+  fit(); waveUntil = performance.now() + 3000; window.__AIRI_READY = true;
 }
-function initAiri() {
-  if (started) return;
-  started = true;
-  try { renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true }); }
+function init3D() {
+  if (started) return; started = true;
+  try { renderer = new THREE.WebGLRenderer({ antialias:true, alpha:true }); }
   catch (e) { console.warn('[Airi] WebGL no disponible', e); return; }
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-  renderer.outputColorSpace = THREE.SRGBColorSpace;
-  renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.12;
-  stage.appendChild(renderer.domElement);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio||1, 2));
+  renderer.outputColorSpace = THREE.SRGBColorSpace; renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.12;
+  stage.querySelector('.sanara-canvas').appendChild(renderer.domElement);
   scene = new THREE.Scene();
   scene.add(new THREE.HemisphereLight(0xd7ecff, 0x1a1238, 1.55));
-  const key = new THREE.DirectionalLight(0xffffff, 1.9); key.position.set(1.4, 2.7, 2.4); scene.add(key);
-  const rim = new THREE.DirectionalLight(0x8b5cf6, 2.1); rim.position.set(1.2, 2.2, -1.8); scene.add(rim);
-  const face = new THREE.DirectionalLight(0xfff1e2, 1.2); face.position.set(0.5, 2.8, 3.2); scene.add(face);
-  camera = new THREE.PerspectiveCamera(34, 1, 0.01, 40);
-  clock = new THREE.Clock();
-  fit();
-  new GLTFLoader().load('Cuerpo_SANARA%20IA/sanara_listo.glb', onModelLoaded, undefined, err => console.warn('[Airi] No se pudo cargar el modelo 3D', err));
-  (function loop() {
+  const key = new THREE.DirectionalLight(0xffffff,1.9); key.position.set(1.4,2.7,2.4); scene.add(key);
+  const rim = new THREE.DirectionalLight(0x8b5cf6,2.1); rim.position.set(1.2,2.2,-1.8); scene.add(rim);
+  const face = new THREE.DirectionalLight(0xfff1e2,1.2); face.position.set(.5,2.8,3.2); scene.add(face);
+  camera = new THREE.PerspectiveCamera(18,1,.01,40); clock = new THREE.Clock(); fit();
+  new GLTFLoader().load(MODEL_URL, onModelLoaded, undefined, e => console.warn('[Airi] Modelo 3D no cargado', e));
+  (function loop(){
     requestAnimationFrame(loop);
     if (!renderer || !scene || !camera) return;
-    const dt = Math.min(clock.getDelta(), 0.05), t = clock.elapsedTime;
+    const dt = Math.min(clock.getDelta(),.05), t = clock.elapsedTime, now = performance.now();
     if (model3d) {
-      for (const name in basePose) bones[name].quaternion.copy(basePose[name]);
-      rotateWorld(bones.head, AXIS_Y, Math.sin(t * 0.65) * 0.10);
-      rotateWorld(bones.head, AXIS_X, Math.sin(t * 0.9) * 0.03);
-      rotateWorld(bones.spine_02, AXIS_Y, Math.sin(t * 0.45) * 0.024);
-      rotateWorld(bones.spine_03, AXIS_Y, Math.sin(t * 0.55) * 0.014);
-      const target = performance.now() < waveUntil ? 1 : 0;
-      waveAmount += (target - waveAmount) * Math.min(1, dt * 7);
-      if (waveAmount > 0.002) {
-        const swing = Math.sin(t * 8.5) * 0.16;
-        rotateWorld(bones.upperarm_l, AXIS_Z, (waveUp + swing * 0.6) * waveAmount);
-        rotateWorld(bones.lowerarm_l, AXIS_Z, (waveLow + swing * 1.2) * waveAmount);
-        rotateWorld(bones.hand_l, AXIS_Z, Math.sin(t * 8.5 + 0.5) * 0.18 * waveAmount);
+      for (const n in basePose) bones[n].quaternion.copy(basePose[n]);
+      rotateWorld(bones.head, AXIS_Y, Math.sin(t*.65)*.10 + (now<typingUntil?.08:0));
+      rotateWorld(bones.head, AXIS_X, Math.sin(t*.9)*.03 + (now<speakingUntil?.05:0));
+      rotateWorld(bones.spine_02, AXIS_Y, Math.sin(t*.45)*.024);
+      rotateWorld(bones.spine_03, AXIS_Y, Math.sin(t*.55)*.014);
+      const target = now<waveUntil?1:0;
+      waveAmount += (target-waveAmount)*Math.min(1,dt*7);
+      if (waveAmount>.002) {
+        const sw = Math.sin(t*8.5)*.16;
+        rotateWorld(bones.upperarm_l, AXIS_Z, (waveUp+sw*.6)*waveAmount);
+        rotateWorld(bones.lowerarm_l, AXIS_Z, (waveLow+sw*1.2)*waveAmount);
+        rotateWorld(bones.hand_l, AXIS_Z, Math.sin(t*8.5+.5)*.18*waveAmount);
       }
     }
-    if (panel.classList.contains('open')) renderer.render(scene, camera);
+    if (panel.classList.contains('open') && !document.hidden) renderer.render(scene, camera);
   })();
 }
 
-/* ---------- Chat ---------- */
-function say(html, mine) {
-  const d = document.createElement('div');
-  d.className = 'airi-msg' + (mine ? ' mine' : '');
-  d.innerHTML = html;
-  body.appendChild(d);
-  body.scrollTop = body.scrollHeight;
+/* ==================================================================
+   2) Motor de respuestas — SOLO datos reales del catálogo
+   ================================================================== */
+async function loadCatalog() {
+  try { const r = await fetch('../assets/data/catalog.json'); catalog = await r.json(); }
+  catch (e) { console.warn('[Airi] No se pudo cargar el catálogo real', e); catalog = { products:[], categories:[], brands:[], meta:{} }; }
 }
-function respond() {
-  const q = (input.value || '').trim();
-  if (!q && !pendingImage) return;
-  input.value = '';
-  if (pendingImage) { say('<img src="' + pendingImage + '" alt="Imagen adjunta" style="max-width:100%;border-radius:8px">' + (q ? '<br>' + q : ''), true); pendingImage = null; }
-  else if (q) say(q, true);
-  const s = (q || '').toLowerCase();
-  let a = 'Soy el asistente de GALAX PC REPAIR: puedo orientarte sobre laptops, monitores, componentes, periféricos, precios, stock y reparaciones.';
-  if (/laptop|portátil|notebook/.test(s)) a = 'Tenemos laptops HP Pavilion 15, Lenovo IdeaPad 3 y Asus VivoBook 15. Verás precios reales en el catálogo.';
-  else if (/monitor|pantalla/.test(s)) a = 'Hay monitores gaming 24&quot; 165Hz y monitores Samsung en el catálogo.';
-  else if (/gpu|gráfica|rtx/.test(s)) a = 'Contamos con tarjeta gráfica RTX y componentes en Ofertas Especiales.';
-  else if (/teclado|ratón|mouse|perif/.test(s)) a = 'Tenemos teclados gaming, ratones y accesorios en el catálogo.';
-  else if (/repar|taller|servicio/.test(s)) a = 'Reparamos PC y laptops: diagnóstico, limpieza, formateo y mantenimiento.';
-  else if (/precio|stock|oferta/.test(s)) a = 'Precios y stock son reales; revisa la sección Ofertas Especiales.';
-  else if (/pago|yape|plin|tarjeta/.test(s)) a = 'Yape, Plin y transferencia se coordinan con confirmación manual. La tarjeta solo se habilita con pasarela oficial.';
-  say(a, false);
-  if (voiceOut) speak(a);
-  waveUntil = performance.now() + 1800;
-}
+const norm = s => String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+const money = v => 'S/ ' + Number(v||0).toLocaleString('es-PE');
+const STOP = new Set(['de','la','el','los','las','un','una','que','con','para','por','en','y','o','mi','me','al','del','se','su','es','son','como','cual','quiero','necesito','buscar','busco','recomienda','dame','ver','precio','precios','stock','tienen','tienes','hay','hola','buenas','gracias','soles','presupuesto','hasta','menos','mas','muy','pero','sin','sobre','este','esta','algo','equipo','equipos','producto','productos','real','disponible','disponibilidad']);
 
-/* ---------- Eventos ---------- */
-document.getElementById('assistantBtn').addEventListener('click', () => {
-  const open = panel.classList.toggle('open');
-  if (!open) { stopCamera(); return; }
-  initAiri();
-  requestAnimationFrame(fit);
-  if (model3d) waveUntil = performance.now() + 2800;
-  if (!greeted) {
-    greeted = true;
-    setTimeout(() => { speak(GREETING); }, 700);
+function parseQ(text) {
+  const t = norm(text);
+  const q = { tokens:t.split(/\W+/).filter(w=>w.length>2 && !STOP.has(w)), category:null, brand:null, use:null, max:null, min:null };
+  if (/laptop|portatil|notebook/.test(t)) q.category = 'laptops';
+  else if (/desktop|computadora|pc de escritorio|torre|mini pc/.test(t)) q.category = 'computadoras';
+  else if (/monitor|pantalla/.test(t)) q.category = 'monitores';
+  else if (/teclado|mouse|raton|perifer/.test(t)) q.category = 'perifericos';
+  else if (/ssd|ram|memoria|procesador|gpu|componente|tarjeta de video/.test(t)) q.category = 'componentes';
+  else if (/router|wifi|red/.test(t)) q.category = 'redes';
+  for (const c of (catalog?.categories||[])) if (t.includes(norm(c.slug))) { q.category = c.slug; break; }
+  const brands = (catalog?.brands||[]).map(b=>b.name);
+  q.brand = brands.find(b => t.includes(norm(b))) || null;
+  if (/gaming|jugar|videojuego|gpu|rtx|gtx/.test(t)) q.use = 'gaming';
+  else if (/estudi|universidad|colegio|ofimatica/.test(t)) q.use = 'study';
+  else if (/diseno|render|autocad|edicion/.test(t)) q.use = 'design';
+  else if (/program|codigo|desarrollo/.test(t)) q.use = 'code';
+  const nums = (t.match(/\d[\d.,]{1,}/g)||[]).map(n=>Number(n.replace(/[.,](?=\d{3}\b)/g,'').replace(',','.'))).filter(n=>n>=150 && n<=100000);
+  if (nums.length) {
+    if (/entre/.test(t) && nums.length>1) { q.min = Math.min(...nums); q.max = Math.max(...nums); }
+    else if (/desde|minimo/.test(t)) q.min = Math.min(...nums);
+    else q.max = Math.min(...nums);
   }
-});
-document.getElementById('closeChat').addEventListener('click', () => { panel.classList.remove('open'); stopCamera(); });
-document.getElementById('clearBtn').addEventListener('click', () => { body.innerHTML = hello; });
-greetBtn.addEventListener('click', () => { speak(GREETING); });
-voiceBtn.addEventListener('click', () => {
-  voiceOut = !voiceOut;
-  voiceBtn.innerHTML = '<i class="fa-solid fa-' + (voiceOut ? 'volume' : 'volume-xmark') + '"></i>';
-  voiceBtn.title = voiceOut ? 'Lectura en voz alta activada' : 'Lectura en voz alta desactivada';
-  if (voiceOut) speak(GREETING); else if ('speechSynthesis' in window) speechSynthesis.cancel();
-});
-form.addEventListener('submit', e => { e.preventDefault(); respond(); });
-input.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); respond(); } });
-document.querySelectorAll('[data-prompt]').forEach(b => b.addEventListener('click', () => {
-  if (!panel.classList.contains('open')) document.getElementById('assistantBtn').click();
-  input.value = b.dataset.prompt; respond();
-}));
+  return q;
+}
+function scoreProduct(p, q) {
+  const hay = norm([p.name,p.model,p.brand,p.code,p.category,p.categoryName,p.description,p.specText].join(' '));
+  let s = 0;
+  for (const t of q.tokens) if (hay.includes(t)) s += t.length>=5?3:t.length>=3?2:1;
+  if (q.category && p.category===q.category) s += 24;
+  if (q.brand && norm(p.brand)===norm(q.brand)) s += 20;
+  if (q.use==='gaming' && /rtx|gtx|radeon|geforce/i.test(hay)) s += 30;
+  if (q.use==='study' && p.price<=3500) s += 16;
+  if (q.use==='code' && /16gb|32gb|ssd|nvme/i.test(hay)) s += 14;
+  if (q.max && p.price<=q.max) s += 12; else if (q.max && p.price>q.max*1.3) s -= 22;
+  if (q.min && p.price>=q.min) s += 8;
+  if (p.featured) s += 5;
+  if (p.imageKind==='foto') s += 4;
+  return s;
+}
+function findProducts(q, limit=3) {
+  const list = (catalog?.products||[]).filter(p=>p.published!==false && p.stock>0)
+    .map(p=>({p, s:scoreProduct(p,q)})).filter(x=>x.s>3)
+    .sort((a,b)=>b.s-a.s || a.p.price-b.p.price).slice(0,limit).map(x=>x.p);
+  return list;
+}
+function placeholderFor(cat) {
+  const map = { laptops:'laptop', computadoras:'desktop', monitores:'monitor', perifericos:'peripherals', componentes:'components', redes:'network', accesorios:'accessories' };
+  return '../assets/img/placeholders/' + (map[cat]||'laptop') + '.svg';
+}
+function productCard(p) {
+  const img = p.imageKind==='foto' ? '../'+p.image : placeholderFor(p.category);
+  const specs = (p.specList||[]).slice(0,3).map(s=>s.label+': '+s.value).join(' · ');
+  return '<div class="pc-card"><img src="'+img+'" alt="" loading="lazy" onerror="this.src=\''+placeholderFor(p.category)+'\'"><div>'+
+    '<div class="pc-name">'+esc(p.name.split(' — ')[0])+'</div>'+
+    '<div class="pc-price">'+money(p.price)+' · '+esc(p.code)+'</div>'+
+    '<div class="pc-meta">'+esc(p.categoryName||p.category)+' · stock real '+p.stock+(p.brand?' · '+esc(p.brand):'')+'</div>'+
+    (specs?'<div class="pc-specs">'+esc(specs)+'</div>':'')+'</div></div>';
+}
+function esc(s) { return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function waUrl(msg) { return 'https://wa.me/51986260738?text=' + encodeURIComponent(msg); }
 
-/* importar imagen */
-importBtn.addEventListener('click', () => imageInput.click());
-imageInput.addEventListener('change', () => {
-  const f = imageInput.files && imageInput.files[0];
-  if (!f) return;
-  if (!/^image\/(jpeg|jpg|png|webp)$/i.test(f.type)) { note('Formato no admitido. Usa JPG, PNG o WEBP.'); return; }
-  if (f.size > 8 * 1024 * 1024) { note('La imagen debe pesar menos de 8 MB.'); return; }
-  const r = new FileReader();
-  r.onload = () => { pendingImage = r.result; say('<img src="' + pendingImage + '" alt="Vista previa" style="max-width:100%;border-radius:8px">', true); };
-  r.readAsDataURL(f);
-  imageInput.value = '';
-});
+function answerFor(text) {
+  const t = norm(text);
+  const topic = (re) => re.test(t);
+  if (topic(/^(hola|buenas|hey|que tal)/)) return { text:'¡Hola! Soy Airi, la asistente de GALAX PC REPAIR. Trabajo con el catálogo real: 209 equipos con precios y stock registrados. ¿Buscas una laptop, una computadora, componentes o necesitas servicio técnico?' };
+  if (topic(/pago|yape|plin|tarjeta|transferencia|visa|mastercard/)) return { text:'En GALAX PC REPAIR puedes coordinar Yape, Plin y transferencia; el pedido queda pendiente hasta que el equipo confirme el pago. La tarjeta solo se habilita con una pasarela oficial y credenciales comerciales. Nunca compartas el número completo de tarjeta ni el CVV por chat.' };
+  if (topic(/envio|provincia|lima|recojo|delivery/)) return { text:'Enviamos a todo el Perú. En Lima, el envío a domicilio configurado es S/ 12 y el recojo coordinado en el taller no tiene costo. Para otras regiones se cotiza según destino y courier. Coordinamos los detalles por WhatsApp.' };
+  if (topic(/recibo|boleta|factura|sunat|comprobante/)) return { text:'Al confirmar un pedido puedes descargar un recibo PNG con los datos reales de la orden. Es un comprobante comercial interno: no sustituye una factura electrónica SUNAT. Si necesitas documento tributario, coordínalo con el equipo.' };
+  if (topic(/garantia|devolucion|cambio/)) return { text:'La garantía depende del fabricante y del producto; GALAX canaliza el caso sin prometer una cobertura distinta. Los cambios y devoluciones se evalúan según la normativa peruana y el estado del equipo. Escríbenos con tu código de pedido.' };
+  if (topic(/repar|taller|servicio tecnico|mantenimiento|formateo|diagnostico|microsoldadura/)) return { text:'GALAX ofrece reparación de PC y laptops, microsoldadura, formateo e instalación, mantenimiento preventivo, redes y diagnóstico. Los servicios se cotizan tras evaluación: no publicamos tarifas no aprobadas. Puedes escribir por WhatsApp para solicitar diagnóstico.' };
+  if (topic(/precios y presupuestos|precios|presupuesto/)) {
+    const m = catalog?.meta||{};
+    return { text:'El catálogo real tiene '+m.productCount+' productos. Los precios van de '+money(m.priceMin)+' a '+money(m.priceMax)+'. Dime tu presupuesto máximo (por ejemplo “hasta 3000”) y te muestro equipos reales dentro de ese rango.' };
+  }
+  if (topic(/disponibilidad y stock|stock|disponible|existencia/)) {
+    const list = findProducts(parseQ(text), 3);
+    if (list.length) return { text:'Estos equipos figuran con stock registrado en el catálogo. El stock se valida otra vez al crear el pedido.', products:list.map(p=>p.code) };
+    return { text:'No encontré coincidencias con stock disponible para esa búsqueda. Puedo mostrarte otras categorías o derivarte por WhatsApp para consultar disponibilidad.' };
+  }
+  if (topic(/whatsapp|contacto|telefono|direccion|horario/)) return { text:'La atención principal es por WhatsApp al +51 986 260 738. Coordinamos compras, recojo y servicio técnico por ese canal. No publicamos una dirección que no esté confirmada.', links:[{text:'Abrir WhatsApp',url:waUrl('Hola GALAX PC REPAIR, necesito ayuda con el catálogo.')}] };
+  if (topic(/camara|foto|imagen|reconocer/)) return { text:'Puedes adjuntar una imagen con el botón de imagen o cámara. El análisis visual todavía no está desplegado, así que no voy a adivinar qué equipo es ni dar un diagnóstico. Puedes enviar la foto por WhatsApp para revisión humana.', links:[{text:'Enviar foto por WhatsApp',url:waUrl('Hola, les envío una foto de un equipo para consultar.')}] };
 
-/* cámara */
-function stopCamera() { if (cameraStream) { cameraStream.getTracks().forEach(t => t.stop()); cameraStream = null; } }
-cameraBtn.addEventListener('click', async () => {
-  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) { note('La cámara no está disponible. Puedes importar una imagen.'); return; }
-  try {
-    cameraStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' }, audio: false });
-    const wrap = document.createElement('div');
-    wrap.className = 'airi-msg';
-    wrap.innerHTML = '<video autoplay playsinline muted style="width:100%;border-radius:8px"></video><div style="display:flex;gap:6px;margin-top:6px"><button class="btn btn-sm" type="button" data-cap>Capturar</button><button class="btn btn-sm" type="button" data-cancel>Cancelar</button></div>';
-    body.appendChild(wrap);
-    wrap.querySelector('video').srcObject = cameraStream;
-    wrap.querySelector('[data-cap]').addEventListener('click', () => {
-      const v = wrap.querySelector('video'), c = document.createElement('canvas');
-      c.width = v.videoWidth || 640; c.height = v.videoHeight || 480;
-      c.getContext('2d').drawImage(v, 0, 0, c.width, c.height);
-      pendingImage = c.toDataURL('image/jpeg', 0.82);
-      wrap.remove(); stopCamera();
-      say('<img src="' + pendingImage + '" alt="Foto capturada" style="max-width:100%;border-radius:8px">', true);
-    });
-    wrap.querySelector('[data-cancel]').addEventListener('click', () => { wrap.remove(); stopCamera(); });
-  } catch (e) { note('No se pudo acceder a la cámara: ' + (e && e.message ? e.message : 'permiso denegado')); }
-});
+  const q = parseQ(text);
+  // Continuidad: si es un seguimiento y no hay categoría nueva, conserva el contexto anterior.
+  if (!q.category && context.category && /otro|mas|sigue|tambien|otras|distinto|ademas/.test(t)) q.category = context.category;
+  if (!q.brand && context.brand && /otro|mas|sigue|tambien|otras/.test(t)) q.brand = context.brand;
+  if (!q.max && context.max && /mas barato|menos de|otro|sigue/.test(t)) q.max = context.max;
+  const list = findProducts(q, 3);
+  if (list.length) {
+    Object.assign(context, { category:q.category, brand:q.brand, use:q.use, max:q.max, min:q.min });
+    const parts = [];
+    if (q.category) parts.push('en '+(catalog.categories.find(c=>c.slug===q.category)?.name||q.category));
+    if (q.brand) parts.push('de '+q.brand);
+    if (q.use) parts.push(q.use==='gaming'?'con GPU dedicada registrada':q.use==='study'?'para estudio':q.use==='design'?'para diseño':'para desarrollo');
+    if (q.max) parts.push('hasta '+money(q.max));
+    if (q.min) parts.push('desde '+money(q.min));
+    return { text:'Encontré '+list.length+(list.length===1?' opción':' opciones')+' del catálogo real'+(parts.length?' '+parts.join(', '):'')+'. Precios y stock son los registrados; se validan al crear el pedido.', products:list.map(p=>p.code) };
+  }
+  return { text:'No encontré una coincidencia exacta en el catálogo publicado. No invento productos, precios ni stock. Puedes pedirme otra categoría, marca o presupuesto, o escribir al equipo por WhatsApp.', links:[{text:'Ver WhatsApp',url:waUrl('Hola, busco un equipo y Airi no encontró coincidencia.')}] };
+}
 
-/* micrófono */
-if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) micBtn.disabled = true;
-else {
-  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-  recognition = new SR();
-  recognition.lang = 'es-PE'; recognition.interimResults = true; recognition.continuous = false;
-  recognition.onstart = () => { recording = true; micBtn.style.color = '#fb7185'; };
-  recognition.onend = () => { recording = false; micBtn.style.color = ''; };
-  recognition.onresult = e => {
-    let txt = '';
-    for (let i = e.resultIndex; i < e.results.length; i++) txt += e.results[i][0].transcript;
-    input.value = txt.trim();
-    if (e.results[e.results.length - 1].isFinal) respond();
-  };
-  recognition.onerror = e => note('No se pudo usar el micrófono: ' + e.error);
-  micBtn.addEventListener('click', () => {
-    try { recording ? recognition.stop() : recognition.start(); } catch (e) { note('No se pudo iniciar el micrófono.'); }
+/* ==================================================================
+   3) Interacción, voz, imágenes y render
+   ================================================================== */
+function pickVoice() {
+  const voices = ('speechSynthesis' in window) ? (speechSynthesis.getVoices()||[]).filter(v=>/^es/i.test(v.lang)) : [];
+  return voices.find(v=>/elvira|dalia|lucia|sofia|camila|monica|mujer|female/i.test(v.name)) || voices[0] || null;
+}
+function speak(text) {
+  if (!('speechSynthesis' in window)) { note('La lectura en voz alta no está disponible en este navegador.'); return Promise.resolve(false); }
+  return new Promise(resolve => {
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(String(text||'').replace(/[#*_`]/g,' '));
+    u.lang='es-PE'; u.rate=.98; u.pitch=1.05;
+    const v = pickVoice(); if (v) u.voice=v;
+    u.onstart = () => { speakingUntil = performance.now()+Math.min(4200,900+String(text).length*32); };
+    u.onend = () => { speakingUntil=0; resolve(true); };
+    u.onerror = () => { speakingUntil=0; resolve(false); };
+    speechSynthesis.speak(u);
   });
 }
+function note(text) { const d=document.createElement('div'); d.className='airi-msg assistant'; d.textContent=text; body.appendChild(d); body.scrollTop=body.scrollHeight; }
+function showTyping() { const d=document.createElement('div'); d.className='airi-msg assistant'; d.innerHTML='<span class="airi-typing" aria-label="Airi está escribiendo"><i></i><i></i><i></i></span>'; body.appendChild(d); body.scrollTop=body.scrollHeight; return d; }
+function appendMsg(role, html, plain) {
+  const d = document.createElement('div'); d.className = 'airi-msg '+role; d.innerHTML = html;
+  if (role==='assistant') d.insertAdjacentHTML('beforeend','<div class="speak-row"><button type="button" data-speak aria-label="Escuchar respuesta"><i class="fa-solid fa-volume"></i> Escuchar</button></div>');
+  body.appendChild(d); body.scrollTop = body.scrollHeight;
+  d.dataset.plain = plain||'';
+}
+function renderAnswer(a) {
+  let html = String(a.text||'').split('\n').map(l=>'<span>'+esc(l)+'</span>').join('<br>');
+  if (a.products && a.products.length) {
+    const cards = a.products.map(code=>(catalog?.products||[]).find(p=>p.code===code)).filter(Boolean).map(productCard);
+    if (cards.length) html += cards.join('');
+  }
+  if (a.links && a.links.length) html += '<div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px">' + a.links.map(l=>'<a class="chip" style="border:1px solid rgba(34,211,238,.4);border-radius:999px;padding:4px 10px;color:#a5f3fc;font-size:.64rem" href="'+esc(l.url)+'" target="_blank" rel="noopener">'+esc(l.text)+'</a>').join('') + '</div>';
+  return html;
+}
+async function sendMessage(text, image) {
+  if (!text && !image) return;
+  hideSuggest();
+  const q = String(text||'').trim();
+  appendMsg('user', (image?'<img class="preview-img" src="'+image+'" alt="Imagen adjunta">':'') + esc(q||'Analiza esta imagen'), q);
+  history.push({role:'user',text:q}); if (history.length>20) history.shift();
+  const typing = showTyping();
+  await new Promise(r=>setTimeout(r, 280));
+  let a;
+  if (image) a = { text:'Recibí la imagen, pero el análisis visual todavía no está desplegado. No voy a adivinar el modelo ni dar un diagnóstico. Puedes enviarla por WhatsApp para revisión humana.', links:[{text:'Enviar foto por WhatsApp',url:waUrl('Hola, les envío una foto para consultar.')}] };
+  else a = answerFor(q);
+  typing.remove();
+  appendMsg('assistant', renderAnswer(a), a.text);
+  history.push({role:'assistant',text:a.text}); if (history.length>20) history.shift();
+  waveUntil = performance.now()+1800;
+  if (voiceOut) speak(a.text);
+  pendingImage = null;
+}
+
+/* Autocompletado con productos reales */
+function hideSuggest() { suggest.hidden = true; suggest.innerHTML = ''; }
+function renderSuggest(raw) {
+  const q = norm(raw||'').trim();
+  if (q.length<2) { hideSuggest(); return; }
+  const toks = q.split(/\W+/).filter(w=>w.length>1);
+  const list = (catalog?.products||[]).filter(p=>p.published!==false && p.stock>0).map(p=>{
+    const hay = norm([p.name,p.model,p.brand,p.code,p.category,p.description,p.specText].join(' '));
+    let s=0; for(const t of toks) if(hay.includes(t)) s+=t.length>=4?3:1;
+    if (norm(p.code).includes(q)) s+=12;
+    return {p,s};
+  }).filter(x=>x.s>0).sort((a,b)=>b.s-a.s||a.p.price-b.p.price).slice(0,4);
+  if (!list.length) { hideSuggest(); return; }
+  suggest.hidden=false;
+  suggest.innerHTML = '<div class="suggest-head">Coincidencias del catálogo real</div>' + list.map(x=>
+    '<button type="button" data-code="'+esc(x.p.code)+'"><span>'+esc(x.p.name.split(' — ')[0])+'</span><small>'+money(x.p.price)+' · '+esc(x.p.code)+'</small></button>').join('');
+}
+
+/* Eventos */
+document.getElementById('assistantBtn').addEventListener('click', () => {
+  const open = panel.classList.toggle('open');
+  panel.setAttribute('aria-hidden', String(!open));
+  if (open) { lastFocus=document.activeElement; init3D(); waveUntil=performance.now()+2800; setTimeout(()=>input.focus(),140); greetOnce(); }
+  else { stopCamera(); hideSuggest(); if (lastFocus && document.contains(lastFocus)) lastFocus.focus(); }
+});
+document.getElementById('closeChat').addEventListener('click', ()=>{ panel.classList.remove('open'); panel.setAttribute('aria-hidden','true'); stopCamera(); hideSuggest(); });
+document.getElementById('clearBtn').addEventListener('click', ()=>{ body.innerHTML=''; history.length=0; Object.assign(context,{category:null,brand:null,use:null,max:null,min:null}); });
+greetBtn.addEventListener('click', ()=>{ speak(GREETING); waveUntil=performance.now()+3000; });
+let greeted = false;
+function greetOnce() { if (greeted || history.length) return; greeted=true; setTimeout(()=>speak(GREETING),650); }
+voiceBtn.addEventListener('click', ()=>{
+  voiceOut=!voiceOut;
+  voiceBtn.innerHTML='<i class="fa-solid fa-'+(voiceOut?'volume':'volume-xmark')+'"></i>';
+  voiceBtn.title=voiceOut?'Lectura activada':'Lectura desactivada';
+  if (voiceOut) speak(GREETING); else if ('speechSynthesis' in window) speechSynthesis.cancel();
+});
+form.addEventListener('submit', e=>{ e.preventDefault(); sendMessage(input.value, pendingImage); input.value=''; });
+input.addEventListener('keydown', e=>{ if(e.key==='Enter'){e.preventDefault(); sendMessage(input.value,pendingImage); input.value='';} });
+input.addEventListener('input', ()=>{ renderSuggest(input.value); typingUntil=performance.now()+2200; });
+document.querySelectorAll('[data-query]').forEach(b=>b.addEventListener('click',()=>{
+  if(!panel.classList.contains('open')) document.getElementById('assistantBtn').click();
+  setTimeout(()=>sendMessage(b.dataset.query),120);
+}));
+document.addEventListener('click', e=>{
+  const code = e.target.closest('[data-code]');
+  if (code) { hideSuggest(); sendMessage(code.dataset.code); return; }
+  const sp = e.target.closest('[data-speak]');
+  if (sp) { const m=sp.closest('.airi-msg'); if(m?.dataset.plain) speak(m.dataset.plain); return; }
+  if (suggest && !suggest.hidden && !e.target.closest('#suggest') && !e.target.closest('#chatInput')) hideSuggest();
+});
+document.addEventListener('keydown', e=>{
+  if (e.key!=='Escape') return;
+  if (!suggest.hidden) hideSuggest(); else if (panel.classList.contains('open')) document.getElementById('closeChat').click();
+});
+importBtn.addEventListener('click', ()=>imageInput.click());
+imageInput.addEventListener('change', ()=>{
+  const f=imageInput.files?.[0]; if(!f) return;
+  if(!/^image\/(jpeg|jpg|png|webp)$/i.test(f.type)){note('Formato no admitido. Usa JPG, PNG o WEBP.');return;}
+  if(f.size>8*1024*1024){note('La imagen debe pesar menos de 8 MB.');return;}
+  const r=new FileReader(); r.onload=()=>{ pendingImage=r.result; appendMsg('user','<img class="preview-img" src="'+pendingImage+'" alt="Vista previa">','[imagen]'); }; r.readAsDataURL(f); imageInput.value='';
+});
+function stopCamera(){ if(cameraStream){cameraStream.getTracks().forEach(t=>t.stop());cameraStream=null;} }
+cameraBtn.addEventListener('click', async()=>{
+  if(!navigator.mediaDevices?.getUserMedia){note('La cámara no está disponible. Puedes importar una imagen.');return;}
+  try {
+    cameraStream = await navigator.mediaDevices.getUserMedia({video:{facingMode:'environment'},audio:false});
+    const v=document.createElement('video'); v.autoplay=true; v.muted=true; v.playsInline=true; v.style.cssText='width:100%;border-radius:10px';
+    const wrap=document.createElement('div'); wrap.className='airi-msg user'; wrap.appendChild(v);
+    const bar=document.createElement('div'); bar.style.cssText='display:flex;gap:6px;margin-top:6px';
+    const cap=document.createElement('button'); cap.type='button'; cap.textContent='Capturar'; cap.style.cssText='border:1px solid rgba(34,211,238,.4);border-radius:999px;padding:4px 10px;color:#a5f3fc;background:transparent;cursor:pointer';
+    const can=document.createElement('button'); can.type='button'; can.textContent='Cancelar'; can.style.cssText='border:1px solid rgba(148,163,184,.3);border-radius:999px;padding:4px 10px;color:#94a8c4;background:transparent;cursor:pointer';
+    bar.append(cap,can); wrap.appendChild(bar); body.appendChild(wrap); v.srcObject=cameraStream;
+    cap.onclick=()=>{ const c=document.createElement('canvas'); c.width=v.videoWidth||640;c.height=v.videoHeight||480;c.getContext('2d').drawImage(v,0,0,c.width,c.height); pendingImage=c.toDataURL('image/jpeg',.82); wrap.remove(); stopCamera(); appendMsg('user','<img class="preview-img" src="'+pendingImage+'" alt="Foto capturada">','[foto]'); };
+    can.onclick=()=>{wrap.remove();stopCamera();};
+  } catch(e){ note('No se pudo acceder a la cámara: '+(e?.message||'permiso denegado')); }
+});
+if(!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) micBtn.disabled=true;
+else {
+  const SR=window.SpeechRecognition||window.webkitSpeechRecognition; recognition=new SR();
+  recognition.lang='es-PE'; recognition.interimResults=true; recognition.continuous=false;
+  recognition.onstart=()=>{recording=true;micBtn.style.color='#fb7185';};
+  recognition.onend=()=>{recording=false;micBtn.style.color='';};
+  recognition.onresult=e=>{ let txt=''; for(let i=e.resultIndex;i<e.results.length;i++) txt+=e.results[i][0].transcript; input.value=txt.trim(); if(e.results[e.results.length-1].isFinal) sendMessage(input.value); };
+  recognition.onerror=e=>note('No se pudo usar el micrófono: '+e.error);
+  micBtn.addEventListener('click',()=>{try{recording?recognition.stop():recognition.start();}catch(e){note('No se pudo iniciar el micrófono.');}});
+}
+
+loadCatalog().then(()=>{ if(!history.length) note('Listo. Soy Airi y solo uso el catálogo real de GALAX PC REPAIR. Elige un acceso rápido o escríbeme.'); });
 </script>
 </body>
 </html>
